@@ -9,9 +9,9 @@
 		<script src="./framework/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
 	</head>
 	<body class="col-md-offset-2 col-md-8">
-		<header class="col-md-8">
+		<header>
 			<h1>Ailrun's Blog</h1>
-			<nav class="col-md-8">
+			<nav>
 				<ui class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
 						<a href="#home" aria-controls="home" role="tab">
@@ -31,8 +31,16 @@
 				</ui>
 			</nav>
 		</header>
-		<main>
-			Hello war!
+		<main class="tab-content">
+			<div role="tabpanel" class="tab-pane active" id="home">
+				Hello war!
+			</div>
+			<div role="tabpanel" class="tab-pane" id="about">
+				
+			</div>
+			<div role="tabpanel" class="tab-pane" id="posts">
+				
+			</div>
 		</main>
 		<footer>
 			<ui>
