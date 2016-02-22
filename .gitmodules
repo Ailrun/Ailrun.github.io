@@ -1,0 +1,3 @@
+[submodule "library/github"]
+	path = library/github
+	url = https://github.com/michael/github
