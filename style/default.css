@@ -1,0 +1,16 @@
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+.title-font {
+  font-family: 'Hanna', serif;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+.normal-font {
+  font-family: 'Jeju Gothic', serif;
+}
+
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothiccoding.css);
+.code-font {
+  font-family: 'Nanum Gothic Coding', serif;
+}
+
