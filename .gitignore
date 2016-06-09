@@ -4,3 +4,8 @@
 # test html files
 
 *test*
+
+# compressed files
+*.zip
+*.tar
+*.7z
