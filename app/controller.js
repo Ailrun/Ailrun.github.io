@@ -33,7 +33,7 @@
 			},
 			{
 				"title": "Beer",
-				"description": "World's The Greatest Drink",
+				"description": "The World's Greatest Drink",
 				"background": "image/beer.png",
 				"linkName": "Beer List",
 				//"link": "posts/beers"
