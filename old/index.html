@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Valhalla for Valkyrie</title>
+		<meta charset="UTF-8"/>
+		<!-- jQuery  -->
+		<script src="./library/jquery-2.2.0.min.js"></script>
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="./framework/bootstrap-3.3.6-dist/css/bootstrap.min.css"/>
+		<script src="./framework/bootstrap-3.3.6-dist/js/bootstrap.min.js"></script>
+
+		<link rel="stylesheet" href="./style/default.css"/>
+		<link rel="stylesheet" href="./style/support-bootstrap.css"/>
+	</head>
+	<body class="normal-font col-md-offset-2 col-md-8 col-xs-12">
+
+		<header>
+			<a id="titleLink"
+			   href="http://ailrun.github.io">
+				<h1 class="title-font">
+					Ailrun's Blog
+				</h1>
+			</a>
+
+			<nav class="col-md-12 col-xs-12">
+				<ul id="menuTabs"
+					class="nav nav-tabs col-md-12 col-xs-12"
+					role="tablist">
+					<li role="presentation"
+						class="active">
+						<a href="#home"
+						   aria-controls="home"
+						   role="tab"
+						   data-toggle="tab">
+							Home
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#posts"
+						   aria-controls="posts"
+						   role="tab"
+						   data-toggle="tab">
+							Posts
+						</a>
+					</li>
+					<li role="presentation">
+						<a href="#about"
+						   aria-controls="about"
+						   role="tab"
+						   data-toggle="tab">
+							About
+						</a>
+					</li>
+					<li role="presentation" class="dropdown">
+						<a href="#"
+						   class="dropdown-toggle"
+						   aria-haspopup="true"
+						   aria-expanded="false"
+						   role="button"
+						   data-toggle="dropdown">
+							Projects <span class="caret"></span>
+						</a>
+						<ul id ="projectDropdown"
+							class="code-font dropdown-menu">
+							<li>
+								<a href="https://github.com/Ailrun/yet-another-emacs-settings"
+								   target="_blank">
+									Yet Another Emacs Settings
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/Ailrun/LambdaDB"
+								   target="_blank">
+									LambdaDB
+								</a>
+							</li>
+							<li>
+								<a href="https://github.com/Ailrun/ailrun.github.io"
+								   target="_blank">
+									Ailrun.github.io
+								</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				
+			</nav>
+
+		</header>
+
+		<main>
+			<section class="tab-content col-md-12">
+				<div role="tabpanel" class="tab-pane fade in active" id="home"></div>
+				<div role="tabpanel" class="tab-pane fade" id="about"></div>
+				<div role="tabpanel" class="tab-pane fade" id="posts"></div>
+			</section>
+
+		</main>
+		<footer class="code-font">
+			<ui>
+				<li>
+					Github: <a href="https://github.com/ailrun">https://github.com/ailrun</a>	
+				</li>
+				<li>
+					Blog: <a href="https://ailrun.github.io/">https://ailrun.github.io/</a>
+				</li>
+			</ui>
+		</footer>
+    </body>
+</html>
+
+<script>
+ $('#home').load("home.html");
+ $('#about').load("about.html");
+ $('#posts').load("posts.html");
+ $('#menuTabs a[role="tab"]').click(function (e) {
+	 e.preventDefault();
+	 $(this).tab('show');
+ })
+</script>

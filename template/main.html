@@ -1,0 +1,22 @@
+<section class="default-font" ng-controller="MainController">
+	<div ng-repeat="banner in mainBanners">
+		<article class="banner">
+			<img class="banner-background" src="{{banner.background}}">
+			<div class="banner-right" ng-if="$even">
+				<div class="vertical-middle-text">
+					<span class="main-title">{{ banner.title }}</span><br/>
+					<span class="main-description">{{ banner.description }}</span>
+				</div>
+			</div>
+			<div class="banner-left" ng-if="$odd">
+				<div class="vertical-middle-text">
+					<span class="main-title">{{ banner.title }}</span><br/>
+					<span class="main-description">{{ banner.description }}</span>
+				</div>
+			</div>
+			<a class="main-link" href="{{ banner.link }}">
+				<span>{{ banner.linkName }} ></span>
+			</a>
+		</article>
+	</div>
+</section>
