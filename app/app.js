@@ -1,5 +1,5 @@
 (function () {
-	var ailrunBlogApp = angular.module("ailrunBlogApp", ["ui.router", "ailrunBlogController"]);
+	var ailrunBlogApp = angular.module("ailrunBlogApp", ["ui.router", "ailrunBlogController", "ailrunBlogDirective"]);
 
 	ailrunBlogApp.config(function ($stateProvider, $urlRouterProvider) {
 

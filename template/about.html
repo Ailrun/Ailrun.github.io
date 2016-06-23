@@ -1,8 +1,7 @@
 <section ng-controller="AboutController">
 	<div>
 		<div class="banner">
-			<div class="banner-background" style="background-color: #000">
-			</div>
+			<img class="banner-background animate-show" ng-src="{{ aboutBanner.background }}" fade-in/>
 			<div class="banner-left">
 				<div class="vertical-middle-text">
 					<span class="other-title">About</span>
@@ -22,7 +21,7 @@
 					</div>
 				</div>
 			</div>
-			<img src="image/about-profile.png">
+			<img class="animate-show" ng-src="image/about-profile.png" fade-in>
 		</article>
 	</div>
 </section>

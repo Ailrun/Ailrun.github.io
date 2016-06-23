@@ -1,7 +1,7 @@
 <section class="default-font" ng-controller="MainController">
 	<div ng-repeat="banner in mainBanners">
 		<article class="banner">
-			<img class="banner-background" src="{{banner.background}}">
+			<img class="banner-background animate-show" ng-src="{{ banner.background }}" fade-in/>
 			<div class="banner-right" ng-if="$even">
 				<div class="vertical-middle-text">
 					<span class="main-title">{{ banner.title }}</span><br/>
