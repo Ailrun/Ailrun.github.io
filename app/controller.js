@@ -20,6 +20,7 @@
 				"link": "about"
 			}
 		];
+		
 	});
 
 	ailrunBlogController.controller('MainController', function ($scope) {
@@ -41,7 +42,25 @@
 		];
 	});
 
+	ailrunBlogController.controller('PostController', function ($scope) {
+		$scope.postBanner = {
+			"background": "image/post.png"
+		};
+		
+	});
+
+	ailrunBlogController.controller('ProjectController', function ($scope) {
+		$scope.projectBanner = {
+			"background": "image/project.png"
+		};
+		
+	});
+
 	ailrunBlogController.controller('AboutController', function ($scope) {
+		$scope.aboutBanner = {
+			"background": "image/about.png"
+		};
+		
 		$scope.subjects = [
 			{
 				"title": "Hobby",
@@ -64,5 +83,6 @@
 				]
 			}
 		];
+		
 	});
 }());
