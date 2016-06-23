@@ -7,10 +7,10 @@ GitHub Pages for Ailrun
 
 | Page Title | Completeness               |
 |------------|----------------------------|
-| Main       | Complete except footer bar |
-| Post       | Complete banner            |
-| Project    | Will use Github API        |
-| About      | Complete first version     |
+| [Main](https://ailrun.github.io/#/main)       | Complete except footer bar |
+| [Posts](https://ailrun.github.io/#/posts)       | Complete banner            |
+| [Projects](https://ailrun.github.io/#/projects)    | Will use Github API        |
+| [About](https://ailrun.github.io/#/about)      | Complete first version     |
 
 ## Powered by
 Angular.js, Github API, and so on.
