@@ -65,7 +65,7 @@
 			{
 				"title": "Hobby",
 				"entries": [
-					"Enjoy with beer",
+					"Enjoy life with beer",
 					"Fall in love with foods",
 					"Writing poem"
 				]
