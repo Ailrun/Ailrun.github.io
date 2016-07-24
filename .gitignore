@@ -1,11 +1,7 @@
-# emacs temporary files
-*~
-
 # test html files
-
 *test*
 
-# compressed files
+# compressed fileSWs
 *.zip
 *.tar
 *.7z
