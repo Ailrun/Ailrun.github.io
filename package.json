@@ -1,0 +1,22 @@
+{
+  "private": "true",
+  "name": "ailrun.github.io",
+  "version": "1.0.0",
+  "description": "GitHub Pages for Ailrun",
+  "scripts": {
+    "build": "pulp browserify -O --to dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ailrun/ailrun.github.io.git"
+  },
+  "author": "Junyoung Clare Jang <jjc9310@gmail.com>",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/ailrun/ailrun.github.io/issues"
+  },
+  "homepage": "https://github.com/ailrun/ailrun.github.io#readme",
+  "dependencies": {
+    "virtual-dom": "^2.1.1"
+  }
+}
