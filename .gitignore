@@ -1,7 +1,9 @@
-# test html files
-*test*
+/bower_components/
+/node_modules/
+/.pulp-cache/
+/output/
+/.psci*
+/src/.webpack.js
 
-# compressed fileSWs
-*.zip
-*.tar
-*.7z
+# emacs temp file
+*~
