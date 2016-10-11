@@ -8,7 +8,9 @@
   ],
   "dependencies": {
     "purescript-console": "^1.0.0",
-    "purescript-math": "^2.0.0"
+    "purescript-math": "^2.0.0",
+    "purescript-dom": "^2.2.1",
+    "purescript-halogen": "^0.11.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^1.0.0"

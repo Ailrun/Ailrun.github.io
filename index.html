@@ -62,29 +62,10 @@
 		<link rel="stylesheet" href="style/default.css"/>
 		<link rel="stylesheet" href="style/animation.css"/>
 
-		<script src="framework/angular-1.5.6/angular.min.js"></script>
-		<script src="framework/angular-1.5.6/angular-ui-router.min.js"></script>
+		<script src="dist/main.js"></script>
 	</head>
 
-	<body ng-app="ailrunBlogApp">
-		<main ui-view>
-		</main>
-		<header class="top-bar" ng-controller="TopBarController">
-			<h1>Valhala of Valkyrie</h1>
-			<ul>
-				<li ng-repeat="menu in topBarMenus">
-					<a ui-sref="{{ menu.link }}">
-						{{ menu.name }}
-					</a>
-				</li>
-			</ul>
-		</header>
-		<footer class="bottom-bar" ng-controller="BottomBarController">
-			
-		</footer>
-
-		<script src="app/app.js"></script>
-		<script src="app/controller.js"></script>
-		<script src="app/directive.js"></script>
+	<body>
+		
 	</body>
 </html>
