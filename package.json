@@ -4,7 +4,7 @@
     "version": "1.0.0",
     "description": "GitHub Pages for Ailrun",
     "scripts": {
-        "build": "mkdir dist; pulp browserify -O --to dist/main.js"
+        "build": "pulp browserify -O --to dist/main.js"
     },
     "repository": {
         "type": "git",
