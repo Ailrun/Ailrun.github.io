@@ -4,6 +4,7 @@ image\about.psd filter=lfs diff=lfs merge=lfs -text
 image\about-profile.png filter=lfs diff=lfs merge=lfs -text
 image\beer.png filter=lfs diff=lfs merge=lfs -text
 image\haskell.png filter=lfs diff=lfs merge=lfs -text
+image\elm.png filter=lfs diff=lfs merge=lfs -text
 image\post.png filter=lfs diff=lfs merge=lfs -text
 image\post.png filter=lfs diff=lfs merge=lfs -text
 image\post.psd filter=lfs diff=lfs merge=lfs -text
