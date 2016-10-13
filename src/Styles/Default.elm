@@ -12,11 +12,15 @@ type DefaultClasses
     | RightClass
     | LeftClass
 
+
+headerHeight : Float
+headerHeight = 2.5
+
 headerView : Snippet
 headerView =
     (.) HeaderClass
           [ width ( pct 100 )
-          , height ( vw 2.5 )
+          , height ( vw headerHeight )
 
           , margin2 zero auto
           , position fixed
@@ -26,19 +30,25 @@ headerView =
 
           , backgroundColor ( rgba 0 0 0 0.72 )
 
+          , lineHeight ( vw headerHeight )
+
           , descendants
               [ h1
-                    [ display inline
+                    [ height inherit
+
+                    , display inlineBlock
+
+                    , fontSize fontLargeSize
 
                     , descendants
                           [ a
-                                [ display inlineBlock
-                                , margin2 auto zero
+                                [ height inherit
+
+                                , display inlineBlock
                                 , marginLeft ( em 0.5 )
 
-                                , verticalAlign middle
-                                , fontDancing
                                 , fontSize fontLargeSize
+                                , fontDancing
                                 , color ( rgba 255 255 255 0.84 ) ] ] ]
               , ul
                     [ height inherit
@@ -47,19 +57,19 @@ headerView =
                     , margin2 auto zero
                     , float right ]
               , li
-                    [ display inlineBlock
+                    [ height inherit
 
-                    , verticalAlign middle
+                    , display inlineBlock
+
+                    , fontSize fontLargeSize
 
                     , descendants
                           [ a   
                                 [ marginLeft ( vw 1 )
                                 , marginRight ( vw 1 )
 
-                                , verticalAlign middle
-
-                                , fontDancing
                                 , fontSize fontLargeSize
+                                , fontDancing
                                 , color ( rgba 255 255 255 0.84 ) ] ] ] ] ]
 
 
@@ -108,6 +118,7 @@ mainPageView =
                               [ display inlineBlock
                                     
                               , verticalAlign middle
+
                               , property "line-height" "1.3" ] ] ]
             , a
                   [ position absolute
@@ -126,7 +137,10 @@ css =
     ( stylesheet << namespace "ailrunBlog" )
     [ everything
           [ margin zero
-          , padding zero ]
+          , padding zero
+
+          , property "-webkit-margin-before" "0"
+          , property "-webkit-margin-after" "0"]
 
     , body
           [ width ( pct 100 )

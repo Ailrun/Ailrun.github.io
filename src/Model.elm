@@ -1,4 +1,4 @@
-module Model exposing ( Model, model, default )
+module Model exposing ( Model, model )
 
 import Model.HeaderMenu exposing ( .. )
 import Model.PageType exposing ( .. )
@@ -9,11 +9,20 @@ type alias Model
     = { headerMenus : List HeaderMenu
       , pageType : PageType }
 
-model : Model
-model = { headerMenus =
-              headerMenus
-        , pageType =
-              Main { banners = mainPageBanners } }
+hashParse : String -> PageType
+hashParse hash =
+    case hash of
+        "#Posts" -> Posts
+        "#Projects" -> Projects
+        "#About" -> About
+        _ -> Main { banners = mainPageBanners }
+
+model : String -> Model
+model hash =
+    { headerMenus =
+          headerMenus
+    , pageType =
+          hashParse hash }
 
 headerMenus : List HeaderMenu
 headerMenus =
@@ -39,6 +48,3 @@ mainPageBanners =
       , link = ""
       , linkTitle = "Elm Projects"
       , background = "image/elm.png"}]
-
-default : Model
-default = model

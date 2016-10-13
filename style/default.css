@@ -1,6 +1,8 @@
 * {
     margin: 0;
     padding: 0;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
 }
 
 body {
@@ -24,19 +26,21 @@ a {
     left: 0;
     right: 0;
     background-color: rgba(0, 0, 0, 0.72);
+    line-height: 2.5vw;
 }
 
 .ailrunBlogHeaderClass  h1 {
-    display: inline;
+    height: inherit;
+    display: inline-block;
+    font-size: 1.5vw;
 }
 
 .ailrunBlogHeaderClass  h1  a {
+    height: inherit;
     display: inline-block;
-    margin: auto 0;
     margin-left: 0.5em;
-    vertical-align: middle;
-    font-family: Dancing Script, cursive;
     font-size: 1.5vw;
+    font-family: Dancing Script, cursive;
     color: rgba(255, 255, 255, 0.84);
 }
 
@@ -48,16 +52,16 @@ a {
 }
 
 .ailrunBlogHeaderClass  li {
+    height: inherit;
     display: inline-block;
-    vertical-align: middle;
+    font-size: 1.5vw;
 }
 
 .ailrunBlogHeaderClass  li  a {
     margin-left: 1vw;
     margin-right: 1vw;
-    vertical-align: middle;
-    font-family: Dancing Script, cursive;
     font-size: 1.5vw;
+    font-family: Dancing Script, cursive;
     color: rgba(255, 255, 255, 0.84);
 }
 

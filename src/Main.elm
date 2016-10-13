@@ -1,23 +1,26 @@
 module Main exposing ( main )
 
-import Html.App exposing ( program )
+import Navigation exposing ( program, makeParser )
 
 import Model exposing ( .. )
 import View exposing ( .. )
 import Controller exposing ( .. )
 
 
-init : ( Model, Cmd Msg )
-init = ( Model.default, Cmd.none )
+init : String -> ( Model, Cmd Msg )
+init hash =
+    ( model hash, Cmd.none )
 
 main : Program Never
 main =
     let
+        locParser loc = loc.hash
         blog =
             { init = init
             , update = update
+            , urlUpdate = \p m -> ( model p, Cmd.none )
             , subscriptions = subscriptions
             , view = view
             }
     in
-        program blog
+        program ( makeParser locParser ) blog
