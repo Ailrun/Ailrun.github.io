@@ -5,3 +5,6 @@
 *.zip
 *.tar
 *.7z
+
+# emacs files
+*~
