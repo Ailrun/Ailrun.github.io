@@ -7,13 +7,13 @@ import View.PageView.PostsPageView exposing ( .. )
 import View.PageView.ProjectsPageView exposing ( .. )
 import View.PageView.AboutPageView exposing ( .. )
 import Model exposing ( .. )
-import Model.PageType exposing ( .. )
+import Model.PageModel exposing ( .. )
 import Controller exposing ( .. )
 
 
 pageView : Model -> Html Msg
 pageView model =
-    case model.pageType of
+    case model.page of
         Main _ -> mainPageView model
         Posts -> postsPageView model
         Projects -> projectsPageView model

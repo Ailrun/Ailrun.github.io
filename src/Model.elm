@@ -1,15 +1,15 @@
 module Model exposing ( Model, model )
 
-import Model.HeaderMenu exposing ( .. )
-import Model.PageType exposing ( .. )
-import Model.PageType.MainPageBanner exposing ( .. )
+import Model.HeaderModel exposing ( .. )
+import Model.PageModel exposing ( .. )
+import Model.PageModel.MainPageModel exposing ( .. )
 
 
 type alias Model
     = { headerMenus : List HeaderMenu
-      , pageType : PageType }
+      , page : Page }
 
-hashParse : String -> PageType
+hashParse : String -> Page
 hashParse hash =
     case hash of
         "#Posts" -> Posts
@@ -21,7 +21,7 @@ model : String -> Model
 model hash =
     { headerMenus =
           headerMenus
-    , pageType =
+    , page =
           hashParse hash }
 
 headerMenus : List HeaderMenu

@@ -13162,26 +13162,30 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
-var _user$project$Model_HeaderMenu$fromName = function (name) {
+var _user$project$Model_HeaderModel$fromName = function (name) {
 	return {
 		name: name,
 		link: A2(_elm_lang$core$Basics_ops['++'], '#', name)
 	};
 };
-var _user$project$Model_HeaderMenu$HeaderMenu = F2(
+var _user$project$Model_HeaderModel$HeaderMenu = F2(
 	function (a, b) {
 		return {name: a, link: b};
 	});
 
-var _user$project$Model_PageType_MainPageBanner$MainPageBanner = F5(
+var _user$project$Model_PageModel_MainPageModel$MainPageBanner = F5(
 	function (a, b, c, d, e) {
 		return {title: a, description: b, link: c, linkTitle: d, background: e};
 	});
 
-var _user$project$Model_PageType$About = {ctor: 'About'};
-var _user$project$Model_PageType$Projects = {ctor: 'Projects'};
-var _user$project$Model_PageType$Posts = {ctor: 'Posts'};
-var _user$project$Model_PageType$Main = function (a) {
+var _user$project$Model_PageModel_PostsPageModel$PostsPagePost = function (a) {
+	return {title: a};
+};
+
+var _user$project$Model_PageModel$About = {ctor: 'About'};
+var _user$project$Model_PageModel$Projects = {ctor: 'Projects'};
+var _user$project$Model_PageModel$Posts = {ctor: 'Posts'};
+var _user$project$Model_PageModel$Main = function (a) {
 	return {ctor: 'Main', _0: a};
 };
 
@@ -13193,34 +13197,34 @@ var _user$project$Model$mainPageBanners = _elm_lang$core$Native_List.fromArray(
 	]);
 var _user$project$Model$headerMenus = _elm_lang$core$Native_List.fromArray(
 	[
-		_user$project$Model_HeaderMenu$fromName('Main'),
-		_user$project$Model_HeaderMenu$fromName('Posts'),
-		_user$project$Model_HeaderMenu$fromName('Projects'),
-		_user$project$Model_HeaderMenu$fromName('About')
+		_user$project$Model_HeaderModel$fromName('Main'),
+		_user$project$Model_HeaderModel$fromName('Posts'),
+		_user$project$Model_HeaderModel$fromName('Projects'),
+		_user$project$Model_HeaderModel$fromName('About')
 	]);
 var _user$project$Model$hashParse = function (hash) {
 	var _p0 = hash;
 	switch (_p0) {
 		case '#Posts':
-			return _user$project$Model_PageType$Posts;
+			return _user$project$Model_PageModel$Posts;
 		case '#Projects':
-			return _user$project$Model_PageType$Projects;
+			return _user$project$Model_PageModel$Projects;
 		case '#About':
-			return _user$project$Model_PageType$About;
+			return _user$project$Model_PageModel$About;
 		default:
-			return _user$project$Model_PageType$Main(
+			return _user$project$Model_PageModel$Main(
 				{banners: _user$project$Model$mainPageBanners});
 	}
 };
 var _user$project$Model$model = function (hash) {
 	return {
 		headerMenus: _user$project$Model$headerMenus,
-		pageType: _user$project$Model$hashParse(hash)
+		page: _user$project$Model$hashParse(hash)
 	};
 };
 var _user$project$Model$Model = F2(
 	function (a, b) {
-		return {headerMenus: a, pageType: b};
+		return {headerMenus: a, page: b};
 	});
 
 var _user$project$Controller$subscriptions = function (model) {
@@ -13391,26 +13395,29 @@ var _user$project$Styles_Default$headerView = A2(
 			_rtfeldman$elm_css$Css$right(_rtfeldman$elm_css$Css$zero),
 			_rtfeldman$elm_css$Css$backgroundColor(
 			A4(_rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.72)),
+			_rtfeldman$elm_css$Css$lineHeight(
+			_rtfeldman$elm_css$Css$vw(_user$project$Styles_Default$headerHeight)),
 			_rtfeldman$elm_css$Css$descendants(
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css_Elements$h1(
 					_elm_lang$core$Native_List.fromArray(
 						[
-							_rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inline),
+							_rtfeldman$elm_css$Css$height(_rtfeldman$elm_css$Css$inherit),
+							_rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+							_rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
 							_rtfeldman$elm_css$Css$descendants(
 							_elm_lang$core$Native_List.fromArray(
 								[
 									_rtfeldman$elm_css$Css_Elements$a(
 									_elm_lang$core$Native_List.fromArray(
 										[
+											_rtfeldman$elm_css$Css$height(_rtfeldman$elm_css$Css$inherit),
 											_rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-											A2(_rtfeldman$elm_css$Css$margin2, _rtfeldman$elm_css$Css$auto, _rtfeldman$elm_css$Css$zero),
 											_rtfeldman$elm_css$Css$marginLeft(
 											_rtfeldman$elm_css$Css$em(0.5)),
-											_rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-											_user$project$Styles_Font$fontDancing,
 											_rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
+											_user$project$Styles_Font$fontDancing,
 											_rtfeldman$elm_css$Css$color(
 											A4(_rtfeldman$elm_css$Css$rgba, 255, 255, 255, 0.84))
 										]))
@@ -13429,21 +13436,19 @@ var _user$project$Styles_Default$headerView = A2(
 						[
 							_rtfeldman$elm_css$Css$height(_rtfeldman$elm_css$Css$inherit),
 							_rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-							_rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
+							_rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
 							_rtfeldman$elm_css$Css$descendants(
 							_elm_lang$core$Native_List.fromArray(
 								[
 									_rtfeldman$elm_css$Css_Elements$a(
 									_elm_lang$core$Native_List.fromArray(
 										[
-											A2(_rtfeldman$elm_css$Css$margin2, _rtfeldman$elm_css$Css$auto, _rtfeldman$elm_css$Css$zero),
 											_rtfeldman$elm_css$Css$marginLeft(
 											_rtfeldman$elm_css$Css$vw(1)),
 											_rtfeldman$elm_css$Css$marginRight(
 											_rtfeldman$elm_css$Css$vw(1)),
-											_rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-											_user$project$Styles_Font$fontDancing,
 											_rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
+											_user$project$Styles_Font$fontDancing,
 											_rtfeldman$elm_css$Css$color(
 											A4(_rtfeldman$elm_css$Css$rgba, 255, 255, 255, 0.84))
 										]))
@@ -13461,7 +13466,9 @@ var _user$project$Styles_Default$css = function (_p0) {
 			_elm_lang$core$Native_List.fromArray(
 				[
 					_rtfeldman$elm_css$Css$margin(_rtfeldman$elm_css$Css$zero),
-					_rtfeldman$elm_css$Css$padding(_rtfeldman$elm_css$Css$zero)
+					_rtfeldman$elm_css$Css$padding(_rtfeldman$elm_css$Css$zero),
+					A2(_rtfeldman$elm_css$Css$property, '-webkit-margin-before', '0'),
+					A2(_rtfeldman$elm_css$Css$property, '-webkit-margin-after', '0')
 				])),
 			_rtfeldman$elm_css$Css_Elements$body(
 			_elm_lang$core$Native_List.fromArray(
@@ -13579,7 +13586,7 @@ var _user$project$View_HeaderView$headerView = function (model) {
 						_elm_lang$html$Html$a,
 						_elm_lang$core$Native_List.fromArray(
 							[
-								_elm_lang$html$Html_Attributes$href('#main')
+								_elm_lang$html$Html_Attributes$href('#Main')
 							]),
 						_elm_lang$core$Native_List.fromArray(
 							[
@@ -13666,7 +13673,7 @@ var _user$project$View_PageView_MainPageView$mainPageBannerListMaker = function 
 						]))
 				]));
 	};
-	var _p3 = model.pageType;
+	var _p3 = model.page;
 	if (_p3.ctor === 'Main') {
 		return A2(
 			_elm_lang$core$List$indexedMap,
@@ -13721,7 +13728,7 @@ var _user$project$View_PageView_AboutPageView$aboutPageView = function (model) {
 };
 
 var _user$project$View_PageView$pageView = function (model) {
-	var _p0 = model.pageType;
+	var _p0 = model.page;
 	switch (_p0.ctor) {
 		case 'Main':
 			return _user$project$View_PageView_MainPageView$mainPageView(model);
@@ -13753,7 +13760,7 @@ var _user$project$View_FooterView$footerView = function (model) {
 		_elm_lang$core$Native_List.fromArray(
 			[
 				_elm_lang$html$Html$text(
-				_user$project$View_FooterView$pageToText(model.pageType))
+				_user$project$View_FooterView$pageToText(model.page))
 			]));
 };
 

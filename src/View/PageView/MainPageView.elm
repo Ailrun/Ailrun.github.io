@@ -7,8 +7,8 @@ import Styles exposing ( id, class, classList )
 import Styles.Default exposing ( .. )
 
 import Model exposing ( .. )
-import Model.PageType exposing ( .. )
-import Model.PageType.MainPageBanner exposing ( .. )
+import Model.PageModel exposing ( .. )
+import Model.PageModel.MainPageModel exposing ( .. )
 import Controller exposing ( .. )
 
 mainPageView : Model -> Html Msg
@@ -38,7 +38,7 @@ mainPageBannerListMaker model =
                 , a [ href banner.link ]
                     [ text <| banner.linkTitle ++ " >" ] ]
     in
-        case model.pageType of
+        case model.page of
             Main { banners } ->
                 List.indexedMap
                     ( \n b ->

@@ -1,4 +1,4 @@
-module Model.PageType.MainPageBanner exposing ( MainPageBanner )
+module Model.PageModel.MainPageModel exposing ( MainPageBanner )
 
 
 type alias MainPageBanner
