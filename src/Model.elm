@@ -1,4 +1,5 @@
-module Model exposing ( Model, model )
+module Model exposing
+    ( Model, modelMaker )
 
 import Model.HeaderModel exposing ( .. )
 import Model.PageModel exposing ( .. )
@@ -9,27 +10,19 @@ type alias Model
     = { headerMenus : List HeaderMenu
       , page : Page }
 
-hashParse : String -> Page
-hashParse hash =
-    case hash of
-        "#Posts" -> Posts
-        "#Projects" -> Projects
-        "#About" -> About
-        _ -> Main { banners = mainPageBanners }
-
-model : String -> Model
-model hash =
+modelMaker : PageType -> Model
+modelMaker pt =
     { headerMenus =
           headerMenus
     , page =
-          hashParse hash }
+        pageTypeToPage pt }
 
 headerMenus : List HeaderMenu
 headerMenus =
-    [ fromName "Main"
-    , fromName "Posts"
-    , fromName "Projects"
-    , fromName "About" ]
+    [ fromPageType MainT
+    , fromPageType PostsT
+    , fromPageType ProjectsT
+    , fromPageType AboutT ]
     
 mainPageBanners : List MainPageBanner
 mainPageBanners =

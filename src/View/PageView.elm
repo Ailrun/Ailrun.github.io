@@ -15,6 +15,7 @@ pageView : Model -> Html Msg
 pageView model =
     case model.page of
         Main _ -> mainPageView model
-        Posts -> postsPageView model
+        Posts _ -> postsPageView model
         Projects -> projectsPageView model
         About -> aboutPageView model
+        NotFound -> mainPageView model

@@ -8909,6 +8909,364 @@ var _elm_lang$navigation$Navigation$subMap = F2(
 	});
 _elm_lang$core$Native_Platform.effectManagers['Navigation'] = {pkg: 'elm-lang/navigation', init: _elm_lang$navigation$Navigation$init, onEffects: _elm_lang$navigation$Navigation$onEffects, onSelfMsg: _elm_lang$navigation$Navigation$onSelfMsg, tag: 'fx', cmdMap: _elm_lang$navigation$Navigation$cmdMap, subMap: _elm_lang$navigation$Navigation$subMap};
 
+//import Dict, List, Maybe, Native.Scheduler //
+
+var _evancz$elm_http$Native_Http = function() {
+
+function send(settings, request)
+{
+	return _elm_lang$core$Native_Scheduler.nativeBinding(function(callback) {
+		var req = new XMLHttpRequest();
+
+		// start
+		if (settings.onStart.ctor === 'Just')
+		{
+			req.addEventListener('loadStart', function() {
+				var task = settings.onStart._0;
+				_elm_lang$core$Native_Scheduler.rawSpawn(task);
+			});
+		}
+
+		// progress
+		if (settings.onProgress.ctor === 'Just')
+		{
+			req.addEventListener('progress', function(event) {
+				var progress = !event.lengthComputable
+					? _elm_lang$core$Maybe$Nothing
+					: _elm_lang$core$Maybe$Just({
+						loaded: event.loaded,
+						total: event.total
+					});
+				var task = settings.onProgress._0(progress);
+				_elm_lang$core$Native_Scheduler.rawSpawn(task);
+			});
+		}
+
+		// end
+		req.addEventListener('error', function() {
+			return callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'RawNetworkError' }));
+		});
+
+		req.addEventListener('timeout', function() {
+			return callback(_elm_lang$core$Native_Scheduler.fail({ ctor: 'RawTimeout' }));
+		});
+
+		req.addEventListener('load', function() {
+			return callback(_elm_lang$core$Native_Scheduler.succeed(toResponse(req)));
+		});
+
+		req.open(request.verb, request.url, true);
+
+		// set all the headers
+		function setHeader(pair) {
+			req.setRequestHeader(pair._0, pair._1);
+		}
+		A2(_elm_lang$core$List$map, setHeader, request.headers);
+
+		// set the timeout
+		req.timeout = settings.timeout;
+
+		// enable this withCredentials thing
+		req.withCredentials = settings.withCredentials;
+
+		// ask for a specific MIME type for the response
+		if (settings.desiredResponseType.ctor === 'Just')
+		{
+			req.overrideMimeType(settings.desiredResponseType._0);
+		}
+
+		// actuall send the request
+		if(request.body.ctor === "BodyFormData")
+		{
+			req.send(request.body.formData)
+		}
+		else
+		{
+			req.send(request.body._0);
+		}
+
+		return function() {
+			req.abort();
+		};
+	});
+}
+
+
+// deal with responses
+
+function toResponse(req)
+{
+	var tag = req.responseType === 'blob' ? 'Blob' : 'Text'
+	var response = tag === 'Blob' ? req.response : req.responseText;
+	return {
+		status: req.status,
+		statusText: req.statusText,
+		headers: parseHeaders(req.getAllResponseHeaders()),
+		url: req.responseURL,
+		value: { ctor: tag, _0: response }
+	};
+}
+
+
+function parseHeaders(rawHeaders)
+{
+	var headers = _elm_lang$core$Dict$empty;
+
+	if (!rawHeaders)
+	{
+		return headers;
+	}
+
+	var headerPairs = rawHeaders.split('\u000d\u000a');
+	for (var i = headerPairs.length; i--; )
+	{
+		var headerPair = headerPairs[i];
+		var index = headerPair.indexOf('\u003a\u0020');
+		if (index > 0)
+		{
+			var key = headerPair.substring(0, index);
+			var value = headerPair.substring(index + 2);
+
+			headers = A3(_elm_lang$core$Dict$update, key, function(oldValue) {
+				if (oldValue.ctor === 'Just')
+				{
+					return _elm_lang$core$Maybe$Just(value + ', ' + oldValue._0);
+				}
+				return _elm_lang$core$Maybe$Just(value);
+			}, headers);
+		}
+	}
+
+	return headers;
+}
+
+
+function multipart(dataList)
+{
+	var formData = new FormData();
+
+	while (dataList.ctor !== '[]')
+	{
+		var data = dataList._0;
+		if (data.ctor === 'StringData')
+		{
+			formData.append(data._0, data._1);
+		}
+		else
+		{
+			var fileName = data._1.ctor === 'Nothing'
+				? undefined
+				: data._1._0;
+			formData.append(data._0, data._2, fileName);
+		}
+		dataList = dataList._1;
+	}
+
+	return { ctor: 'BodyFormData', formData: formData };
+}
+
+
+function uriEncode(string)
+{
+	return encodeURIComponent(string);
+}
+
+function uriDecode(string)
+{
+	return decodeURIComponent(string);
+}
+
+return {
+	send: F2(send),
+	multipart: multipart,
+	uriEncode: uriEncode,
+	uriDecode: uriDecode
+};
+
+}();
+
+var _evancz$elm_http$Http$send = _evancz$elm_http$Native_Http.send;
+var _evancz$elm_http$Http$defaultSettings = {timeout: 0, onStart: _elm_lang$core$Maybe$Nothing, onProgress: _elm_lang$core$Maybe$Nothing, desiredResponseType: _elm_lang$core$Maybe$Nothing, withCredentials: false};
+var _evancz$elm_http$Http$multipart = _evancz$elm_http$Native_Http.multipart;
+var _evancz$elm_http$Http$uriDecode = _evancz$elm_http$Native_Http.uriDecode;
+var _evancz$elm_http$Http$uriEncode = _evancz$elm_http$Native_Http.uriEncode;
+var _evancz$elm_http$Http$queryEscape = function (string) {
+	return A2(
+		_elm_lang$core$String$join,
+		'+',
+		A2(
+			_elm_lang$core$String$split,
+			'%20',
+			_evancz$elm_http$Http$uriEncode(string)));
+};
+var _evancz$elm_http$Http$queryPair = function (_p0) {
+	var _p1 = _p0;
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_evancz$elm_http$Http$queryEscape(_p1._0),
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			'=',
+			_evancz$elm_http$Http$queryEscape(_p1._1)));
+};
+var _evancz$elm_http$Http$url = F2(
+	function (baseUrl, args) {
+		var _p2 = args;
+		if (_p2.ctor === '[]') {
+			return baseUrl;
+		} else {
+			return A2(
+				_elm_lang$core$Basics_ops['++'],
+				baseUrl,
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					'?',
+					A2(
+						_elm_lang$core$String$join,
+						'&',
+						A2(_elm_lang$core$List$map, _evancz$elm_http$Http$queryPair, args))));
+		}
+	});
+var _evancz$elm_http$Http$Request = F4(
+	function (a, b, c, d) {
+		return {verb: a, headers: b, url: c, body: d};
+	});
+var _evancz$elm_http$Http$Settings = F5(
+	function (a, b, c, d, e) {
+		return {timeout: a, onStart: b, onProgress: c, desiredResponseType: d, withCredentials: e};
+	});
+var _evancz$elm_http$Http$Response = F5(
+	function (a, b, c, d, e) {
+		return {status: a, statusText: b, headers: c, url: d, value: e};
+	});
+var _evancz$elm_http$Http$TODO_implement_blob_in_another_library = {ctor: 'TODO_implement_blob_in_another_library'};
+var _evancz$elm_http$Http$TODO_implement_file_in_another_library = {ctor: 'TODO_implement_file_in_another_library'};
+var _evancz$elm_http$Http$BodyBlob = function (a) {
+	return {ctor: 'BodyBlob', _0: a};
+};
+var _evancz$elm_http$Http$BodyFormData = {ctor: 'BodyFormData'};
+var _evancz$elm_http$Http$ArrayBuffer = {ctor: 'ArrayBuffer'};
+var _evancz$elm_http$Http$BodyString = function (a) {
+	return {ctor: 'BodyString', _0: a};
+};
+var _evancz$elm_http$Http$string = _evancz$elm_http$Http$BodyString;
+var _evancz$elm_http$Http$Empty = {ctor: 'Empty'};
+var _evancz$elm_http$Http$empty = _evancz$elm_http$Http$Empty;
+var _evancz$elm_http$Http$FileData = F3(
+	function (a, b, c) {
+		return {ctor: 'FileData', _0: a, _1: b, _2: c};
+	});
+var _evancz$elm_http$Http$BlobData = F3(
+	function (a, b, c) {
+		return {ctor: 'BlobData', _0: a, _1: b, _2: c};
+	});
+var _evancz$elm_http$Http$blobData = _evancz$elm_http$Http$BlobData;
+var _evancz$elm_http$Http$StringData = F2(
+	function (a, b) {
+		return {ctor: 'StringData', _0: a, _1: b};
+	});
+var _evancz$elm_http$Http$stringData = _evancz$elm_http$Http$StringData;
+var _evancz$elm_http$Http$Blob = function (a) {
+	return {ctor: 'Blob', _0: a};
+};
+var _evancz$elm_http$Http$Text = function (a) {
+	return {ctor: 'Text', _0: a};
+};
+var _evancz$elm_http$Http$RawNetworkError = {ctor: 'RawNetworkError'};
+var _evancz$elm_http$Http$RawTimeout = {ctor: 'RawTimeout'};
+var _evancz$elm_http$Http$BadResponse = F2(
+	function (a, b) {
+		return {ctor: 'BadResponse', _0: a, _1: b};
+	});
+var _evancz$elm_http$Http$UnexpectedPayload = function (a) {
+	return {ctor: 'UnexpectedPayload', _0: a};
+};
+var _evancz$elm_http$Http$handleResponse = F2(
+	function (handle, response) {
+		if ((_elm_lang$core$Native_Utils.cmp(200, response.status) < 1) && (_elm_lang$core$Native_Utils.cmp(response.status, 300) < 0)) {
+			var _p3 = response.value;
+			if (_p3.ctor === 'Text') {
+				return handle(_p3._0);
+			} else {
+				return _elm_lang$core$Task$fail(
+					_evancz$elm_http$Http$UnexpectedPayload('Response body is a blob, expecting a string.'));
+			}
+		} else {
+			return _elm_lang$core$Task$fail(
+				A2(_evancz$elm_http$Http$BadResponse, response.status, response.statusText));
+		}
+	});
+var _evancz$elm_http$Http$NetworkError = {ctor: 'NetworkError'};
+var _evancz$elm_http$Http$Timeout = {ctor: 'Timeout'};
+var _evancz$elm_http$Http$promoteError = function (rawError) {
+	var _p4 = rawError;
+	if (_p4.ctor === 'RawTimeout') {
+		return _evancz$elm_http$Http$Timeout;
+	} else {
+		return _evancz$elm_http$Http$NetworkError;
+	}
+};
+var _evancz$elm_http$Http$getString = function (url) {
+	var request = {
+		verb: 'GET',
+		headers: _elm_lang$core$Native_List.fromArray(
+			[]),
+		url: url,
+		body: _evancz$elm_http$Http$empty
+	};
+	return A2(
+		_elm_lang$core$Task$andThen,
+		A2(
+			_elm_lang$core$Task$mapError,
+			_evancz$elm_http$Http$promoteError,
+			A2(_evancz$elm_http$Http$send, _evancz$elm_http$Http$defaultSettings, request)),
+		_evancz$elm_http$Http$handleResponse(_elm_lang$core$Task$succeed));
+};
+var _evancz$elm_http$Http$fromJson = F2(
+	function (decoder, response) {
+		var decode = function (str) {
+			var _p5 = A2(_elm_lang$core$Json_Decode$decodeString, decoder, str);
+			if (_p5.ctor === 'Ok') {
+				return _elm_lang$core$Task$succeed(_p5._0);
+			} else {
+				return _elm_lang$core$Task$fail(
+					_evancz$elm_http$Http$UnexpectedPayload(_p5._0));
+			}
+		};
+		return A2(
+			_elm_lang$core$Task$andThen,
+			A2(_elm_lang$core$Task$mapError, _evancz$elm_http$Http$promoteError, response),
+			_evancz$elm_http$Http$handleResponse(decode));
+	});
+var _evancz$elm_http$Http$get = F2(
+	function (decoder, url) {
+		var request = {
+			verb: 'GET',
+			headers: _elm_lang$core$Native_List.fromArray(
+				[]),
+			url: url,
+			body: _evancz$elm_http$Http$empty
+		};
+		return A2(
+			_evancz$elm_http$Http$fromJson,
+			decoder,
+			A2(_evancz$elm_http$Http$send, _evancz$elm_http$Http$defaultSettings, request));
+	});
+var _evancz$elm_http$Http$post = F3(
+	function (decoder, url, body) {
+		var request = {
+			verb: 'POST',
+			headers: _elm_lang$core$Native_List.fromArray(
+				[]),
+			url: url,
+			body: body
+		};
+		return A2(
+			_evancz$elm_http$Http$fromJson,
+			decoder,
+			A2(_evancz$elm_http$Http$send, _evancz$elm_http$Http$defaultSettings, request));
+	});
+
 var _rtfeldman$elm_css_util$Css_Helpers$toCssIdentifier = function (identifier) {
 	return A4(
 		_elm_lang$core$Regex$replace,
@@ -13162,17 +13520,6 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
-var _user$project$Model_HeaderModel$fromName = function (name) {
-	return {
-		name: name,
-		link: A2(_elm_lang$core$Basics_ops['++'], '#', name)
-	};
-};
-var _user$project$Model_HeaderModel$HeaderMenu = F2(
-	function (a, b) {
-		return {name: a, link: b};
-	});
-
 var _user$project$Model_PageModel_MainPageModel$MainPageBanner = F5(
 	function (a, b, c, d, e) {
 		return {title: a, description: b, link: c, linkTitle: d, background: e};
@@ -13181,13 +13528,107 @@ var _user$project$Model_PageModel_MainPageModel$MainPageBanner = F5(
 var _user$project$Model_PageModel_PostsPageModel$PostsPagePost = function (a) {
 	return {title: a};
 };
+var _user$project$Model_PageModel_PostsPageModel$PostsPageSubsection = F2(
+	function (a, b) {
+		return {name: a, posts: b};
+	});
+var _user$project$Model_PageModel_PostsPageModel$PostsPageSection = F2(
+	function (a, b) {
+		return {name: a, subsections: b};
+	});
 
+var _user$project$Model_PageModel$pageTypeToString = function (pt) {
+	var _p0 = pt;
+	switch (_p0.ctor) {
+		case 'MainT':
+			return 'Main';
+		case 'PostsT':
+			return 'Posts';
+		case 'ProjectsT':
+			return 'Projects';
+		case 'AboutT':
+			return 'About';
+		default:
+			return '';
+	}
+};
+var _user$project$Model_PageModel$NotFound = {ctor: 'NotFound'};
 var _user$project$Model_PageModel$About = {ctor: 'About'};
 var _user$project$Model_PageModel$Projects = {ctor: 'Projects'};
-var _user$project$Model_PageModel$Posts = {ctor: 'Posts'};
+var _user$project$Model_PageModel$Posts = function (a) {
+	return {ctor: 'Posts', _0: a};
+};
 var _user$project$Model_PageModel$Main = function (a) {
 	return {ctor: 'Main', _0: a};
 };
+var _user$project$Model_PageModel$pageTypeToPage = function (pt) {
+	var _p1 = pt;
+	switch (_p1.ctor) {
+		case 'MainT':
+			return _user$project$Model_PageModel$Main(
+				{
+					banners: _elm_lang$core$Native_List.fromArray(
+						[])
+				});
+		case 'PostsT':
+			return _user$project$Model_PageModel$Posts(
+				{sections: _elm_lang$core$Maybe$Nothing});
+		case 'ProjectsT':
+			return _user$project$Model_PageModel$Projects;
+		case 'AboutT':
+			return _user$project$Model_PageModel$About;
+		default:
+			return _user$project$Model_PageModel$NotFound;
+	}
+};
+var _user$project$Model_PageModel$NotFoundT = {ctor: 'NotFoundT'};
+var _user$project$Model_PageModel$AboutT = {ctor: 'AboutT'};
+var _user$project$Model_PageModel$ProjectsT = {ctor: 'ProjectsT'};
+var _user$project$Model_PageModel$PostsT = {ctor: 'PostsT'};
+var _user$project$Model_PageModel$MainT = {ctor: 'MainT'};
+var _user$project$Model_PageModel$pageToPageType = function (p) {
+	var _p2 = p;
+	switch (_p2.ctor) {
+		case 'Main':
+			return _user$project$Model_PageModel$MainT;
+		case 'Posts':
+			return _user$project$Model_PageModel$PostsT;
+		case 'Projects':
+			return _user$project$Model_PageModel$ProjectsT;
+		case 'About':
+			return _user$project$Model_PageModel$AboutT;
+		default:
+			return _user$project$Model_PageModel$NotFoundT;
+	}
+};
+var _user$project$Model_PageModel$stringToPageType = function (s) {
+	var _p3 = s;
+	switch (_p3) {
+		case 'Main':
+			return _user$project$Model_PageModel$MainT;
+		case 'Posts':
+			return _user$project$Model_PageModel$PostsT;
+		case 'ProjectsT':
+			return _user$project$Model_PageModel$ProjectsT;
+		case 'AboutT':
+			return _user$project$Model_PageModel$AboutT;
+		default:
+			return _user$project$Model_PageModel$NotFoundT;
+	}
+};
+
+var _user$project$Model_HeaderModel$fromPageType = function (pt) {
+	var name = _user$project$Model_PageModel$pageTypeToString(pt);
+	return {
+		pageType: pt,
+		name: name,
+		link: A2(_elm_lang$core$Basics_ops['++'], '#', name)
+	};
+};
+var _user$project$Model_HeaderModel$HeaderMenu = F3(
+	function (a, b, c) {
+		return {pageType: a, name: b, link: c};
+	});
 
 var _user$project$Model$mainPageBanners = _elm_lang$core$Native_List.fromArray(
 	[
@@ -13197,29 +13638,15 @@ var _user$project$Model$mainPageBanners = _elm_lang$core$Native_List.fromArray(
 	]);
 var _user$project$Model$headerMenus = _elm_lang$core$Native_List.fromArray(
 	[
-		_user$project$Model_HeaderModel$fromName('Main'),
-		_user$project$Model_HeaderModel$fromName('Posts'),
-		_user$project$Model_HeaderModel$fromName('Projects'),
-		_user$project$Model_HeaderModel$fromName('About')
+		_user$project$Model_HeaderModel$fromPageType(_user$project$Model_PageModel$MainT),
+		_user$project$Model_HeaderModel$fromPageType(_user$project$Model_PageModel$PostsT),
+		_user$project$Model_HeaderModel$fromPageType(_user$project$Model_PageModel$ProjectsT),
+		_user$project$Model_HeaderModel$fromPageType(_user$project$Model_PageModel$AboutT)
 	]);
-var _user$project$Model$hashParse = function (hash) {
-	var _p0 = hash;
-	switch (_p0) {
-		case '#Posts':
-			return _user$project$Model_PageModel$Posts;
-		case '#Projects':
-			return _user$project$Model_PageModel$Projects;
-		case '#About':
-			return _user$project$Model_PageModel$About;
-		default:
-			return _user$project$Model_PageModel$Main(
-				{banners: _user$project$Model$mainPageBanners});
-	}
-};
-var _user$project$Model$model = function (hash) {
+var _user$project$Model$modelMaker = function (pt) {
 	return {
 		headerMenus: _user$project$Model$headerMenus,
-		page: _user$project$Model$hashParse(hash)
+		page: _user$project$Model_PageModel$pageTypeToPage(pt)
 	};
 };
 var _user$project$Model$Model = F2(
@@ -13227,16 +13654,44 @@ var _user$project$Model$Model = F2(
 		return {headerMenus: a, page: b};
 	});
 
+var _user$project$Controller$getPosts = _elm_lang$core$Platform_Cmd$none;
 var _user$project$Controller$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
+var _user$project$Controller$urlUpdate = F2(
+	function (pt, model) {
+		var _p0 = pt;
+		if (_p0.ctor === 'PostsT') {
+			return {
+				ctor: '_Tuple2',
+				_0: _user$project$Model$modelMaker(pt),
+				_1: _user$project$Controller$getPosts
+			};
+		} else {
+			return {
+				ctor: '_Tuple2',
+				_0: _user$project$Model$modelMaker(pt),
+				_1: _elm_lang$core$Platform_Cmd$none
+			};
+		}
+	});
 var _user$project$Controller$update = F2(
 	function (msg, model) {
 		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 	});
-var _user$project$Controller$Logout = {ctor: 'Logout'};
-var _user$project$Controller$Login = {ctor: 'Login'};
-var _user$project$Controller$default = _user$project$Controller$Login;
+var _user$project$Controller$FetchPostsFail = function (a) {
+	return {ctor: 'FetchPostsFail', _0: a};
+};
+var _user$project$Controller$FetchPostsSuccess = function (a) {
+	return {ctor: 'FetchPostsSuccess', _0: a};
+};
+var _user$project$Controller$LoadPosts = {ctor: 'LoadPosts'};
+
+var _user$project$Parser$locParser = function (loc) {
+	return _user$project$Model_PageModel$stringToPageType(
+		A2(_elm_lang$core$String$dropLeft, 1, loc.hash));
+};
+var _user$project$Parser$parser = _elm_lang$navigation$Navigation$makeParser(_user$project$Parser$locParser);
 
 var _user$project$Styles_Font$fontHugeSize = _rtfeldman$elm_css$Css$vw(2.0);
 var _user$project$Styles_Font$fontLargeSize = _rtfeldman$elm_css$Css$vw(1.5);
@@ -13736,32 +14191,20 @@ var _user$project$View_PageView$pageView = function (model) {
 			return _user$project$View_PageView_PostsPageView$postsPageView(model);
 		case 'Projects':
 			return _user$project$View_PageView_ProjectsPageView$projectsPageView(model);
-		default:
+		case 'About':
 			return _user$project$View_PageView_AboutPageView$aboutPageView(model);
+		default:
+			return _user$project$View_PageView_MainPageView$mainPageView(model);
 	}
 };
 
-var _user$project$View_FooterView$pageToText = function (p) {
-	var _p0 = p;
-	switch (_p0.ctor) {
-		case 'Main':
-			return 'Main';
-		case 'Posts':
-			return 'Posts';
-		default:
-			return 'other';
-	}
-};
 var _user$project$View_FooterView$footerView = function (model) {
 	return A2(
 		_elm_lang$html$Html$footer,
 		_elm_lang$core$Native_List.fromArray(
 			[]),
 		_elm_lang$core$Native_List.fromArray(
-			[
-				_elm_lang$html$Html$text(
-				_user$project$View_FooterView$pageToText(model.page))
-			]));
+			[]));
 };
 
 var _user$project$View$view = function (model) {
@@ -13784,36 +14227,17 @@ var _user$project$View$view = function (model) {
 			]));
 };
 
-var _user$project$Main$init = function (hash) {
+var _user$project$Main$init = function (pt) {
 	return {
 		ctor: '_Tuple2',
-		_0: _user$project$Model$model(hash),
+		_0: _user$project$Model$modelMaker(pt),
 		_1: _elm_lang$core$Platform_Cmd$none
 	};
 };
 var _user$project$Main$main = {
 	main: function () {
-		var blog = {
-			init: _user$project$Main$init,
-			update: _user$project$Controller$update,
-			urlUpdate: F2(
-				function (p, m) {
-					return {
-						ctor: '_Tuple2',
-						_0: _user$project$Model$model(p),
-						_1: _elm_lang$core$Platform_Cmd$none
-					};
-				}),
-			subscriptions: _user$project$Controller$subscriptions,
-			view: _user$project$View$view
-		};
-		var locParser = function (loc) {
-			return loc.hash;
-		};
-		return A2(
-			_elm_lang$navigation$Navigation$program,
-			_elm_lang$navigation$Navigation$makeParser(locParser),
-			blog);
+		var blog = {init: _user$project$Main$init, update: _user$project$Controller$update, urlUpdate: _user$project$Controller$urlUpdate, subscriptions: _user$project$Controller$subscriptions, view: _user$project$View$view};
+		return A2(_elm_lang$navigation$Navigation$program, _user$project$Parser$parser, blog);
 	}()
 };
 

@@ -1,10 +1,19 @@
-module Model.HeaderModel exposing ( HeaderMenu, fromName )
+module Model.HeaderModel exposing
+    ( HeaderMenu, fromPageType )
+
+import Model.PageModel exposing ( .. )
+
 
 type alias HeaderMenu
-    = { name : String
+    = { pageType : PageType
+      , name : String
       , link : String }
 
-fromName : String -> HeaderMenu
-fromName name =
-    { name = name
-    , link = "#" ++ name }
+fromPageType : PageType -> HeaderMenu
+fromPageType pt =
+    let
+        name = pageTypeToString pt
+    in
+        { pageType = pt
+        , name = name
+        , link = "#" ++ name }
