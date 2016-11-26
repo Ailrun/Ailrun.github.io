@@ -86,7 +86,6 @@ mainPageView =
     (.) MainPageClass
         [ color ( rgba 255 255 255 0.84 )
         , lineHeight ( num 1.3 )
---        , property "line-height" "1.3"
         , descendants
             [ article
                   [ width ( pct 100 )
@@ -144,6 +143,8 @@ pageTitleView =
                     , height ( vw 26 )
 
                     , position relative
+
+                    , backgroundColor ( rgb 0 0 0 )
 
                     , descendants
                           [ img

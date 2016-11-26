@@ -1,7 +1,7 @@
 module View.PageView.MainPageView exposing ( mainPageView )
 
 import Html exposing ( .. )
-import Html.Attributes exposing ( href, src )
+import Html.Attributes as HA exposing ( href, src )
 
 import Styles exposing ( id, class, classList )
 import Styles.Default exposing ( .. )
@@ -10,6 +10,8 @@ import Model exposing ( .. )
 import Model.PageModel exposing ( .. )
 import Model.PageModel.MainPageModel exposing ( .. )
 import Controller exposing ( .. )
+
+import Animate.Css exposing ( .. )
 
 mainPageView : Model -> Html Msg
 mainPageView model =
@@ -27,7 +29,10 @@ mainPageBannerListMaker model =
         mainPageBannerMaker : ( Int, MainPageBanner ) -> Html Msg
         mainPageBannerMaker ( n, banner ) =
             article [ class [ orientation n ] ]
-                [ img [ src banner.background ]
+                [ img [ src banner.background
+                      , HA.classList
+                          [ ( animated, True )
+                          , ( fadeIn, True ) ] ]
                       []
                 , header []
                     [ div []
