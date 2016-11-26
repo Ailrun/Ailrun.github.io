@@ -1,5 +1,6 @@
 module Model.PageModel.PostsPageModel exposing
-    ( PostsPagePost, PostsPageSubsection, PostsPageSection )
+    ( PostsPagePost, PostsPageSubsection, PostsPageSection
+    , postsPageBannerDefault )
 
 
 type alias PostsPagePost =
@@ -12,3 +13,6 @@ type alias PostsPageSubsection =
 type alias PostsPageSection =
     { name : String
     , subsections : List PostsPageSubsection }
+
+postsPageBannerDefault : String
+postsPageBannerDefault = "image/post.png"

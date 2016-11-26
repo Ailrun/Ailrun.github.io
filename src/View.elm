@@ -12,7 +12,7 @@ import Controller exposing ( .. )
 view : Model -> Html Msg
 view model =
     div []
-        [ main' []
+        [ main_ []
               [ pageView model ]
         , headerView model
         , footerView model ]

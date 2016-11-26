@@ -16,6 +16,6 @@ pageView model =
     case model.page of
         Main _ -> mainPageView model
         Posts _ -> postsPageView model
-        Projects -> projectsPageView model
-        About -> aboutPageView model
+        Projects _ -> projectsPageView model
+        About _ -> aboutPageView model
         NotFound -> mainPageView model

@@ -1,5 +1,8 @@
 module Controller exposing
-    ( Msg( .. ), update, urlUpdate, subscriptions )
+    ( Msg( .. ), readLoc, update, subscriptions )
+
+import String exposing ( dropLeft )
+import Navigation exposing ( Location )
 
 import Json.Decode as Json
 import Task
@@ -11,22 +14,19 @@ import Model.PageModel exposing ( .. )
 
 
 type Msg
-    = LoadPosts
+    = ChangePage PageType
+    | LoadPosts
     | FetchPostsSuccess String
     | FetchPostsFail Http.Error
+
+readLoc : Location -> Msg
+readLoc loc = ChangePage (stringToPageType (dropLeft 1 loc.hash))
       
 update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model = ( model, Cmd.none )
-
-urlUpdate : PageType -> Model -> ( Model, Cmd Msg )
-urlUpdate pt model =
-    case pt of
-        PostsT -> ( modelMaker pt, getPosts )
-        _ -> ( modelMaker pt, Cmd.none )
+update msg model =
+    case msg of
+        ChangePage pt -> ( modelMaker pt, Cmd.none )
+        _ -> ( model, Cmd.none )
 
 subscriptions : Model -> Sub Msg
 subscriptions model = Sub.none
-
-
-getPosts : Cmd Msg
-getPosts = Cmd.none

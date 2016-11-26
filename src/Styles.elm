@@ -2,8 +2,7 @@ port module Styles exposing ( .. )
 
 import Css.File exposing ( .. )
 
-import Html exposing ( div )
-import Html.App exposing ( program )
+import Html exposing ( div, program )
 import Html.CssHelpers exposing ( withNamespace )
 
 import Styles.Default exposing ( css )
@@ -20,7 +19,7 @@ cssFiles : CssFileStructure
 cssFiles =
     toFileStructure [ ( "default.css", compile [ Styles.Default.css ] ) ]
 
-main : Program Never
+main : Program Never () msg
 main =
     program
         { init = ( (), files cssFiles )

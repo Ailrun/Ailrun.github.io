@@ -8,14 +8,17 @@ import Model.PageModel.MainPageModel exposing ( .. )
 
 type alias Model
     = { headerMenus : List HeaderMenu
-      , page : Page }
+      , page : Page
+      , onDev : String }
 
 modelMaker : PageType -> Model
 modelMaker pt =
     { headerMenus =
           headerMenus
     , page =
-        pageTypeToPage pt }
+        pageTypeToPage pt
+    , onDev =
+          "image/onDev.png" }
 
 headerMenus : List HeaderMenu
 headerMenus =
@@ -23,21 +26,3 @@ headerMenus =
     , fromPageType PostsT
     , fromPageType ProjectsT
     , fromPageType AboutT ]
-    
-mainPageBanners : List MainPageBanner
-mainPageBanners =
-    [ { title = "Haskell"
-      , description = "Modern, Pure, Beautiful\nFunctional Language"
-      , link = ""
-      , linkTitle = "Haskell Projects"
-      , background = "image/haskell.png" }
-    , { title = "Beer"
-      , description = "The World's Greatest Drink"
-      , link = ""
-      , linkTitle = "Beer Lists"
-      , background = "image/beer.png" }
-    , { title = "Elm"
-      , description = "Functional Web Language\nwith MVC"
-      , link = ""
-      , linkTitle = "Elm Projects"
-      , background = "image/elm.png"}]

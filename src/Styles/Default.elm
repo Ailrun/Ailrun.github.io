@@ -9,6 +9,10 @@ import Styles.Font exposing ( .. )
 type DefaultClasses
     = HeaderClass
     | MainPageClass
+    | PostsPageClass
+    | ProjectsPageClass
+    | AboutPageClass
+    | PageTitleClass
     | RightClass
     | LeftClass
 
@@ -76,12 +80,12 @@ headerView =
 bannerHeight : Float
 bannerHeight = 26
 
-
 mainPageView : Snippet
 mainPageView =
     (.) MainPageClass
         [ color ( rgba 255 255 255 0.84 )
-        , property "line-height" "1.3"
+        , lineHeight ( num 1.3 )
+--        , property "line-height" "1.3"
         , descendants
             [ article
                   [ width ( pct 100 )
@@ -132,6 +136,35 @@ mainPageView =
                   [ property "white-space" "pre-wrap"
                   , fontSize fontLargeSize ] ] ]
 
+pageTitleView : Snippet
+pageTitleView =
+    (.) PageTitleClass
+                    [ width ( pct 100 )
+                    , height ( vw 26 )
+                    , descendants
+                          [ img
+                                [ position absolute
+                                , width inherit
+                                , height inherit ] ] ]
+
+postsPageView : Snippet
+postsPageView =
+    (.) PostsPageClass
+        [ descendants
+              [ pageTitleView ] ]
+
+projectsPageView : Snippet
+projectsPageView =
+    (.) ProjectsPageClass
+        [ descendants
+              [ pageTitleView ] ]
+
+aboutPageView : Snippet
+aboutPageView =
+    (.) AboutPageClass
+        [ descendants
+              [ pageTitleView ] ]
+
 css : Stylesheet
 css =
     ( stylesheet << namespace "ailrunBlog" )
@@ -156,4 +189,7 @@ css =
           , color ( rgba 0 0 0 0.84 ) ]
 
     , headerView
-    , mainPageView ]
+    , mainPageView
+    , postsPageView
+    , projectsPageView
+    , aboutPageView ]
