@@ -14504,12 +14504,12 @@ var _user$project$Model$modelMaker = function (pt) {
 	return {
 		headerMenus: _user$project$Model$headerMenus,
 		page: _user$project$Model_PageModel$pageTypeToPage(pt),
-		onDev: 'image/onDev.png'
+		underDev: 'image/underDev.png'
 	};
 };
 var _user$project$Model$Model = F3(
 	function (a, b, c) {
-		return {headerMenus: a, page: b, onDev: c};
+		return {headerMenus: a, page: b, underDev: c};
 	});
 
 var _user$project$Controller$subscriptions = function (model) {
@@ -14562,6 +14562,49 @@ var _user$project$Styles_Font$fontDancing = _rtfeldman$elm_css$Css$fontFamilies(
 
 var _user$project$Styles_Default$bannerHeight = 26;
 var _user$project$Styles_Default$headerHeight = 2.5;
+var _user$project$Styles_Default$UnderDevClass = {ctor: 'UnderDevClass'};
+var _user$project$Styles_Default$underDevView = A2(
+	F2(
+		function (x, y) {
+			return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+		}),
+	_user$project$Styles_Default$UnderDevClass,
+	{
+		ctor: '::',
+		_0: _rtfeldman$elm_css$Css$width(
+			_rtfeldman$elm_css$Css$vw(100)),
+		_1: {
+			ctor: '::',
+			_0: A2(
+				_rtfeldman$elm_css$Css$padding2,
+				_rtfeldman$elm_css$Css$vw(5),
+				_rtfeldman$elm_css$Css$zero),
+			_1: {
+				ctor: '::',
+				_0: _rtfeldman$elm_css$Css$descendants(
+					{
+						ctor: '::',
+						_0: _rtfeldman$elm_css$Css_Elements$img(
+							{
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Css$width(
+									_rtfeldman$elm_css$Css$vw(30)),
+								_1: {
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$block),
+									_1: {
+										ctor: '::',
+										_0: A2(_rtfeldman$elm_css$Css$margin2, _rtfeldman$elm_css$Css$zero, _rtfeldman$elm_css$Css$auto),
+										_1: {ctor: '[]'}
+									}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			}
+		}
+	});
 var _user$project$Styles_Default$LeftClass = {ctor: 'LeftClass'};
 var _user$project$Styles_Default$RightClass = {ctor: 'RightClass'};
 var _user$project$Styles_Default$PageTitleClass = {ctor: 'PageTitleClass'};
@@ -14581,26 +14624,97 @@ var _user$project$Styles_Default$pageTitleView = A2(
 				_rtfeldman$elm_css$Css$vw(26)),
 			_1: {
 				ctor: '::',
-				_0: _rtfeldman$elm_css$Css$descendants(
-					{
-						ctor: '::',
-						_0: _rtfeldman$elm_css$Css_Elements$img(
-							{
-								ctor: '::',
-								_0: _rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$absolute),
-								_1: {
+				_0: _rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$relative),
+				_1: {
+					ctor: '::',
+					_0: _rtfeldman$elm_css$Css$descendants(
+						{
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Css_Elements$img(
+								{
 									ctor: '::',
-									_0: _rtfeldman$elm_css$Css$width(_rtfeldman$elm_css$Css$inherit),
+									_0: _rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$absolute),
 									_1: {
 										ctor: '::',
-										_0: _rtfeldman$elm_css$Css$height(_rtfeldman$elm_css$Css$inherit),
-										_1: {ctor: '[]'}
+										_0: _rtfeldman$elm_css$Css$width(_rtfeldman$elm_css$Css$inherit),
+										_1: {
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Css$height(_rtfeldman$elm_css$Css$inherit),
+											_1: {ctor: '[]'}
+										}
 									}
-								}
-							}),
-						_1: {ctor: '[]'}
-					}),
-				_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: _rtfeldman$elm_css$Css_Elements$header(
+									{
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Css$height(
+											_rtfeldman$elm_css$Css$vw(26)),
+										_1: {
+											ctor: '::',
+											_0: _rtfeldman$elm_css$Css$position(_rtfeldman$elm_css$Css$absolute),
+											_1: {
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Css$top(
+													_rtfeldman$elm_css$Css$pct(50)),
+												_1: {
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Css$bottom(
+														_rtfeldman$elm_css$Css$pct(50)),
+													_1: {
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Css$left(
+															_rtfeldman$elm_css$Css$pct(7)),
+														_1: {
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Css$marginTop(
+																_rtfeldman$elm_css$Css$vw(-13)),
+															_1: {
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+																_1: {
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Css$lineHeight(
+																		_rtfeldman$elm_css$Css$vw(26)),
+																	_1: {
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Css$descendants(
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Css_Elements$span(
+																					{
+																						ctor: '::',
+																						_0: _rtfeldman$elm_css$Css$color(
+																							A4(_rtfeldman$elm_css$Css$rgba, 255, 255, 255, 0.84)),
+																						_1: {
+																							ctor: '::',
+																							_0: _rtfeldman$elm_css$Css$fontWeight(_rtfeldman$elm_css$Css$bold),
+																							_1: {
+																								ctor: '::',
+																								_0: _rtfeldman$elm_css$Css$fontSize(
+																									_rtfeldman$elm_css$Css$vw(2.7)),
+																								_1: {ctor: '[]'}
+																							}
+																						}
+																					}),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		}
 	});
@@ -14617,7 +14731,11 @@ var _user$project$Styles_Default$aboutPageView = A2(
 			{
 				ctor: '::',
 				_0: _user$project$Styles_Default$pageTitleView,
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _user$project$Styles_Default$underDevView,
+					_1: {ctor: '[]'}
+				}
 			}),
 		_1: {ctor: '[]'}
 	});
@@ -14634,7 +14752,11 @@ var _user$project$Styles_Default$projectsPageView = A2(
 			{
 				ctor: '::',
 				_0: _user$project$Styles_Default$pageTitleView,
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _user$project$Styles_Default$underDevView,
+					_1: {ctor: '[]'}
+				}
 			}),
 		_1: {ctor: '[]'}
 	});
@@ -14651,7 +14773,11 @@ var _user$project$Styles_Default$postsPageView = A2(
 			{
 				ctor: '::',
 				_0: _user$project$Styles_Default$pageTitleView,
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: _user$project$Styles_Default$underDevView,
+					_1: {ctor: '[]'}
+				}
 			}),
 		_1: {ctor: '[]'}
 	});
@@ -15161,28 +15287,22 @@ var _user$project$Styles$files = _elm_lang$core$Native_Platform.outgoingPort(
 				return {filename: v.filename, content: v.content, success: v.success};
 			});
 	});
-var _user$project$Styles$main = _elm_lang$html$Html$program(
+var _user$project$Styles$main = _elm_lang$core$Platform$program(
 	{
 		init: {
 			ctor: '_Tuple2',
 			_0: {ctor: '_Tuple0'},
 			_1: _user$project$Styles$files(_user$project$Styles$cssFiles)
 		},
-		view: function (_p1) {
-			return A2(
-				_elm_lang$html$Html$div,
-				{ctor: '[]'},
-				{ctor: '[]'});
-		},
 		update: F2(
-			function (_p3, _p2) {
+			function (_p2, _p1) {
 				return {
 					ctor: '_Tuple2',
 					_0: {ctor: '_Tuple0'},
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 			}),
-		subscriptions: function (_p4) {
+		subscriptions: function (_p3) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();
@@ -15376,13 +15496,29 @@ var _user$project$View_PageView_PostsPageView$postsPagePostsView = function (mod
 	return {
 		ctor: '::',
 		_0: A2(
-			_elm_lang$html$Html$img,
+			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$src(model.onDev),
+				_0: _user$project$Styles$class(
+					{
+						ctor: '::',
+						_0: _user$project$Styles_Default$UnderDevClass,
+						_1: {ctor: '[]'}
+					}),
 				_1: {ctor: '[]'}
 			},
-			{ctor: '[]'}),
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$img,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}),
 		_1: {ctor: '[]'}
 	};
 };
@@ -15462,13 +15598,29 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = func
 	return {
 		ctor: '::',
 		_0: A2(
-			_elm_lang$html$Html$img,
+			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$src(model.onDev),
+				_0: _user$project$Styles$class(
+					{
+						ctor: '::',
+						_0: _user$project$Styles_Default$UnderDevClass,
+						_1: {ctor: '[]'}
+					}),
 				_1: {ctor: '[]'}
 			},
-			{ctor: '[]'}),
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$img,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}),
 		_1: {ctor: '[]'}
 	};
 };
@@ -15544,17 +15696,33 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageView = function (mo
 			_user$project$View_PageView_ProjectsPageView$projectsPageProjectsView(model)));
 };
 
-var _user$project$View_PageView_AboutPageView$aboutPagePostsView = function (model) {
+var _user$project$View_PageView_AboutPageView$aboutPageAboutView = function (model) {
 	return {
 		ctor: '::',
 		_0: A2(
-			_elm_lang$html$Html$img,
+			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
-				_0: _elm_lang$html$Html_Attributes$src(model.onDev),
+				_0: _user$project$Styles$class(
+					{
+						ctor: '::',
+						_0: _user$project$Styles_Default$UnderDevClass,
+						_1: {ctor: '[]'}
+					}),
 				_1: {ctor: '[]'}
 			},
-			{ctor: '[]'}),
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$img,
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+						_1: {ctor: '[]'}
+					},
+					{ctor: '[]'}),
+				_1: {ctor: '[]'}
+			}),
 		_1: {ctor: '[]'}
 	};
 };
@@ -15627,7 +15795,7 @@ var _user$project$View_PageView_AboutPageView$aboutPageView = function (model) {
 		A2(
 			_elm_lang$core$Basics_ops['++'],
 			_user$project$View_PageView_AboutPageView$aboutPageTopView(model),
-			_user$project$View_PageView_AboutPageView$aboutPagePostsView(model)));
+			_user$project$View_PageView_AboutPageView$aboutPageAboutView(model)));
 };
 
 var _user$project$View_PageView$pageView = function (model) {

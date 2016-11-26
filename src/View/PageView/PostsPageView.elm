@@ -30,4 +30,5 @@ postsPageTopView model =
 
 postsPagePostsView : Model -> List ( Html Msg )
 postsPagePostsView model =
-    [ img [ src model.onDev ] [] ]
+    [ div [ class [ UnderDevClass ] ]
+          [ img [ src model.underDev ] [] ] ]

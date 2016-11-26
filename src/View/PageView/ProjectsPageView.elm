@@ -30,4 +30,5 @@ projectsPageTopView model =
 
 projectsPageProjectsView : Model -> List ( Html Msg )
 projectsPageProjectsView model =
-    [ img [ src model.onDev ] [] ]
+    [ div [ class [ UnderDevClass ] ]
+          [ img [ src model.underDev ] [] ] ]

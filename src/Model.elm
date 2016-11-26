@@ -9,7 +9,7 @@ import Model.PageModel.MainPageModel exposing ( .. )
 type alias Model
     = { headerMenus : List HeaderMenu
       , page : Page
-      , onDev : String }
+      , underDev : String }
 
 modelMaker : PageType -> Model
 modelMaker pt =
@@ -17,8 +17,8 @@ modelMaker pt =
           headerMenus
     , page =
         pageTypeToPage pt
-    , onDev =
-          "image/onDev.png" }
+    , underDev =
+          "image/underDev.png" }
 
 headerMenus : List HeaderMenu
 headerMenus =

@@ -15,7 +15,7 @@ aboutPageView : Model -> Html Msg
 aboutPageView model =
     section [ class [ AboutPageClass ] ]
         ( aboutPageTopView model
-          ++ aboutPagePostsView model )
+          ++ aboutPageAboutView model )
 
 aboutPageTopView : Model -> List ( Html Msg )
 aboutPageTopView model =
@@ -28,6 +28,7 @@ aboutPageTopView model =
         _ ->
             []
 
-aboutPagePostsView : Model -> List ( Html Msg )
-aboutPagePostsView model =
-    [ img [ src model.onDev ] [] ]
+aboutPageAboutView : Model -> List ( Html Msg )
+aboutPageAboutView model =
+    [ div [ class [ UnderDevClass ] ]
+          [ img [ src model.underDev ] [] ] ]

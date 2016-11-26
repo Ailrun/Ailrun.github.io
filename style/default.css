@@ -126,6 +126,7 @@ a {
 .ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass {
     width: 100%;
     height: 26vw;
+    position: relative;
 }
 
 .ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass  img {
@@ -134,9 +135,38 @@ a {
     height: inherit;
 }
 
+.ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass  header {
+    height: 26vw;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 7%;
+    margin-top: -13vw;
+    display: inline-block;
+    line-height: 26vw;
+}
+
+.ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass  header  span {
+    color: rgba(255, 255, 255, 0.84);
+    font-weight: bold;
+    font-size: 2.7vw;
+}
+
+.ailrunBlogPostsPageClass  .ailrunBlogUnderDevClass {
+    width: 100vw;
+    padding: 5vw 0;
+}
+
+.ailrunBlogPostsPageClass  .ailrunBlogUnderDevClass  img {
+    width: 30vw;
+    display: block;
+    margin: 0 auto;
+}
+
 .ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass {
     width: 100%;
     height: 26vw;
+    position: relative;
 }
 
 .ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass  img {
@@ -145,13 +175,70 @@ a {
     height: inherit;
 }
 
+.ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass  header {
+    height: 26vw;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 7%;
+    margin-top: -13vw;
+    display: inline-block;
+    line-height: 26vw;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass  header  span {
+    color: rgba(255, 255, 255, 0.84);
+    font-weight: bold;
+    font-size: 2.7vw;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogUnderDevClass {
+    width: 100vw;
+    padding: 5vw 0;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogUnderDevClass  img {
+    width: 30vw;
+    display: block;
+    margin: 0 auto;
+}
+
 .ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass {
     width: 100%;
     height: 26vw;
+    position: relative;
 }
 
 .ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass  img {
     position: absolute;
     width: inherit;
     height: inherit;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass  header {
+    height: 26vw;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 7%;
+    margin-top: -13vw;
+    display: inline-block;
+    line-height: 26vw;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass  header  span {
+    color: rgba(255, 255, 255, 0.84);
+    font-weight: bold;
+    font-size: 2.7vw;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogUnderDevClass {
+    width: 100vw;
+    padding: 5vw 0;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogUnderDevClass  img {
+    width: 30vw;
+    display: block;
+    margin: 0 auto;
 }

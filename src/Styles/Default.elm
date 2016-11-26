@@ -15,6 +15,7 @@ type DefaultClasses
     | PageTitleClass
     | RightClass
     | LeftClass
+    | UnderDevClass
 
 
 headerHeight : Float
@@ -141,29 +142,66 @@ pageTitleView =
     (.) PageTitleClass
                     [ width ( pct 100 )
                     , height ( vw 26 )
+
+                    , position relative
+
                     , descendants
                           [ img
                                 [ position absolute
                                 , width inherit
-                                , height inherit ] ] ]
+                                , height inherit ]
+                          , header
+                                [ height ( vw 26 )
+
+                                , position absolute
+                                , top ( pct 50 )
+                                , bottom ( pct 50 )
+                                , left ( pct 7 )
+                                , marginTop ( vw (-13) )
+                                , display inlineBlock
+
+                                , lineHeight ( vw 26 )
+
+                                , descendants
+                                    [ span
+                                          [ color (rgba 255 255 255 0.84)
+                                          , fontWeight bold
+                                          , fontSize ( vw 2.7 ) ] ] ] ] ]
+
+underDevView : Snippet
+underDevView =
+    (.) UnderDevClass
+        [ width ( vw 100 )
+
+        , padding2 (vw 5) zero
+
+        , descendants
+              [ img
+                    [ width (vw 30)
+
+                    , display block
+                    , margin2 zero auto ] ] ]
 
 postsPageView : Snippet
 postsPageView =
     (.) PostsPageClass
         [ descendants
-              [ pageTitleView ] ]
+              [ pageTitleView
+              , underDevView ] ]
 
 projectsPageView : Snippet
 projectsPageView =
     (.) ProjectsPageClass
         [ descendants
-              [ pageTitleView ] ]
+              [ pageTitleView
+              , underDevView ] ]
 
 aboutPageView : Snippet
 aboutPageView =
     (.) AboutPageClass
         [ descendants
-              [ pageTitleView ] ]
+              [ pageTitleView
+              , underDevView ] ]
 
 css : Stylesheet
 css =

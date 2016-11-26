@@ -2,7 +2,7 @@ port module Styles exposing ( .. )
 
 import Css.File exposing ( .. )
 
-import Html exposing ( div, program )
+import Html exposing ( div )
 import Html.CssHelpers exposing ( withNamespace )
 
 import Styles.Default exposing ( css )
@@ -21,9 +21,8 @@ cssFiles =
 
 main : Program Never () msg
 main =
-    program
+    Platform.program
         { init = ( (), files cssFiles )
-        , view = \_ -> div [] []
         , update = \_ _ -> ( (), Cmd.none )
         , subscriptions = \_ -> Sub.none
         }
