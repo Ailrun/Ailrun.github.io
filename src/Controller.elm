@@ -20,7 +20,12 @@ type Msg
     | FetchPostsFail Http.Error
 
 readLoc : Location -> Msg
-readLoc loc = ChangePage (stringToPageType (dropLeft 1 loc.hash))
+readLoc loc =
+    let ptString =
+            case ( dropLeft 1 loc.hash ) of
+                "" -> "Main"
+                s -> s
+    in ChangePage ( stringToPageType ptString )
       
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =

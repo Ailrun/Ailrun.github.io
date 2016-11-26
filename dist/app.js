@@ -14616,9 +14616,16 @@ var _user$project$Controller$ChangePage = function (a) {
 	return {ctor: 'ChangePage', _0: a};
 };
 var _user$project$Controller$readLoc = function (loc) {
+	var ptString = function () {
+		var _p1 = A2(_elm_lang$core$String$dropLeft, 1, loc.hash);
+		if (_p1 === '') {
+			return 'Main';
+		} else {
+			return _p1;
+		}
+	}();
 	return _user$project$Controller$ChangePage(
-		_user$project$Model_PageModel$stringToPageType(
-			A2(_elm_lang$core$String$dropLeft, 1, loc.hash)));
+		_user$project$Model_PageModel$stringToPageType(ptString));
 };
 
 var _user$project$Styles_Font$fontHugeSize = _rtfeldman$elm_css$Css$vw(2.0);
