@@ -1,4 +1,9 @@
-module Styles.Font exposing ( fontDancing, fontDefaultSize, fontLargeSize, fontHugeSize )
+module Styles.Font exposing
+    ( fontDancing
+    , fontDefaultSize
+    , fontLargeSize
+    , fontHugeSize
+    , fontGiantSize )
 
 import Css exposing ( .. )
 import Css.Elements exposing ( .. )
@@ -16,3 +21,6 @@ fontLargeSize = vw 1.5
 
 fontHugeSize : Vw
 fontHugeSize = vw 2.0
+
+fontGiantSize : Vw
+fontGiantSize = vw 2.5

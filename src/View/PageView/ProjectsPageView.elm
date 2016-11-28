@@ -29,7 +29,8 @@ projectsPageTopView model =
                             [ ( animated, True )
                             , ( fadeIn, True ) ] ] []
                   , header []
-                      [ span [] [ text "Projects" ] ] ] ]
+                      [ h1 []
+                            [ text "Projects" ] ] ] ]
         _ ->
             []
 

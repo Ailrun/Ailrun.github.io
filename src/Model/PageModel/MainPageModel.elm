@@ -1,6 +1,12 @@
 module Model.PageModel.MainPageModel exposing
-    ( MainPageBanner, mainPageBannersDefault )
+    ( MainPage
+    , MainPageBanner
+    , mainPageDefault
+    , mainPageBannersDefault )
 
+
+type alias MainPage
+    = { banners : List MainPageBanner }
 
 type alias MainPageBanner
     = { title : String
@@ -9,6 +15,10 @@ type alias MainPageBanner
       , linkTitle : String
       , background : String }
 
+
+mainPageDefault : MainPage
+mainPageDefault =
+    { banners = mainPageBannersDefault }
 
 mainPageBannersDefault : List MainPageBanner
 mainPageBannersDefault =
@@ -26,4 +36,4 @@ mainPageBannersDefault =
       , description = "Functional Web Language\nwith MVC"
       , link = ""
       , linkTitle = "Elm Projects"
-      , background = "image/elm.png"}]
+      , background = "image/elm.png" } ]

@@ -147,21 +147,10 @@ a {
     line-height: 26vw;
 }
 
-.ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass  header  span {
+.ailrunBlogPostsPageClass  .ailrunBlogPageTitleClass  header  h1 {
     color: rgba(255, 255, 255, 0.84);
     font-weight: bold;
-    font-size: 2.7vw;
-}
-
-.ailrunBlogPostsPageClass  .ailrunBlogUnderDevClass {
-    width: 100vw;
-    padding: 5vw 0;
-}
-
-.ailrunBlogPostsPageClass  .ailrunBlogUnderDevClass  img {
-    width: 30vw;
-    display: block;
-    margin: 0 auto;
+    font-size: 2.5vw;
 }
 
 .ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass {
@@ -188,21 +177,10 @@ a {
     line-height: 26vw;
 }
 
-.ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass  header  span {
+.ailrunBlogProjectsPageClass  .ailrunBlogPageTitleClass  header  h1 {
     color: rgba(255, 255, 255, 0.84);
     font-weight: bold;
-    font-size: 2.7vw;
-}
-
-.ailrunBlogProjectsPageClass  .ailrunBlogUnderDevClass {
-    width: 100vw;
-    padding: 5vw 0;
-}
-
-.ailrunBlogProjectsPageClass  .ailrunBlogUnderDevClass  img {
-    width: 30vw;
-    display: block;
-    margin: 0 auto;
+    font-size: 2.5vw;
 }
 
 .ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass {
@@ -229,18 +207,71 @@ a {
     line-height: 26vw;
 }
 
-.ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass  header  span {
+.ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass  header  h1 {
     color: rgba(255, 255, 255, 0.84);
     font-weight: bold;
-    font-size: 2.7vw;
+    font-size: 2.5vw;
 }
 
-.ailrunBlogAboutPageClass  .ailrunBlogUnderDevClass {
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass {
+    width: 60%;
+    margin: 5vw auto;
+    color: rgba(0, 0, 0, 0.73);
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  h2 {
+    font-family: Dancing Script, cursive;
+    font-weight: bold;
+    font-size: 2.5vw;
+    line-height: 2;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogLeftClass {
+    width: 60%;
+    display: inline-block;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogLeftClass  article {
+    padding-top: 1vw;
+    padding-left: 1em;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogLeftClass  h3 {
+    font-size: 2vw;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogLeftClass  ul {
+    list-style-type: none;
+    text-indent: -0.5em;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogLeftClass  li {
+    padding-left: 1em;
+    font-size: 1.5vw;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogRightClass {
+    width: 30%;
+    margin: 5vw 0;
+    float: right;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogRightClass  img {
+    width: 100%;
+}
+
+.ailrunBlogAboutPageClass  .ailrunBlogPageMainClass  .ailrunBlogRightClass  h3 {
+    width: 100%;
+    text-align: center;
+    font-weight: normal;
+}
+
+.ailrunBlogUnderDevClass {
     width: 100vw;
     padding: 5vw 0;
 }
 
-.ailrunBlogAboutPageClass  .ailrunBlogUnderDevClass  img {
+.ailrunBlogUnderDevClass  img {
     width: 30vw;
     display: block;
     margin: 0 auto;

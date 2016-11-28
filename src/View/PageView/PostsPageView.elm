@@ -29,7 +29,8 @@ postsPageTopView model =
                             [ ( animated, True )
                             , ( fadeIn, True ) ] ] []
                   , header []
-                      [ span [] [ text "Posts" ] ] ] ]
+                      [ h1 []
+                            [ text "Posts" ] ] ] ]
         _ ->
             []
 

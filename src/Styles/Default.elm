@@ -6,6 +6,7 @@ import Css.Namespace exposing ( .. )
 
 import Styles.Font exposing ( .. )
 
+
 type DefaultClasses
     = HeaderClass
     | MainPageClass
@@ -13,6 +14,7 @@ type DefaultClasses
     | ProjectsPageClass
     | AboutPageClass
     | PageTitleClass
+    | PageMainClass
     | RightClass
     | LeftClass
     | UnderDevClass
@@ -24,20 +26,20 @@ headerHeight = 2.5
 headerView : Snippet
 headerView =
     (.) HeaderClass
-          [ width ( pct 100 )
-          , height ( vw headerHeight )
+        [ width ( pct 100 )
+        , height ( vw headerHeight )
 
-          , margin2 zero auto
-          , position fixed
-          , top zero
-          , left zero
-          , right zero
-
-          , backgroundColor ( rgba 0 0 0 0.72 )
-
-          , lineHeight ( vw headerHeight )
-
-          , descendants
+        , margin2 zero auto
+        , position fixed
+        , top zero
+        , left zero
+        , right zero
+            
+        , backgroundColor ( rgba 0 0 0 0.72 )
+            
+        , lineHeight ( vw headerHeight )
+            
+        , descendants
               [ h1
                     [ height inherit
 
@@ -120,10 +122,10 @@ mainPageView =
                   , descendants
                         [ div
                               [ display inlineBlock
-                                    
+
                               , verticalAlign middle
 
-                              , property "line-height" "1.3" ] ] ]
+                              , lineHeight ( num 1.3 ) ] ] ]
             , a
                   [ position absolute
                   , right ( pct 2 )
@@ -136,38 +138,41 @@ mainPageView =
                   [ property "white-space" "pre-wrap"
                   , fontSize fontLargeSize ] ] ]
 
+pageTitleHeight : Float
+pageTitleHeight = 26
+
 pageTitleView : Snippet
 pageTitleView =
     (.) PageTitleClass
-                    [ width ( pct 100 )
-                    , height ( vw 26 )
+        [ width ( pct 100 )
+        , height ( vw 26 )
 
-                    , position relative
+        , position relative
 
-                    , backgroundColor ( rgb 0 0 0 )
+        , backgroundColor ( rgb 0 0 0 )
 
-                    , descendants
-                          [ img
-                                [ position absolute
-                                , width inherit
-                                , height inherit ]
-                          , header
-                                [ height ( vw 26 )
+        , descendants
+              [ img
+                [ position absolute
+                , width inherit
+                , height inherit ]
+              , header
+                  [ height ( vw pageTitleHeight )
 
-                                , position absolute
-                                , top ( pct 50 )
-                                , bottom ( pct 50 )
-                                , left ( pct 7 )
-                                , marginTop ( vw (-13) )
-                                , display inlineBlock
+                  , position absolute
+                  , top ( pct 50 )
+                  , bottom ( pct 50 )
+                  , left ( pct 7 )
+                  , marginTop ( vw ( -pageTitleHeight / 2 ) )
+                  , display inlineBlock
 
-                                , lineHeight ( vw 26 )
+                  , lineHeight ( vw pageTitleHeight )
 
-                                , descendants
-                                    [ span
-                                          [ color (rgba 255 255 255 0.84)
-                                          , fontWeight bold
-                                          , fontSize ( vw 2.7 ) ] ] ] ] ]
+                  , descendants
+                        [ h1
+                              [ color ( rgba 255 255 255 0.84 )
+                              , fontWeight bold
+                              , fontSize fontGiantSize ] ] ] ] ]
 
 underDevView : Snippet
 underDevView =
@@ -187,22 +192,65 @@ postsPageView : Snippet
 postsPageView =
     (.) PostsPageClass
         [ descendants
-              [ pageTitleView
-              , underDevView ] ]
+              [ pageTitleView ] ]
 
 projectsPageView : Snippet
 projectsPageView =
     (.) ProjectsPageClass
         [ descendants
-              [ pageTitleView
-              , underDevView ] ]
+              [ pageTitleView ] ]
 
 aboutPageView : Snippet
 aboutPageView =
     (.) AboutPageClass
         [ descendants
               [ pageTitleView
-              , underDevView ] ]
+              , (.) PageMainClass
+                    [ width ( pct 60 )
+
+                    , margin2 ( vw 5 ) auto
+
+                    , color ( rgba 0 0 0 0.73 )
+
+                    , descendants
+                          [ h2
+                                [ fontDancing
+                                , fontWeight bold
+                                , fontSize fontGiantSize
+                                , lineHeight ( num 2 ) ]
+                          , (.) LeftClass
+                                [ width ( pct 60 )
+
+                                , display inlineBlock
+
+                                , descendants
+                                      [ article
+                                            [ paddingTop ( vw 1 )
+                                            , paddingLeft ( em 1 ) ]
+                                      , h3
+                                            [ fontSize fontHugeSize ]
+                                      , ul
+                                            [ listStyleType none
+
+                                            , textIndent ( em ( -0.5 ) ) ]
+                                      , li
+                                            [ paddingLeft ( em 1 )
+
+                                            , fontSize fontLargeSize ] ] ]
+                          , (.) RightClass
+                                [ width ( pct 30 )
+
+                                , margin2 ( vw 5 ) zero
+                                , float right
+
+                                , descendants
+                                      [ img
+                                            [ width ( pct 100 ) ]
+                                      , h3
+                                            [ width ( pct 100 )
+
+                                            , textAlign center
+                                            , fontWeight normal ] ] ] ] ] ] ]
 
 css : Stylesheet
 css =
@@ -212,7 +260,7 @@ css =
           , padding zero
 
           , property "-webkit-margin-before" "0"
-          , property "-webkit-margin-after" "0"]
+          , property "-webkit-margin-after" "0" ]
 
     , body
           [ width ( pct 100 )
@@ -231,4 +279,5 @@ css =
     , mainPageView
     , postsPageView
     , projectsPageView
-    , aboutPageView ]
+    , aboutPageView
+    , underDevView ]

@@ -13,6 +13,7 @@ import Controller exposing ( .. )
 
 import Animate.Css exposing ( .. )
 
+
 mainPageView : Model -> Html Msg
 mainPageView model =
     section [ class [ MainPageClass ] ]

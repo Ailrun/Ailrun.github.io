@@ -8,6 +8,7 @@ import View.PageView.ProjectsPageView exposing ( .. )
 import View.PageView.AboutPageView exposing ( .. )
 import Model exposing ( .. )
 import Model.PageModel exposing ( .. )
+import Model.PageModel.MainPageModel exposing ( .. )
 import Controller exposing ( .. )
 
 
@@ -18,4 +19,4 @@ pageView model =
         Posts _ -> postsPageView model
         Projects _ -> projectsPageView model
         About _ -> aboutPageView model
-        NotFound -> mainPageView model
+        NotFound -> mainPageView { model | page = Main mainPageDefault }

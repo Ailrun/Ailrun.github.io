@@ -10,10 +10,10 @@ import Model.PageModel.AboutPageModel exposing ( .. )
 
 
 type Page
-    = Main { banners : List MainPageBanner }
-    | Posts { banner: String, sections : Maybe ( List PostsPageSection ) }
-    | Projects { banner: String }
-    | About { banner: String }
+    = Main MainPage
+    | Posts PostsPage
+    | Projects ProjectsPage
+    | About AboutPage
     | NotFound
 
 type PageType
@@ -35,15 +35,10 @@ pageToPageType p =
 pageTypeToPage : PageType -> Page
 pageTypeToPage pt =
     case pt of
-        MainT -> Main
-                 { banners = mainPageBannersDefault }
-        PostsT -> Posts
-                  { banner = postsPageBannerDefault
-                  , sections = Nothing }
-        ProjectsT -> Projects
-                     { banner = projectsPageBannerDefault }
-        AboutT -> About
-                  { banner = aboutPageBannerDefault }
+        MainT -> Main mainPageDefault
+        PostsT -> Posts postsPageDefault
+        ProjectsT -> Projects projectsPageDefault
+        AboutT -> About aboutPageDefault
         NotFoundT -> NotFound
 
 pageTypeToString : PageType -> String
