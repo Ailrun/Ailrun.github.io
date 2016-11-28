@@ -14470,11 +14470,193 @@ var _user$project$Model_PageModel_PostsPageModel$PostsPagePost = function (a) {
 	return {title: a};
 };
 
-var _user$project$Model_PageModel_ProjectsPageModel$projectsPageBannerDefault = 'image/project.png';
-var _user$project$Model_PageModel_ProjectsPageModel$projectsPageDefault = {banner: _user$project$Model_PageModel_ProjectsPageModel$projectsPageBannerDefault};
-var _user$project$Model_PageModel_ProjectsPageModel$ProjectsPage = function (a) {
-	return {banner: a};
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageOldStartUpDefault = {
+	title: 'StartUps',
+	projects: {
+		ctor: '::',
+		_0: {
+			title: 'LINKBOX',
+			link: 'https://github.com/Ailrun/LINKBOX',
+			images: {ctor: '[]'}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				title: 'LINKSERVER',
+				link: 'https://github.com/Ailrun/LINKSERVER',
+				images: {ctor: '[]'}
+			},
+			_1: {ctor: '[]'}
+		}
+	}
 };
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageStudyDefault = {
+	title: 'Study',
+	projects: {
+		ctor: '::',
+		_0: {
+			title: 'Programming_in_Haskell',
+			link: 'https://github.com/Ailrun/Programming_in_Haskell',
+			images: {ctor: '[]'}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				title: 'StackCalc',
+				link: 'https://github.com/Ailrun/StackCalc',
+				images: {ctor: '[]'}
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					title: 'BigInteger',
+					link: 'https://github.com/Ailrun/BigInteger',
+					images: {ctor: '[]'}
+				},
+				_1: {
+					ctor: '::',
+					_0: {
+						title: 'Elevator2way7floor',
+						link: 'https://github.com/Ailrun/Elevator2way7floor',
+						images: {ctor: '[]'}
+					},
+					_1: {
+						ctor: '::',
+						_0: {
+							title: 'LD_8bit_Microprocessor',
+							link: 'https://github.com/Ailrun/LD_8bit_Microprocessor',
+							images: {ctor: '[]'}
+						},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageEmacsDefault = {
+	title: 'Emacs',
+	projects: {
+		ctor: '::',
+		_0: {
+			title: 'yet-another-emacs-settings',
+			link: 'https://github.com/Ailrun/yet-another-emacs-settings',
+			images: {
+				ctor: '::',
+				_0: 'https://img.shields.io/badge/Version-0.00.10a-lightgrey.svg?style=plastic',
+				_1: {
+					ctor: '::',
+					_0: 'https://img.shields.io/badge/Status-Pre--Alpha-yellow.svg?style=plastic',
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				title: 'coq-commenter',
+				link: 'https://github.com/Ailrun/coq-commenter',
+				images: {
+					ctor: '::',
+					_0: 'https://melpa.org/packages/coq-commenter-badge.svg',
+					_1: {ctor: '[]'}
+				}
+			},
+			_1: {ctor: '[]'}
+		}
+	}
+};
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageHaskellDefault = {
+	title: 'Haskell',
+	projects: {
+		ctor: '::',
+		_0: {
+			title: 'CUTE Lang',
+			link: 'https://github.com/CUTE-Lang',
+			images: {
+				ctor: '::',
+				_0: 'https://avatars0.githubusercontent.com/u/17797042?v=3&s=200',
+				_1: {ctor: '[]'}
+			}
+		},
+		_1: {
+			ctor: '::',
+			_0: {
+				title: 'Htaut',
+				link: 'https://github.com/Ailrun/Htaut',
+				images: {
+					ctor: '::',
+					_0: 'https://travis-ci.org/Ailrun/Htaut.svg',
+					_1: {
+						ctor: '::',
+						_0: 'https://img.shields.io/hackage/v/htaut.svg?maxAge=2592000',
+						_1: {ctor: '[]'}
+					}
+				}
+			},
+			_1: {
+				ctor: '::',
+				_0: {
+					title: 'LambdaDB',
+					link: 'https://github.com/Ailrun/LambdaDB',
+					images: {
+						ctor: '::',
+						_0: 'https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic',
+						_1: {
+							ctor: '::',
+							_0: 'https://img.shields.io/badge/stack->=1.1-blue.svg?style=plastic',
+							_1: {
+								ctor: '::',
+								_0: 'https://img.shields.io/badge/version-0.0.0.6-green.svg?style=plastic',
+								_1: {
+									ctor: '::',
+									_0: 'https://img.shields.io/badge/status-alpha-orange.svg?style=plastic',
+									_1: {
+										ctor: '::',
+										_0: 'https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic',
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}
+					}
+				},
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageSectionsDefault = {
+	ctor: '::',
+	_0: _user$project$Model_PageModel_ProjectsPageModel$projectsPageHaskellDefault,
+	_1: {
+		ctor: '::',
+		_0: _user$project$Model_PageModel_ProjectsPageModel$projectsPageEmacsDefault,
+		_1: {
+			ctor: '::',
+			_0: _user$project$Model_PageModel_ProjectsPageModel$projectsPageStudyDefault,
+			_1: {
+				ctor: '::',
+				_0: _user$project$Model_PageModel_ProjectsPageModel$projectsPageOldStartUpDefault,
+				_1: {ctor: '[]'}
+			}
+		}
+	}
+};
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageBannerDefault = 'image/project.png';
+var _user$project$Model_PageModel_ProjectsPageModel$projectsPageDefault = {banner: _user$project$Model_PageModel_ProjectsPageModel$projectsPageBannerDefault, sections: _user$project$Model_PageModel_ProjectsPageModel$projectsPageSectionsDefault};
+var _user$project$Model_PageModel_ProjectsPageModel$ProjectsPage = F2(
+	function (a, b) {
+		return {banner: a, sections: b};
+	});
+var _user$project$Model_PageModel_ProjectsPageModel$ProjectsSection = F2(
+	function (a, b) {
+		return {title: a, projects: b};
+	});
+var _user$project$Model_PageModel_ProjectsPageModel$ProjectsProject = F3(
+	function (a, b, c) {
+		return {title: a, link: b, images: c};
+	});
 
 var _user$project$Model_PageModel_AboutPageModel$aboutPageSubjectsDefault = {
 	ctor: '::',
@@ -15105,7 +15287,57 @@ var _user$project$Styles_Default$projectsPageView = A2(
 			{
 				ctor: '::',
 				_0: _user$project$Styles_Default$pageTitleView,
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						F2(
+							function (x, y) {
+								return A2(_rtfeldman$elm_css$Css_ops['.'], x, y);
+							}),
+						_user$project$Styles_Default$PageMainClass,
+						{
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Css$width(
+								_rtfeldman$elm_css$Css$pct(60)),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_rtfeldman$elm_css$Css$margin2,
+									_rtfeldman$elm_css$Css$vw(5),
+									_rtfeldman$elm_css$Css$auto),
+								_1: {
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Css$color(
+										A4(_rtfeldman$elm_css$Css$rgba, 0, 0, 0, 0.73)),
+									_1: {
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Css$descendants(
+											{
+												ctor: '::',
+												_0: _rtfeldman$elm_css$Css_Elements$h2(
+													{
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Css$fontWeight(_rtfeldman$elm_css$Css$bold),
+														_1: {
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
+															_1: {
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Css$lineHeight(
+																	_rtfeldman$elm_css$Css$num(2)),
+																_1: {ctor: '[]'}
+															}
+														}
+													}),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}),
 		_1: {ctor: '[]'}
 	});
@@ -15856,16 +16088,55 @@ var _user$project$View_PageView_MainPageView$mainPageView = function (model) {
 };
 
 var _user$project$View_PageView_PostsPageView$postsPagePostsView = function (model) {
-	return {
-		ctor: '::',
-		_0: A2(
+	return A2(
+		_elm_lang$html$Html$div,
+		{
+			ctor: '::',
+			_0: _user$project$Styles$class(
+				{
+					ctor: '::',
+					_0: _user$project$Styles_Default$UnderDevClass,
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$img,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Attributes$classList(
+							{
+								ctor: '::',
+								_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$animated, _1: true},
+								_1: {
+									ctor: '::',
+									_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$fadeIn, _1: true},
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {ctor: '[]'}
+					}
+				},
+				{ctor: '[]'}),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$View_PageView_PostsPageView$postsPageTopView = function (model) {
+	var _p0 = model.page;
+	if (_p0.ctor === 'Posts') {
+		return A2(
 			_elm_lang$html$Html$div,
 			{
 				ctor: '::',
 				_0: _user$project$Styles$class(
 					{
 						ctor: '::',
-						_0: _user$project$Styles_Default$UnderDevClass,
+						_0: _user$project$Styles_Default$PageTitleClass,
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
@@ -15876,7 +16147,7 @@ var _user$project$View_PageView_PostsPageView$postsPagePostsView = function (mod
 					_elm_lang$html$Html$img,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+						_0: _elm_lang$html$Html_Attributes$src(_p0._0.banner),
 						_1: {
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$classList(
@@ -15893,75 +16164,31 @@ var _user$project$View_PageView_PostsPageView$postsPagePostsView = function (mod
 						}
 					},
 					{ctor: '[]'}),
-				_1: {ctor: '[]'}
-			}),
-		_1: {ctor: '[]'}
-	};
-};
-var _user$project$View_PageView_PostsPageView$postsPageTopView = function (model) {
-	var _p0 = model.page;
-	if (_p0.ctor === 'Posts') {
-		return {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
+				_1: {
 					ctor: '::',
-					_0: _user$project$Styles$class(
+					_0: A2(
+						_elm_lang$html$Html$header,
+						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _user$project$Styles_Default$PageTitleClass,
+							_0: A2(
+								_elm_lang$html$Html$h1,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Posts'),
+									_1: {ctor: '[]'}
+								}),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$img,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$src(_p0._0.banner),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$classList(
-									{
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$animated, _1: true},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$fadeIn, _1: true},
-											_1: {ctor: '[]'}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$header,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$h1,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Posts'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		};
+				}
+			});
 	} else {
-		return {ctor: '[]'};
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{ctor: '[]'});
 	}
 };
 var _user$project$View_PageView_PostsPageView$postsPageView = function (model) {
@@ -15977,23 +16204,122 @@ var _user$project$View_PageView_PostsPageView$postsPageView = function (model) {
 				}),
 			_1: {ctor: '[]'}
 		},
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			_user$project$View_PageView_PostsPageView$postsPageTopView(model),
-			_user$project$View_PageView_PostsPageView$postsPagePostsView(model)));
+		{
+			ctor: '::',
+			_0: _user$project$View_PageView_PostsPageView$postsPageTopView(model),
+			_1: {
+				ctor: '::',
+				_0: _user$project$View_PageView_PostsPageView$postsPagePostsView(model),
+				_1: {ctor: '[]'}
+			}
+		});
 };
 
 var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = function (model) {
-	return {
-		ctor: '::',
-		_0: A2(
+	var projectsPageProjectMaker = function (project) {
+		return A2(
+			_elm_lang$html$Html$tr,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$td,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$a,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$href(project.link),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(project.title),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$td,
+						{ctor: '[]'},
+						A2(
+							_elm_lang$core$List$map,
+							function (s) {
+								return A2(
+									_elm_lang$html$Html$img,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$src(s),
+										_1: {ctor: '[]'}
+									},
+									{ctor: '[]'});
+							},
+							project.images)),
+					_1: {ctor: '[]'}
+				}
+			});
+	};
+	var projectsPageSectionMaker = function (section) {
+		return A2(
 			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$h2,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(section.title),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$table,
+						{ctor: '[]'},
+						A2(_elm_lang$core$List$map, projectsPageProjectMaker, section.projects)),
+					_1: {ctor: '[]'}
+				}
+			});
+	};
+	var _p0 = model.page;
+	if (_p0.ctor === 'Projects') {
+		return A2(
+			_elm_lang$html$Html$section,
 			{
 				ctor: '::',
 				_0: _user$project$Styles$class(
 					{
 						ctor: '::',
-						_0: _user$project$Styles_Default$UnderDevClass,
+						_0: _user$project$Styles_Default$PageMainClass,
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			},
+			A2(_elm_lang$core$List$map, projectsPageSectionMaker, _p0._0.sections));
+	} else {
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{ctor: '[]'});
+	}
+};
+var _user$project$View_PageView_ProjectsPageView$projectsPageTopView = function (model) {
+	var _p1 = model.page;
+	if (_p1.ctor === 'Projects') {
+		return A2(
+			_elm_lang$html$Html$section,
+			{
+				ctor: '::',
+				_0: _user$project$Styles$class(
+					{
+						ctor: '::',
+						_0: _user$project$Styles_Default$PageTitleClass,
 						_1: {ctor: '[]'}
 					}),
 				_1: {ctor: '[]'}
@@ -16004,7 +16330,7 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = func
 					_elm_lang$html$Html$img,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$src(model.underDev),
+						_0: _elm_lang$html$Html_Attributes$src(_p1._0.banner),
 						_1: {
 							ctor: '::',
 							_0: _elm_lang$html$Html_Attributes$classList(
@@ -16021,75 +16347,31 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = func
 						}
 					},
 					{ctor: '[]'}),
-				_1: {ctor: '[]'}
-			}),
-		_1: {ctor: '[]'}
-	};
-};
-var _user$project$View_PageView_ProjectsPageView$projectsPageTopView = function (model) {
-	var _p0 = model.page;
-	if (_p0.ctor === 'Projects') {
-		return {
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$div,
-				{
+				_1: {
 					ctor: '::',
-					_0: _user$project$Styles$class(
+					_0: A2(
+						_elm_lang$html$Html$header,
+						{ctor: '[]'},
 						{
 							ctor: '::',
-							_0: _user$project$Styles_Default$PageTitleClass,
+							_0: A2(
+								_elm_lang$html$Html$h1,
+								{ctor: '[]'},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Projects'),
+									_1: {ctor: '[]'}
+								}),
 							_1: {ctor: '[]'}
 						}),
 					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$img,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$src(_p0._0.banner),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$classList(
-									{
-										ctor: '::',
-										_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$animated, _1: true},
-										_1: {
-											ctor: '::',
-											_0: {ctor: '_Tuple2', _0: _Fresheyeball$elm_animate_css$Animate_Css$fadeIn, _1: true},
-											_1: {ctor: '[]'}
-										}
-									}),
-								_1: {ctor: '[]'}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$header,
-							{ctor: '[]'},
-							{
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$h1,
-									{ctor: '[]'},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Projects'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}
-				}),
-			_1: {ctor: '[]'}
-		};
+				}
+			});
 	} else {
-		return {ctor: '[]'};
+		return A2(
+			_elm_lang$html$Html$div,
+			{ctor: '[]'},
+			{ctor: '[]'});
 	}
 };
 var _user$project$View_PageView_ProjectsPageView$projectsPageView = function (model) {
@@ -16105,10 +16387,15 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageView = function (mo
 				}),
 			_1: {ctor: '[]'}
 		},
-		A2(
-			_elm_lang$core$Basics_ops['++'],
-			_user$project$View_PageView_ProjectsPageView$projectsPageTopView(model),
-			_user$project$View_PageView_ProjectsPageView$projectsPageProjectsView(model)));
+		{
+			ctor: '::',
+			_0: _user$project$View_PageView_ProjectsPageView$projectsPageTopView(model),
+			_1: {
+				ctor: '::',
+				_0: _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView(model),
+				_1: {ctor: '[]'}
+			}
+		});
 };
 
 var _user$project$View_PageView_AboutPageView$aboutPageAboutView = function (model) {

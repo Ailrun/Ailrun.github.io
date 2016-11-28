@@ -16,28 +16,28 @@ import Animate.Css exposing ( .. )
 postsPageView : Model -> Html Msg
 postsPageView model =
     section [ class [ PostsPageClass ] ]
-        ( postsPageTopView model
-          ++ postsPagePostsView model )
+        [ postsPageTopView model
+        , postsPagePostsView model ]
 
-postsPageTopView : Model -> List ( Html Msg )
+postsPageTopView : Model -> Html Msg
 postsPageTopView model =
     case model.page of
         Posts { banner } ->
-            [ div [ class [ PageTitleClass ] ]
-                  [ img [ src banner
-                        , HA.classList
-                            [ ( animated, True )
-                            , ( fadeIn, True ) ] ] []
-                  , header []
-                      [ h1 []
-                            [ text "Posts" ] ] ] ]
+            div [ class [ PageTitleClass ] ]
+                [ img [ src banner
+                      , HA.classList
+                          [ ( animated, True )
+                          , ( fadeIn, True ) ] ] []
+                , header []
+                    [ h1 []
+                          [ text "Posts" ] ] ]
         _ ->
-            []
+            div [] []
 
-postsPagePostsView : Model -> List ( Html Msg )
+postsPagePostsView : Model -> Html Msg
 postsPagePostsView model =
-    [ div [ class [ UnderDevClass ] ]
-          [ img [ src model.underDev
-                , HA.classList
-                    [ ( animated, True )
-                    , ( fadeIn, True ) ] ] [] ] ]
+    div [ class [ UnderDevClass ] ]
+        [ img [ src model.underDev
+              , HA.classList
+                  [ ( animated, True )
+                  , ( fadeIn, True ) ] ] [] ]

@@ -198,7 +198,38 @@ projectsPageView : Snippet
 projectsPageView =
     (.) ProjectsPageClass
         [ descendants
-              [ pageTitleView ] ]
+              [ pageTitleView
+              , (.) PageMainClass
+                  [ width ( pct 60)
+
+                  , margin2 ( vw 3 ) auto
+
+                  , color ( rgba 0 0 0 0.73 )
+
+                  , descendants
+                        [ h2
+                              [ paddingTop ( vw 1.5 )
+
+                              , fontWeight bold
+                              , fontSize fontLargeSize
+                              , lineHeight ( num 2 ) ]
+                        , table
+                              [ property "border-collapse" "collapse" ]
+                        , td
+                              [ paddingLeft ( em 1 )
+                              , paddingRight ( em 5 )
+
+                              , borderBottom ( pt 1 )
+                              , borderTop ( pt 1 )
+                              , borderBottomStyle solid
+                              , borderTopStyle solid
+                              , borderBottomColor ( rgb 0 0 0 )
+
+                              , fontSize fontLargeSize
+
+                              , descendants
+                                    [ img
+                                          [ verticalAlign textBottom ] ] ] ] ] ] ]
 
 aboutPageView : Snippet
 aboutPageView =
