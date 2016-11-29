@@ -200,7 +200,7 @@ projectsPageView =
         [ descendants
               [ pageTitleView
               , (.) PageMainClass
-                  [ width ( pct 60)
+                  [ width ( pct 70 )
 
                   , margin2 ( vw 3 ) auto
 
@@ -211,25 +211,39 @@ projectsPageView =
                               [ paddingTop ( vw 1.5 )
 
                               , fontWeight bold
-                              , fontSize fontLargeSize
+                              , fontSize fontHugeSize
                               , lineHeight ( num 2 ) ]
-                        , table
-                              [ property "border-collapse" "collapse" ]
-                        , td
-                              [ paddingLeft ( em 1 )
-                              , paddingRight ( em 5 )
+                        , ul
+                              [ listStyle none
 
-                              , borderBottom ( pt 1 )
-                              , borderTop ( pt 1 )
-                              , borderBottomStyle solid
-                              , borderTopStyle solid
-                              , borderBottomColor ( rgb 0 0 0 )
-
-                              , fontSize fontLargeSize
+                              , padding2 ( em 0 ) ( em 4 )
 
                               , descendants
-                                    [ img
-                                          [ verticalAlign textBottom ] ] ] ] ] ] ]
+                                    [ hr
+                                          [ ] ] ]
+                        , li
+                              [ height ( vw 4 )
+
+                              , fontSize fontLargeSize
+                              , lineHeight ( vw 4 )
+
+                              , descendants
+                                    [ p
+                                          [ width ( vw 25 )
+
+                                          , display inlineBlock ]
+                                    , span
+                                          [ paddingRight ( em 1 ) ]
+                                    , a
+                                          [ width ( em 50 ) ]
+                                    , div
+                                          [ display inlineBlock ]
+                                    , img
+                                          [ maxHeight ( vw 4 )
+
+                                          , paddingBottom ( em 0.3 )
+
+                                          , verticalAlign middle ] ] ] ] ] ] ]
 
 aboutPageView : Snippet
 aboutPageView =

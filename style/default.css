@@ -184,7 +184,7 @@ a {
 }
 
 .ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass {
-    width: 60%;
+    width: 70%;
     margin: 3vw auto;
     color: rgba(0, 0, 0, 0.73);
 }
@@ -192,27 +192,42 @@ a {
 .ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  h2 {
     padding-top: 1.5vw;
     font-weight: bold;
-    font-size: 1.5vw;
+    font-size: 2vw;
     line-height: 2;
 }
 
-.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  table {
-    border-collapse: collapse;
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  ul {
+    list-style: none;
+    padding: 0em 4em;
 }
 
-.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  td {
-    padding-left: 1em;
-    padding-right: 5em;
-    border-bottom: 1pt;
-    border-top: 1pt;
-    border-bottom-style: solid;
-    border-top-style: solid;
-    border-bottom-color: rgb(0, 0, 0);
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li {
+    height: 4vw;
     font-size: 1.5vw;
+    line-height: 4vw;
 }
 
-.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  td  img {
-    vertical-align: text-bottom;
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li  p {
+    width: 25vw;
+    display: inline-block;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li  span {
+    padding-right: 1em;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li  a {
+    width: 50em;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li  div {
+    display: inline-block;
+}
+
+.ailrunBlogProjectsPageClass  .ailrunBlogPageMainClass  li  img {
+    max-height: 4vw;
+    padding-bottom: 0.3em;
+    vertical-align: middle;
 }
 
 .ailrunBlogAboutPageClass  .ailrunBlogPageTitleClass {

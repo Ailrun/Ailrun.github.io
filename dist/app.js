@@ -15298,12 +15298,12 @@ var _user$project$Styles_Default$projectsPageView = A2(
 						{
 							ctor: '::',
 							_0: _rtfeldman$elm_css$Css$width(
-								_rtfeldman$elm_css$Css$pct(60)),
+								_rtfeldman$elm_css$Css$pct(70)),
 							_1: {
 								ctor: '::',
 								_0: A2(
 									_rtfeldman$elm_css$Css$margin2,
-									_rtfeldman$elm_css$Css$vw(5),
+									_rtfeldman$elm_css$Css$vw(3),
 									_rtfeldman$elm_css$Css$auto),
 								_1: {
 									ctor: '::',
@@ -15317,19 +15317,149 @@ var _user$project$Styles_Default$projectsPageView = A2(
 												_0: _rtfeldman$elm_css$Css_Elements$h2(
 													{
 														ctor: '::',
-														_0: _rtfeldman$elm_css$Css$fontWeight(_rtfeldman$elm_css$Css$bold),
+														_0: _rtfeldman$elm_css$Css$paddingTop(
+															_rtfeldman$elm_css$Css$vw(1.5)),
 														_1: {
 															ctor: '::',
-															_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
+															_0: _rtfeldman$elm_css$Css$fontWeight(_rtfeldman$elm_css$Css$bold),
 															_1: {
 																ctor: '::',
-																_0: _rtfeldman$elm_css$Css$lineHeight(
-																	_rtfeldman$elm_css$Css$num(2)),
-																_1: {ctor: '[]'}
+																_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontHugeSize),
+																_1: {
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Css$lineHeight(
+																		_rtfeldman$elm_css$Css$num(2)),
+																	_1: {ctor: '[]'}
+																}
 															}
 														}
 													}),
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: _rtfeldman$elm_css$Css_Elements$ul(
+														{
+															ctor: '::',
+															_0: _rtfeldman$elm_css$Css$listStyle(_rtfeldman$elm_css$Css$none),
+															_1: {
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Css$descendants(
+																	{
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Css_Elements$hr(
+																			{
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Css$width(
+																					_rtfeldman$elm_css$Css$pct(80)),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: _rtfeldman$elm_css$Css_Elements$li(
+															{
+																ctor: '::',
+																_0: _rtfeldman$elm_css$Css$height(
+																	_rtfeldman$elm_css$Css$vw(4)),
+																_1: {
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Css$paddingLeft(
+																		_rtfeldman$elm_css$Css$em(1)),
+																	_1: {
+																		ctor: '::',
+																		_0: _rtfeldman$elm_css$Css$paddingRight(
+																			_rtfeldman$elm_css$Css$em(5)),
+																		_1: {
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
+																			_1: {
+																				ctor: '::',
+																				_0: _rtfeldman$elm_css$Css$lineHeight(
+																					_rtfeldman$elm_css$Css$vw(4)),
+																				_1: {
+																					ctor: '::',
+																					_0: _rtfeldman$elm_css$Css$descendants(
+																						{
+																							ctor: '::',
+																							_0: _rtfeldman$elm_css$Css_Elements$p(
+																								{
+																									ctor: '::',
+																									_0: _rtfeldman$elm_css$Css$width(
+																										_rtfeldman$elm_css$Css$vw(25)),
+																									_1: {
+																										ctor: '::',
+																										_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+																										_1: {ctor: '[]'}
+																									}
+																								}),
+																							_1: {
+																								ctor: '::',
+																								_0: _rtfeldman$elm_css$Css_Elements$span(
+																									{
+																										ctor: '::',
+																										_0: _rtfeldman$elm_css$Css$paddingLeft(
+																											_rtfeldman$elm_css$Css$em(1)),
+																										_1: {
+																											ctor: '::',
+																											_0: _rtfeldman$elm_css$Css$paddingRight(
+																												_rtfeldman$elm_css$Css$em(1)),
+																											_1: {ctor: '[]'}
+																										}
+																									}),
+																								_1: {
+																									ctor: '::',
+																									_0: _rtfeldman$elm_css$Css_Elements$a(
+																										{
+																											ctor: '::',
+																											_0: _rtfeldman$elm_css$Css$width(
+																												_rtfeldman$elm_css$Css$em(50)),
+																											_1: {ctor: '[]'}
+																										}),
+																									_1: {
+																										ctor: '::',
+																										_0: _rtfeldman$elm_css$Css_Elements$div(
+																											{
+																												ctor: '::',
+																												_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+																												_1: {ctor: '[]'}
+																											}),
+																										_1: {
+																											ctor: '::',
+																											_0: _rtfeldman$elm_css$Css_Elements$img(
+																												{
+																													ctor: '::',
+																													_0: _rtfeldman$elm_css$Css$maxHeight(
+																														_rtfeldman$elm_css$Css$vw(4)),
+																													_1: {
+																														ctor: '::',
+																														_0: _rtfeldman$elm_css$Css$paddingBottom(
+																															_rtfeldman$elm_css$Css$em(0.3)),
+																														_1: {
+																															ctor: '::',
+																															_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
+																															_1: {ctor: '[]'}
+																														}
+																													}
+																												}),
+																											_1: {ctor: '[]'}
+																										}
+																									}
+																								}
+																							}
+																						}),
+																					_1: {ctor: '[]'}
+																				}
+																			}
+																		}
+																	}
+																}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}
 											}),
 										_1: {ctor: '[]'}
 									}
@@ -16218,49 +16348,67 @@ var _user$project$View_PageView_PostsPageView$postsPageView = function (model) {
 var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = function (model) {
 	var projectsPageProjectMaker = function (project) {
 		return A2(
-			_elm_lang$html$Html$tr,
+			_elm_lang$html$Html$li,
 			{ctor: '[]'},
 			{
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$td,
+					_elm_lang$html$Html$article,
 					{ctor: '[]'},
 					{
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$a,
+							_elm_lang$html$Html$p,
+							{ctor: '[]'},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$href(project.link),
-								_1: {ctor: '[]'}
-							},
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html$text(project.title),
-								_1: {ctor: '[]'}
-							}),
-						_1: {ctor: '[]'}
-					}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$td,
-						{ctor: '[]'},
-						A2(
-							_elm_lang$core$List$map,
-							function (s) {
-								return A2(
-									_elm_lang$html$Html$img,
+								_0: A2(
+									_elm_lang$html$Html$span,
+									{ctor: '[]'},
 									{
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$src(s),
+										_0: _elm_lang$html$Html$text('-'),
 										_1: {ctor: '[]'}
+									}),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$a,
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$href(project.link),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text(project.title),
+											_1: {ctor: '[]'}
+										}),
+									_1: {ctor: '[]'}
+								}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$div,
+								{ctor: '[]'},
+								A2(
+									_elm_lang$core$List$map,
+									function (s) {
+										return A2(
+											_elm_lang$html$Html$img,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$src(s),
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'});
 									},
-									{ctor: '[]'});
-							},
-							project.images)),
-					_1: {ctor: '[]'}
-				}
+									project.images)),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
 			});
 	};
 	var projectsPageSectionMaker = function (section) {
@@ -16280,10 +16428,30 @@ var _user$project$View_PageView_ProjectsPageView$projectsPageProjectsView = func
 				_1: {
 					ctor: '::',
 					_0: A2(
-						_elm_lang$html$Html$table,
+						_elm_lang$html$Html$hr,
 						{ctor: '[]'},
-						A2(_elm_lang$core$List$map, projectsPageProjectMaker, section.projects)),
-					_1: {ctor: '[]'}
+						{ctor: '[]'}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$ul,
+							{ctor: '[]'},
+							A2(
+								_elm_lang$core$List$intersperse,
+								A2(
+									_elm_lang$html$Html$hr,
+									{ctor: '[]'},
+									{ctor: '[]'}),
+								A2(_elm_lang$core$List$map, projectsPageProjectMaker, section.projects))),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$hr,
+								{ctor: '[]'},
+								{ctor: '[]'}),
+							_1: {ctor: '[]'}
+						}
+					}
 				}
 			});
 	};

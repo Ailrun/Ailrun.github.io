@@ -40,23 +40,36 @@ projectsPageProjectsView model =
     let
         projectsPageProjectMaker : ProjectsProject -> Html Msg
         projectsPageProjectMaker project =
-            tr []
-                [ td []
-                      [ a [ href project.link ]
-                            [ text project.title ] ]
-                , td []
-                    (List.map ( \s -> img [ src s ] [] ) project.images ) ]
+            li []
+                [ article []
+                      [ p []
+                            [ span []
+                                  [ text "-" ]
+                            , a [ href project.link ]
+                                  [ text project.title ] ]
+                      , div []
+                            <| List.map
+                                ( \s -> img [ src s ] [] )
+                                project.images ] ]
         projectsPageSectionMaker : ProjectsSection -> Html Msg
         projectsPageSectionMaker section =
             div []
                 [ h2 []
                       [ text section.title ]
-                , table []
-                    ( List.map projectsPageProjectMaker section.projects ) ]
+                , hr [] []
+                , ul []
+                    <| List.intersperse
+                        ( hr [] [] )
+                    <| List.map
+                        projectsPageProjectMaker
+                        section.projects
+                , hr [] [] ]
     in
         case model.page of
             Projects { sections } ->
                 section [ class [ PageMainClass ] ]
-                    ( List.map projectsPageSectionMaker sections )
+                    <| List.map
+                        projectsPageSectionMaker
+                        sections
             _ ->
                 div [] []
