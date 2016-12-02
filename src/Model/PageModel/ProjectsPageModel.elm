@@ -56,11 +56,11 @@ projectsPageHaskellDefault =
           , { title = "LambdaDB"
             , link = "https://github.com/Ailrun/LambdaDB"
             , images =
-                  [ "https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic"
-                  , "https://img.shields.io/badge/stack->=1.1-blue.svg?style=plastic"
-                  , "https://img.shields.io/badge/version-0.0.0.6-green.svg?style=plastic"
-                  , "https://img.shields.io/badge/status-alpha-orange.svg?style=plastic"
-                  , "https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic" ] } ] }
+                  [ "https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=flat"
+                  , "https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat"
+                  , "https://img.shields.io/badge/status-alpha-orange.svg?style=flat"
+                  , "https://img.shields.io/hackage/v/LambdaDB.svg"
+                  , "https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6" ] } ] }
 
 projectsPageEmacsDefault : ProjectsSection
 projectsPageEmacsDefault =
@@ -69,8 +69,8 @@ projectsPageEmacsDefault =
           [ { title = "yet-another-emacs-settings"
             , link = "https://github.com/Ailrun/yet-another-emacs-settings"
             , images =
-                  [ "https://img.shields.io/badge/Version-0.00.10a-lightgrey.svg?style=plastic"
-                  , "https://img.shields.io/badge/Status-Pre--Alpha-yellow.svg?style=plastic" ] }
+                  [ "https://img.shields.io/badge/Version-0.01.01-lightgrey.svg?style=flat"
+                  , "https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat" ] }
           , { title = "coq-commenter"
             , link = "https://github.com/Ailrun/coq-commenter"
             , images =

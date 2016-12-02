@@ -14543,10 +14543,10 @@ var _user$project$Model_PageModel_ProjectsPageModel$projectsPageEmacsDefault = {
 			link: 'https://github.com/Ailrun/yet-another-emacs-settings',
 			images: {
 				ctor: '::',
-				_0: 'https://img.shields.io/badge/Version-0.00.10a-lightgrey.svg?style=plastic',
+				_0: 'https://img.shields.io/badge/Version-0.01.01-lightgrey.svg?style=flat',
 				_1: {
 					ctor: '::',
-					_0: 'https://img.shields.io/badge/Status-Pre--Alpha-yellow.svg?style=plastic',
+					_0: 'https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat',
 					_1: {ctor: '[]'}
 				}
 			}
@@ -14601,19 +14601,19 @@ var _user$project$Model_PageModel_ProjectsPageModel$projectsPageHaskellDefault =
 					link: 'https://github.com/Ailrun/LambdaDB',
 					images: {
 						ctor: '::',
-						_0: 'https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=plastic',
+						_0: 'https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=flat',
 						_1: {
 							ctor: '::',
-							_0: 'https://img.shields.io/badge/stack->=1.1-blue.svg?style=plastic',
+							_0: 'https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat',
 							_1: {
 								ctor: '::',
-								_0: 'https://img.shields.io/badge/version-0.0.0.6-green.svg?style=plastic',
+								_0: 'https://img.shields.io/badge/status-alpha-orange.svg?style=flat',
 								_1: {
 									ctor: '::',
-									_0: 'https://img.shields.io/badge/status-alpha-orange.svg?style=plastic',
+									_0: 'https://img.shields.io/hackage/v/LambdaDB.svg',
 									_1: {
 										ctor: '::',
-										_0: 'https://img.shields.io/badge/build-passing-brightgreen.svg?style=plastic',
+										_0: 'https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6',
 										_1: {ctor: '[]'}
 									}
 								}
@@ -15342,19 +15342,21 @@ var _user$project$Styles_Default$projectsPageView = A2(
 															_0: _rtfeldman$elm_css$Css$listStyle(_rtfeldman$elm_css$Css$none),
 															_1: {
 																ctor: '::',
-																_0: _rtfeldman$elm_css$Css$descendants(
-																	{
-																		ctor: '::',
-																		_0: _rtfeldman$elm_css$Css_Elements$hr(
-																			{
-																				ctor: '::',
-																				_0: _rtfeldman$elm_css$Css$width(
-																					_rtfeldman$elm_css$Css$pct(80)),
-																				_1: {ctor: '[]'}
-																			}),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {ctor: '[]'}
+																_0: A2(
+																	_rtfeldman$elm_css$Css$padding2,
+																	_rtfeldman$elm_css$Css$em(0),
+																	_rtfeldman$elm_css$Css$em(4)),
+																_1: {
+																	ctor: '::',
+																	_0: _rtfeldman$elm_css$Css$descendants(
+																		{
+																			ctor: '::',
+																			_0: _rtfeldman$elm_css$Css_Elements$hr(
+																				{ctor: '[]'}),
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																}
 															}
 														}),
 													_1: {
@@ -15366,93 +15368,78 @@ var _user$project$Styles_Default$projectsPageView = A2(
 																	_rtfeldman$elm_css$Css$vw(4)),
 																_1: {
 																	ctor: '::',
-																	_0: _rtfeldman$elm_css$Css$paddingLeft(
-																		_rtfeldman$elm_css$Css$em(1)),
+																	_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
 																	_1: {
 																		ctor: '::',
-																		_0: _rtfeldman$elm_css$Css$paddingRight(
-																			_rtfeldman$elm_css$Css$em(5)),
+																		_0: _rtfeldman$elm_css$Css$lineHeight(
+																			_rtfeldman$elm_css$Css$vw(4)),
 																		_1: {
 																			ctor: '::',
-																			_0: _rtfeldman$elm_css$Css$fontSize(_user$project$Styles_Font$fontLargeSize),
-																			_1: {
-																				ctor: '::',
-																				_0: _rtfeldman$elm_css$Css$lineHeight(
-																					_rtfeldman$elm_css$Css$vw(4)),
-																				_1: {
+																			_0: _rtfeldman$elm_css$Css$descendants(
+																				{
 																					ctor: '::',
-																					_0: _rtfeldman$elm_css$Css$descendants(
+																					_0: _rtfeldman$elm_css$Css_Elements$p(
 																						{
 																							ctor: '::',
-																							_0: _rtfeldman$elm_css$Css_Elements$p(
+																							_0: _rtfeldman$elm_css$Css$width(
+																								_rtfeldman$elm_css$Css$vw(25)),
+																							_1: {
+																								ctor: '::',
+																								_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+																								_1: {ctor: '[]'}
+																							}
+																						}),
+																					_1: {
+																						ctor: '::',
+																						_0: _rtfeldman$elm_css$Css_Elements$span(
+																							{
+																								ctor: '::',
+																								_0: _rtfeldman$elm_css$Css$paddingRight(
+																									_rtfeldman$elm_css$Css$em(1)),
+																								_1: {ctor: '[]'}
+																							}),
+																						_1: {
+																							ctor: '::',
+																							_0: _rtfeldman$elm_css$Css_Elements$a(
 																								{
 																									ctor: '::',
 																									_0: _rtfeldman$elm_css$Css$width(
-																										_rtfeldman$elm_css$Css$vw(25)),
-																									_1: {
-																										ctor: '::',
-																										_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-																										_1: {ctor: '[]'}
-																									}
+																										_rtfeldman$elm_css$Css$em(50)),
+																									_1: {ctor: '[]'}
 																								}),
 																							_1: {
 																								ctor: '::',
-																								_0: _rtfeldman$elm_css$Css_Elements$span(
+																								_0: _rtfeldman$elm_css$Css_Elements$div(
 																									{
 																										ctor: '::',
-																										_0: _rtfeldman$elm_css$Css$paddingLeft(
-																											_rtfeldman$elm_css$Css$em(1)),
-																										_1: {
-																											ctor: '::',
-																											_0: _rtfeldman$elm_css$Css$paddingRight(
-																												_rtfeldman$elm_css$Css$em(1)),
-																											_1: {ctor: '[]'}
-																										}
+																										_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
+																										_1: {ctor: '[]'}
 																									}),
 																								_1: {
 																									ctor: '::',
-																									_0: _rtfeldman$elm_css$Css_Elements$a(
+																									_0: _rtfeldman$elm_css$Css_Elements$img(
 																										{
 																											ctor: '::',
-																											_0: _rtfeldman$elm_css$Css$width(
-																												_rtfeldman$elm_css$Css$em(50)),
-																											_1: {ctor: '[]'}
-																										}),
-																									_1: {
-																										ctor: '::',
-																										_0: _rtfeldman$elm_css$Css_Elements$div(
-																											{
+																											_0: _rtfeldman$elm_css$Css$maxHeight(
+																												_rtfeldman$elm_css$Css$vw(4)),
+																											_1: {
 																												ctor: '::',
-																												_0: _rtfeldman$elm_css$Css$display(_rtfeldman$elm_css$Css$inlineBlock),
-																												_1: {ctor: '[]'}
-																											}),
-																										_1: {
-																											ctor: '::',
-																											_0: _rtfeldman$elm_css$Css_Elements$img(
-																												{
+																												_0: _rtfeldman$elm_css$Css$paddingBottom(
+																													_rtfeldman$elm_css$Css$em(0.3)),
+																												_1: {
 																													ctor: '::',
-																													_0: _rtfeldman$elm_css$Css$maxHeight(
-																														_rtfeldman$elm_css$Css$vw(4)),
-																													_1: {
-																														ctor: '::',
-																														_0: _rtfeldman$elm_css$Css$paddingBottom(
-																															_rtfeldman$elm_css$Css$em(0.3)),
-																														_1: {
-																															ctor: '::',
-																															_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
-																															_1: {ctor: '[]'}
-																														}
-																													}
-																												}),
-																											_1: {ctor: '[]'}
-																										}
-																									}
+																													_0: _rtfeldman$elm_css$Css$verticalAlign(_rtfeldman$elm_css$Css$middle),
+																													_1: {ctor: '[]'}
+																												}
+																											}
+																										}),
+																									_1: {ctor: '[]'}
 																								}
 																							}
-																						}),
-																					_1: {ctor: '[]'}
-																				}
-																			}
+																						}
+																					}
+																				}),
+																			_1: {ctor: '[]'}
 																		}
 																	}
 																}
