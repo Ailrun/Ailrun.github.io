@@ -8095,7 +8095,7 @@ var PS = {};
       }, {
           title: "LambdaDB",
           link: "https://github.com/Ailrun/LambdaDB",
-          images: [ "https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=flat", "https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat", "https://img.shields.io/badge/status-alpha-orange.svg?style=flat", "https://img.shields.io/hackage/v/LambdaDB.svg", "https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6" ]
+          images: [ "https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat", "https://img.shields.io/badge/status-alpha-orange.svg?style=flat", "https://img.shields.io/hackage/v/LambdaDB.svg", "https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6" ]
       } ]
   }, {
       title: "Emacs",
