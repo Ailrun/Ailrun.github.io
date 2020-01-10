@@ -136,7 +136,7 @@ projectSections
         [ { title: "yet-another-emacs-settings"
           , link: "https://github.com/Ailrun/yet-another-emacs-settings"
           , images:
-            [ "https://img.shields.io/badge/Version-0.01.01-lightgrey.svg?style=flat"
+            [ "https://img.shields.io/badge/Version-0.02.00-lightgrey.svg?style=flat"
             , "https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat"
             ]
           }
