@@ -32,6 +32,7 @@ render _
     C.select navigationBarSelector cssNavigationBar
 
     C.select aboutPageSelector cssAboutPage
+    C.select mainPageSelector cssMainPage
 
     C.select pageTitleSelector cssPageTitle
 
@@ -121,7 +122,7 @@ cssMainPage = do
 
     C.position C.relative
 
-    C.backgroundColor (C.rgb 0 0 0)
+    C.backgroundColor white
 
   C.select (alignLeftSelector C.|> C.header) do
     C.left (C.pct 7.0)

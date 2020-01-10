@@ -18,6 +18,13 @@ data Query a
 
 type State = Unit
 
+type Banner
+  = { title :: String
+    , description :: String
+    , linkTitle :: String
+    , background :: String
+    }
+
 component :: forall q i o m. H.Component HH.HTML q i o m
 component
   = H.mkComponent
@@ -36,7 +43,7 @@ render _
     ]
     renderBanners
   where
-    renderBanners = mapWithIndex renderBanner []
+    renderBanners = mapWithIndex renderBanner banners
     renderBanner n b
       = HH.article
         [ HHP.class_ $ HH.ClassName <<< bannerPositionClassName $ n
@@ -54,9 +61,7 @@ render _
               ]
             ]
           ]
-        , HH.a
-          [ HHP.href b.link
-          ]
+        , HH.a_
           [ HH.text $ b.linkTitle <> " >"
           ]
         ]
@@ -64,3 +69,27 @@ render _
     bannerPositionClassName n
       | n `mod` 2 == 0 = alignRightClassName
       | otherwise = alignLeftClassName
+
+banners :: Array Banner
+banners
+  = [ { title: "Haskell"
+      , description: "Modern, Pure, Beautiful\nFunctional Language"
+      , linkTitle: "Haskell Projects"
+      , background: "img/haskell.png"
+      }
+    , { title: "Beer"
+      , description: "The World's Greatest Drink"
+      , linkTitle: "Beer Lists"
+      , background: "img/beer.png"
+      }
+    , { title: "Elm"
+      , description: "Functional Web Language\nwith MVC"
+      , linkTitle: "Elm Projects"
+      , background: "img/elm.png"
+      }
+    , { title: "Purescript"
+      , description: "Functional Web Language\n that is done right"
+      , linkTitle: "Purescript Projects"
+      , background: "img/purescript.png"
+      }
+    ]
