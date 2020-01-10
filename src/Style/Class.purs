@@ -6,7 +6,7 @@ import CSS as C
 import Data.Monoid ( (<>) )
 
 classPrefix :: String
-classPrefix = "ailrun-blog"
+classPrefix = "ailrun-blog-"
 
 
 navigationBarClassName :: String
@@ -35,6 +35,19 @@ projectsPageClassName = classPrefix <> "projects-page"
 
 projectsPageSelector :: C.Selector
 projectsPageSelector = C.Selector (C.Refinement [C.Class projectsPageClassName]) C.Star
+
+
+pageTitleClassName :: String
+pageTitleClassName = classPrefix <> "page-title"
+
+pageTitleSelector :: C.Selector
+pageTitleSelector = C.Selector (C.Refinement [C.Class pageTitleClassName]) C.Star
+
+pageMainClassName :: String
+pageMainClassName = classPrefix <> "page-main"
+
+pageMainSelector :: C.Selector
+pageMainSelector = C.Selector (C.Refinement [C.Class pageMainClassName]) C.Star
 
 
 alignRightClassName :: String

@@ -31,9 +31,13 @@ render _
     cssCommon
     C.select navigationBarSelector cssNavigationBar
 
+    C.select aboutPageSelector cssAboutPage
+
+    C.select pageTitleSelector cssPageTitle
+
 cssCommon :: C.CSS
 cssCommon = do
-  C.importUrl "https://fonts.googleapis.com/css?family=Dancing+Script&display=swap"
+  C.importUrl "https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap"
   C.select C.star do
     C.sym C.margin C.nil
     C.sym C.padding C.nil
@@ -64,6 +68,7 @@ cssNavigationBar = do
   C.top C.nil
   C.left C.nil
   C.right C.nil
+  C.zIndex 1
 
   C.backgroundColor (C.rgba 0 0 0 0.72)
 
@@ -161,18 +166,109 @@ cssMainPage = do
       C.textWhitespace C.whitespacePreWrap
       C.fontSize fontLargeSize
 
+cssAboutPage :: C.CSS
+cssAboutPage = do
+  C.select pageMainSelector do
+    semisym C.margin (C.vw 5.0) CC.auto
+    C.width (C.pct 80.0)
+
+    C.color textLightBlack
+
+    C.select C.h2 do
+      fontDancing
+      C.fontWeight C.bold
+      C.fontSize fontGiantSize
+      C.lineHeight (sizeNumber 2.0)
+
+    C.select alignLeftSelector do
+      C.display C.inlineBlock
+      C.width (C.pct 60.0)
+
+      C.select C.article do
+        C.paddingTop (C.vw 1.0)
+        C.paddingLeft (C.em 1.0)
+
+      C.select C.h3 do
+        C.fontSize fontHugeSize
+
+      C.select C.ul do
+        C.key (C.fromString "list-style-type") "none"
+        C.key (C.fromString "text-indent") (C.em (-0.5))
+
+      C.select C.li do
+        C.paddingLeft (C.em 1.0)
+
+        C.fontSize fontLargeSize
+
+    C.select alignRightSelector do
+      C.width (C.pct 30.0)
+
+      C.sym C.margin C.nil
+      C.float C.floatRight
+
+      C.select C.img do
+        C.width (C.pct 100.0)
+
+      C.select C.h3 do
+        C.width (C.pct 100.0)
+
+        C.key (C.fromString "text-align") "center"
+        C.fontWeight (C.FontWeight $ C.fromString "normal")
+
+cssPageTitle :: C.CSS
+cssPageTitle = do
+  C.width (C.pct 100.0)
+  C.height (C.vw pageTitleHeight)
+
+  C.position C.relative
+
+  C.backgroundColor white
+
+  C.select C.img do
+    C.position C.absolute
+
+    C.width sizeInherit
+    C.height sizeInherit
+
+  C.select C.header do
+    C.position C.absolute
+    C.top (C.pct 50.0)
+    C.bottom (C.pct 50.0)
+    C.left (C.pct 7.0)
+
+    C.marginTop (C.vw (-pageTitleHeight / 2.0))
+
+    C.display C.inlineBlock
+    C.height (C.vw pageTitleHeight)
+
+    C.lineHeight (C.vw pageTitleHeight)
+
+    C.select C.h1 do
+      C.color textWhite
+      C.fontWeight C.bold
+      C.fontSize fontGiantSize
+
 
 textBlack :: C.Color
 textBlack = C.rgba 0 0 0 0.84
 
+textLightBlack :: C.Color
+textLightBlack = C.rgba 0 0 0 0.73
+
 textWhite :: C.Color
 textWhite = C.rgba 255 255 255 0.84
+
+white :: C.Color
+white = C.rgb 0 0 0
 
 navigationBarHeight :: Number
 navigationBarHeight = 2.5
 
 bannerHeight :: Number
 bannerHeight = 26.0
+
+pageTitleHeight :: Number
+pageTitleHeight = 26.0
 
 
 semisym :: forall a b. (a -> b -> a -> b -> C.CSS) -> a -> b -> C.CSS
