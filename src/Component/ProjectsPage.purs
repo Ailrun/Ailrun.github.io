@@ -7,7 +7,7 @@ module Component.ProjectsPage
 import Prelude
 import Style.Class
 
-import Data.Array ( intercalate )
+import Data.Array (intercalate)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HHP
@@ -17,6 +17,17 @@ type Slot = H.Slot Query Void
 data Query a
 
 type State = Unit
+
+type ProjectSection
+  = { title :: String
+    , projects :: Array Project
+    }
+
+type Project
+  = { title :: String
+    , link :: String
+    , images :: Array String
+    }
 
 component :: forall q i o m. H.Component HH.HTML q i o m
 component
@@ -35,12 +46,15 @@ render _
     [ HHP.class_ $ HH.ClassName projectsPageClassName
     ]
     [ renderTop
+    , renderBottom
     ]
   where
     renderTop
-      = HH.section_
+      = HH.section
+        [ HHP.class_ $ HH.ClassName pageTitleClassName
+        ]
         [ HH.img
-          [ HHP.src ""
+          [ HHP.src "img/project.png"
           ]
         , HH.header_
           [ HH.h1_
@@ -50,8 +64,10 @@ render _
         ]
 
     renderBottom
-      = HH.section_
-        $ map renderSection []
+      = HH.section
+        [ HHP.class_ $ HH.ClassName pageMainClassName
+        ]
+        $ map renderSection projectSections
 
     renderSection s
       = HH.div_
@@ -65,7 +81,7 @@ render _
             )
           $ ( map
               (pure <<< renderProject)
-              (s.projects :: Array { link :: String, title :: String, images :: Array String })
+              s.projects
             )
         ]
 
@@ -86,3 +102,75 @@ render _
             $ map (HH.img <<< pure <<< HHP.src) p.images
           ]
         ]
+
+projectSections :: Array ProjectSection
+projectSections
+  = [ { title: "Haskell"
+      , projects:
+        [ { title: "CUTE Lang"
+          , link: "https://github.com/CUTE-Lang"
+          , images:
+            [ "https://avatars0.githubusercontent.com/u/17797042?v=3&s=200"
+            ]
+          }
+        , { title: "Htaut"
+          , link: "https://github.com/Ailrun/Htaut"
+          , images:
+            [ "https://travis-ci.org/Ailrun/Htaut.svg"
+            , "https://img.shields.io/hackage/v/htaut.svg?maxAge=2592000"
+            ]
+          }
+        , { title: "LambdaDB"
+          , link: "https://github.com/Ailrun/LambdaDB"
+          , images:
+            [ "https://img.shields.io/badge/Haskell-lts--5.18-lightgrey.svg?style=flat"
+            , "https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat"
+            , "https://img.shields.io/badge/status-alpha-orange.svg?style=flat"
+            , "https://img.shields.io/hackage/v/LambdaDB.svg"
+            , "https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6"
+            ]
+          }
+        ]
+      }
+    , { title: "Emacs"
+      , projects:
+        [ { title: "yet-another-emacs-settings"
+          , link: "https://github.com/Ailrun/yet-another-emacs-settings"
+          , images:
+            [ "https://img.shields.io/badge/Version-0.01.01-lightgrey.svg?style=flat"
+            , "https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat"
+            ]
+          }
+        , { title: "coq-commenter"
+          , link: "https://github.com/Ailrun/coq-commenter"
+          , images:
+            [ "https://melpa.org/packages/coq-commenter-badge.svg"
+            ]
+          }
+        ]
+      }
+    , { title: "Study"
+      , projects:
+        [ { title: "Programming_in_Haskell"
+          , link: "https://github.com/Ailrun/Programming_in_Haskell"
+          , images: []
+          }
+        , { title: "StackCalc"
+          , link: "https://github.com/Ailrun/StackCalc"
+          , images: []
+          }
+        , { title: "BigInteger"
+          , link: "https://github.com/Ailrun/BigInteger"
+          , images: []
+          }
+        , { title: "Elevator2way7floor"
+          , link: "https://github.com/Ailrun/Elevator2way7floor"
+          , images: []
+          }
+        , { title: "LD_8bit_Microprocessor"
+          , link: "https://github.com/Ailrun/LD_8bit_Microprocessor"
+          , images: []
+          }
+        ]
+      }
+    ]

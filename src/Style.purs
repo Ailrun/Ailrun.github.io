@@ -8,6 +8,10 @@ import Style.Font
 
 import CSS as C
 import CSS.Common as CC
+import CSS.ListStyle.Type as C
+import CSS.Overflow as C
+import CSS.TextAlign as C
+import CSS.VerticalAlign as C
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.CSS as HHC
@@ -33,6 +37,7 @@ render _
 
     C.select aboutPageSelector cssAboutPage
     C.select mainPageSelector cssMainPage
+    C.select projectsPageSelector cssProjectsPage
 
     C.select pageTitleSelector cssPageTitle
 
@@ -51,7 +56,7 @@ cssCommon = do
 
     semisym C.margin C.nil CC.auto
 
-    C.key (C.fromString "overflow-y") "scroll"
+    C.overflowY C.scroll
 
     C.fontSize fontDefaultSize
 
@@ -111,6 +116,55 @@ cssNavigationBar = do
       C.fontSize fontLargeSize
       C.color textWhite
 
+cssAboutPage :: C.CSS
+cssAboutPage = do
+  C.select pageMainSelector do
+    semisym C.margin (C.vw 5.0) CC.auto
+    C.width (C.pct 80.0)
+
+    C.color textLightBlack
+
+    C.select C.h2 do
+      fontDancing
+      C.fontWeight C.bold
+      C.fontSize fontGiantSize
+      C.lineHeight (sizeNumber 2.0)
+
+    C.select alignLeftSelector do
+      C.display C.inlineBlock
+      C.width (C.pct 60.0)
+
+      C.select C.article do
+        C.paddingTop (C.vw 1.0)
+        C.paddingLeft (C.em 1.0)
+
+      C.select C.h3 do
+        C.fontSize fontHugeSize
+
+      C.select C.ul do
+        C.listStyleType CC.none
+        C.key (C.fromString "text-indent") (C.em (-0.5))
+
+      C.select C.li do
+        C.paddingLeft (C.em 1.0)
+
+        C.fontSize fontLargeSize
+
+    C.select alignRightSelector do
+      C.width (C.pct 30.0)
+
+      C.sym C.margin C.nil
+      C.float C.floatRight
+
+      C.select C.img do
+        C.width (C.pct 100.0)
+
+      C.select C.h3 do
+        C.width (C.pct 100.0)
+
+        C.textAlign C.center
+        C.fontWeight CC.normal
+
 cssMainPage :: C.CSS
 cssMainPage = do
   C.color textWhite
@@ -149,7 +203,7 @@ cssMainPage = do
     C.select C.div do
       C.display C.inlineBlock
 
-      C.key (C.fromString "vertical-align") "middle"
+      C.verticalAlign CC.middle
 
       C.lineHeight (sizeNumber 1.3)
 
@@ -167,54 +221,53 @@ cssMainPage = do
       C.textWhitespace C.whitespacePreWrap
       C.fontSize fontLargeSize
 
-cssAboutPage :: C.CSS
-cssAboutPage = do
+cssProjectsPage :: C.CSS
+cssProjectsPage = do
   C.select pageMainSelector do
-    semisym C.margin (C.vw 5.0) CC.auto
     C.width (C.pct 80.0)
+
+    semisym C.margin (C.vw 3.0) CC.auto
 
     C.color textLightBlack
 
     C.select C.h2 do
-      fontDancing
+      C.paddingTop (C.vw 1.5)
+
       C.fontWeight C.bold
-      C.fontSize fontGiantSize
+      C.fontSize fontHugeSize
       C.lineHeight (sizeNumber 2.0)
 
-    C.select alignLeftSelector do
-      C.display C.inlineBlock
-      C.width (C.pct 60.0)
+    C.select C.ul do
+      C.listStyleType CC.none
 
-      C.select C.article do
-        C.paddingTop (C.vw 1.0)
-        C.paddingLeft (C.em 1.0)
+      semisym C.padding C.nil (C.em 4.0)
+      C.paddingRight C.nil
 
-      C.select C.h3 do
-        C.fontSize fontHugeSize
+    C.select C.li do
+      C.height (C.vw 4.0)
 
-      C.select C.ul do
-        C.key (C.fromString "list-style-type") "none"
-        C.key (C.fromString "text-indent") (C.em (-0.5))
+      C.fontSize fontLargeSize
+      C.lineHeight (C.vw 4.0)
 
-      C.select C.li do
-        C.paddingLeft (C.em 1.0)
+      C.select C.p do
+        C.width (C.vw 25.0)
+        C.display C.inlineBlock
 
-        C.fontSize fontLargeSize
+      C.select C.span do
+        C.paddingRight (C.em 1.0)
 
-    C.select alignRightSelector do
-      C.width (C.pct 30.0)
+      C.select C.a do
+        C.width (C.em 50.0)
 
-      C.sym C.margin C.nil
-      C.float C.floatRight
+      C.select C.div do
+        C.display C.inlineBlock
 
       C.select C.img do
-        C.width (C.pct 100.0)
+        C.maxHeight (C.vw 4.0)
 
-      C.select C.h3 do
-        C.width (C.pct 100.0)
+        C.paddingBottom (C.em 0.3)
 
-        C.key (C.fromString "text-align") "center"
-        C.fontWeight (C.FontWeight $ C.fromString "normal")
+        C.verticalAlign CC.middle
 
 cssPageTitle :: C.CSS
 cssPageTitle = do
