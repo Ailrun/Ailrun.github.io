@@ -150,7 +150,15 @@ projectSections
       }
     , { title: "Study"
       , projects:
-        [ { title: "Programming_in_Haskell"
+        [ { title: "core-lang-haskell"
+          , link: "https://github.com/Ailrun/core-lang-haskell"
+          , images: []
+          }
+        , { title: "TRPL-study"
+          , link: "https://github.com/Ailrun/TRPL-study"
+          , images: []
+          }
+        , { title: "Programming_in_Haskell"
           , link: "https://github.com/Ailrun/Programming_in_Haskell"
           , images: []
           }
