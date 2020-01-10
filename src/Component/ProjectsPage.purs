@@ -8,6 +8,7 @@ import Prelude
 import Style.Class
 
 import Data.Array (intercalate)
+import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HHP
@@ -38,7 +39,7 @@ component
     }
 
 initialState :: forall i. i -> State
-initialState _ = unit
+initialState _ = def
 
 render :: forall a m. State -> H.ComponentHTML a () m
 render _
@@ -150,33 +151,33 @@ projectSections
       }
     , { title: "Study"
       , projects:
-        [ { title: "core-lang-haskell"
-          , link: "https://github.com/Ailrun/core-lang-haskell"
-          , images: []
+        [ (def :: Project)
+          { title = "core-lang-haskell"
+          , link = "https://github.com/Ailrun/core-lang-haskell"
           }
-        , { title: "TRPL-study"
-          , link: "https://github.com/Ailrun/TRPL-study"
-          , images: []
+        , (def :: Project)
+          { title = "TRPL-study"
+          , link = "https://github.com/Ailrun/TRPL-study"
           }
-        , { title: "Programming_in_Haskell"
-          , link: "https://github.com/Ailrun/Programming_in_Haskell"
-          , images: []
+        , (def :: Project)
+          { title = "Programming_in_Haskell"
+          , link = "https://github.com/Ailrun/Programming_in_Haskell"
           }
-        , { title: "StackCalc"
-          , link: "https://github.com/Ailrun/StackCalc"
-          , images: []
+        , (def :: Project)
+          { title = "StackCalc"
+          , link = "https://github.com/Ailrun/StackCalc"
           }
-        , { title: "BigInteger"
-          , link: "https://github.com/Ailrun/BigInteger"
-          , images: []
+        , (def :: Project)
+          { title = "BigInteger"
+          , link = "https://github.com/Ailrun/BigInteger"
           }
-        , { title: "Elevator2way7floor"
-          , link: "https://github.com/Ailrun/Elevator2way7floor"
-          , images: []
+        , (def :: Project)
+          { title = "Elevator2way7floor"
+          , link = "https://github.com/Ailrun/Elevator2way7floor"
           }
-        , { title: "LD_8bit_Microprocessor"
-          , link: "https://github.com/Ailrun/LD_8bit_Microprocessor"
-          , images: []
+        , (def :: Project)
+          { title = "LD_8bit_Microprocessor"
+          , link = "https://github.com/Ailrun/LD_8bit_Microprocessor"
           }
         ]
       }

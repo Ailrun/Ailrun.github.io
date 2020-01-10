@@ -12,6 +12,7 @@ import CSS.ListStyle.Type as C
 import CSS.Overflow as C
 import CSS.TextAlign as C
 import CSS.VerticalAlign as C
+import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.CSS as HHC
@@ -27,7 +28,7 @@ component
     }
 
 initialState :: forall i. i -> State
-initialState _ = unit
+initialState _ = def
 
 render :: forall a m. State -> H.ComponentHTML a () m
 render _

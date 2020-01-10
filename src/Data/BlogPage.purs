@@ -5,13 +5,17 @@ module Data.BlogPage
   , pathToHash
   ) where
 
-import Data.Maybe ( Maybe(..) )
-import Data.Semigroup ( (<>) )
+import Data.Default (class Default)
+import Data.Maybe (Maybe(..))
+import Data.Semigroup ((<>))
 
 data BlogPage
   = AboutPage
   | MainPage
   | ProjectsPage
+
+instance blogPageDefault :: Default BlogPage where
+  def = MainPage
 
 blogPageToPath :: BlogPage -> String
 blogPageToPath AboutPage = "about"

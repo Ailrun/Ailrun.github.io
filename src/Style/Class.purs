@@ -3,7 +3,7 @@ module Style.Class
   ) where
 
 import CSS as C
-import Data.Monoid ( (<>) )
+import Data.Monoid ((<>))
 
 classPrefix :: String
 classPrefix = "ailrun-blog-"

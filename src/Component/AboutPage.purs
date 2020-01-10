@@ -7,6 +7,7 @@ module Component.AboutPage
 import Prelude
 import Style.Class
 
+import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HHP
@@ -33,7 +34,7 @@ component
     }
 
 initialState :: forall i. i -> State
-initialState _ = unit
+initialState _ = def
 
 render :: forall a m. State -> H.ComponentHTML a () m
 render _

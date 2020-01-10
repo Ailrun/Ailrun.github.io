@@ -8,8 +8,9 @@ module Component.NavigationBar
 import Prelude
 import Style.Class
 
-import Data.BlogPage ( BlogPage(..), blogPageToPath, pathToHash )
-import Data.Maybe ( Maybe(..) )
+import Data.BlogPage (BlogPage(..), blogPageToPath, pathToHash)
+import Data.Default (def)
+import Data.Maybe (Maybe(..))
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Events as HHE
@@ -36,7 +37,7 @@ component
     handleAction a = H.raise a
 
 initialState :: forall i. i -> State
-initialState _ = unit
+initialState _ = def
 
 render :: forall m. State -> H.ComponentHTML Action () m
 render _

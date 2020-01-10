@@ -7,11 +7,12 @@ import Prelude
 
 import Component.AboutPage as AboutPage
 import Component.MainPage as MainPage
-import Component.ProjectsPage as ProjectsPage
 import Component.NavigationBar as NavigationBar
-import Data.BlogPage ( BlogPage(..) )
-import Data.Maybe ( Maybe(..) )
-import Data.Symbol ( SProxy(..) )
+import Component.ProjectsPage as ProjectsPage
+import Data.BlogPage (BlogPage(..))
+import Data.Default (def)
+import Data.Maybe (Maybe(..))
+import Data.Symbol (SProxy)
 import Halogen as H
 import Halogen.HTML as HH
 
@@ -45,7 +46,8 @@ component
 
 initialState :: Input -> State
 initialState currentPage
-  = { currentPage
+  = (def :: State)
+    { currentPage = currentPage
     }
 
 render :: forall m. State -> H.ComponentHTML Action ChildSlots m
@@ -61,7 +63,7 @@ render state
       MainPage -> HH.slot _mainPage unit MainPage.component unit absurd
       ProjectsPage -> HH.slot _projectsPage unit ProjectsPage.component unit absurd
 
-    _navigationBar = SProxy :: SProxy "navigationBar"
-    _aboutPage = SProxy :: SProxy "aboutPage"
-    _mainPage = SProxy :: SProxy "mainPage"
-    _projectsPage = SProxy :: SProxy "projectsPage"
+    _navigationBar = def :: SProxy "navigationBar"
+    _aboutPage = def :: SProxy "aboutPage"
+    _mainPage = def :: SProxy "mainPage"
+    _projectsPage = def :: SProxy "projectsPage"

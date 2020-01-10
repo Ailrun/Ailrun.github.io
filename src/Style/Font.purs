@@ -8,7 +8,7 @@ import CSS as C
 import Data.NonEmpty as NE
 
 fontDancing :: C.CSS
-fontDancing = C.fontFamily [ "Dancing Script" ] (NE.singleton (C.GenericFontFamily $ C.fromString "cursive"))
+fontDancing = C.fontFamily ["Dancing Script"] (NE.singleton (C.GenericFontFamily $ C.fromString "cursive"))
 
 fontDefaultSize :: C.Size C.Rel
 fontDefaultSize = C.vw 1.0
