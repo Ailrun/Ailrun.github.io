@@ -1,5 +1,6 @@
 module Component.App
-  ( component
+  ( Input
+  , component
   ) where
 
 import Prelude
@@ -13,6 +14,8 @@ import Data.Maybe ( Maybe(..) )
 import Data.Symbol ( SProxy(..) )
 import Halogen as H
 import Halogen.HTML as HH
+
+type Input = BlogPage
 
 type State
   = { currentPage :: BlogPage
@@ -28,21 +31,21 @@ type ChildSlots
     , projectsPage :: ProjectsPage.Slot Unit
     )
 
-component :: forall q i o m. H.Component HH.HTML q i o m
+component :: forall q o m. H.Component HH.HTML q Input o m
 component
   = H.mkComponent
     { initialState
     , render
-    , eval: H.mkEval (H.defaultEval { handleAction = handleAction })
+    , eval: H.mkEval $ H.defaultEval { handleAction = handleAction }
     }
   where
     handleAction (MoveToPage p) = do
-      _ <- H.modify (\s -> s{ currentPage = p })
+      _ <- H.modify $ _{ currentPage = p }
       pure unit
 
-initialState :: forall i. i -> State
-initialState _
-  = { currentPage: MainPage
+initialState :: Input -> State
+initialState currentPage
+  = { currentPage
     }
 
 render :: forall m. State -> H.ComponentHTML Action ChildSlots m

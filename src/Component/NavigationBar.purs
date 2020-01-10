@@ -8,7 +8,7 @@ module Component.NavigationBar
 import Prelude
 import Style.Class
 
-import Data.BlogPage ( BlogPage(..) )
+import Data.BlogPage ( BlogPage(..), blogPageToPath, pathToHash )
 import Data.Maybe ( Maybe(..) )
 import Halogen as H
 import Halogen.HTML as HH
@@ -30,7 +30,7 @@ component
   = H.mkComponent
     { initialState
     , render
-    , eval: H.mkEval (H.defaultEval { handleAction = handleAction })
+    , eval: H.mkEval $ H.defaultEval { handleAction = handleAction }
     }
   where
     handleAction a = H.raise a
@@ -45,7 +45,7 @@ render _
     ]
     [ HH.h1_
       [ HH.a
-        [ HHP.href "#"
+        [ HHP.href $ pathToHash <<< blogPageToPath $ MainPage
         ]
         [ HH.text "Valhala of Valkyrie"
         ]
@@ -54,17 +54,17 @@ render _
       renderMenus
     ]
   where
-    renderMenus = map (renderMenu <<< blogPageToMenu) [MainPage, ProjectsPage, AboutPage]
-    renderMenu nm
+    renderMenus = map renderPageMenu [MainPage, ProjectsPage, AboutPage]
+    renderPageMenu page
       = HH.li_
         [ HH.a
-          [ HHP.href nm.href
-          , HHE.onClick (\a -> Just nm.page)
+          [ HHP.href $ pathToHash <<< blogPageToPath $ page
+          , HHE.onClick $ \_ -> Just page
           ]
-          [ HH.text nm.name
+          [ HH.text $ blogPageToText page
           ]
         ]
 
-    blogPageToMenu AboutPage = { page: AboutPage, href: "#about", name: "About" }
-    blogPageToMenu MainPage = { page: MainPage, href: "#", name: "Main" }
-    blogPageToMenu ProjectsPage = { page: ProjectsPage, href: "#projects", name: "Projects" }
+    blogPageToText AboutPage = "About"
+    blogPageToText MainPage = "Main"
+    blogPageToText ProjectsPage = "Projects"
