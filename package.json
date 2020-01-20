@@ -1,0 +1,20 @@
+{
+  "name": "valhala-of-valkyrie",
+  "version": "0.0.0",
+  "description": "Ailrun's GitHub Blog",
+  "scripts": {
+    "build": "gatsby build",
+    "start": "gatsby develop"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.18",
+    "gatsby": "^2.19.1",
+    "gatsby-plugin-purs": "file:plugins/gatsby-plugin-purs",
+    "gatsby-plugin-typescript": "^2.1.26",
+    "purs-loader": "^3.7.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typescript": "^3.7.5"
+  },
+  "private": true
+}
