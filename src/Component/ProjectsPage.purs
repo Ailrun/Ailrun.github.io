@@ -7,6 +7,7 @@ module Component.ProjectsPage
 import Prelude
 import Style.Class
 
+import Constants (imageRoot)
 import Data.Array (intercalate)
 import Data.Default (def)
 import Halogen as H
@@ -55,7 +56,7 @@ render _
         [ HHP.class_ $ HH.ClassName pageTitleClassName
         ]
         [ HH.img
-          [ HHP.src "img/project.png"
+          [ HHP.src $ imageRoot <> "project.png"
           ]
         , HH.header_
           [ HH.h1_

@@ -7,6 +7,7 @@ module Component.AboutPage
 import Prelude
 import Style.Class
 
+import Constants (imageRoot)
 import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
@@ -50,7 +51,7 @@ render _
         [ HHP.class_ $ HH.ClassName pageTitleClassName
         ]
         [ HH.img
-          [ HHP.src "img/about.png"
+          [ HHP.src $ imageRoot <> "about.png"
           ]
         , HH.header_
           [ HH.h1_
@@ -74,7 +75,7 @@ render _
           [ HHP.class_ $ HH.ClassName alignRightClassName
           ]
           [ HH.img
-            [ HHP.src "img/about-profile.png"
+            [ HHP.src $ imageRoot <> "about-profile.png"
             ]
           , HH.h3_
             [ HH.text "Clare with cups of beer"

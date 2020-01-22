@@ -7,6 +7,7 @@ module Component.MainPage
 import Prelude
 import Style.Class
 
+import Constants (imageRoot)
 import Data.Array (mapWithIndex)
 import Data.Default (def)
 import Halogen as H
@@ -76,21 +77,21 @@ banners
   = [ { title: "Haskell"
       , description: "Modern, Pure, Beautiful\nFunctional Language"
       , linkTitle: "Haskell Projects"
-      , background: "img/haskell.png"
+      , background:  imageRoot <> "haskell.png"
       }
     , { title: "Beer"
       , description: "The World's Greatest Drink"
       , linkTitle: "Beer Lists"
-      , background: "img/beer.png"
+      , background: imageRoot <> "beer.png"
       }
     , { title: "Elm"
       , description: "Functional Web Language\nwith MVC"
       , linkTitle: "Elm Projects"
-      , background: "img/elm.png"
+      , background: imageRoot <> "elm.png"
       }
     , { title: "Purescript"
       , description: "Functional Web Language\n that is done right"
       , linkTitle: "Purescript Projects"
-      , background: "img/purescript.png"
+      , background: imageRoot <> "purescript.png"
       }
     ]
