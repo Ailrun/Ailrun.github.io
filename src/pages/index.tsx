@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import HalogenLoader from "../components/HalogenLoader";
-import { component as StyleComponent } from "../../purescript/Style.purs";
-import { component as NavigationBarComponent } from "../../purescript/Component/NavigationBar.purs";
-import { component as MainPageComponent } from "../../purescript/Component/MainPage.purs";
+import { component as StyleComponent } from "../purescript/Style.purs";
+import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
+import { component as MainPageComponent } from "../purescript/Component/MainPage.purs";
 
 export default function MainPage() {
   const [navigationBarRef, setNavigationBarRef] = useState(null);

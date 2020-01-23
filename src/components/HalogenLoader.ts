@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { interop } from "../../purescript/Util/Interop.purs"
+import { interop } from "../purescript/Util/Interop.purs"
 
 export interface Props {
   component: any;
