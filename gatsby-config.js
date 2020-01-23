@@ -10,7 +10,6 @@ module.exports = {
         src: [
           "src/purescript/**/*.purs",
         ],
-        pscIde: true,
         pscPackage: true,
       },
     },
