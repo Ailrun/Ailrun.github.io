@@ -8,7 +8,7 @@ module Component.NavigationBar
 import Prelude
 import Style.Class
 
-import Data.BlogPage (BlogPage(..), blogPageToPath, pathToHash)
+import Data.BlogPage (BlogPage(..), blogPageToPath)
 import Data.Default (def)
 import Data.Maybe (Maybe(..))
 import Halogen as H
@@ -46,7 +46,7 @@ render _
     ]
     [ HH.h1_
       [ HH.a
-        [ HHP.href $ pathToHash <<< blogPageToPath $ MainPage
+        [ HHP.href $ blogPageToPath $ MainPage
         ]
         [ HH.text "Valhala of Valkyrie"
         ]
@@ -59,7 +59,7 @@ render _
     renderPageMenu page
       = HH.li_
         [ HH.a
-          [ HHP.href $ pathToHash <<< blogPageToPath $ page
+          [ HHP.href $ blogPageToPath $ page
           , HHE.onClick $ \_ -> Just page
           ]
           [ HH.text $ blogPageToText page
