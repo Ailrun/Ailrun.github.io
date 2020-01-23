@@ -1,20 +1,18 @@
 const resolvableExtensions = () => [".purs"];
 
-function onCreateWebpackConfig({ actions }) {
+function onCreateWebpackConfig({ actions }, pluginOptions) {
   actions.setWebpackConfig({
     module: {
       rules: [
         {
           test: /\.purs$/,
-          loader: "purs-loader",
           exclude: /node_modules/,
-          query: {
-            src: [
-              "src/purescript/**/*.purs"
-            ],
-            pscIde: true,
-            pscPackage: true
-          }
+          use: [
+            {
+              loader: "purs-loader",
+              options: pluginOptions,
+            }
+          ],
         }
       ]
     }

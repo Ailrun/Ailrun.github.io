@@ -4,12 +4,21 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-purs`,
+    {
+      resolve: `gatsby-plugin-purs`,
+      options: {
+        src: [
+          "src/purescript/**/*.purs",
+        ],
+        pscIde: true,
+        pscPackage: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
         path: `${__dirname}/src/typescript/pages`,
       },
-    }
+    },
   ],
 };
