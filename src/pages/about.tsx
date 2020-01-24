@@ -2,7 +2,7 @@ import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
 import HalogenLoader from "../components/HalogenLoader";
-import { component as StyleComponent } from "../purescript/Style.purs";
+import StyleInstaller from "../components/StyleInstaller";
 import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
 import { component as AboutPageComponent } from "../purescript/Component/AboutPage.purs";
 
@@ -12,7 +12,7 @@ export default function AboutPage({ data }) {
 
   return (
     <>
-      <HalogenLoader component={StyleComponent} target={document.head} />
+      <StyleInstaller />
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
