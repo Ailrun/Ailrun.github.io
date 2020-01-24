@@ -9,10 +9,16 @@ export interface Props {
 
 export default function HalogenLoader({ component, input, target }: Props) {
   useEffect(() => {
-    const realInput = input == null ? {} : input
+    const realInput = input == null ? {} : input;
+    let dispose: any;
+
     if (target != null) {
-      interop(component, realInput, target);
+      interop(component, realInput, target, (hIO: { dispose: any }) => {
+        dispose = hIO.dispose;
+      });
     }
+
+    return dispose;
   }, [component, input, target]);
 
   return null;
