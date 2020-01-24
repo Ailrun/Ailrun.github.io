@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npx -n \"-r ts-node/register\" gatsby build",
     "postinstall": "psc-package install",
+    "serve": "npx -n \"-r ts-node/register\" gatsby serve",
     "start": "npx -n \"-r ts-node/register\" gatsby develop"
   },
   "dependencies": {
