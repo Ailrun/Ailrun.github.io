@@ -17,7 +17,14 @@ const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ actions },
           ],
         }
       ]
-    }
+    },
+    plugins: [
+      function () {
+        this.hooks.done.tap('PursLoaderErrorPlugin', (stats: any) => {
+          process.stderr.write(stats.toString('errors-warnings'));
+        });
+      },
+    ],
   });
 }
 
