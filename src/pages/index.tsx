@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 
 import HalogenLoader from "../components/HalogenLoader";
-import StyleInstaller from "../components/StyleInstaller";
+import Layout from "../components/Layout";
 import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
 import { component as MainPageComponent } from "../purescript/Component/MainPage.purs";
 
@@ -12,13 +12,12 @@ export default function MainPage() {
   const data = useStaticQuery(query);
 
   return (
-    <>
-      <StyleInstaller />
+    <Layout>
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
       <HalogenLoader component={MainPageComponent} input={data.json.banners} target={contentRef} />
-    </>
+    </Layout>
   );
 }
 

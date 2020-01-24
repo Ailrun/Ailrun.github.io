@@ -3,6 +3,13 @@ import { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `Valhala of Valkyrie`,
+    description: `Ailrun's Github Blog`,
+    url: `https://Ailrun.github.io`,
+    image: `https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png`,
+    author: `https://Ailrun.github.io/about`,
+    locales: [
+      `ko_KR`
+    ],
   },
   plugins: [
     `gatsby-plugin-typescript`,

@@ -13,6 +13,7 @@
     "@types/react": "^16.9.18",
     "gatsby": "^2.19.1",
     "gatsby-plugin-purs": "file:plugins/gatsby-plugin-purs",
+    "gatsby-plugin-react-helmet": "^3.1.21",
     "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-json": "^2.2.25",
@@ -22,6 +23,7 @@
     "purs-loader": "^3.7.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "react-helmet": "^6.0.0-beta",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
