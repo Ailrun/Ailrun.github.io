@@ -5,6 +5,7 @@
   "scripts": {
     "build": "npx -n \"-r ts-node/register\" gatsby build",
     "postinstall": "psc-package install",
+    "release": "gh-pages -d public -t -b master -m \"Update from Gatsby\" -o Ailrun",
     "serve": "npx -n \"-r ts-node/register\" gatsby serve",
     "start": "npx -n \"-r ts-node/register\" gatsby develop"
   },
@@ -15,6 +16,7 @@
     "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-json": "^2.2.25",
+    "gh-pages": "^2.2.0",
     "psc-package": "^3.0.1",
     "purescript": "^0.13.6",
     "purs-loader": "^3.7.1",
