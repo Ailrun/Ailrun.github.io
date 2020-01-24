@@ -7,8 +7,6 @@ module Component.AboutPage
 import Prelude
 import Style.Class
 
-import Constants (imageRoot)
-import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HHP
@@ -17,7 +15,9 @@ type Slot = H.Slot Query Void
 
 data Query a
 
-type State = Unit
+type Input = Array Subject
+
+type State = Input
 
 type Subject
   = { title :: String
@@ -26,7 +26,7 @@ type Subject
 
 type Entry = String
 
-component :: forall q i o m. H.Component HH.HTML q i o m
+component :: forall o m. H.Component HH.HTML Query Input o m
 component
   = H.mkComponent
     { initialState
@@ -34,11 +34,11 @@ component
     , eval: H.mkEval H.defaultEval
     }
 
-initialState :: forall i. i -> State
-initialState _ = def
+initialState :: Input -> State
+initialState = identity
 
 render :: forall a m. State -> H.ComponentHTML a () m
-render _
+render state
   = HH.section
     [ HHP.class_ $ HH.ClassName aboutPageClassName
     ]
@@ -51,7 +51,7 @@ render _
         [ HHP.class_ $ HH.ClassName pageTitleClassName
         ]
         [ HH.img
-          [ HHP.src $ imageRoot <> "about.png"
+          [ HHP.src "https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png"
           ]
         , HH.header_
           [ HH.h1_
@@ -70,12 +70,12 @@ render _
         , HH.div
           [ HHP.class_ $ HH.ClassName alignLeftClassName
           ]
-          $ map renderSubject subjects
+          $ map renderSubject state
         , HH.div
           [ HHP.class_ $ HH.ClassName alignRightClassName
           ]
           [ HH.img
-            [ HHP.src $ imageRoot <> "about-profile.png"
+            [ HHP.src "https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png"
             ]
           , HH.h3_
             [ HH.text "Clare with cups of beer"
@@ -97,26 +97,3 @@ render _
       = HH.li_
         [ HH.text $ "- " <> e
         ]
-
-subjects :: Array Subject
-subjects
-  = [ { title: "Hobby"
-      , entries:
-        [ "Enjoy life with beers"
-        , "Fall in love with foods"
-        , "Writing poems"
-        ]
-      }
-    , { title: "Contact"
-      , entries:
-        [ "Github/Ailrun"
-        ]
-      }
-    , { title: "Education"
-      , entries:
-        [ "Seoul Nat'l Univ, Bachelor's degree of Chemistry"
-        , "Seoul Nat'l Univ, Bachelor's degree of Philosophy"
-        , "Seoul Nat'l Univ, Bachelor's degree of Computer Science and Engineering"
-        ]
-      }
-    ]

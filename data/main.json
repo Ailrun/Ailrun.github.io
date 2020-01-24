@@ -1,0 +1,28 @@
+{
+  "banners": [
+    {
+      "title": "Haskell",
+      "description": "Modern, Pure, Beautiful\nFunctional Language",
+      "linkTitle": "Haskell Projects",
+      "background": "https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png"
+    },
+    {
+      "title": "Beer",
+      "description": "The World's Greatest Drink",
+      "linkTitle": "Beer Lists",
+      "background":"https://raw.githubusercontent.com/Ailrun/media/master/blog-img/beer.png"
+    },
+    {
+      "title": "Elm",
+      "description": "Functional Web Language\nwith MVC",
+      "linkTitle": "Elm Projects",
+      "background":"https://raw.githubusercontent.com/Ailrun/media/master/blog-img/elm.png"
+    },
+    {
+      "title": "Purescript",
+      "description": "Functional Web Language\n that is done right",
+      "linkTitle": "Purescript Projects",
+      "background":"https://raw.githubusercontent.com/Ailrun/media/master/blog-img/purescript.png"
+    }
+  ]
+}

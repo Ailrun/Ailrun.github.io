@@ -1,0 +1,26 @@
+{
+  "subjects": [
+    {
+      "title": "Hobby",
+      "entries": [
+        "Enjoy life with beers",
+        "Fall in love with foods",
+        "Writing poems"
+      ]
+    },
+    {
+      "title": "Contact",
+      "entries": [
+        "Github/Ailrun"
+      ]
+    },
+    {
+      "title": "Education",
+      "entries": [
+        "Seoul Nat'l Univ, Bachelor's degree of Chemistry",
+        "Seoul Nat'l Univ, Bachelor's degree of Philosophy",
+        "Seoul Nat'l Univ, Bachelor's degree of Computer Science and Engineering"
+      ]
+    }
+  ]
+}

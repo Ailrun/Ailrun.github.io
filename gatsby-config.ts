@@ -15,6 +15,20 @@ const config: GatsbyConfig = {
         pscPackage: true,
       },
     },
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./data/`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: ({ node }) => node.name + `Json`,
+      },
+    },
+
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {

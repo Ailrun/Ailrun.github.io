@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby';
 import React, { useState } from 'react';
 
 import HalogenLoader from "../components/HalogenLoader";
@@ -5,7 +6,7 @@ import { component as StyleComponent } from "../purescript/Style.purs";
 import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
 import { component as MainPageComponent } from "../purescript/Component/MainPage.purs";
 
-export default function MainPage() {
+export default function MainPage({ data }) {
   const [navigationBarRef, setNavigationBarRef] = useState(null);
   const [contentRef, setContentRef] = useState(null);
 
@@ -15,7 +16,20 @@ export default function MainPage() {
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
-      <HalogenLoader component={MainPageComponent} target={contentRef} />
+      <HalogenLoader component={MainPageComponent} input={data.mainJson.banners} target={contentRef} />
     </>
   );
 }
+
+export const query = graphql`
+  query {
+    mainJson {
+      banners {
+        background
+        description
+        linkTitle
+        title
+      }
+    }
+  }
+`;

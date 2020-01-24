@@ -3,15 +3,17 @@ import { interop } from "../purescript/Util/Interop.purs"
 
 export interface Props {
   component: any;
+  input?: any;
   target?: HTMLElement;
 }
 
-export default function HalogenLoader({ component, target }: Props) {
+export default function HalogenLoader({ component, input, target }: Props) {
   useEffect(() => {
+    const realInput = input == null ? {} : input
     if (target != null) {
-      interop(component, {}, target);
+      interop(component, realInput, target);
     }
-  }, [component, target]);
+  }, [component, input, target]);
 
   return null;
 }

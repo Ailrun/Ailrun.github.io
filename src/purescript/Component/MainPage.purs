@@ -7,9 +7,7 @@ module Component.MainPage
 import Prelude
 import Style.Class
 
-import Constants (imageRoot)
 import Data.Array (mapWithIndex)
-import Data.Default (def)
 import Halogen as H
 import Halogen.HTML as HH
 import Halogen.HTML.Properties as HHP
@@ -18,7 +16,9 @@ type Slot = H.Slot Query Void
 
 data Query a
 
-type State = Unit
+type Input = Array Banner
+
+type State = Input
 
 type Banner
   = { title :: String
@@ -27,7 +27,7 @@ type Banner
     , background :: String
     }
 
-component :: forall q i o m. H.Component HH.HTML q i o m
+component :: forall o m. H.Component HH.HTML Query Input o m
 component
   = H.mkComponent
     { initialState
@@ -35,17 +35,17 @@ component
     , eval: H.mkEval H.defaultEval
     }
 
-initialState :: forall i. i -> State
-initialState _ = def
+initialState :: Input -> State
+initialState = identity
 
 render :: forall a m. State -> H.ComponentHTML a () m
-render _
+render state
   = HH.section
     [ HHP.class_ $ HH.ClassName mainPageClassName
     ]
     renderBanners
   where
-    renderBanners = mapWithIndex renderBanner banners
+    renderBanners = mapWithIndex renderBanner state
     renderBanner n b
       = HH.article
         [ HHP.class_ $ HH.ClassName <<< bannerPositionClassName $ n
@@ -71,27 +71,3 @@ render _
     bannerPositionClassName n
       | n `mod` 2 == 0 = alignRightClassName
       | otherwise = alignLeftClassName
-
-banners :: Array Banner
-banners
-  = [ { title: "Haskell"
-      , description: "Modern, Pure, Beautiful\nFunctional Language"
-      , linkTitle: "Haskell Projects"
-      , background:  imageRoot <> "haskell.png"
-      }
-    , { title: "Beer"
-      , description: "The World's Greatest Drink"
-      , linkTitle: "Beer Lists"
-      , background: imageRoot <> "beer.png"
-      }
-    , { title: "Elm"
-      , description: "Functional Web Language\nwith MVC"
-      , linkTitle: "Elm Projects"
-      , background: imageRoot <> "elm.png"
-      }
-    , { title: "Purescript"
-      , description: "Functional Web Language\n that is done right"
-      , linkTitle: "Purescript Projects"
-      , background: imageRoot <> "purescript.png"
-      }
-    ]
