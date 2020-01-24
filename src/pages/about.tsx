@@ -1,4 +1,4 @@
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 
 import HalogenLoader from "../components/HalogenLoader";
@@ -6,9 +6,10 @@ import StyleInstaller from "../components/StyleInstaller";
 import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
 import { component as AboutPageComponent } from "../purescript/Component/AboutPage.purs";
 
-export default function AboutPage({ data }) {
+export default function AboutPage() {
   const [navigationBarRef, setNavigationBarRef] = useState(null);
   const [contentRef, setContentRef] = useState(null);
+  const data = useStaticQuery(query);
 
   return (
     <>
@@ -21,7 +22,7 @@ export default function AboutPage({ data }) {
   );
 }
 
-export const query = graphql`
+const query = graphql`
   query {
     json: aboutJson {
       subjects {
