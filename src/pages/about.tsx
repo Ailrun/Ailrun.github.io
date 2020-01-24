@@ -16,14 +16,14 @@ export default function AboutPage({ data }) {
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
-      <HalogenLoader component={AboutPageComponent} input={data.aboutJson.subjects} target={contentRef} />
+      <HalogenLoader component={AboutPageComponent} input={data.json.subjects} target={contentRef} />
     </>
   );
 }
 
 export const query = graphql`
   query {
-    aboutJson {
+    json: aboutJson {
       subjects {
         entries
         title

@@ -16,14 +16,14 @@ export default function MainPage({ data }) {
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
-      <HalogenLoader component={MainPageComponent} input={data.mainJson.banners} target={contentRef} />
+      <HalogenLoader component={MainPageComponent} input={data.json.banners} target={contentRef} />
     </>
   );
 }
 
 export const query = graphql`
   query {
-    mainJson {
+    json: mainJson {
       banners {
         background
         description

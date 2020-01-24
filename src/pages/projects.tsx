@@ -16,14 +16,14 @@ export default function ProjectsPage({ data }) {
       <div ref={setNavigationBarRef}></div>
       <div ref={setContentRef}></div>
       <HalogenLoader component={NavigationBarComponent} target={navigationBarRef} />
-      <HalogenLoader component={ProjectsPageComponent} input={data.projectsJson.projectSections} target={contentRef} />
+      <HalogenLoader component={ProjectsPageComponent} input={data.json.projectSections} target={contentRef} />
     </>
   );
 }
 
 export const query = graphql`
   query {
-    projectsJson {
+    json: projectsJson {
       projectSections {
         title
         projects {
