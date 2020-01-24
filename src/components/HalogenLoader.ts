@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { interop } from "../purescript/Util/Interop.purs"
 
 export interface Props {
@@ -8,7 +8,7 @@ export interface Props {
 }
 
 export default function HalogenLoader({ component, input, target }: Props) {
-  useEffect(() => {
+  useLayoutEffect(() => {
     const realInput = input == null ? {} : input;
     let dispose: any;
 
