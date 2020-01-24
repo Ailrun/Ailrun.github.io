@@ -1,4 +1,6 @@
-module.exports = {
+import { GatsbyConfig } from 'gatsby';
+
+const config: GatsbyConfig = {
   siteMetadata: {
     title: `Valhala of Valkyrie`,
   },
@@ -8,7 +10,7 @@ module.exports = {
       resolve: `gatsby-plugin-purs`,
       options: {
         src: [
-          "src/purescript/**/*.purs",
+          `src/purescript/**/*.purs`,
         ],
         pscPackage: true,
       },
@@ -21,3 +23,5 @@ module.exports = {
     },
   ],
 };
+
+module.exports = config;

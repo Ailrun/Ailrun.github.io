@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "description": "Ailrun's GitHub Blog",
   "scripts": {
-    "build": "gatsby build",
+    "build": "npx -n \"-r ts-node/register\" gatsby build",
     "postinstall": "psc-package install",
-    "start": "gatsby develop"
+    "start": "npx -n \"-r ts-node/register\" gatsby develop"
   },
   "dependencies": {
     "@types/react": "^16.9.18",
@@ -17,6 +17,7 @@
     "purs-loader": "^3.7.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
+    "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },
   "private": true
