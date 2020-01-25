@@ -2,8 +2,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-export default function SEO() {
-  const data = useStaticQuery(query);
+const SEO: React.FC<unknown> = () => {
+  const data = useStaticQuery<any>(query);
 
   return (
     <Helmet>
@@ -40,7 +40,8 @@ export default function SEO() {
       <meta name='twitter:image' content={data.site.siteMetadata.image} />
     </Helmet>
   );
-}
+};
+export default SEO;
 
 const query = graphql`
   query {

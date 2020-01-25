@@ -25,7 +25,6 @@ interop = mkEffectFn4 go
     go component i el cb
       = runAff_ (either throwException (runEffectFn1 cb <<< convert)) (runUI component i el)
 
-    convert :: H.HalogenIO q o Aff -> InteropHalogenIO
     convert { query, subscribe, dispose }
       = { dispose: runAff_ (either throwException pure) dispose
         }

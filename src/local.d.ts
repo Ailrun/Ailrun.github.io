@@ -84,7 +84,8 @@ declare module 'react-helmet' {
   export interface HelmetHTMLDatum<P extends React.HTMLAttributes<T>, T extends HTMLElement> extends HelmetDatum<React.DetailedReactHTMLElement<P, T>> {}
 }
 
-declare module "*.purs" {
-  export const component: any;
-  export const interop: any;
+declare module 'purescript-halogen' {
+  export interface HalogenComponent {
+    readonly __do_not_instantiate_this__: unknown;
+  }
 }

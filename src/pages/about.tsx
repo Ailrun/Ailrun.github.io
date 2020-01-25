@@ -1,15 +1,15 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { useState } from 'react';
 
-import HalogenLoader from "../components/HalogenLoader";
-import Layout from "../components/Layout";
-import { component as NavigationBarComponent } from "../purescript/Component/NavigationBar.purs";
-import { component as AboutPageComponent } from "../purescript/Component/AboutPage.purs";
+import HalogenLoader from '../components/HalogenLoader';
+import Layout from '../components/Layout';
+import { component as NavigationBarComponent } from '../purescript/Component/NavigationBar.purs';
+import { component as AboutPageComponent } from '../purescript/Component/AboutPage.purs';
 
-export default function AboutPage() {
-  const [navigationBarRef, setNavigationBarRef] = useState(null);
-  const [contentRef, setContentRef] = useState(null);
-  const data = useStaticQuery(query);
+const AboutPage: React.FC<unknown> = () => {
+  const [navigationBarRef, setNavigationBarRef] = useState<HTMLDivElement>(null);
+  const [contentRef, setContentRef] = useState<HTMLDivElement>(null);
+  const data = useStaticQuery<any>(query);
 
   return (
     <Layout>
@@ -19,7 +19,8 @@ export default function AboutPage() {
       <HalogenLoader component={AboutPageComponent} input={data.json.subjects} target={contentRef} />
     </Layout>
   );
-}
+};
+export default AboutPage;
 
 const query = graphql`
   query {

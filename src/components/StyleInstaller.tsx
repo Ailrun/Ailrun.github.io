@@ -1,9 +1,9 @@
 import React from 'react';
 
-import HalogenLoader from "../components/HalogenLoader";
-import { component as StyleComponent } from "../purescript/Style.purs";
+import HalogenLoader from '../components/HalogenLoader';
+import { component as StyleComponent } from '../purescript/Style.purs';
 
-export default function StyleInstaller() {
+const StyleInstaller: React.FC<unknown> = () => {
   /*
    * Gatsby hack: direct access to window is not supported by Gatsby SSR builder
    */
@@ -14,4 +14,5 @@ export default function StyleInstaller() {
   } else {
     return null;
   }
-}
+};
+export default StyleInstaller;

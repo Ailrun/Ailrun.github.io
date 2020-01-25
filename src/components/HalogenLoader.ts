@@ -1,13 +1,15 @@
 import { useLayoutEffect } from 'react';
-import { interop } from "../purescript/Util/Interop.purs"
+import { HalogenComponent } from 'purescript-halogen';
+
+import { interop } from '../purescript/Util/Interop.purs';
 
 export interface Props {
-  component: any;
+  component: HalogenComponent;
   input?: any;
-  target?: HTMLElement;
+  target: HTMLElement | null;
 }
 
-export default function HalogenLoader({ component, input, target }: Props) {
+const HalogenLoader: React.FC<Props> = ({ component, input, target }) => {
   useLayoutEffect(() => {
     const realInput = input == null ? {} : input;
     let dispose: any;
@@ -22,4 +24,5 @@ export default function HalogenLoader({ component, input, target }: Props) {
   }, [component, input, target]);
 
   return null;
-}
+};
+export default HalogenLoader;

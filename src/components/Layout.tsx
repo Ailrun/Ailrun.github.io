@@ -3,7 +3,7 @@ import React from 'react';
 import SEO from './SEO';
 import StyleInstaller from './StyleInstaller';
 
-export default function Layout({ children }) {
+const Layout: React.FC<unknown> = ({ children }) => {
   return (
     <>
       <SEO />
@@ -11,4 +11,5 @@ export default function Layout({ children }) {
       {children}
     </>
   );
-}
+};
+export default Layout;
