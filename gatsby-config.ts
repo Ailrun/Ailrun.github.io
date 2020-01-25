@@ -37,6 +37,7 @@ const config: GatsbyConfig = {
       },
     },
 
+    `gatsby-plugin-react-helmet-async`,
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {

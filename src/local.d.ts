@@ -1,19 +1,7 @@
-declare module 'react-helmet' {
+declare module 'react-helmet-async' {
   import * as React from 'react';
 
-  interface OtherElementAttributes {
-    [key: string]: string | number | boolean | null | undefined;
-  }
-
-  type HtmlProps = JSX.IntrinsicElements['html'] & OtherElementAttributes;
-
-  type BodyProps = JSX.IntrinsicElements['body'] & OtherElementAttributes;
-
-  type LinkProps = JSX.IntrinsicElements['link'];
-
-  type MetaProps = JSX.IntrinsicElements['meta'];
-
-  export interface HelmetTags {
+  interface HelmetTags {
     readonly baseTag: Array<any>;
     readonly linkTags: Array<HTMLLinkElement>;
     readonly metaTags: Array<HTMLMetaElement>;
@@ -22,33 +10,39 @@ declare module 'react-helmet' {
     readonly styleTags: Array<HTMLStyleElement>;
   }
 
-  export interface HelmetProps {
+  interface HelmetProps {
     readonly base?: any;
-    readonly bodyAttributes?: BodyProps;
+    readonly bodyAttributes?: React.HTMLAttributes<HTMLBodyElement>;
     readonly children?: React.ReactNodeArray | React.ReactNode;
     readonly defaultTitle?: string;
     readonly defer?: boolean;
     readonly encodeSpecialCharacters?: boolean;
-    readonly htmlAttributes?: HtmlProps;
-    readonly link?: LinkProps[];
-    readonly meta?: MetaProps[];
-    readonly noscript?: Array<object>;
+    readonly htmlAttributes?: React.HtmlHTMLAttributes<HTMLHtmlElement>;
+    readonly link?: Array<React.LinkHTMLAttributes<HTMLLinkElement>[]>;
+    readonly meta?: Array<React.MetaHTMLAttributes<HTMLMetaElement>[]>;
+    readonly noscript?: Array<{ innerHTML: string }>;
     readonly onChangeClientState?: (newState: HelmetClientState, addedTags: HelmetTags, removedTags: HelmetTags) => void;
-    readonly script?: Array<object>;
-    readonly style?: Array<object>;
+    readonly script?: Array<React.ScriptHTMLAttributes<HTMLScriptElement>[]>;
+    readonly style?: Array<React.StyleHTMLAttributes<HTMLStyleElement>[]>;
     readonly title?: string;
-    readonly titleAttributes?: object;
+    readonly titleAttributes?: React.HTMLAttributes<HTMLTitleElement>[];
     readonly titleTemplate?: string;
   }
 
-  export class Helmet extends React.Component<HelmetProps> {
-    static peek(): HelmetClientState | HelmetServerState;
-    static rewind(): HelmetServerState;
-    static renderStatic(): HelmetServerState;
-    static set canUseDOM(canUseDOM: boolean);
+  class Helmet extends React.Component<HelmetProps> {}
+
+  interface HelmetProviderProps {
+    readonly context?: {
+      readonly helmet?: HelmetServerState;
+    };
+    readonly children: React.ReactNode;
   }
 
-  export interface HelmetServerState {
+  class HelmetProvider extends React.Component<{}> {
+    static canUseDOM: boolean;
+  }
+
+  interface HelmetServerState {
     readonly base: HelmetHTMLDatum<React.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
     readonly bodyAttributes: HelmetDatum<React.HTMLAttributes<HTMLBodyElement>>;
     readonly htmlAttributes: HelmetDatum<React.HtmlHTMLAttributes<HTMLHtmlElement>>;
@@ -60,10 +54,10 @@ declare module 'react-helmet' {
     readonly title: HelmetHTMLDatum<React.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
   }
 
-  export interface HelmetClientState {
+  interface HelmetClientState {
     readonly baseTag: [] | [HTMLBaseElement];
-    readonly bodyAttributes: BodyProps;
-    readonly htmlAttributes: HtmlProps;
+    readonly bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
+    readonly htmlAttributes: React.HtmlHTMLAttributes<HTMLHtmlElement>;
     readonly defer: boolean;
     readonly encode: boolean;
     readonly linkTags: Array<HTMLLinkElement>;
@@ -76,16 +70,16 @@ declare module 'react-helmet' {
     readonly titleAttributes: object;
   }
 
-  export interface HelmetDatum<T> {
+  interface HelmetDatum<T> {
     toString(): string;
     toComponent(): T;
   }
 
-  export interface HelmetHTMLDatum<P extends React.HTMLAttributes<T>, T extends HTMLElement> extends HelmetDatum<React.DetailedReactHTMLElement<P, T>> {}
+  interface HelmetHTMLDatum<P extends React.HTMLAttributes<T>, T extends HTMLElement> extends HelmetDatum<React.DetailedReactHTMLElement<P, T>> {}
 }
 
 declare module 'purescript-halogen' {
-  export interface HalogenComponent {
+  interface HalogenComponent {
     readonly __do_not_instantiate_this__: unknown;
   }
 }
