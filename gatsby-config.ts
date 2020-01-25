@@ -45,5 +45,4 @@ const config: GatsbyConfig = {
     },
   ],
 };
-
-module.exports = config;
+export = config;

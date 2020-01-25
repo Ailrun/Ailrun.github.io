@@ -32,5 +32,4 @@ const node: GatsbyNode = {
   resolvableExtensions,
   onCreateWebpackConfig,
 };
-
 export = node;
