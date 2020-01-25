@@ -16,10 +16,11 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-purs`,
       options: {
+        psc: `psa`,
+        pscPackage: true,
         src: [
           `src/purescript/**/*.purs`,
         ],
-        pscPackage: true,
       },
     },
 
