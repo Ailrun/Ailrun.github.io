@@ -1,0 +1,315 @@
+@use "./fonts.scss" as *;
+
+$text-black: rgba(black, 0.84);
+$text-light-black: rgba(black, 0.73);
+$text-white: rgba(white, 0.84);
+
+$background-black: rgba(black, 0.72);
+
+$navigation-bar-height: 2.5vw;
+$banner-height: 26vw;
+$page-title-height: 26vw;
+
+* {
+  margin: 0;
+
+  padding: 0;
+}
+
+body {
+  margin: 0 auto;
+
+  width: 100%;
+
+  overflow-y: scroll;
+  font-size: $font-default-size;
+}
+
+a {
+  text-decoration: none;
+  color: $text-black;
+}
+
+.ailrun-blog-navigation-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  margin: 0 auto;
+
+  width: 100%;
+  height: $navigation-bar-height;
+
+  background-color: $background-black;
+
+  line-height: $navigation-bar-height;
+
+  h1 {
+    display: inline-block;
+
+    height: inherit;
+
+    font-size: $font-large-size;
+
+    a {
+      display: inline-block;
+      margin-left: 0.5em;
+
+      height: inherit;
+
+      @include font-dancing;
+      font-size: $font-large-size;
+      color: $text-white;
+    }
+  }
+
+  ul {
+    display: inline;
+    float: right;
+
+    margin: auto 0;
+
+    height: inherit;
+
+    li {
+      display: inline-block;
+
+      height: inherit;
+
+      font-size: $font-large-size;
+
+      a {
+        margin-left: 1vw;
+        margin-right: 1vw;
+
+        @include font-dancing;
+        font-size: $font-large-size;
+        color: $text-white;
+      }
+    }
+  }
+}
+
+.ailrun-blog-about-page {
+  .ailrun-blog-page-main {
+    margin: 5vw auto;
+
+    width: 80%;
+
+    color: $text-light-black;
+
+    h2 {
+      line-height: 2;
+
+      @include font-dancing;
+      font-weight: bold;
+      font-size: $font-giant-size;
+    }
+
+    .ailrun-blog-align-left {
+      display: inline-block;
+
+      width: 60%;
+
+      article {
+        padding-top: 1vw;
+        padding-left: 1em;
+      }
+
+      h3 {
+        font-size: $font-huge-size;
+      }
+
+      ul {
+        text-indent: -0.5em;
+        list-style-type: none;
+
+        li {
+          padding-left: 1em;
+
+          font-size: $font-large-size;
+        }
+      }
+    }
+
+    .ailrun-blog-align-right {
+      margin: 0;
+      float: right;
+
+      width: 30%;
+
+      img {
+        width: 100%;
+      }
+
+      h3 {
+        width: 100%;
+
+        text-align: center;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+.ailrun-blog-main-page {
+  line-height: 1.3;
+  color: $text-white;
+
+  article {
+    position: relative;
+
+    width: 100%;
+    height: $banner-height;
+
+    background-color: black;
+  }
+
+  .ailrun-blog-align-left > header {
+    left: 7%
+  }
+
+  .ailrun-blog-align-right > header {
+    left: 73%
+  }
+
+  img {
+    position: absolute;
+
+    width: inherit;
+    height: inherit;
+  }
+
+  header {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+
+    margin-top: -#{$banner-height / 2};
+
+    height: $banner-height;
+
+    line-height: $banner-height;
+
+    div {
+      display: inline-block;
+
+      vertical-align: middle;
+      line-height: 1.3;
+    }
+
+    h3 {
+      font-size: $font-huge-size;
+    }
+
+    p {
+      white-space: pre-wrap;
+      font-size: $font-large-size;
+    }
+  }
+
+  a {
+    position: absolute;
+    right: 2%;
+    bottom: 1vw;
+
+    color: inherit;
+  }
+}
+
+.ailrun-blog-projects-page {
+  .ailrun-blog-page-main {
+    margin: 3vw auto;
+
+    width: 80%;
+
+    color: $text-light-black;
+
+    h2 {
+      padding-top: 1.5vw;
+
+      font-weight: bold;
+      font-size: $font-huge-size;
+      line-height: 2;
+    }
+
+    ul {
+      padding: 0;
+      padding-left: 4em;
+
+      list-style-type: none;
+
+      li {
+        height: 4vw;
+
+        font-size: $font-large-size;
+        line-height: 4vw;
+
+        p {
+          display: inline-block;
+
+          width: 25vw;
+        }
+
+        span {
+          padding-right: 1em;
+        }
+
+        a {
+          width: 50em;
+        }
+
+        div {
+          display: inline-block;
+        }
+
+        img {
+          max-height: 4vw;
+
+          padding-bottom: 0.3em;
+
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}
+
+.ailrun-blog-page-title {
+  position: relative;
+
+  width: 100%;
+  height: $page-title-height;
+
+  background-color: white;
+
+  img {
+    position: absolute;
+
+    width: inherit;
+    height: inherit;
+  }
+
+  header {
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    bottom: 50%;
+    left: 7%;
+
+    margin-top: -#{$page-title-height / 2};
+
+    height: $page-title-height;
+
+    line-height: $page-title-height;
+
+    h1 {
+      color: white;
+      font-weight: bold;
+      font-size: $font-giant-size;
+    }
+  }
+}

@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "@types/react": "^16.9.18",
+    "@types/sass": "^1.16.0",
     "gatsby": "^2.19.1",
     "gatsby-plugin-purs": "file:plugins/gatsby-plugin-purs",
     "gatsby-plugin-react-helmet-async": "^1.0.14",
+    "gatsby-plugin-sass": "^2.1.27",
     "gatsby-plugin-typescript": "^2.1.26",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-json": "^2.2.25",
@@ -25,6 +27,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-helmet-async": "^1.0.4",
+    "sass": "^1.25.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
   },

@@ -1,3 +1,4 @@
+import sass from 'sass';
 import { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
@@ -21,6 +22,12 @@ const config: GatsbyConfig = {
         src: [
           `src/purescript/**/*.purs`,
         ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-sass`,
+      options: {
+        implementation: sass,
       },
     },
 
