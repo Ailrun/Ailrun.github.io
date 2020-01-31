@@ -3,7 +3,7 @@ $font-large-size: 1.5vw;
 $font-huge-size: 2vw;
 $font-giant-size: 2.5vw;
 
-@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700&display=block);
 
 @mixin font-dancing {
   font-family: "Dancing Script", cursive;
