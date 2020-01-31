@@ -3,6 +3,7 @@ import React, { Fragment } from 'react';
 
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
+import PageTitle from '../components/PageTitle';
 
 const ProjectsPage: React.FC<unknown> = () => {
   const data = useStaticQuery<any>(query);
@@ -11,7 +12,10 @@ const ProjectsPage: React.FC<unknown> = () => {
     <Layout>
       <NavigationBar />
       <section className='ailrun-blog-projects-page'>
-        <Title />
+        <PageTitle
+          imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
+          title='Projects'
+        />
         <ProjectSections projectSections={data.json.projectSections} />
       </section>
     </Layout>
@@ -33,17 +37,6 @@ const query = graphql`
     }
   }
 `;
-
-const Title: React.FC<unknown> = () => {
-  return (
-    <section className='ailrun-blog-page-title'>
-      <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png' />
-      <header>
-        <h1>Projects</h1>
-      </header>
-    </section>
-  );
-};
 
 const ProjectSections: React.FC<any> = ({ projectSections }) => {
   return (

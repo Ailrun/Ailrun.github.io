@@ -3,6 +3,7 @@ import React from 'react';
 
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
+import PageTitle from '../components/PageTitle';
 
 const AboutPage: React.FC<unknown> = () => {
   const data = useStaticQuery<any>(query);
@@ -11,7 +12,10 @@ const AboutPage: React.FC<unknown> = () => {
     <Layout>
       <NavigationBar />
       <section className='ailrun-blog-about-page'>
-        <Title />
+        <PageTitle
+          imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
+          title='About'
+        />
         <Subjects subjects={data.json.subjects} />
       </section>
     </Layout>
@@ -29,17 +33,6 @@ const query = graphql`
     }
   }
 `;
-
-const Title: React.FC<unknown> = () => {
-  return (
-    <section className='ailrun-blog-page-title'>
-      <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png' />
-      <header>
-        <h1>About</h1>
-      </header>
-    </section>
-  );
-};
 
 const Subjects: React.FC<any> = ({ subjects }) => {
   return (
