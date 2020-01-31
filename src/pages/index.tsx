@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery, Link } from 'gatsby';
 import React, { useMemo } from 'react';
 
 import * as C from '../constants';
@@ -9,6 +9,7 @@ import NavigationBar from '../components/NavigationBar';
 interface Banner {
   readonly background: string;
   readonly description: string;
+  readonly link: string;
   readonly linkTitle: string;
   readonly title: string;
 }
@@ -38,6 +39,7 @@ const query = graphql`
       banners {
         background
         description
+        link
         linkTitle
         title
       }
@@ -64,7 +66,9 @@ const Banner: React.FC<BannerProps> = ({ bannerData, isLeft }) => (
         <p>{bannerData.description}</p>
       </div>
     </BannerHeader>
-    <BannerLink>{bannerData.linkTitle + " >"}</BannerLink>
+    <BannerLink to={bannerData.link}>
+      {bannerData.linkTitle + " >"}
+    </BannerLink>
   </BannerWrapper>
 );
 
@@ -117,7 +121,7 @@ const BannerHeader = styled.header<{ isLeft: boolean }>({
   left: isLeft ? '7%' : '73%',
 }));
 
-const BannerLink = styled.a({
+const BannerLink = styled(Link)({
   position: 'absolute',
   right: '2%',
   bottom: '1vw',

@@ -61,7 +61,7 @@ const ProjectSectionsWrapper = styled.section({
 const ProjectSection: React.FC<any> = ({ projectSection }) => {
   return (
     <div>
-      <ProjectSectionTitle>{projectSection.title}</ProjectSectionTitle>
+      <ProjectSectionTitle id={projectSection.title}>{projectSection.title}</ProjectSectionTitle>
       <hr />
       <ProjectList>
         {
