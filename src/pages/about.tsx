@@ -47,7 +47,7 @@ const Info: React.FC<any> = ({ subjects }) => {
       </SubjectList>
       <OwnerProfile>
         <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png' />
-        <h3>Clare with cups of beer</h3>
+        <h3>Clare with a few cups of beer</h3>
       </OwnerProfile>
     </InfoWrapper>
   );
