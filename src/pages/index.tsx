@@ -1,11 +1,34 @@
 import styled from '@emotion/styled';
 import { graphql, useStaticQuery, Link } from 'gatsby';
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 
+const MainPage: React.FC<unknown> = () => {
+  const data = useStaticQuery<Data>(query);
+
+  return (
+    <Layout>
+      <NavigationBar />
+      <Wrapper>
+        {
+          data.json.banners.map((bannerData, i) => (
+            <Banner key={i} {...{ bannerData, isLeft: i % 2 !== 0 }} />
+          ))
+        }
+      </Wrapper>
+    </Layout>
+  );
+};
+export default MainPage;
+
+interface Data {
+  readonly json: {
+    readonly banners: Banner[];
+  };
+}
 interface Banner {
   readonly background: string;
   readonly description: string;
@@ -13,26 +36,6 @@ interface Banner {
   readonly linkTitle: string;
   readonly title: string;
 }
-
-const MainPage: React.FC<unknown> = () => {
-  const data = useStaticQuery<{ json: { banners: Banner[]; }; }>(query);
-  const banners = useMemo(() => {
-    return data.json.banners.map((bannerData, i) => (
-      <Banner key={i} {...{ bannerData, isLeft: i % 2 !== 0 }} />
-    ));
-  }, [data]);
-
-  return (
-    <Layout>
-      <NavigationBar />
-      <Wrapper>
-        {banners}
-      </Wrapper>
-    </Layout>
-  );
-};
-export default MainPage;
-
 const query = graphql`
   query {
     json: mainJson {

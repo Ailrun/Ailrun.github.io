@@ -7,7 +7,6 @@ export interface Props {
   readonly imgSrc: string;
   readonly title: string;
 }
-
 const PageTitle: React.FC<Props> = ({ imgSrc, title }) => (
   <Wrapper>
     <TitleImage src={imgSrc} />

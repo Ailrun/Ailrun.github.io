@@ -8,7 +8,7 @@ import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
 
 const AboutPage: React.FC<unknown> = () => {
-  const data = useStaticQuery<any>(query);
+  const data = useStaticQuery<Data>(query);
 
   return (
     <Layout>
@@ -23,6 +23,15 @@ const AboutPage: React.FC<unknown> = () => {
 };
 export default AboutPage;
 
+interface Data {
+  readonly json: {
+    readonly subjects: Subject[];
+  };
+}
+interface Subject {
+  readonly entries: string[];
+  readonly title: string;
+}
 const query = graphql`
   query {
     json: aboutJson {
@@ -34,24 +43,25 @@ const query = graphql`
   }
 `;
 
-const Info: React.FC<any> = ({ subjects }) => {
-  return (
-    <InfoWrapper>
-      <Owner>Junyoung Clare Jang</Owner>
-      <SubjectList>
-      {
-        subjects.map((subject: any, i: number) => (
-          <Subject key={i} {...{ subject }} />
-        ))
-      }
-      </SubjectList>
-      <OwnerProfile>
-        <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png' />
-        <h3>Clare with a few cups of beer</h3>
-      </OwnerProfile>
-    </InfoWrapper>
-  );
-};
+interface InfoProps {
+  readonly subjects: Subject[];
+}
+const Info: React.FC<InfoProps> = ({ subjects }) => (
+  <InfoWrapper>
+    <Owner>Junyoung Clare Jang</Owner>
+    <InfoSubjectList>
+    {
+      subjects.map((subject, i) => (
+        <InfoSubject key={i} {...{ subject }} />
+      ))
+    }
+    </InfoSubjectList>
+    <OwnerProfile>
+      <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png' />
+      <h3>Clare with a few cups of beer</h3>
+    </OwnerProfile>
+  </InfoWrapper>
+);
 
 const InfoWrapper = styled.section({
   margin: '5vw auto',
@@ -69,7 +79,7 @@ const Owner = styled.h2({
   fontSize: C.fontGiantSize,
 });
 
-const SubjectList = styled.div({
+const InfoSubjectList = styled.div({
   display: 'inline-block',
 
   width: '60%',
@@ -93,38 +103,39 @@ const OwnerProfile = styled.div({
   }
 });
 
-const Subject: React.FC<any> = ({ subject }) => {
-  return (
-    <SubjectWrapper>
-      <SubjectTitle>{subject.title}</SubjectTitle>
-      <p>
-        <SubjectEntryList>
-          {
-            subject.entries.map((entry: any, i: number) => (
-              <SubjectEntry key={i}>- {entry}</SubjectEntry>
-            ))
-          }
-        </SubjectEntryList>
-      </p>
-    </SubjectWrapper>
-  );
-};
+interface InfoSubjectProps {
+  readonly subject: Subject;
+}
+const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
+  <InfoSubjectWrapper>
+    <InfoSubjectTitle>{subject.title}</InfoSubjectTitle>
+    <p>
+      <InfoSubjectEntryList>
+        {
+          subject.entries.map((entry, i) => (
+            <InfoSubjectEntry key={i}>- {entry}</InfoSubjectEntry>
+          ))
+        }
+      </InfoSubjectEntryList>
+    </p>
+  </InfoSubjectWrapper>
+);
 
-const SubjectWrapper = styled.article({
+const InfoSubjectWrapper = styled.article({
   paddingTop: '1vw',
   paddingLeft: '1em',
 });
 
-const SubjectTitle = styled.h3({
+const InfoSubjectTitle = styled.h3({
   fontSize: C.fontHugeSize,
 });
 
-const SubjectEntryList = styled.ul({
+const InfoSubjectEntryList = styled.ul({
   textIndent: '-0.5em',
   listStyleType: 'none',
 });
 
-const SubjectEntry = styled.li({
+const InfoSubjectEntry = styled.li({
   paddingLeft: '1em',
 
   fontSize: C.fontLargeSize,

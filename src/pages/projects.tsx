@@ -8,7 +8,7 @@ import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
 
 const ProjectsPage: React.FC<unknown> = () => {
-  const data = useStaticQuery<any>(query);
+  const data = useStaticQuery<Data>(query);
 
   return (
     <Layout>
@@ -17,16 +17,30 @@ const ProjectsPage: React.FC<unknown> = () => {
         imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
         title='Projects'
       />
-      <ProjectSections projectSections={data.json.projectSections} />
+      <ProjectGroupList projectGroups={data.json.projectGroups} />
     </Layout>
   );
 };
 export default ProjectsPage;
 
+interface Data {
+  readonly json: {
+    readonly projectGroups: ProjectGroup[];
+  };
+}
+interface ProjectGroup {
+  readonly title: string;
+  readonly projects: Project[];
+}
+interface Project {
+  readonly images: string[];
+  readonly link: string;
+  readonly title: string;
+}
 const query = graphql`
   query {
     json: projectsJson {
-      projectSections {
+      projectGroups {
         title
         projects {
           images
@@ -38,19 +52,22 @@ const query = graphql`
   }
 `;
 
-const ProjectSections: React.FC<any> = ({ projectSections }) => {
+interface ProjectGroupListProps {
+  readonly projectGroups: ProjectGroup[];
+}
+const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) => {
   return (
-    <ProjectSectionsWrapper>
+    <ProjectGroupListWrapper>
       {
-        projectSections.map((projectSection: any, i: number) => (
-          <ProjectSection key={i} {...{ projectSection }} />
+        projectGroups.map((projectGroup, i) => (
+          <ProjectGroup key={i} {...{ projectGroup }} />
         ))
       }
-    </ProjectSectionsWrapper>
+    </ProjectGroupListWrapper>
   );
 };
 
-const ProjectSectionsWrapper = styled.section({
+const ProjectGroupListWrapper = styled.section({
   margin: '3vw auto',
 
   width: '80%',
@@ -58,14 +75,17 @@ const ProjectSectionsWrapper = styled.section({
   color: C.textLightBlack,
 });
 
-const ProjectSection: React.FC<any> = ({ projectSection }) => {
+interface ProjectGroupProps {
+  readonly projectGroup: ProjectGroup;
+}
+const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
   return (
     <div>
-      <ProjectSectionTitle id={projectSection.title}>{projectSection.title}</ProjectSectionTitle>
+      <ProjectGroupTitle id={projectGroup.title}>{projectGroup.title}</ProjectGroupTitle>
       <hr />
       <ProjectList>
         {
-          projectSection.projects.map((project: any, i: number) => (
+          projectGroup.projects.map((project, i) => (
             <Fragment key={i}>
               { i !== 0 ? <hr /> : null }
               <Project {...{ project }} />
@@ -77,7 +97,7 @@ const ProjectSection: React.FC<any> = ({ projectSection }) => {
   );
 };
 
-const ProjectSectionTitle = styled.h2({
+const ProjectGroupTitle = styled.h2({
   paddingTop: '1.5vw',
 
   fontWeight: 'bold',
@@ -91,7 +111,10 @@ const ProjectList = styled.ul({
   listStyleType: 'none',
 });
 
-const Project: React.FC<any> = ({ project }) => {
+interface ProjectProps {
+  readonly project: Project;
+}
+const Project: React.FC<ProjectProps> = ({ project }) => {
   return (
     <ProjectWrapper>
       <article>
@@ -99,7 +122,7 @@ const Project: React.FC<any> = ({ project }) => {
           <a href={project.link}>{project.title}</a>
         </ProjectTitle>
         {
-          project.images.map((image: string) => (
+          project.images.map((image) => (
             <img key={image} src={image} />
           ))
         }

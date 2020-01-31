@@ -1,5 +1,5 @@
 {
-  "projectSections": [
+  "projectGroups": [
     {
       "title": "Haskell",
       "projects":
