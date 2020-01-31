@@ -1,14 +1,7 @@
-declare module 'react-helmet-async' {
-  import * as React from 'react';
+declare module 'react-helmet' {
+  class Helmet extends React.Component<HelmetProps> {}
 
-  interface HelmetTags {
-    readonly baseTag: Array<any>;
-    readonly linkTags: Array<HTMLLinkElement>;
-    readonly metaTags: Array<HTMLMetaElement>;
-    readonly noscriptTags: Array<any>;
-    readonly scriptTags: Array<HTMLScriptElement>;
-    readonly styleTags: Array<HTMLStyleElement>;
-  }
+  interface HelmetData {}
 
   interface HelmetProps {
     readonly base?: any;
@@ -29,7 +22,37 @@ declare module 'react-helmet-async' {
     readonly titleTemplate?: string;
   }
 
-  class Helmet extends React.Component<HelmetProps> {}
+  interface HelmetClientState {
+    readonly baseTag: [] | [HTMLBaseElement];
+    readonly bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
+    readonly htmlAttributes: React.HtmlHTMLAttributes<HTMLHtmlElement>;
+    readonly defer: boolean;
+    readonly encode: boolean;
+    readonly linkTags: Array<HTMLLinkElement>;
+    readonly metaTags: Array<HTMLMetaElement>;
+    readonly noscriptTags: Array<HTMLElement>;
+    readonly onChangeClientState: (newState: HelmetClientState, addedTags: HelmetTags, removedTags: HelmetTags) => void;
+    readonly scriptTags: Array<HTMLScriptElement>;
+    readonly styleTags: Array<HTMLStyleElement>;
+    readonly title: string;
+    readonly titleAttributes: object;
+  }
+
+  interface HelmetTags {
+    readonly baseTag: Array<any>;
+    readonly linkTags: Array<HTMLLinkElement>;
+    readonly metaTags: Array<HTMLMetaElement>;
+    readonly noscriptTags: Array<any>;
+    readonly scriptTags: Array<HTMLScriptElement>;
+    readonly styleTags: Array<HTMLStyleElement>;
+  }
+}
+
+declare module 'react-helmet-async' {
+  import * as React from 'react';
+  import { HelmetProps, HelmetClientState, HelmetTags } from 'react-helmet';
+
+  export { HelmetProps, HelmetClientState, HelmetTags }
 
   /**
    * The following types are not used
@@ -58,22 +81,6 @@ declare module 'react-helmet-async' {
     readonly script: HelmetHTMLDatum<React.ScriptHTMLAttributes<HTMLScriptElement>, HTMLScriptElement>;
     readonly style: HelmetHTMLDatum<React.StyleHTMLAttributes<HTMLStyleElement>, HTMLStyleElement>;
     readonly title: HelmetHTMLDatum<React.HTMLAttributes<HTMLTitleElement>, HTMLTitleElement>;
-  }
-
-  interface HelmetClientState {
-    readonly baseTag: [] | [HTMLBaseElement];
-    readonly bodyAttributes: React.HTMLAttributes<HTMLBodyElement>;
-    readonly htmlAttributes: React.HtmlHTMLAttributes<HTMLHtmlElement>;
-    readonly defer: boolean;
-    readonly encode: boolean;
-    readonly linkTags: Array<HTMLLinkElement>;
-    readonly metaTags: Array<HTMLMetaElement>;
-    readonly noscriptTags: Array<HTMLElement>;
-    readonly onChangeClientState: (newState: HelmetClientState, addedTags: HelmetTags, removedTags: HelmetTags) => void;
-    readonly scriptTags: Array<HTMLScriptElement>;
-    readonly styleTags: Array<HTMLStyleElement>;
-    readonly title: string;
-    readonly titleAttributes: object;
   }
 
   interface HelmetDatum<T> {

@@ -1,6 +1,8 @@
+import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment } from 'react';
 
+import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
@@ -11,13 +13,11 @@ const ProjectsPage: React.FC<unknown> = () => {
   return (
     <Layout>
       <NavigationBar />
-      <section className='ailrun-blog-projects-page'>
-        <PageTitle
-          imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
-          title='Projects'
-        />
-        <ProjectSections projectSections={data.json.projectSections} />
-      </section>
+      <PageTitle
+        imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
+        title='Projects'
+      />
+      <ProjectSections projectSections={data.json.projectSections} />
     </Layout>
   );
 };
@@ -40,51 +40,92 @@ const query = graphql`
 
 const ProjectSections: React.FC<any> = ({ projectSections }) => {
   return (
-    <section className='ailrun-blog-page-main'>
+    <ProjectSectionsWrapper>
       {
         projectSections.map((projectSection: any, i: number) => (
           <ProjectSection key={i} {...{ projectSection }} />
         ))
       }
-    </section>
+    </ProjectSectionsWrapper>
   );
 };
+
+const ProjectSectionsWrapper = styled.section({
+  margin: '3vw auto',
+
+  width: '80%',
+
+  color: C.textLightBlack,
+});
 
 const ProjectSection: React.FC<any> = ({ projectSection }) => {
   return (
     <div>
-      <h2>{projectSection.title}</h2>
+      <ProjectSectionTitle>{projectSection.title}</ProjectSectionTitle>
       <hr />
-      <ul>
-      {
-        projectSection.projects.map((project: any, i: number) => (
-          <Fragment key={i}>
-            { i !== 0 ? <hr /> : null }
-            <Project {...{ project }} />
-          </Fragment>
-        ))
-      }
-      </ul>
+      <ProjectList>
+        {
+          projectSection.projects.map((project: any, i: number) => (
+            <Fragment key={i}>
+              { i !== 0 ? <hr /> : null }
+              <Project {...{ project }} />
+            </Fragment>
+          ))
+        }
+      </ProjectList>
     </div>
   );
 };
 
+const ProjectSectionTitle = styled.h2({
+  paddingTop: '1.5vw',
+
+  fontWeight: 'bold',
+  fontSize: C.fontHugeSize,
+});
+
+const ProjectList = styled.ul({
+  padding: 0,
+  paddingLeft: '4em',
+
+  listStyleType: 'none',
+});
+
 const Project: React.FC<any> = ({ project }) => {
   return (
-    <li>
+    <ProjectWrapper>
       <article>
-        <p>
-          <span>-</span>
+        <ProjectTitle>
           <a href={project.link}>{project.title}</a>
-        </p>
-        <div>
-          {
-            project.images.map((image: string) => (
-              <img key={image} src={image} />
-            ))
-          }
-        </div>
+        </ProjectTitle>
+        {
+          project.images.map((image: string) => (
+            <img key={image} src={image} />
+          ))
+        }
       </article>
-    </li>
+    </ProjectWrapper>
   );
 };
+
+const projectHeight = '4vw';
+const ProjectWrapper = styled.li({
+  height: projectHeight,
+
+  fontSize: C.fontLargeSize,
+  lineHeight: projectHeight,
+
+  img: {
+    maxHeight: projectHeight,
+
+    paddingBottom: '0.3em',
+
+    verticalAlign: 'middle',
+  },
+});
+
+const ProjectTitle = styled.p({
+  display: 'inline-block',
+
+  width: '25vw',
+});

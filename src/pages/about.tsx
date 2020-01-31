@@ -1,6 +1,8 @@
+import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
+import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
@@ -11,13 +13,11 @@ const AboutPage: React.FC<unknown> = () => {
   return (
     <Layout>
       <NavigationBar />
-      <section className='ailrun-blog-about-page'>
-        <PageTitle
-          imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
-          title='About'
-        />
-        <Subjects subjects={data.json.subjects} />
-      </section>
+      <PageTitle
+        imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
+        title='About'
+      />
+      <Info subjects={data.json.subjects} />
     </Layout>
   );
 };
@@ -34,46 +34,98 @@ const query = graphql`
   }
 `;
 
-const Subjects: React.FC<any> = ({ subjects }) => {
+const Info: React.FC<any> = ({ subjects }) => {
   return (
-    <section className='ailrun-blog-page-main'>
-      <h2>Junyoung Clare Jang</h2>
-      <div className='ailrun-blog-align-left'>
+    <InfoWrapper>
+      <Owner>Junyoung Clare Jang</Owner>
+      <SubjectList>
       {
         subjects.map((subject: any, i: number) => (
           <Subject key={i} {...{ subject }} />
         ))
       }
-      </div>
-      <div className='ailrun-blog-align-right'>
+      </SubjectList>
+      <OwnerProfile>
         <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png' />
         <h3>Clare with cups of beer</h3>
-      </div>
-    </section>
+      </OwnerProfile>
+    </InfoWrapper>
   );
 };
+
+const InfoWrapper = styled.section({
+  margin: '5vw auto',
+
+  width: '80%',
+
+  color: C.textLightBlack,
+});
+
+const Owner = styled.h2({
+  lineHeight: 2,
+
+  ...C.fontDancing,
+  fontWeight: 'bold',
+  fontSize: C.fontGiantSize,
+});
+
+const SubjectList = styled.div({
+  display: 'inline-block',
+
+  width: '60%',
+});
+
+const OwnerProfile = styled.div({
+  margin: 0,
+  float: 'right',
+
+  width: '30%',
+
+  img: {
+    width: '100%',
+  },
+
+  h3: {
+    width: '100%',
+
+    textAlign: 'center',
+    fontWeight: 'normal',
+  }
+});
 
 const Subject: React.FC<any> = ({ subject }) => {
   return (
-    <article>
-      <h3>{subject.title}</h3>
+    <SubjectWrapper>
+      <SubjectTitle>{subject.title}</SubjectTitle>
       <p>
-        <ul>
+        <SubjectEntryList>
           {
             subject.entries.map((entry: any, i: number) => (
-              <Entry key={i} {...{ entry }} />
+              <SubjectEntry key={i}>- {entry}</SubjectEntry>
             ))
           }
-        </ul>
+        </SubjectEntryList>
       </p>
-    </article>
+    </SubjectWrapper>
   );
 };
 
-const Entry: React.FC<any> = ({ entry }) => {
-  return (
-    <li>
-      - {entry}
-    </li>
-  );
-};
+const SubjectWrapper = styled.article({
+  paddingTop: '1vw',
+  paddingLeft: '1em',
+});
+
+const SubjectTitle = styled.h3({
+  fontSize: C.fontHugeSize,
+});
+
+const SubjectEntryList = styled.ul({
+  textIndent: '-0.5em',
+  listStyleType: 'none',
+});
+
+const SubjectEntry = styled.li({
+  paddingLeft: '1em',
+
+  fontSize: C.fontLargeSize,
+});

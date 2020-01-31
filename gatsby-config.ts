@@ -35,6 +35,7 @@ const config: GatsbyConfig = {
     },
 
     `gatsby-plugin-react-helmet-async`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
