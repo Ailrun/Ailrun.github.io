@@ -30,7 +30,20 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-transformer-json`,
       options: {
-        typeName: ({ node }) => node.name + `Json`,
+        typeName: ({ node }: any) => node.name + `Json`,
+      },
+    },
+
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./post/`,
+        name: `postMD`,
+      },
+    },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
       },
     },
 

@@ -13,6 +13,7 @@ const NavigationBar: React.FC<unknown> = () => (
     </Title>
     <NavigationList>
       <NavigationItem to='/' text='Main' />
+      <NavigationItem to='/posts/en' text='Posts' />
       <NavigationItem to='/projects' text='Projects' />
       <NavigationItem to='/about' text='About' />
     </NavigationList>
