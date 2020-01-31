@@ -31,6 +31,11 @@ declare module 'react-helmet-async' {
 
   class Helmet extends React.Component<HelmetProps> {}
 
+  /**
+   * The following types are not used
+   * under gatsby with gatsby-plugin-react-helmet-async
+   */
+  /*
   interface HelmetProviderProps {
     readonly context?: {
       readonly helmet?: HelmetServerState;
@@ -38,9 +43,10 @@ declare module 'react-helmet-async' {
     readonly children: React.ReactNode;
   }
 
-  class HelmetProvider extends React.Component<{}> {
+  class HelmetProvider extends React.Component<HelmetProviderProps> {
     static canUseDOM: boolean;
   }
+  */
 
   interface HelmetServerState {
     readonly base: HelmetHTMLDatum<React.BaseHTMLAttributes<HTMLBaseElement>, HTMLBaseElement>;
