@@ -1,20 +1,32 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useState } from 'react';
+import React, { useMemo } from 'react';
 
-import HalogenLoader from '../components/HalogenLoader';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
-import { component as MainPageComponent } from '../purescript/Component/MainPage.purs';
 
 const MainPage: React.FC<unknown> = () => {
-  const [contentRef, setContentRef] = useState<HTMLDivElement>(null);
   const data = useStaticQuery<any>(query);
+  const banners = useMemo(() => {
+    return (data.json.banners as Array<any>).map((bannerData, i) => (
+      <article key={i} className={bannerPositionClass(i)}>
+        <img src={bannerData.background} />
+        <header>
+          <div>
+            <h3>{bannerData.title}</h3>
+            <p>{bannerData.description}</p>
+          </div>
+        </header>
+        <a>{bannerData.linkTitle + " >"}</a>
+      </article>
+    ));
+  }, [data]);
 
   return (
     <Layout>
-      <div ref={setContentRef}></div>
       <NavigationBar />
-      <HalogenLoader component={MainPageComponent} input={data.json.banners} target={contentRef} />
+      <section className='ailrun-blog-main-page'>
+        {banners}
+      </section>
     </Layout>
   );
 };
@@ -32,3 +44,8 @@ const query = graphql`
     }
   }
 `;
+
+const bannerPositionClass = (i: number) =>
+  i % 2 == 0 ?
+  'ailrun-blog-align-right' :
+  'ailrun-blog-align-left';
