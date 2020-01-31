@@ -77,9 +77,3 @@ declare module 'react-helmet-async' {
 
   interface HelmetHTMLDatum<P extends React.HTMLAttributes<T>, T extends HTMLElement> extends HelmetDatum<React.DetailedReactHTMLElement<P, T>> {}
 }
-
-declare module 'purescript-halogen' {
-  interface HalogenComponent {
-    readonly __do_not_instantiate_this__: unknown;
-  }
-}

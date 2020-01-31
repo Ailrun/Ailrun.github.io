@@ -15,16 +15,6 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-typescript`,
     {
-      resolve: `gatsby-plugin-purs`,
-      options: {
-        psc: `psa`,
-        pscPackage: true,
-        src: [
-          `src/purescript/**/*.purs`,
-        ],
-      },
-    },
-    {
       resolve: `gatsby-plugin-sass`,
       options: {
         implementation: sass,

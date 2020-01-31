@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import React, { useState } from 'react';
+import React, { Fragment } from 'react';
 
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
@@ -49,8 +49,8 @@ const ProjectSections: React.FC<any> = ({ projectSections }) => {
   return (
     <section className='ailrun-blog-page-main'>
       {
-        projectSections.map((projectSection: any) => (
-          <ProjectSection {...{ projectSection }} />
+        projectSections.map((projectSection: any, i: number) => (
+          <ProjectSection key={i} {...{ projectSection }} />
         ))
       }
     </section>
@@ -65,10 +65,10 @@ const ProjectSection: React.FC<any> = ({ projectSection }) => {
       <ul>
       {
         projectSection.projects.map((project: any, i: number) => (
-          <>
+          <Fragment key={i}>
             { i !== 0 ? <hr /> : null }
             <Project {...{ project }} />
-          </>
+          </Fragment>
         ))
       }
       </ul>
@@ -87,7 +87,7 @@ const Project: React.FC<any> = ({ project }) => {
         <div>
           {
             project.images.map((image: string) => (
-              <img src={image} />
+              <img key={image} src={image} />
             ))
           }
         </div>

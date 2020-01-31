@@ -1,7 +1,0 @@
-{
-  "name": "gatsby-plugin-purs",
-  "peerDependencies": {
-    "purs-loader": "^3.7.1"
-  },
-  "private": true
-}
