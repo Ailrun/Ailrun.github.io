@@ -68,6 +68,5 @@ const PostMain = styled.main({
 
   padding: '0 1em',
 
-  fontSize: C.fontBaseSize,
-  color: C.textBlack,
+  ...C.markdown,
 });

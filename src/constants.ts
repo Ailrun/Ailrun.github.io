@@ -16,3 +16,11 @@ export const backgroundBlack: string = 'rgba(0, 0, 0, 0.73)';
 export const fontDancing: CSSObject = {
   fontFamily: '"Dancing Script", cursive',
 };
+
+export const markdown: CSSObject = {
+  color: textBlack,
+
+  p: {
+    fontSize: fontBaseSize,
+  },
+};
