@@ -106,4 +106,4 @@ const getLanguage = (fileAbsolutePath: string) =>
 const getPostDirectory = (fileAbsolutePath: string) =>
   path.basename(path.dirname(fileAbsolutePath));
 const getPostPath = (fileAbsolutePath: string) =>
-  path.posix.join('post', getPostDirectory(fileAbsolutePath), getLanguage(fileAbsolutePath));
+  path.posix.join('/post', getPostDirectory(fileAbsolutePath), getLanguage(fileAbsolutePath));
