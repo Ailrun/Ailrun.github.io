@@ -111,15 +111,13 @@ interface InfoSubjectProps {
 const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
   <InfoSubjectWrapper>
     <InfoSubjectTitle>{subject.title}</InfoSubjectTitle>
-    <p>
-      <InfoSubjectEntryList>
-        {
-          subject.entries.map((entry, i) => (
-            <InfoSubjectEntry key={i}>- {entry}</InfoSubjectEntry>
-          ))
-        }
-      </InfoSubjectEntryList>
-    </p>
+    <InfoSubjectEntryList>
+      {
+        subject.entries.map((entry, i) => (
+          <InfoSubjectEntry key={i}>- {entry}</InfoSubjectEntry>
+        ))
+      }
+    </InfoSubjectEntryList>
   </InfoSubjectWrapper>
 );
 
