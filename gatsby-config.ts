@@ -55,6 +55,26 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/pages`,
       },
     },
+    {
+      resolve: `gatsby-plugin-csp`,
+      options: {
+        disableOnDev: false,
+        mergeDefaultDirectives: false,
+        mergeStyleHashes: false,
+        directives: {
+          'default-src': '\'self\' https://disqus.com https://*.disqus.com https://*.disquscdn.com',
+          'font-src': '\'self\' https://fonts.gstatic.com',
+          'img-src': '\'self\' https:',
+          'script-src': '\'self\' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com' +
+            (
+              process.env.NODE_ENV === "development" ?
+                ' \'unsafe-eval\'' :
+                ''
+            ),
+          'style-src': '\'self\' https://fonts.googleapis.com blob: \'unsafe-inline\'',
+        },
+      },
+    },
   ],
 };
 export = config;
