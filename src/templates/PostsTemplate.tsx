@@ -57,6 +57,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => (
 
 const PostListWrapper = styled.ul({
   margin: '0 auto',
+  marginTop: '2vw',
 
   width: '70vw',
 
@@ -68,9 +69,14 @@ interface PostProps {
 }
 const Post: React.FC<PostProps> = ({ post }) => (
   <PostWrapper>
-    <Link to={post.postPath}>{ post.frontmatter.title }</Link>
+    <Link to={post.postPath}>
+      <PostTitle>{ post.frontmatter.title }</PostTitle>
+    </Link>
   </PostWrapper>
 );
 
 const PostWrapper = styled.li({
+});
+
+const PostTitle = styled.h2({
 });

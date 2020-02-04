@@ -1,7 +1,9 @@
+import styled from '@emotion/styled';
 import { DiscussionEmbed } from 'disqus-react';
 import { graphql } from 'gatsby';
 import React from 'react';
 
+import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 
@@ -18,11 +20,14 @@ const PostTemplate: React.FC<any> = ({ data }) => {
   return (
     <Layout>
       <NavigationBar />
-      <h1>{data.md.frontmatter.title}</h1>
-      <p
-        dangerouslySetInnerHTML={{ __html: data.md.html }}
-      />
-      <DiscussionEmbed {...disqusConfig} />
+      <PostWrapper>
+        <PostTitle>{data.md.frontmatter.title}</PostTitle>
+        <PostSeparator />
+        <PostMain
+          dangerouslySetInnerHTML={{ __html: data.md.html }}
+        />
+        <DiscussionEmbed {...disqusConfig} />
+      </PostWrapper>
     </Layout>
   );
 };
@@ -39,3 +44,30 @@ export const query = graphql`
     }
   }
 `;
+
+const PostWrapper = styled.div({
+  margin: '0 auto',
+  marginTop: C.navigationBarHeight,
+
+  width: '60vw',
+});
+
+const PostTitle = styled.h1({
+  paddingTop: '1vw',
+
+  fontSize: C.fontLargeSize,
+  color: C.textBlack,
+});
+
+const PostSeparator = styled.hr({
+  margin: '1em 0',
+});
+
+const PostMain = styled.main({
+  marginBottom: '3vw',
+
+  padding: '0 1em',
+
+  fontSize: C.fontBaseSize,
+  color: C.textBlack,
+});
