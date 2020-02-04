@@ -93,6 +93,8 @@ const OwnerProfile = styled.div({
 
   img: {
     width: '100%',
+
+    pointerEvents: 'auto',
   },
 
   h3: {
