@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
 import * as C from '../constants';
+import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
@@ -14,10 +15,12 @@ const AboutPage: React.FC<unknown> = () => {
     <Layout>
       <NavigationBar />
       <PageTitle
-        imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
+        backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
         title='About'
       />
-      <Info subjects={data.json.subjects} />
+      <main>
+        <Info subjects={data.json.subjects} />
+      </main>
     </Layout>
   );
 };
@@ -56,53 +59,57 @@ const Info: React.FC<InfoProps> = ({ subjects }) => (
       ))
     }
     </InfoSubjectList>
+    <FlexSpacer />
     <OwnerProfile>
-      <img src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png' />
-      <h3>Clare with a few cups of beer</h3>
+      <OwnerProfileImage
+        src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
+      />
+      <OwnerProfileCaption>Clare with a few cups of beer</OwnerProfileCaption>
     </OwnerProfile>
   </InfoWrapper>
 );
 
-const InfoWrapper = styled.section({
-  margin: '5vw auto',
+const InfoWrapper = styled.article({
+  display: 'flex',
 
-  width: '80%',
+  margin: '5vw 0',
+
+  width: '100%',
+
+  padding: '0 10%',
 
   color: C.textLightBlack,
+
+  flexWrap: 'wrap',
 });
 
 const Owner = styled.h2({
-  lineHeight: 2,
+  width: '100%',
 
-  ...C.fontDancing,
+  lineHeight: 2,
   fontWeight: 'bold',
   fontSize: C.fontGiantSize,
-});
+}, C.fontDancing);
 
 const InfoSubjectList = styled.div({
-  display: 'inline-block',
-
   width: '60%',
+
+  paddingTop: '1vw',
+  paddingLeft: '1em',
 });
 
-const OwnerProfile = styled.div({
-  margin: 0,
-  float: 'right',
-
+const OwnerProfile = styled.figure({
   width: '30%',
+});
 
-  img: {
-    width: '100%',
+const OwnerProfileImage = styled.img({
+  width: '100%',
 
-    pointerEvents: 'auto',
-  },
+  pointerEvents: 'auto',
+});
 
-  h3: {
-    width: '100%',
-
-    textAlign: 'center',
-    fontWeight: 'normal',
-  }
+const OwnerProfileCaption = styled.figcaption({
+  textAlign: 'center',
 });
 
 interface InfoSubjectProps {
@@ -110,33 +117,36 @@ interface InfoSubjectProps {
 }
 const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
   <InfoSubjectWrapper>
-    <InfoSubjectTitle>{subject.title}</InfoSubjectTitle>
+    <InfoSubjectTitle id={`about-${subject.title}`}>{subject.title}</InfoSubjectTitle>
     <InfoSubjectEntryList>
       {
         subject.entries.map((entry, i) => (
-          <InfoSubjectEntry key={i}>- {entry}</InfoSubjectEntry>
+          <InfoSubjectEntry key={i}>{entry}</InfoSubjectEntry>
         ))
       }
     </InfoSubjectEntryList>
   </InfoSubjectWrapper>
 );
 
-const InfoSubjectWrapper = styled.article({
-  paddingTop: '1vw',
-  paddingLeft: '1em',
+const InfoSubjectWrapper = styled.figure({
+  '& + &': {
+    marginTop: '1vw',
+  },
 });
 
-const InfoSubjectTitle = styled.h3({
+const InfoSubjectTitle = styled.figcaption({
   fontSize: C.fontHugeSize,
+  fontWeight: 'bold',
 });
 
 const InfoSubjectEntryList = styled.ul({
-  textIndent: '-0.5em',
-  listStyleType: 'none',
+  paddingLeft: '2em',
+
+  listStyleType: '\'-\'',
 });
 
 const InfoSubjectEntry = styled.li({
-  paddingLeft: '1em',
+  paddingLeft: '0.5em',
 
   fontSize: C.fontLargeSize,
 });

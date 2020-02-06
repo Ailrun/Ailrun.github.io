@@ -4,53 +4,37 @@ import React from 'react';
 import * as C from '../constants';
 
 export interface Props {
-  readonly imgSrc: string;
+  readonly backgroundSrc: string;
   readonly title: string;
 }
-const PageTitle: React.FC<Props> = ({ imgSrc, title }) => (
-  <Wrapper>
-    <TitleImage src={imgSrc} />
-    <TitleText>
-      <h1>{title}</h1>
-    </TitleText>
+const PageTitle: React.FC<Props> = ({ backgroundSrc, title }) => (
+  <Wrapper backgroundSrc={backgroundSrc}>
+    <TitleText>{title}</TitleText>
   </Wrapper>
 );
 export default PageTitle;
 
-const pageTitleHeight: number = 26;
-
-const Wrapper = styled.section({
-  position: 'relative',
+interface WrapperProps {
+  readonly backgroundSrc: string;
+}
+const Wrapper = styled.header<WrapperProps>({
+  display: 'flex',
 
   width: '100%',
-  height: `${pageTitleHeight}vw`,
+  height: '26vw',
 
   backgroundColor: 'white',
-});
+  backgroundSize: 'cover',
 
-const TitleImage = styled.img({
-  position: 'absolute',
+  alignItems: 'center',
+}, ({ backgroundSrc }) => ({
+  backgroundImage: `url('${backgroundSrc}')`,
+}));
 
-  width: 'inherit',
-  height: 'inherit',
-});
+const TitleText = styled.h1({
+  paddingLeft: '7%',
 
-const TitleText = styled.header({
-  display: 'inline-block',
-  position: 'absolute',
-  top: '50%',
-  bottom: '50%',
-  left: '7%',
-
-  marginTop: `${- pageTitleHeight / 2}vw`,
-
-  height: `${pageTitleHeight}vw`,
-
-  lineHeight: `${pageTitleHeight}vw`,
-
-  h1: {
-    color: C.textWhite,
-    fontWeight: 'bold',
-    fontSize: C.fontGiantSize,
-  },
+  color: C.textWhite,
+  fontWeight: 'bold',
+  fontSize: C.fontGiantSize,
 });

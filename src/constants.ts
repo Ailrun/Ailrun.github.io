@@ -1,4 +1,4 @@
-import { CSSObject } from '@emotion/core';
+import { SerializedStyles, css } from '@emotion/core';
 
 export const navigationBarHeight: string = '2.5vw';
 
@@ -13,14 +13,14 @@ export const textLightBlack: string = 'rgba(0, 0, 0, 0.73)';
 
 export const backgroundBlack: string = 'rgba(0, 0, 0, 0.73)';
 
-export const fontDancing: CSSObject = {
+export const fontDancing: SerializedStyles = css({
   fontFamily: '"Dancing Script", cursive',
-};
+});
 
-export const markdown: CSSObject = {
+export const markdown: SerializedStyles = css({
   color: textBlack,
 
   p: {
     fontSize: fontBaseSize,
   },
-};
+});

@@ -50,8 +50,7 @@ const query = graphql`
   }
 `;
 
-const Wrapper = styled.section({
-  lineHeight: 1.3,
+const Wrapper = styled.main({
   color: C.textWhite,
 });
 
@@ -61,13 +60,12 @@ interface BannerProps {
 }
 
 const Banner: React.FC<BannerProps> = ({ bannerData, isLeft }) => (
-  <BannerWrapper>
-    <BannerImage src={bannerData.background} />
+  <BannerWrapper backgroundSrc={bannerData.background}>
     <BannerHeader {...{ isLeft }}>
-      <div>
-        <h3>{bannerData.title}</h3>
-        <p>{bannerData.description}</p>
-      </div>
+      <hgroup>
+        <BannerTitle>{bannerData.title}</BannerTitle>
+        <BannerSubtitle>{bannerData.description}</BannerSubtitle>
+      </hgroup>
     </BannerHeader>
     <BannerLink to={bannerData.link}>
       {bannerData.linkTitle + " >"}
@@ -75,59 +73,48 @@ const Banner: React.FC<BannerProps> = ({ bannerData, isLeft }) => (
   </BannerWrapper>
 );
 
-const bannerHeight = 26;
-
-const BannerWrapper = styled.article({
+interface BannerWrapperProps {
+  readonly backgroundSrc: string;
+}
+const BannerWrapper = styled.article<BannerWrapperProps>({
   position: 'relative',
 
   width: '100%',
-  height: `${bannerHeight}vw`,
+  height: '26vw',
 
   backgroundColor: 'black',
-});
-
-const BannerImage = styled.img({
-  position: 'absolute',
-
-  width: 'inherit',
-  height: 'inherit',
-});
+  backgroundSize: 'cover',
+}, ({ backgroundSrc }) => ({
+  backgroundImage: `url('${backgroundSrc}')`,
+}));
 
 const BannerHeader = styled.header<{ isLeft: boolean }>({
-  display: 'inline-block',
+  display: 'flex',
   position: 'absolute',
   top: '50%',
   bottom: '50%',
 
-  marginTop: `${- bannerHeight / 2}vw`,
+  lineHeight: 1.3,
 
-  height: `${bannerHeight}vw`,
-
-  lineHeight: `${bannerHeight}vw`,
-
-  div: {
-    display: 'inline-block',
-
-    verticalAlign: 'middle',
-    lineHeight: 1.3,
-  },
-
-  h3: {
-    fontSize: C.fontHugeSize,
-  },
-
-  p: {
-    whiteSpace: 'pre-wrap',
-    fontSize: C.fontLargeSize,
-  },
+  alignItems: 'center',
 }, ({ isLeft }) => ({
   left: isLeft ? '7%' : '73%',
 }));
 
+const BannerTitle = styled.h3({
+  fontSize: C.fontHugeSize,
+});
+
+const BannerSubtitle = styled.h4({
+  whiteSpace: 'pre-wrap',
+  fontSize: C.fontLargeSize,
+  fontWeight: 'normal',
+});
+
 const BannerLink = styled(Link)({
   position: 'absolute',
-  right: '2%',
-  bottom: '1vw',
+  right: '2em',
+  bottom: '1em',
 
-  color: 'inherit',
+  fontSize: C.fontBaseSize,
 });

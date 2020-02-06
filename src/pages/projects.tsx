@@ -14,7 +14,7 @@ const ProjectsPage: React.FC<unknown> = () => {
     <Layout>
       <NavigationBar />
       <PageTitle
-        imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
+        backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
         title='Projects'
       />
       <ProjectGroupList projectGroups={data.json.projectGroups} />
@@ -67,10 +67,12 @@ const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) =>
   );
 };
 
-const ProjectGroupListWrapper = styled.section({
-  margin: '3vw auto',
+const ProjectGroupListWrapper = styled.main({
+  margin: '3vw 0',
 
-  width: '80%',
+  width: '100%',
+
+  padding: '0 10%',
 
   color: C.textLightBlack,
 });
@@ -80,7 +82,7 @@ interface ProjectGroupProps {
 }
 const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
   return (
-    <div>
+    <ProjectGroupWrapper>
       <ProjectGroupTitle id={projectGroup.title}>{projectGroup.title}</ProjectGroupTitle>
       <hr />
       <ProjectList>
@@ -93,13 +95,17 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
           ))
         }
       </ProjectList>
-    </div>
+    </ProjectGroupWrapper>
   );
 };
 
-const ProjectGroupTitle = styled.h2({
-  paddingTop: '1.5vw',
+const ProjectGroupWrapper = styled.figure({
+  '& + &': {
+    marginTop: '1vw',
+  },
+});
 
+const ProjectGroupTitle = styled.figcaption({
   fontWeight: 'bold',
   fontSize: C.fontHugeSize,
 });
@@ -117,38 +123,37 @@ interface ProjectProps {
 const Project: React.FC<ProjectProps> = ({ project }) => {
   return (
     <ProjectWrapper>
-      <article>
-        <ProjectTitle>
-          <a href={project.link}>{project.title}</a>
-        </ProjectTitle>
-        {
-          project.images.map((image) => (
-            <img key={image} src={image} />
-          ))
-        }
-      </article>
+      <ProjectTitle>
+        <a href={project.link}>{project.title}</a>
+      </ProjectTitle>
+      {
+        project.images.map((image) => (
+          <img key={image} src={image} />
+        ))
+      }
     </ProjectWrapper>
   );
 };
 
-const projectHeight = '4vw';
 const ProjectWrapper = styled.li({
-  height: projectHeight,
+  display: 'flex',
+
+  padding: '0.25em 0',
 
   fontSize: C.fontLargeSize,
-  lineHeight: projectHeight,
+
+  alignItems: 'center',
 
   img: {
-    maxHeight: projectHeight,
+    maxHeight: '1.5em',
 
-    paddingBottom: '0.3em',
-
-    verticalAlign: 'middle',
+    fontSize: 'inherit',
   },
 });
 
-const ProjectTitle = styled.p({
-  display: 'inline-block',
-
+const ProjectTitle = styled.h3({
   width: '25vw',
+
+  fontSize: C.fontLargeSize,
+  fontWeight: 'normal',
 });

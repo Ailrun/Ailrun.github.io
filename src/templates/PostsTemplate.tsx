@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 import { Link, graphql } from 'gatsby';
 import React from 'react';
 
+import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
@@ -10,10 +11,12 @@ const PostsTemplate: React.FC<{ data: Data }> = ({ data }) => (
   <Layout>
     <NavigationBar />
     <PageTitle
-      imgSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
+      backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
       title='Posts'
     />
-    <PostList posts={data.md.posts} />
+    <main>
+      <PostList posts={data.md.posts} />
+    </main>
   </Layout>
 );
 export default PostsTemplate;
@@ -61,7 +64,7 @@ const PostListWrapper = styled.ul({
 
   width: '70vw',
 
-  listStyleType: 'none',
+  listStyle: 'none',
 });
 
 interface PostProps {
@@ -69,14 +72,15 @@ interface PostProps {
 }
 const Post: React.FC<PostProps> = ({ post }) => (
   <PostWrapper>
-    <Link to={post.postPath}>
-      <PostTitle>{ post.frontmatter.title }</PostTitle>
-    </Link>
+    <PostTitle>
+      <Link to={post.postPath}>{ post.frontmatter.title }</Link>
+    </PostTitle>
   </PostWrapper>
 );
 
 const PostWrapper = styled.li({
 });
 
-const PostTitle = styled.h2({
+const PostTitle = styled.h3({
+  fontSize: C.fontLargeSize,
 });

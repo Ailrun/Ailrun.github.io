@@ -3,74 +3,62 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import * as C from '../constants';
+import FlexSpacer from './FlexSpacer';
 
 const NavigationBar: React.FC<unknown> = () => (
   <Wrapper>
-    <Title>
-      <Link to='/'>
-        Valhala of Valkyrie
-      </Link>
+    <Title to='/'>
+      Valhala of Valkyrie
     </Title>
+    <FlexSpacer />
     <NavigationList>
-      <NavigationItem to='/' text='Main' />
-      <NavigationItem to='/posts/en' text='Posts' />
-      <NavigationItem to='/projects' text='Projects' />
-      <NavigationItem to='/about' text='About' />
+      {
+        navigationItems.map((navigationItem) => (
+          <NavigationItem key={navigationItem.to} {...navigationItem} />
+        ))
+      }
     </NavigationList>
   </Wrapper>
 );
 export default NavigationBar;
 
-interface ItemProps {
-  to: string;
-  text: string;
-}
-
-const Wrapper = styled.header({
+const Wrapper = styled.nav({
+  display: 'flex',
   position: 'fixed',
   top: 0,
   left: 0,
-  right: 0,
   zIndex: 1,
 
-  margin: '0 auto',
-
-  width: '100%',
+  width: '100vw',
   height: C.navigationBarHeight,
 
   backgroundColor: C.backgroundBlack,
 
-  lineHeight: C.navigationBarHeight,
+  color: C.textWhite,
+
+  alignItems: 'center',
 });
 
-const Title = styled.h1({
+const Title = styled(Link)({
   display: 'inline-block',
 
   height: 'inherit',
 
+  padding: '0 0.5em',
+
   fontSize: C.fontLargeSize,
-
-  a: {
-    display: 'inline-block',
-
-    marginLeft: '0.5em',
-
-    height: 'inherit',
-
-    ...C.fontDancing,
-    fontSize: C.fontLargeSize,
-    color: C.textWhite,
-  },
-});
+}, C.fontDancing);
 
 const NavigationList = styled.ul({
-  display: 'inline',
-  float: 'right',
+  marginRight: '20px',
 
-  margin: 'auto 0',
-
-  height: 'inherit',
+  listStyle: 'none',
 });
+
+interface ItemProps {
+  to: string;
+  text: string;
+}
 
 const NavigationItem: React.FC<ItemProps> = ({ to, text }) => (
   <NavigationItemWrapper>
@@ -83,16 +71,15 @@ const NavigationItem: React.FC<ItemProps> = ({ to, text }) => (
 const NavigationItemWrapper = styled.li({
   display: 'inline-block',
 
-  height: 'inherit',
+  padding: '0 1vw',
 
   fontSize: C.fontLargeSize,
+}, C.fontDancing);
 
-  a: {
-    marginLeft: '1vw',
-    marginRight: '1vw',
 
-    ...C.fontDancing,
-    fontSize: C.fontLargeSize,
-    color: C.textWhite,
-  },
-});
+const navigationItems: ItemProps[] = [
+  { to: '/', text: 'Main' },
+  { to: '/posts/en', text: 'Posts' },
+  { to: '/projects', text: 'Projects' },
+  { to: '/about', text: 'About' },
+];

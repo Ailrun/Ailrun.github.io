@@ -20,14 +20,16 @@ const PostTemplate: React.FC<any> = ({ data }) => {
   return (
     <Layout>
       <NavigationBar />
-      <PostWrapper>
-        <PostTitle>{data.md.frontmatter.title}</PostTitle>
-        <PostSeparator />
-        <PostMain
-          dangerouslySetInnerHTML={{ __html: data.md.html }}
-        />
-        <DiscussionEmbed {...disqusConfig} />
-      </PostWrapper>
+      <main>
+        <PostWrapper>
+          <PostTitle>{data.md.frontmatter.title}</PostTitle>
+          <PostSeparator />
+          <PostMain
+            dangerouslySetInnerHTML={{ __html: data.md.html }}
+          />
+          <DiscussionEmbed {...disqusConfig} />
+        </PostWrapper>
+      </main>
     </Layout>
   );
 };
@@ -45,7 +47,7 @@ export const query = graphql`
   }
 `;
 
-const PostWrapper = styled.div({
+const PostWrapper = styled.article({
   margin: '0 auto',
   marginTop: C.navigationBarHeight,
 
@@ -63,10 +65,11 @@ const PostSeparator = styled.hr({
   margin: '1em 0',
 });
 
-const PostMain = styled.main({
-  marginBottom: '3vw',
+const PostMain = styled.main(
+  {
+    marginBottom: '3vw',
 
-  padding: '0 1em',
-
-  ...C.markdown,
-});
+    padding: '0 1em',
+  },
+  C.markdown,
+);

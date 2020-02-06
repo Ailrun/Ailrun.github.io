@@ -3,24 +3,24 @@
 * {
   margin: 0;
 
+  box-sizing: border-box;
+
   padding: 0;
 }
 
+html {
+  width: 100vw;
+}
+
 body {
-  margin: 0 auto;
+  margin: 0;
 
-  width: 100%;
+  width: 100vw;
 
-  overflow-y: scroll;
-  font-size: 1em;
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
-  color: black;
-}
-
-img {
-  pointer-events: none;
-  user-select: none;
+  color: inherit;
 }
