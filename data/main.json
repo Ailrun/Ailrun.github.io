@@ -9,7 +9,7 @@
     },
     {
       "title": "Beer",
-      "description": "The World's Greatest Drink",
+      "description": "The Greatest Drink in the World",
       "linkTitle": "Beer Lists",
       "link": "/",
       "background":"https://raw.githubusercontent.com/Ailrun/media/master/blog-img/beer.png"
@@ -23,7 +23,7 @@
     },
     {
       "title": "Purescript",
-      "description": "Functional Web Language\n that is done right",
+      "description": "Functional Web Language\nDone Right",
       "linkTitle": "Purescript Projects",
       "link": "/",
       "background":"https://raw.githubusercontent.com/Ailrun/media/master/blog-img/purescript.png"
