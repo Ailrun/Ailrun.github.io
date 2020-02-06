@@ -13,6 +13,7 @@ const config: GatsbyConfig = {
     ],
   },
   plugins: [
+    `gatsby-plugin-custom-eslint`,
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-plugin-sass`,

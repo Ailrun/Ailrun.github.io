@@ -3,7 +3,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO: React.FC<unknown> = () => {
-  const data = useStaticQuery<any>(query);
+  const data = useStaticQuery<Data>(query);
 
   return (
     <Helmet>
@@ -43,6 +43,18 @@ const SEO: React.FC<unknown> = () => {
 };
 export default SEO;
 
+interface Data {
+  readonly site: {
+    readonly siteMetadata: {
+      readonly title: string;
+      readonly description: string;
+      readonly url: string;
+      readonly image: string;
+      readonly author: string;
+      readonly locales: string[];
+    };
+  };
+}
 const query = graphql`
   query {
     site {

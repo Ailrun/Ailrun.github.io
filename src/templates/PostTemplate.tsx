@@ -7,7 +7,10 @@ import * as C from '../constants';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 
-const PostTemplate: React.FC<any> = ({ data }) => {
+interface Props {
+  readonly data: Data;
+}
+const PostTemplate: React.FC<Props> = ({ data }) => {
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
     config: {
@@ -35,6 +38,15 @@ const PostTemplate: React.FC<any> = ({ data }) => {
 };
 export default PostTemplate;
 
+interface Data {
+  readonly md: {
+    readonly frontmatter: {
+      readonly title: string;
+    };
+    readonly html: string;
+    readonly id: string;
+  };
+}
 export const query = graphql`
   query ($id: String) {
     md: markdownRemark(id: { eq: $id }) {

@@ -1,17 +1,17 @@
 import { SerializedStyles, css } from '@emotion/core';
 
-export const navigationBarHeight: string = '2.5vw';
+export const navigationBarHeight = '2.5vw';
 
-export const fontBaseSize: string = '1vw';
-export const fontLargeSize: string = '1.5vw';
-export const fontHugeSize: string = '2vw';
-export const fontGiantSize: string = '2.5vw';
+export const fontBaseSize = '1vw';
+export const fontLargeSize = '1.5vw';
+export const fontHugeSize = '2vw';
+export const fontGiantSize = '2.5vw';
 
-export const textWhite: string = 'rgba(255, 255, 255, 0.84)';
-export const textBlack: string = 'rgba(0, 0, 0, 0.84)';
-export const textLightBlack: string = 'rgba(0, 0, 0, 0.73)';
+export const textWhite = 'rgba(255, 255, 255, 0.84)';
+export const textBlack = 'rgba(0, 0, 0, 0.84)';
+export const textLightBlack = 'rgba(0, 0, 0, 0.73)';
 
-export const backgroundBlack: string = 'rgba(0, 0, 0, 0.73)';
+export const backgroundBlack = 'rgba(0, 0, 0, 0.73)';
 
 export const fontDancing: SerializedStyles = css({
   fontFamily: '"Dancing Script", cursive',

@@ -1,0 +1,6 @@
+{
+  "name": "gatsby-plugin-custom-eslint",
+  "dependencies": {
+    "eslint-loader": "^3.0.3"
+  }
+}
