@@ -68,7 +68,7 @@ const config: GatsbyConfig = {
           'script-src': '\'self\' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com' +
             (
               process.env.NODE_ENV === "development" ?
-                ' \'unsafe-eval\'' :
+                ' \'unsafe-eval\' \'unsafe-inline\'' :
                 ''
             ),
           'style-src': '\'self\' https://fonts.googleapis.com blob: \'unsafe-inline\'',
