@@ -84,12 +84,12 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
   return (
     <ProjectGroupWrapper>
       <ProjectGroupTitle id={projectGroup.title}>{projectGroup.title}</ProjectGroupTitle>
-      <hr />
+      <ProjectGroupTitleSeparator />
       <ProjectList>
         {
           projectGroup.projects.map((project, i) => (
             <Fragment key={i}>
-              { i !== 0 ? <hr /> : null }
+              { i !== 0 ? <ProjectSeparator /> : null }
               <Project {...{ project }} />
             </Fragment>
           ))
@@ -107,7 +107,11 @@ const ProjectGroupWrapper = styled.figure({
 
 const ProjectGroupTitle = styled.figcaption({
   fontWeight: 'bold',
-  fontSize: C.fontHugeSize,
+  fontSize: C.fontLargeSize,
+});
+
+const ProjectGroupTitleSeparator = styled.hr({
+  color: C.textLightBlack,
 });
 
 const ProjectList = styled.ul({
@@ -115,6 +119,10 @@ const ProjectList = styled.ul({
   paddingLeft: '4em',
 
   listStyleType: 'none',
+});
+
+const ProjectSeparator = styled.hr({
+  color: C.textLightBlack,
 });
 
 interface ProjectProps {
@@ -138,14 +146,14 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
 const ProjectWrapper = styled.li({
   display: 'flex',
 
-  padding: '0.25em 0',
+  padding: '0.5em 0',
 
-  fontSize: C.fontLargeSize,
+  fontSize: C.fontBaseSize,
 
   alignItems: 'center',
 
   img: {
-    maxHeight: '1.5em',
+    maxHeight: '1.8em',
 
     fontSize: 'inherit',
   },
@@ -154,6 +162,5 @@ const ProjectWrapper = styled.li({
 const ProjectTitle = styled.h3({
   width: '25vw',
 
-  fontSize: C.fontLargeSize,
   fontWeight: 'normal',
 });

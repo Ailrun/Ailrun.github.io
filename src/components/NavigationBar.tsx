@@ -42,8 +42,6 @@ const Wrapper = styled.nav({
 const Title = styled(Link)({
   display: 'inline-block',
 
-  height: 'inherit',
-
   padding: '0 0.5em',
 
   fontSize: C.fontLargeSize,

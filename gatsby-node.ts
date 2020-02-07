@@ -35,28 +35,30 @@ const config: GatsbyNode = {
   },
 
   async setFieldsOnGraphQLNodeType({ type }) {
-    if (type.name === 'MarkdownRemark') {
-      return {
-        language: {
-          type: 'String',
-          resolve({ fileAbsolutePath }) {
-            return getLanguage(fileAbsolutePath);
-          },
-        },
-        postDirectory: {
-          type: 'String',
-          resolve({ fileAbsolutePath }) {
-            return getPostDirectory(fileAbsolutePath);
-          }
-        },
-        postPath: {
-          type: 'String',
-          resolve({ fileAbsolutePath }) {
-            return getPostPath(fileAbsolutePath);
-          }
-        },
-      };
+    if (type.name !== 'MarkdownRemark') {
+      return;
     }
+
+    return {
+      language: {
+        type: 'String',
+        resolve({ fileAbsolutePath }) {
+          return getLanguage(fileAbsolutePath);
+        },
+      },
+      postDirectory: {
+        type: 'String',
+        resolve({ fileAbsolutePath }) {
+          return getPostDirectory(fileAbsolutePath);
+        }
+      },
+      postPath: {
+        type: 'String',
+        resolve({ fileAbsolutePath }) {
+          return getPostPath(fileAbsolutePath);
+        }
+      },
+    };
   },
 };
 export = config;

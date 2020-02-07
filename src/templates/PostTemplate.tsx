@@ -4,6 +4,7 @@ import { graphql } from 'gatsby';
 import React from 'react';
 
 import * as C from '../constants';
+import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 
@@ -15,8 +16,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     shortname: process.env.GATSBY_DISQUS_NAME,
     config: {
       url: 'https://ailrun.github.io',
-      identifier: data.md.id,
-      title: data.md.frontmatter.title,
+      identifier: data.post.id,
+      title: data.post.frontmatter.title,
     },
   };
 
@@ -25,10 +26,14 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <NavigationBar />
       <main>
         <PostWrapper>
-          <PostTitle>{data.md.frontmatter.title}</PostTitle>
+          <PostHeader>
+            <PostTitle>{data.post.frontmatter.title}</PostTitle>
+            <FlexSpacer />
+            <PostDate>{data.post.frontmatter.date ?? data.post.parent.date}</PostDate>
+          </PostHeader>
           <PostSeparator />
           <PostMain
-            dangerouslySetInnerHTML={{ __html: data.md.html }}
+            dangerouslySetInnerHTML={{ __html: data.post.html }}
           />
           <DiscussionEmbed {...disqusConfig} />
         </PostWrapper>
@@ -39,22 +44,34 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 export default PostTemplate;
 
 interface Data {
-  readonly md: {
-    readonly frontmatter: {
-      readonly title: string;
-    };
-    readonly html: string;
-    readonly id: string;
+  readonly post: Post;
+}
+interface Post {
+  readonly frontmatter: {
+    readonly title: string;
+    readonly date?: string;
+  };
+  readonly html: string;
+  readonly id: string;
+  readonly parent: {
+    readonly date: string;
   };
 }
 export const query = graphql`
   query ($id: String) {
-    md: markdownRemark(id: { eq: $id }) {
+    post: markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
+        date(fromNow: true)
       }
       html
       id
+
+      parent {
+        ... on File {
+          date: birthTime(fromNow: true)
+        }
+      }
     }
   }
 `;
@@ -66,15 +83,29 @@ const PostWrapper = styled.article({
   width: '60vw',
 });
 
-const PostTitle = styled.h1({
+const PostHeader = styled.header({
+  display: 'flex',
+
+  width: '100%',
   paddingTop: '1vw',
 
+  alignItems: 'center',
+});
+
+const PostTitle = styled.h1({
   fontSize: C.fontLargeSize,
   color: C.textBlack,
 });
 
+const PostDate = styled.span({
+  fontSize: C.fontSmallSize,
+  color: C.textVeryLightBlack,
+});
+
 const PostSeparator = styled.hr({
-  margin: '1em 0',
+  margin: '1em 0.5em',
+
+  color: C.textLightBlack,
 });
 
 const PostMain = styled.main(
