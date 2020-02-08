@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import * as C from '../constants';
+import * as C from '../styles/constants';
 
 export interface Props {
   readonly backgroundSrc: string;

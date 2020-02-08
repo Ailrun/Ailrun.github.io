@@ -3,6 +3,14 @@ import * as path from 'path';
 
 const config: GatsbyNode = {
   async createPages({ actions, graphql, reporter }) {
+    actions.createRedirect({
+      fromPath: '/',
+      toPath: '/en',
+      isPermanent: true,
+      redirectInBrowser: true,
+      force: true,
+    });
+
     const postsResult = await graphql<PostsData>(postsQuery);
 
     if (postsResult.errors) {
@@ -12,7 +20,7 @@ const config: GatsbyNode = {
 
     postsResult.data.md.group.map(({ language }) => {
       actions.createPage({
-        path: path.join('/posts', language),
+        path: path.join('/', language, 'posts'),
         component: path.resolve('src/templates/PostsTemplate.tsx'),
         context: { language },
       });
@@ -108,4 +116,4 @@ const getLanguage = (fileAbsolutePath: string) =>
 const getPostDirectory = (fileAbsolutePath: string) =>
   path.basename(path.dirname(fileAbsolutePath));
 const getPostPath = (fileAbsolutePath: string) =>
-  path.posix.join('/post', getPostDirectory(fileAbsolutePath), getLanguage(fileAbsolutePath));
+  path.posix.join('/', getLanguage(fileAbsolutePath), 'post', getPostDirectory(fileAbsolutePath));

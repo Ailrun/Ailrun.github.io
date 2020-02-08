@@ -1,23 +1,35 @@
 import styled from '@emotion/styled';
-import { Link, graphql } from 'gatsby';
+import { Link, PageRendererProps, graphql } from 'gatsby';
 import React, { Fragment } from 'react';
 
-import * as C from '../constants';
+import { locationToLanguage } from '../languages';
+import * as C from '../styles/constants';
 import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
 
-const PostsTemplate: React.FC<{ data: Data }> = ({ data }) => (
+interface Props extends PageRendererProps {
+  readonly data: Data;
+}
+const PostsTemplate: React.FC<Props> = ({ data, location }) => (
   <Layout>
-    <NavigationBar />
+    <NavigationBar language={locationToLanguage(location)} />
     <PageTitle
       backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
       title='Posts'
     />
-    <main>
-      <PostList posts={data.md.posts} />
-    </main>
+    <PostListWrapper>
+      <PostList>
+        {
+          data.md.posts.map((post) => (
+            <Fragment key={post.id}>
+              <Post {...{ post }} />
+            </Fragment>
+          ))
+        }
+      </PostList>
+    </PostListWrapper>
   </Layout>
 );
 export default PostsTemplate;
@@ -61,26 +73,15 @@ export const query = graphql`
   }
 `;
 
-interface PostListProps {
-  posts: Post[];
-}
-const PostList: React.FC<PostListProps> = ({ posts }) => (
-  <PostListWrapper>
-    {
-      posts.map((post) => (
-        <Fragment key={post.id}>
-          <Post {...{ post }} />
-        </Fragment>
-      ))
-    }
-  </PostListWrapper>
-);
-
-const PostListWrapper = styled.ul({
+const PostListWrapper = styled.main({
   margin: '0 20%',
   marginTop: '2vw',
 
   width: '60%',
+});
+
+const PostList = styled.ul({
+  width: '100%',
 
   listStyle: 'none',
 });
@@ -130,7 +131,7 @@ const PostExcerpt = styled.span({
   marginTop: '0.5vw',
   marginLeft: '2%',
 
-  width: '100%',
+  width: '98%',
 
   fontSize: C.fontBaseSize,
   color: C.textLightBlack,

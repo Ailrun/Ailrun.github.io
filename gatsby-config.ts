@@ -51,12 +51,6 @@ const config: GatsbyConfig = {
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
     {
-      resolve: `gatsby-plugin-page-creator`,
-      options: {
-        path: `${__dirname}/src/pages`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: false,

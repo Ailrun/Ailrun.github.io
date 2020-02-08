@@ -2,10 +2,15 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 
-import * as C from '../constants';
+import { Language } from '../languages';
+import * as C from '../styles/constants';
 import FlexSpacer from './FlexSpacer';
+import LanguageSwitch from './LanguageSwitch';
 
-const NavigationBar: React.FC<unknown> = () => (
+interface Props {
+  readonly language: Language;
+}
+const NavigationBar: React.FC<Props> = ({ language }) => (
   <Wrapper>
     <Title to='/'>
       Valhala of Valkyrie
@@ -14,9 +19,10 @@ const NavigationBar: React.FC<unknown> = () => (
     <NavigationList>
       {
         navigationItems.map((navigationItem) => (
-          <NavigationItem key={navigationItem.to} {...navigationItem} />
+          <NavigationItem key={navigationItem.to} language={language} {...navigationItem} />
         ))
       }
+      <NavigationLanguageSwitch className='' language={language} />
     </NavigationList>
   </Wrapper>
 );
@@ -48,19 +54,23 @@ const Title = styled(Link)({
 }, C.fontDancing);
 
 const NavigationList = styled.ul({
+  display: 'flex',
+
   marginRight: '20px',
 
   listStyle: 'none',
+
+  alignItems: 'center',
 });
 
 interface ItemProps {
-  to: string;
-  text: string;
+  readonly language: Language;
+  readonly to: string;
+  readonly text: string;
 }
-
-const NavigationItem: React.FC<ItemProps> = ({ to, text }) => (
+const NavigationItem: React.FC<ItemProps> = ({ language, to, text }) => (
   <NavigationItemWrapper>
-    <Link to={to}>
+    <Link to={'/' + language + to}>
       {text}
     </Link>
   </NavigationItemWrapper>
@@ -74,10 +84,13 @@ const NavigationItemWrapper = styled.li({
   fontSize: C.fontLargeSize,
 }, C.fontDancing);
 
+const NavigationLanguageSwitch =
+  NavigationItemWrapper.withComponent(LanguageSwitch);
 
-const navigationItems: ItemProps[] = [
+
+const navigationItems: Omit<ItemProps, 'language'>[] = [
   { to: '/', text: 'Main' },
-  { to: '/posts/en', text: 'Posts' },
+  { to: '/posts', text: 'Posts' },
   { to: '/projects', text: 'Projects' },
   { to: '/about', text: 'About' },
 ];

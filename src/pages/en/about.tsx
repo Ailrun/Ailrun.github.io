@@ -2,18 +2,19 @@ import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import * as C from '../constants';
-import FlexSpacer from '../components/FlexSpacer';
-import Layout from '../components/Layout';
-import NavigationBar from '../components/NavigationBar';
-import PageTitle from '../components/PageTitle';
+import { Language } from '../../languages';
+import * as C from '../../styles/constants';
+import FlexSpacer from '../../components/FlexSpacer';
+import Layout from '../../components/Layout';
+import NavigationBar from '../../components/NavigationBar';
+import PageTitle from '../../components/PageTitle';
 
 const AboutPage: React.FC<unknown> = () => {
   const data = useStaticQuery<Data>(query);
 
   return (
     <Layout>
-      <NavigationBar />
+      <NavigationBar language={Language.EN} />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
         title='About'

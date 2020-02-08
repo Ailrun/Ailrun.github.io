@@ -1,17 +1,18 @@
 import styled from '@emotion/styled';
 import { DiscussionEmbed } from 'disqus-react';
-import { graphql } from 'gatsby';
+import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
-import * as C from '../constants';
+import { locationToLanguage } from '../languages';
+import * as C from '../styles/constants';
 import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 
-interface Props {
+interface Props extends PageRendererProps {
   readonly data: Data;
 }
-const PostTemplate: React.FC<Props> = ({ data }) => {
+const PostTemplate: React.FC<Props> = ({ data, location }) => {
   const disqusConfig = {
     shortname: process.env.GATSBY_DISQUS_NAME,
     config: {
@@ -23,9 +24,9 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 
   return (
     <Layout>
-      <NavigationBar />
-      <main>
-        <PostWrapper>
+      <NavigationBar language={locationToLanguage(location)} />
+      <PostWrapper>
+        <PostContent>
           <PostHeader>
             <PostTitle>{data.post.frontmatter.title}</PostTitle>
             <FlexSpacer />
@@ -36,8 +37,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: data.post.html }}
           />
           <DiscussionEmbed {...disqusConfig} />
-        </PostWrapper>
-      </main>
+        </PostContent>
+      </PostWrapper>
     </Layout>
   );
 };
@@ -77,10 +78,16 @@ export const query = graphql`
 `;
 
 const PostWrapper = styled.article({
+  width: '100%',
+  minHeight: '100vh',
+});
+
+const PostContent = styled.article({
   margin: '0 auto',
-  marginTop: C.navigationBarHeight,
 
   width: '60vw',
+
+  paddingTop: C.navigationBarHeight,
 });
 
 const PostHeader = styled.header({
