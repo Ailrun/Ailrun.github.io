@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import { Language } from '../../languages';
-import * as C from '../../styles/constants';
 import FlexSpacer from '../../components/FlexSpacer';
 import Layout from '../../components/Layout';
 import NavigationBar from '../../components/NavigationBar';
 import PageTitle from '../../components/PageTitle';
+import { Language } from '../../languages';
+import * as C from '../../styles/constants';
 
 const AboutPage: React.FC<unknown> = () => {
   const data = useStaticQuery<Data>(query);
@@ -54,11 +54,11 @@ const Info: React.FC<InfoProps> = ({ subjects }) => (
   <InfoWrapper>
     <Owner>Junyoung Clare Jang</Owner>
     <InfoSubjectList>
-    {
-      subjects.map((subject, i) => (
-        <InfoSubject key={i} {...{ subject }} />
-      ))
-    }
+      {
+        subjects.map((subject, i) => (
+          <InfoSubject key={i} {...{ subject }} />
+        ))
+      }
     </InfoSubjectList>
     <FlexSpacer />
     <OwnerProfile>

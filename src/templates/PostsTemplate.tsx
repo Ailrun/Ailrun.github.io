@@ -2,12 +2,12 @@ import styled from '@emotion/styled';
 import { Link, PageRendererProps, graphql } from 'gatsby';
 import React, { Fragment } from 'react';
 
-import { locationToLanguage } from '../languages';
-import * as C from '../styles/constants';
 import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
+import { locationToLanguage } from '../languages';
+import * as C from '../styles/constants';
 
 interface Props extends PageRendererProps {
   readonly data: Data;

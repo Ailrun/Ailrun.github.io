@@ -3,11 +3,11 @@ import { DiscussionEmbed } from 'disqus-react';
 import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
-import { locationToLanguage } from '../languages';
-import * as C from '../styles/constants';
 import FlexSpacer from '../components/FlexSpacer';
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
+import { locationToLanguage } from '../languages';
+import * as C from '../styles/constants';
 
 interface Props extends PageRendererProps {
   readonly data: Data;

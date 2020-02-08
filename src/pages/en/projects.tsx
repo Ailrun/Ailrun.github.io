@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import { graphql, useStaticQuery } from 'gatsby';
 import React, { Fragment } from 'react';
 
-import { Language } from '../../languages';
-import * as C from '../../styles/constants';
 import Layout from '../../components/Layout';
 import NavigationBar from '../../components/NavigationBar';
 import PageTitle from '../../components/PageTitle';
+import { Language } from '../../languages';
+import * as C from '../../styles/constants';
 
 const ProjectsPage: React.FC<unknown> = () => {
   const data = useStaticQuery<Data>(query);
@@ -90,7 +90,11 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
         {
           projectGroup.projects.map((project, i) => (
             <Fragment key={i}>
-              { i !== 0 ? <ProjectSeparator /> : null }
+              {
+                i !== 0 ? (
+                  <ProjectSeparator />
+                ) : null
+              }
               <Project {...{ project }} />
             </Fragment>
           ))

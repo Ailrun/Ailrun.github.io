@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { graphql, useStaticQuery, Link } from 'gatsby';
 import React from 'react';
 
-import { Language } from '../../languages';
-import * as C from '../../styles/constants';
 import Layout from '../../components/Layout';
 import NavigationBar from '../../components/NavigationBar';
+import { Language } from '../../languages';
+import * as C from '../../styles/constants';
 
 const IndexPage: React.FC<unknown> = () => {
   const data = useStaticQuery<Data>(query);
