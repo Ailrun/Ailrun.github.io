@@ -1,4 +1,3 @@
-import sass from 'sass';
 import { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
@@ -15,12 +14,6 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-custom-eslint`,
     `gatsby-plugin-typescript`,
-    {
-      resolve: `gatsby-plugin-sass`,
-      options: {
-        implementation: sass,
-      },
-    },
 
     {
       resolve: `gatsby-source-filesystem`,
