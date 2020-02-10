@@ -63,13 +63,13 @@ export const setFieldsOnGraphQLNodeType = ({ type }: SetFieldsOnGraphQLNodeTypeA
       type: 'String',
       resolve({ fileAbsolutePath }: MarkdownRemarkNodeMock): string {
         return getPostDirectory(fileAbsolutePath);
-      }
+      },
     },
     postPath: {
       type: 'String',
       resolve({ fileAbsolutePath }: MarkdownRemarkNodeMock): string {
         return getPostPath(fileAbsolutePath);
-      }
+      },
     },
   };
 };

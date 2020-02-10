@@ -25,11 +25,28 @@ module.exports = {
     'plugin:react/recommended',
   ],
   rules: {
+    'comma-dangle': [
+      'warn',
+      'always-multiline',
+    ],
+
     '@typescript-eslint/no-use-before-define': [
       'error',
       {
         variables: false,
       },
+    ],
+    '@typescript-eslint/quotes': [
+      'warn',
+      'single',
+      {
+        avoidEscape: false,
+        allowTemplateLiterals: true,
+      },
+    ],
+    '@typescript-eslint/semi': [
+      'warn',
+      'always',
     ],
 
     'import/no-absolute-path': [

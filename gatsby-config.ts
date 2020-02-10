@@ -8,7 +8,7 @@ const config: GatsbyConfig = {
     image: `https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png`,
     author: `https://Ailrun.github.io/about`,
     locales: [
-      `ko_KR`
+      `ko_KR`,
     ],
   },
   plugins: [
@@ -37,16 +37,16 @@ const config: GatsbyConfig = {
         mergeDefaultDirectives: false,
         mergeStyleHashes: false,
         directives: {
-          'default-src': '\'self\' https://disqus.com https://*.disqus.com https://*.disquscdn.com',
-          'font-src': '\'self\' https://fonts.gstatic.com',
-          'img-src': '\'self\' https:',
-          'script-src': '\'self\' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com' +
+          'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com`,
+          'font-src': `'self' https://fonts.gstatic.com`,
+          'img-src': `'self' https:`,
+          'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com` +
             (
-              process.env.NODE_ENV === "development" ?
-                ' \'unsafe-eval\' \'unsafe-inline\'' :
-                ''
+              process.env.NODE_ENV === `development` ?
+                ` 'unsafe-eval' 'unsafe-inline'` :
+                ``
             ),
-          'style-src': '\'self\' https://fonts.googleapis.com blob: \'unsafe-inline\'',
+          'style-src': `'self' https://fonts.googleapis.com blob: 'unsafe-inline'`,
         },
       },
     },

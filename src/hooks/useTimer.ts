@@ -17,7 +17,7 @@ const useTimer = (initialTime: number): number => {
         clearTimeout(timeoutKey.current);
       }
     };
-  }, [time])
+  }, [time]);
 
   return time;
 };

@@ -100,7 +100,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ language }) => {
         )
       }
     </Location>
-  )
+  );
 };
 
 interface LanguageListWrapperProps {
