@@ -6,7 +6,6 @@ import { Language } from '../languages';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
-import LanguageSwitch from './LanguageSwitch';
 
 interface Props {
   readonly language: Language;
@@ -23,7 +22,6 @@ const NavigationBar: React.FC<Props> = ({ language }) => (
           <NavigationItem key={navigationItem.to} language={language} {...navigationItem} />
         ))
       }
-      <NavigationLanguageSwitch className='' language={language} />
     </NavigationList>
   </Wrapper>
 );
@@ -84,9 +82,6 @@ const NavigationItemWrapper = styled.li({
 
   fontSize: C.fontLargeSize,
 }, C.fontDancing);
-
-const NavigationLanguageSwitch =
-  NavigationItemWrapper.withComponent(LanguageSwitch);
 
 
 const navigationItems: Omit<ItemProps, 'language'>[] = [
