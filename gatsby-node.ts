@@ -8,7 +8,7 @@ import { assert } from './src/util';
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
   actions.createRedirect({
     fromPath: '/',
-    toPath: '/en',
+    toPath: '/en/posts/',
     isPermanent: true,
     redirectInBrowser: true,
     force: true,
@@ -24,7 +24,7 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   assert(postsResult.data);
   postsResult.data.md.group.map(({ language }) => {
     actions.createPage({
-      path: path.join('/', language, 'posts'),
+      path: path.join('/', language, 'posts', '/'),
       component: path.resolve('src/templates/PostsTemplate.tsx'),
       context: { language },
     });
@@ -123,4 +123,4 @@ const getLanguage = (fileAbsolutePath: string): string =>
 const getPostDirectory = (fileAbsolutePath: string): string =>
   path.basename(path.dirname(fileAbsolutePath));
 const getPostPath = (fileAbsolutePath: string): string =>
-  path.posix.join('/', getLanguage(fileAbsolutePath), 'post', getPostDirectory(fileAbsolutePath));
+  path.posix.join('/', getLanguage(fileAbsolutePath), 'post', getPostDirectory(fileAbsolutePath), '/');

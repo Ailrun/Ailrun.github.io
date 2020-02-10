@@ -12,7 +12,7 @@ interface Props {
 }
 const NavigationBar: React.FC<Props> = ({ language }) => (
   <Wrapper>
-    <Title to='/'>
+    <Title to={`/${language}/posts/`}>
       Valhala of Valkyrie
     </Title>
     <FlexSpacer />
@@ -85,8 +85,7 @@ const NavigationItemWrapper = styled.li({
 
 
 const navigationItems: Omit<ItemProps, 'language'>[] = [
-  { to: '/', text: 'Main' },
-  { to: '/posts', text: 'Posts' },
-  { to: '/projects', text: 'Projects' },
-  { to: '/about', text: 'About' },
+  { to: '/posts/', text: 'Posts' },
+  { to: '/projects/', text: 'Projects' },
+  { to: '/about/', text: 'About' },
 ];
