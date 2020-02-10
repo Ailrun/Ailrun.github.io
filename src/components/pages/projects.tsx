@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
+import { PageRendererProps } from 'gatsby';
 import React, { Fragment } from 'react';
 
-import { locationToLanguage } from '../../languages';
+import dataProjects from '../../data/projects';
+import { Language, locationToLanguage } from '../../languages';
 import * as C from '../../styles/constants';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
@@ -10,7 +11,7 @@ import PageTitle from '../PageTitle';
 
 const ProjectsPage: React.FC<PageRendererProps> = ({ location }) => {
   const language = locationToLanguage(location);
-  const data = useStaticQuery<Data>(query);
+  const data = dataProjects[language];
 
   return (
     <Layout>
@@ -19,40 +20,14 @@ const ProjectsPage: React.FC<PageRendererProps> = ({ location }) => {
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
         title='Projects'
       />
-      <ProjectGroupList projectGroups={data.json.projectGroups} />
+      <ProjectGroupList projectGroups={data.projectGroups} />
     </Layout>
   );
 };
 export default ProjectsPage;
 
-interface Data {
-  readonly json: {
-    readonly projectGroups: ProjectGroup[];
-  };
-}
-interface ProjectGroup {
-  readonly title: string;
-  readonly projects: Project[];
-}
-interface Project {
-  readonly images: string[];
-  readonly link: string;
-  readonly title: string;
-}
-const query = graphql`
-  query {
-    json: projectsJson {
-      projectGroups {
-        title
-        projects {
-          images
-          link
-          title
-        }
-      }
-    }
-  }
-`;
+type ProjectGroup = typeof dataProjects[Language.KO]['projectGroups'][0];
+type Project = ProjectGroup['projects'][0];
 
 interface ProjectGroupListProps {
   readonly projectGroups: ProjectGroup[];

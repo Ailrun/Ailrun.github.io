@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
+import { PageRendererProps } from 'gatsby';
 import React from 'react';
 
-import { locationToLanguage } from '../../languages';
+import dataAbout from '../../data/about';
+import { Language, locationToLanguage } from '../../languages';
 import * as C from '../../styles/constants';
 import FlexSpacer from '../FlexSpacer';
 import Layout from '../Layout';
@@ -11,7 +12,7 @@ import PageTitle from '../PageTitle';
 
 const AboutPage: React.FC<PageRendererProps> = ({ location }) => {
   const language = locationToLanguage(location);
-  const data = useStaticQuery<Data>(query);
+  const data = dataAbout[language];
 
   return (
     <Layout>
@@ -21,32 +22,14 @@ const AboutPage: React.FC<PageRendererProps> = ({ location }) => {
         title='About'
       />
       <main>
-        <Info subjects={data.json.subjects} />
+        <Info subjects={data.subjects} />
       </main>
     </Layout>
   );
 };
 export default AboutPage;
 
-interface Data {
-  readonly json: {
-    readonly subjects: Subject[];
-  };
-}
-interface Subject {
-  readonly entries: string[];
-  readonly title: string;
-}
-const query = graphql`
-  query {
-    json: aboutJson {
-      subjects {
-        entries
-        title
-      }
-    }
-  }
-`;
+type Subject = typeof dataAbout[Language.KO]['subjects'][0];
 
 interface InfoProps {
   readonly subjects: Subject[];
@@ -78,7 +61,7 @@ const InfoWrapper = styled.article({
 
   width: '100%',
 
-  padding: '0 10%',
+  padding: '0 20%',
 
   color: C.textLightBlack,
 
@@ -94,14 +77,14 @@ const Owner = styled.h2({
 }, C.fontDancing);
 
 const InfoSubjectList = styled.div({
-  width: '60%',
+  width: '40%',
 
   paddingTop: '1vw',
   paddingLeft: '1em',
 });
 
 const OwnerProfile = styled.figure({
-  width: '30%',
+  width: '40%',
 });
 
 const OwnerProfileImage = styled.img({
@@ -137,7 +120,7 @@ const InfoSubjectWrapper = styled.figure({
 });
 
 const InfoSubjectTitle = styled.figcaption({
-  fontSize: C.fontHugeSize,
+  fontSize: C.fontLargeSize,
   fontWeight: 'bold',
 });
 
@@ -150,5 +133,5 @@ const InfoSubjectEntryList = styled.ul({
 const InfoSubjectEntry = styled.li({
   paddingLeft: '0.5em',
 
-  fontSize: C.fontLargeSize,
+  fontSize: C.fontBaseSize,
 });

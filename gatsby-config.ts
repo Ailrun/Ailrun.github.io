@@ -18,21 +18,6 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `./data/`,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-json`,
-      options: {
-        typeName: ({ node }: { node: { name: string } }): string => {
-          return node.name + `Json`;
-        },
-      },
-    },
-
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `./post/`,
         name: `postMD`,
       },
