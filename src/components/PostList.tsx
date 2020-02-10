@@ -10,7 +10,7 @@ export interface Props {
   readonly posts: PostInfo[];
 }
 const PostList: React.FC<Props> = ({ posts }) => (
-  <PostListWrapper>
+  <PostListRoot>
     {
       posts.map((post) => (
         <Fragment key={post.id}>
@@ -18,7 +18,7 @@ const PostList: React.FC<Props> = ({ posts }) => (
         </Fragment>
       ))
     }
-  </PostListWrapper>
+  </PostListRoot>
 );
 export default PostList;
 
@@ -30,7 +30,7 @@ export interface PostInfo {
   readonly postPath: string;
 }
 
-const PostListWrapper = styled.ul({
+const PostListRoot = styled.ul({
   width: '100%',
 
   listStyle: 'none',
@@ -40,17 +40,17 @@ interface PostProps {
   post: PostInfo;
 }
 const Post: React.FC<PostProps> = ({ post }) => (
-  <PostWrapper>
+  <PostRoot>
     <PostLink to={post.postPath}>
       <PostTitle>{post.title}</PostTitle>
       <FlexSpacer />
       <PostDate>{post.date}</PostDate>
       <PostExcerpt>{post.excerpt} ...</PostExcerpt>
     </PostLink>
-  </PostWrapper>
+  </PostRoot>
 );
 
-const PostWrapper = styled.li({
+const PostRoot = styled.li({
   width: '100%',
 
   '& + &': {

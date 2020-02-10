@@ -35,7 +35,7 @@ interface InfoProps {
   readonly subjects: Subject[];
 }
 const Info: React.FC<InfoProps> = ({ subjects }) => (
-  <InfoWrapper>
+  <InfoRoot>
     <Owner>Junyoung Clare Jang</Owner>
     <InfoSubjectList>
       {
@@ -51,10 +51,10 @@ const Info: React.FC<InfoProps> = ({ subjects }) => (
       />
       <OwnerProfileCaption>Clare with a few cups of beer</OwnerProfileCaption>
     </OwnerProfile>
-  </InfoWrapper>
+  </InfoRoot>
 );
 
-const InfoWrapper = styled.article({
+const InfoRoot = styled.article({
   display: 'flex',
 
   margin: '5vw 0',
@@ -101,7 +101,7 @@ interface InfoSubjectProps {
   readonly subject: Subject;
 }
 const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
-  <InfoSubjectWrapper>
+  <InfoSubjectRoot>
     <InfoSubjectTitle id={`about-${subject.title}`}>{subject.title}</InfoSubjectTitle>
     <InfoSubjectEntryList>
       {
@@ -110,10 +110,10 @@ const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
         ))
       }
     </InfoSubjectEntryList>
-  </InfoSubjectWrapper>
+  </InfoSubjectRoot>
 );
 
-const InfoSubjectWrapper = styled.figure({
+const InfoSubjectRoot = styled.figure({
   '& + &': {
     marginTop: '1vw',
   },

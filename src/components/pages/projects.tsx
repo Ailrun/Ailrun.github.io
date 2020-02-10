@@ -34,17 +34,17 @@ interface ProjectGroupListProps {
 }
 const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) => {
   return (
-    <ProjectGroupListWrapper>
+    <ProjectGroupListRoot>
       {
         projectGroups.map((projectGroup, i) => (
           <ProjectGroup key={i} {...{ projectGroup }} />
         ))
       }
-    </ProjectGroupListWrapper>
+    </ProjectGroupListRoot>
   );
 };
 
-const ProjectGroupListWrapper = styled.main({
+const ProjectGroupListRoot = styled.main({
   margin: '3vw 0',
 
   width: '100%',
@@ -59,7 +59,7 @@ interface ProjectGroupProps {
 }
 const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
   return (
-    <ProjectGroupWrapper>
+    <ProjectGroupRoot>
       <ProjectGroupTitle id={projectGroup.title}>{projectGroup.title}</ProjectGroupTitle>
       <ProjectGroupTitleSeparator />
       <ProjectList>
@@ -76,11 +76,11 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
           ))
         }
       </ProjectList>
-    </ProjectGroupWrapper>
+    </ProjectGroupRoot>
   );
 };
 
-const ProjectGroupWrapper = styled.figure({
+const ProjectGroupRoot = styled.figure({
   '& + &': {
     marginTop: '1vw',
   },
@@ -111,7 +111,7 @@ interface ProjectProps {
 }
 const Project: React.FC<ProjectProps> = ({ project }) => {
   return (
-    <ProjectWrapper>
+    <ProjectRoot>
       <ProjectTitle>
         <a href={project.link}>{project.title}</a>
       </ProjectTitle>
@@ -120,11 +120,11 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
           <img key={image} src={image} />
         ))
       }
-    </ProjectWrapper>
+    </ProjectRoot>
   );
 };
 
-const ProjectWrapper = styled.li({
+const ProjectRoot = styled.li({
   display: 'flex',
 
   padding: '0.5em 0',

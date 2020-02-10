@@ -11,15 +11,15 @@ interface Props {
   readonly language: Language;
 }
 const LanguageSwitch: React.FC<Props> = ({ className, language }) => (
-  <Wrapper className={className}>
+  <Root className={className}>
     <Hover language={language}>
       {languageToString(language)}
     </Hover>
-  </Wrapper>
+  </Root>
 );
 export default LanguageSwitch;
 
-const Wrapper = styled.li({
+const Root = styled.li({
   fontWeight: 'bold',
 });
 
@@ -36,25 +36,25 @@ const Hover: React.FC<HoverProps> = ({ children, language }) => {
   }, []);
 
   return (
-    <HoverWrapper
+    <HoverRoot
       onMouseEnter={handleShowList}
       onMouseMove={handleShowList}
       onMouseLeave={handleHideList}
     >
-      <LanguageListWrapper asSelect={false}>
+      <LanguageListRoot asSelect={false}>
         {children}
-      </LanguageListWrapper>
+      </LanguageListRoot>
       {
         displayList ?
           (
             <LanguageList language={language} />
           ) : null
       }
-    </HoverWrapper>
+    </HoverRoot>
   );
 };
 
-const HoverWrapper = styled.div({
+const HoverRoot = styled.div({
   display: 'inline-block',
   position: 'relative',
 
@@ -78,7 +78,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ language }) => {
     <Location>
       {
         ({ location }): React.ReactChild => (
-          <LanguageListWrapper asSelect={true}>
+          <LanguageListRoot asSelect={true}>
             {
               sortedLanguages.map((lang) => {
                 const Comp =
@@ -96,17 +96,17 @@ const LanguageList: React.FC<LanguageListProps> = ({ language }) => {
                 );
               })
             }
-          </LanguageListWrapper>
+          </LanguageListRoot>
         )
       }
     </Location>
   );
 };
 
-interface LanguageListWrapperProps {
+interface LanguageListRootProps {
   readonly asSelect: boolean;
 }
-const LanguageListWrapper = styled.div<LanguageListWrapperProps>({
+const LanguageListRoot = styled.div<LanguageListRootProps>({
   display: 'flex',
   position: 'absolute',
   top: 0,

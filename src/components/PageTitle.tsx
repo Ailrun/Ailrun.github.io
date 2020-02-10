@@ -8,16 +8,16 @@ export interface Props {
   readonly title: string;
 }
 const PageTitle: React.FC<Props> = ({ backgroundSrc, title }) => (
-  <Wrapper backgroundSrc={backgroundSrc}>
+  <Root backgroundSrc={backgroundSrc}>
     <TitleText>{title}</TitleText>
-  </Wrapper>
+  </Root>
 );
 export default PageTitle;
 
-interface WrapperProps {
+interface RootProps {
   readonly backgroundSrc: string;
 }
-const Wrapper = styled.header<WrapperProps>({
+const Root = styled.header<RootProps>({
   display: 'flex',
 
   width: '100%',

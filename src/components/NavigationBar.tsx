@@ -11,7 +11,7 @@ interface Props {
   readonly language: Language;
 }
 const NavigationBar: React.FC<Props> = ({ language }) => (
-  <Wrapper>
+  <Root>
     <Title to={`/${language}/posts/`}>
       Valhala of Valkyrie
     </Title>
@@ -23,11 +23,11 @@ const NavigationBar: React.FC<Props> = ({ language }) => (
         ))
       }
     </NavigationList>
-  </Wrapper>
+  </Root>
 );
 export default NavigationBar;
 
-const Wrapper = styled.nav({
+const Root = styled.nav({
   display: 'flex',
   position: 'fixed',
   top: 0,
@@ -68,14 +68,14 @@ interface ItemProps {
   readonly text: string;
 }
 const NavigationItem: React.FC<ItemProps> = ({ language, to, text }) => (
-  <NavigationItemWrapper>
+  <NavigationItemRoot>
     <Link to={'/' + language + to}>
       {text}
     </Link>
-  </NavigationItemWrapper>
+  </NavigationItemRoot>
 );
 
-const NavigationItemWrapper = styled.li({
+const NavigationItemRoot = styled.li({
   display: 'inline-block',
 
   padding: '0 1vw',
