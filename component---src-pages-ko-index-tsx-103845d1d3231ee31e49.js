@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[8],{boto:function(o,t,n){"use strict";var c=n("Wbzz"),a=n("/Hoz");t.a=function(o){var t=o.location,n=Object(a.b)(t);return Object(c.b)("/"+n+"/posts/",{replace:!0}),null}},lD38:function(o,t,n){"use strict";n.r(t);var c=n("boto");t.default=c.a}}]);
+//# sourceMappingURL=component---src-pages-ko-index-tsx-103845d1d3231ee31e49.js.map
