@@ -1,1 +1,3 @@
-export { default as wrapRootElement } from './gatsby/wrapRootElement';
+import importedWrapRootElement from './gatsby/wrapRootElement';
+
+export const wrapRootElement = importedWrapRootElement;

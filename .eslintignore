@@ -1,0 +1,4 @@
+# By default, ESLint does not ignore node_modules in child directories
+node_modules/
+
+/local.d.ts

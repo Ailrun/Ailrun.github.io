@@ -20,5 +20,5 @@ export function languageToString(language: Language): string {
 }
 
 export function locationToLanguage(location: WindowLocation): Language {
-  return /\/([^/]*)/.exec(location.pathname)[1] as Language;
+  return (/\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
 }

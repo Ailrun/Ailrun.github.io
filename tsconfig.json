@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
     "esModuleInterop": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "strict": true
   },
   "include": [
     "./*.ts",
     "gatsby/**/*",
-    "src/**/*"
+    "src/**/*",
+    "plugins/**/*.ts"
   ]
 }

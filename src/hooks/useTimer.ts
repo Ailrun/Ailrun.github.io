@@ -7,13 +7,13 @@ const useTimer = (initialTime: number): number => {
   useEffect(() => {
     if (time !== 0) {
       timeoutKey.current = setTimeout(() => {
-        timeoutKey.current = null;
+        timeoutKey.current = void 0;
         setTime((prevTime) => prevTime - 1);
       }, 1000);
     }
 
     return (): void => {
-      if (timeoutKey.current != null) {
+      if (timeoutKey.current !== undefined) {
         clearTimeout(timeoutKey.current);
       }
     };

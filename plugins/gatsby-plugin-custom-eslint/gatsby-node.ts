@@ -1,22 +1,19 @@
-import { GatsbyNode } from 'gatsby';
+import { CreateWebpackConfigArgs } from 'gatsby';
 
-const node: GatsbyNode = {
-  async onCreateWebpackConfig({ actions }) {
-    actions.setWebpackConfig({
-      module: {
-        rules: [
-          {
-            enforce: 'pre',
-            test: /\.jsx?$|\.tsx?$/,
-            loader: 'eslint-loader',
-            exclude: /node_modules|.cache|public|plugins/,
-            options: {
-              emitWarning: true,
-            },
+export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs): void => {
+  actions.setWebpackConfig({
+    module: {
+      rules: [
+        {
+          enforce: 'pre',
+          test: /\.jsx?$|\.tsx?$/,
+          loader: 'eslint-loader',
+          exclude: /node_modules|.cache|public|plugins/,
+          options: {
+            emitWarning: true,
           },
-        ],
-      },
-    });
-  },
+        },
+      ],
+    },
+  });
 };
-export = node;

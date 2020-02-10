@@ -14,7 +14,7 @@ interface Props extends PageRendererProps {
 }
 const PostTemplate: React.FC<Props> = ({ data, location }) => {
   const disqusConfig = {
-    shortname: process.env.GATSBY_DISQUS_NAME,
+    shortname: process.env.GATSBY_DISQUS_NAME as string,
     config: {
       url: 'https://ailrun.github.io',
       identifier: data.post.id,

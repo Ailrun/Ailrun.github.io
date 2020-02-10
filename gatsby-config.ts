@@ -24,7 +24,9 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-transformer-json`,
       options: {
-        typeName: ({ node }: any) => node.name + `Json`,
+        typeName: ({ node }: { node: { name: string } }): string => {
+          return node.name + `Json`;
+        },
       },
     },
 
@@ -65,4 +67,4 @@ const config: GatsbyConfig = {
     },
   ],
 };
-export = config;
+export default config;
