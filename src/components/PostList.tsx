@@ -54,7 +54,7 @@ const PostRoot = styled.li({
   width: '100%',
 
   '& + &': {
-    marginTop: '2vw',
+    marginTop: '40px',
   },
 });
 
@@ -68,6 +68,8 @@ const PostLink = styled(Link)({
 });
 
 const PostTitle = styled.h3({
+  marginBottom: '0.5em',
+
   fontSize: C.fontLargeSize,
   color: C.textBlack,
 });
@@ -78,10 +80,9 @@ const PostDate = styled.span({
 });
 
 const PostExcerpt = styled.span({
-  marginTop: '0.5vw',
-  marginLeft: '2%',
+  marginLeft: '1em',
 
-  width: '98%',
+  width: 'calc(100% - 1em)',
 
   fontSize: C.fontBaseSize,
   color: C.textLightBlack,

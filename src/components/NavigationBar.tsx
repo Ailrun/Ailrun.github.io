@@ -55,6 +55,8 @@ const Title = styled(Link)({
 const NavigationList = styled.ul({
   display: 'flex',
 
+  /* Approximate maximum size of scrollbar
+   */
   marginRight: '20px',
 
   listStyle: 'none',
@@ -78,7 +80,7 @@ const NavigationItem: React.FC<ItemProps> = ({ language, to, text }) => (
 const NavigationItemRoot = styled.li({
   display: 'inline-block',
 
-  padding: '0 1vw',
+  padding: '0 0.5em',
 
   fontSize: C.fontLargeSize,
 }, C.fontDancing);

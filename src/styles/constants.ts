@@ -1,12 +1,12 @@
 import { SerializedStyles, css } from '@emotion/core';
 
-export const navigationBarHeight = '2.5vw';
+export const navigationBarHeight = '42px';
 
-export const fontSmallSize = '0.8vw';
-export const fontBaseSize = '1vw';
-export const fontLargeSize = '1.5vw';
-export const fontHugeSize = '2vw';
-export const fontGiantSize = '2.5vw';
+export const fontSmallSize = '10pt';
+export const fontBaseSize = '12pt';
+export const fontLargeSize = '18pt';
+export const fontHugeSize = '24pt';
+export const fontGiantSize = '30pt';
 
 export const textWhite = 'rgba(255, 255, 255, 0.84)';
 export const textLightWhite = 'rgba(255, 255, 255, 0.73)';

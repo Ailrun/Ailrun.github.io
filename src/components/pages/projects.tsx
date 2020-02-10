@@ -45,11 +45,9 @@ const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) =>
 };
 
 const ProjectGroupListRoot = styled.main({
-  margin: '3vw 0',
+  margin: '3em auto',
 
-  width: '100%',
-
-  padding: '0 10%',
+  width: '80%',
 
   color: C.textLightBlack,
 });
@@ -82,7 +80,7 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
 
 const ProjectGroupRoot = styled.figure({
   '& + &': {
-    marginTop: '1vw',
+    marginTop: '1em',
   },
 });
 
@@ -141,7 +139,7 @@ const ProjectRoot = styled.li({
 });
 
 const ProjectTitle = styled.h3({
-  width: '25vw',
+  width: '25em',
 
   fontWeight: 'normal',
 });

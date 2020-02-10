@@ -21,10 +21,11 @@ const Root = styled.header<RootProps>({
   display: 'flex',
 
   width: '100%',
-  height: '26vw',
+  height: '24vw',
 
-  backgroundColor: 'white',
+  backgroundPosition: 'center',
   backgroundSize: 'cover',
+  backgroundColor: 'white',
 
   alignItems: 'center',
 }, ({ backgroundSrc }) => ({

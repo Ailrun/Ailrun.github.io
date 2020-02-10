@@ -57,11 +57,9 @@ const Info: React.FC<InfoProps> = ({ subjects }) => (
 const InfoRoot = styled.article({
   display: 'flex',
 
-  margin: '5vw 0',
+  margin: '3em auto',
 
-  width: '100%',
-
-  padding: '0 20%',
+  width: '45%',
 
   color: C.textLightBlack,
 
@@ -77,9 +75,9 @@ const Owner = styled.h2({
 }, C.fontDancing);
 
 const InfoSubjectList = styled.div({
-  width: '40%',
+  width: '50%',
 
-  paddingTop: '1vw',
+  paddingTop: '0.5em',
   paddingLeft: '1em',
 });
 
@@ -115,7 +113,7 @@ const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
 
 const InfoSubjectRoot = styled.figure({
   '& + &': {
-    marginTop: '1vw',
+    marginTop: '1em',
   },
 });
 

@@ -54,7 +54,7 @@ const PostHeader = styled.header({
   display: 'flex',
 
   width: '100%',
-  paddingTop: '1vw',
+  paddingTop: '1em',
 
   alignItems: 'center',
 });
@@ -77,7 +77,7 @@ const PostSeparator = styled.hr({
 
 const PostMain = styled.main(
   {
-    marginBottom: '3vw',
+    marginBottom: '3em',
 
     padding: '0 1em',
   },

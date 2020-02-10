@@ -78,8 +78,9 @@ const refineData = (data: Data): PostListPostInfo[] => {
 };
 
 const PostListWrapper = styled.main({
-  margin: '0 20%',
-  marginTop: '2vw',
+  margin: '0 20vw',
+  marginTop: '60px',
 
-  width: '60%',
+  width: '60vw',
+  minHeight: '50vh',
 });

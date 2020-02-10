@@ -54,11 +54,13 @@ const Hover: React.FC<HoverProps> = ({ children, language }) => {
   );
 };
 
+const hoverWidth = '120px';
+
 const HoverRoot = styled.div({
   display: 'inline-block',
   position: 'relative',
 
-  width: '6vw',
+  width: hoverWidth,
 
   padding: '0 20px',
 
@@ -113,7 +115,7 @@ const LanguageListRoot = styled.div<LanguageListRootProps>({
   left: 0,
   zIndex: 2,
 
-  width: '6vw',
+  width: hoverWidth,
 
   textAlign: 'center',
 
