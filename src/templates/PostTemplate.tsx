@@ -68,7 +68,9 @@ const refineData = (data: Data): PostInfo => {
   };
 };
 
-const PostWrapper = styled.article({
-  width: '100%',
+const PostWrapper = styled.main({
+  margin: '0 20vw',
+
+  width: '60vw',
   minHeight: '100vh',
 });

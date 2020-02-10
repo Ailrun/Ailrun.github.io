@@ -45,9 +45,7 @@ export interface PostInfo {
 }
 
 const PostRoot = styled.article({
-  margin: '0 auto',
-
-  width: '60vw',
+  width: '100%',
 
   paddingTop: C.navigationBarHeight,
 });
