@@ -45,7 +45,7 @@ const Post: React.FC<PostProps> = ({ post }) => (
       <PostTitle>{post.title}</PostTitle>
       <FlexSpacer />
       <PostDate>{post.date}</PostDate>
-      <PostExcerpt>{post.excerpt} ...</PostExcerpt>
+      <PostExcerpt>{post.excerpt}</PostExcerpt>
     </PostLink>
   </PostRoot>
 );
