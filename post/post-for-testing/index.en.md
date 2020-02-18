@@ -1,6 +1,0 @@
----
-title: Test for the Posting
-date: 2020-02-07
----
-
-This is an example post written under purpose to test the posting feature.
