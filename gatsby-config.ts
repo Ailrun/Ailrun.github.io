@@ -62,7 +62,7 @@ const config: GatsbyConfig = {
                 ` 'unsafe-eval' 'unsafe-inline'` :
                 ``
             ),
-          'style-src': `'self' https://fonts.googleapis.com blob: 'unsafe-inline'`,
+          'style-src': `'self' https://fonts.googleapis.com https://disqus.com https://*.disqus.com https://*.disquscdn.com blob: 'unsafe-inline'`,
         },
       },
     },

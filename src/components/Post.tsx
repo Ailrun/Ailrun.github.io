@@ -9,16 +9,19 @@ import FlexSpacer from './FlexSpacer';
 interface Props {
   readonly gatsbyShortname: string;
   readonly post: PostInfo;
+  readonly postPath: string;
 }
-const Post: React.FC<Props> = ({ gatsbyShortname, post }) => {
+const Post: React.FC<Props> = ({ gatsbyShortname, post, postPath }) => {
   const disqusConfig = {
     shortname: gatsbyShortname,
     config: {
-      url: 'https://ailrun.github.io',
+      url: `https://ailrun.github.io${postPath}`,
       identifier: post.id,
       title: post.title,
     },
   };
+
+  console.log(disqusConfig);
 
   return (
     <PostRoot>

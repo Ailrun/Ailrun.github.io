@@ -20,6 +20,7 @@ const PostTemplate: React.FC<Props> = ({ data, location }) => {
         <Post
           gatsbyShortname={process.env.GATSBY_DISQUS_NAME as string}
           post={post}
+          postPath={data.post.postPath}
         />
       </PostWrapper>
     </Layout>
@@ -35,6 +36,7 @@ interface Data {
     };
     readonly html: string;
     readonly id: string;
+    readonly postPath: string;
     readonly parent: {
       readonly date: string;
     };
@@ -49,6 +51,7 @@ export const query = graphql`
       }
       html
       id
+      postPath
 
       parent {
         ... on File {
