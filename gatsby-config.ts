@@ -22,6 +22,18 @@ const config: GatsbyConfig = {
         name: `postMD`,
       },
     },
+    ...(
+      process.env.NODE_ENV === `development` ? [
+        {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+            path: `./post-draft/`,
+            name: `postMD`,
+          },
+        }
+      ] : []
+    ),
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {
