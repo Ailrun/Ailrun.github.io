@@ -143,6 +143,7 @@ FOUC는 Halogen과 React의 통신이 불가능했기때문에 발생했다. Rea
 [npm]: https://www.npmjs.com/
 [Halogen]: https://github.com/purescript-halogen/purescript-halogen
 [purescript-react]: https://github.com/purescript-contrib/purescript-react
+[ts-node]: https://github.com/TypeStrong/ts-node
 [Webpack]: https://webpack.js.org/
 [Remark]: https://github.com/remarkjs/remark
 [emotion]: https://emotion.sh/docs/introduction
