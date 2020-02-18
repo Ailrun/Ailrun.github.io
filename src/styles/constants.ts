@@ -24,6 +24,7 @@ export const fontDancing: SerializedStyles = css({
 
 export const markdown: SerializedStyles = css({
   color: textBlack,
+  fontSize: '12pt',
 
   h1: {
     marginTop: '1em',
@@ -36,8 +37,33 @@ export const markdown: SerializedStyles = css({
     margin: '0 1em',
     marginTop: '1em',
 
-    fontSize: '12pt',
     textIndent: '1em',
+  },
+
+  'ol, ul': {
+    margin: '0 3em',
+    marginTop: '1em',
+
+    listStylePosition: 'inside',
+
+    'ol, ul': {
+      margin: '0',
+      marginTop: '0.5em',
+      marginLeft: '0.5em',
+    },
+  },
+
+  li: {
+    marginLeft: '1em',
+
+    textIndent: '-1em',
+
+    p: {
+      display: 'inline',
+      margin: '0',
+
+      textIndent: '0',
+    },
   },
 
   a: {
@@ -53,9 +79,12 @@ export const markdown: SerializedStyles = css({
   },
 
   blockquote: {
-    margin: '2em 1.5em',
+    margin: '1.5em 1.5em',
 
-    fontSize: '10pt',
     color: textVeryLightBlack,
+  },
+
+  'blockquote + p': {
+    textIndent: '0',
   },
 });
