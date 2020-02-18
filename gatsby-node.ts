@@ -1,5 +1,7 @@
-/* eslint-disable-next-line import/no-nodejs-modules */
+/* eslint-disable import/no-nodejs-modules */
+import * as fs from 'fs';
 import * as path from 'path';
+/* eslint-enable import/no-nodejs-modules */
 
 import { CreatePagesArgs, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
 
@@ -14,15 +16,24 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
     force: true,
   });
 
-  const postsResult = await graphql<PostsData>(postsQuery);
+  const pagePath = './src/pages/';
+  const pageFileNames = await fs.promises.readdir(pagePath);
+  const pageFileObjects =
+    await Promise.all(pageFileNames.map(async (fileName) => {
+      const filePath = path.join(pagePath, fileName);
 
-  if (postsResult.errors) {
-    reporter.panicOnBuild(`Error while running GraphQL query for posts`);
-    return;
-  }
+      return {
+        name: fileName,
+        path: filePath,
+        stat: await fs.promises.stat(filePath),
+      };
+    }));
+  const languages =
+    pageFileObjects
+    .filter(({ stat }) => stat.isDirectory())
+    .map(({ name }) => name);
 
-  assert(postsResult.data);
-  postsResult.data.md.group.map(({ language }) => {
+  languages.map((language) => {
     actions.createPage({
       path: path.join('/', language, 'posts', '/'),
       component: path.resolve('src/templates/PostsTemplate.tsx'),
@@ -38,11 +49,11 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   }
 
   assert(postResult.data);
-  postResult.data.md.edges.forEach(({ node }) => {
+  postResult.data.allMarkdownRemark.nodes.forEach(({ id, postPath }) => {
     actions.createPage({
-      path: node.postPath,
+      path: postPath,
       component: path.resolve('src/templates/PostTemplate.tsx'),
-      context: { id: node.id },
+      context: { id },
     });
   });
 };
@@ -78,41 +89,20 @@ interface MarkdownRemarkNodeMock {
   fileAbsolutePath: string;
 }
 
-interface PostsData {
-  readonly md: {
-    readonly group: {
-      readonly language: string;
-    }[];
-  };
-}
-const postsQuery = `
-  query {
-    md: allMarkdownRemark {
-      group(field: language) {
-        language: fieldValue
-      }
-    }
-  }
-`;
-
 interface PostData {
-  readonly md: {
-    readonly edges: {
-      readonly node: {
-        readonly postPath: string;
-        readonly id: string;
-      };
+  readonly allMarkdownRemark: {
+    readonly nodes: {
+      readonly postPath: string;
+      readonly id: string;
     }[];
   };
 }
 const postQuery = `
   query {
-    md: allMarkdownRemark {
-      edges {
-        node {
-          postPath
-          id
-        }
+    allMarkdownRemark {
+      nodes {
+        postPath
+        id
       }
     }
   }
