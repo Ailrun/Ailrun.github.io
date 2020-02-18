@@ -2,6 +2,7 @@ import { Language } from '../languages';
 
 const aboutData = {
   [Language.KO]: {
+    ownerProfileCaption: '맥주를 보며 즐거워하는 Clare',
     subjects: [
       {
         title: '취미',
@@ -28,6 +29,7 @@ const aboutData = {
     ],
   },
   [Language.EN]: {
+    ownerProfileCaption: 'Clare with a few cups of beer',
     subjects: [
       {
         title: 'Hobby',

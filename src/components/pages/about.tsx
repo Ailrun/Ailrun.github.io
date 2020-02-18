@@ -22,7 +22,10 @@ const AboutPage: React.FC<PageRendererProps> = ({ location }) => {
         title='About'
       />
       <main>
-        <Info subjects={data.subjects} />
+        <Info
+          ownerProfileCaption={data.ownerProfileCaption}
+          subjects={data.subjects}
+        />
       </main>
     </Layout>
   );
@@ -32,9 +35,10 @@ export default AboutPage;
 type Subject = typeof dataAbout[Language.KO]['subjects'][0];
 
 interface InfoProps {
+  readonly ownerProfileCaption: string;
   readonly subjects: Subject[];
 }
-const Info: React.FC<InfoProps> = ({ subjects }) => (
+const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
   <InfoRoot>
     <Owner>Junyoung Clare Jang</Owner>
     <InfoSubjectList>
@@ -49,7 +53,7 @@ const Info: React.FC<InfoProps> = ({ subjects }) => (
       <OwnerProfileImage
         src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
       />
-      <OwnerProfileCaption>Clare with a few cups of beer</OwnerProfileCaption>
+      <OwnerProfileCaption>{ownerProfileCaption}</OwnerProfileCaption>
     </OwnerProfile>
   </InfoRoot>
 );
@@ -64,6 +68,14 @@ const InfoRoot = styled.article({
   color: C.textLightBlack,
 
   flexWrap: 'wrap',
+
+  [C.mediaQueries[0]]: {
+    width: '90%',
+
+    flexDirection: 'column',
+
+    alignItems: 'center',
+  },
 });
 
 const Owner = styled.h2({
@@ -72,6 +84,12 @@ const Owner = styled.h2({
   lineHeight: 2,
   fontWeight: 'bold',
   fontSize: C.fontGiantSize,
+
+  [C.mediaQueries[0]]: {
+    display: 'inline',
+
+    width: 'unset',
+  },
 }, C.fontDancing);
 
 const InfoSubjectList = styled.div({
@@ -79,10 +97,22 @@ const InfoSubjectList = styled.div({
 
   paddingTop: '0.5em',
   paddingLeft: '1em',
+
+  [C.mediaQueries[0]]: {
+    width: '90%',
+
+    order: 2,
+  },
 });
 
 const OwnerProfile = styled.figure({
   width: '40%',
+
+  [C.mediaQueries[0]]: {
+    width: '60%',
+
+    order: 1,
+  },
 });
 
 const OwnerProfileImage = styled.img({
