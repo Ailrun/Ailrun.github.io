@@ -69,8 +69,8 @@ const refineData = (data: Data): PostInfo => {
 };
 
 const PostWrapper = styled.main({
-  margin: '0 20vw',
-
-  width: '60vw',
+  width: '100vw',
   minHeight: '100vh',
+
+  backgroundColor: 'rgba(255, 255, 233, 0.84)',
 });

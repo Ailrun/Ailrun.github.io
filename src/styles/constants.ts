@@ -13,6 +13,8 @@ export const textLightWhite = 'rgba(255, 255, 255, 0.73)';
 export const textBlack = 'rgba(0, 0, 0, 0.84)';
 export const textLightBlack = 'rgba(0, 0, 0, 0.73)';
 export const textVeryLightBlack = 'rgba(0, 0, 0, 0.5)';
+export const textBrown = 'rgba(100, 50, 50, 0.84)';
+export const textLightBrown = 'rgba(150, 80, 50, 0.84)';
 
 export const backgroundBlack = 'rgba(0, 0, 0, 0.73)';
 
@@ -23,7 +25,37 @@ export const fontDancing: SerializedStyles = css({
 export const markdown: SerializedStyles = css({
   color: textBlack,
 
+  h1: {
+    marginTop: '1em',
+    marginBottom: '0.5em',
+
+    fontSize: '18pt',
+  },
+
   p: {
-    fontSize: fontBaseSize,
+    margin: '0 1em',
+    marginTop: '1em',
+
+    fontSize: '12pt',
+    textIndent: '1em',
+  },
+
+  a: {
+    color: textLightBrown,
+
+    ':hover': {
+      textDecoration: 'underline',
+    },
+
+    ':visited': {
+      color: textBrown,
+    },
+  },
+
+  blockquote: {
+    margin: '2em 1.5em',
+
+    fontSize: '10pt',
+    color: textVeryLightBlack,
   },
 });

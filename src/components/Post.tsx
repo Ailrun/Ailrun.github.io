@@ -45,7 +45,9 @@ export interface PostInfo {
 }
 
 const PostRoot = styled.article({
-  width: '100%',
+  margin: '0 auto',
+
+  width: '50em',
 
   paddingTop: C.navigationBarHeight,
 });
@@ -60,17 +62,19 @@ const PostHeader = styled.header({
 });
 
 const PostTitle = styled.h1({
-  fontSize: C.fontLargeSize,
+  fontSize: C.fontHugeSize,
   color: C.textBlack,
 });
 
 const PostDate = styled.span({
+  marginRight: '1em',
+
   fontSize: C.fontSmallSize,
   color: C.textVeryLightBlack,
 });
 
 const PostSeparator = styled.hr({
-  margin: '1em 0.5em',
+  margin: '1em 0',
 
   color: C.textLightBlack,
 });
@@ -78,8 +82,6 @@ const PostSeparator = styled.hr({
 const PostMain = styled.main(
   {
     marginBottom: '3em',
-
-    padding: '0 1em',
   },
   C.markdown,
 );
