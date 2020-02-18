@@ -50,6 +50,10 @@ const Title = styled(Link)({
   padding: '0 0.5em',
 
   fontSize: C.fontLargeSize,
+
+  [C.mediaQueries[0]]: {
+    display: 'none',
+  },
 }, C.fontDancing);
 
 const NavigationList = styled.ul({

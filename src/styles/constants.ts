@@ -1,5 +1,9 @@
 import { SerializedStyles, css } from '@emotion/core';
 
+export const mediaQueries = [
+  '@media (max-width: 60em)',
+];
+
 export const navigationBarHeight = '42px';
 
 export const fontSmallSize = '10pt';

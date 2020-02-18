@@ -50,6 +50,10 @@ const PostRoot = styled.article({
   width: '50em',
 
   paddingTop: C.navigationBarHeight,
+
+  [C.mediaQueries[0]]: {
+    width: '90%',
+  },
 });
 
 const PostHeader = styled.header({
