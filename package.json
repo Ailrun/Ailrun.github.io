@@ -28,6 +28,7 @@
     "gatsby-plugin-emotion": "^4.1.21",
     "gatsby-plugin-react-helmet-async": "^1.0.14",
     "gatsby-plugin-typescript": "^2.1.26",
+    "gatsby-remark-autolink-headers": "^2.1.24",
     "gatsby-source-filesystem": "^2.1.46",
     "gatsby-transformer-json": "^2.2.25",
     "gatsby-transformer-remark": "^2.6.49",

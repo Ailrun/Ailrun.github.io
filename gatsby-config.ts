@@ -30,13 +30,16 @@ const config: GatsbyConfig = {
             path: `./post-draft/`,
             name: `postMD`,
           },
-        }
+        },
       ] : []
     ),
 
     {
       resolve: `gatsby-transformer-remark`,
       options: {
+        plugins: [
+          `gatsby-remark-autolink-headers`,
+        ],
       },
     },
 

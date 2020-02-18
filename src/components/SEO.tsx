@@ -10,7 +10,7 @@ const SEO: React.FC<unknown> = () => {
       <title>{data.site.siteMetadata.title}</title>
       <meta name='description' content={data.site.siteMetadata.description} />
       <meta name='url' content={data.site.siteMetadata.url} />
-      <base href='/' />
+      <base href='./' />
       <link rel='author' href={data.site.siteMetadata.author} />
       <link rel='index' href={data.site.siteMetadata.url} />
 
