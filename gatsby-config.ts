@@ -35,6 +35,7 @@ const config: GatsbyConfig = {
       options: {
         disableOnDev: false,
         mergeDefaultDirectives: false,
+        mergeScriptHashes: process.env.NODE_ENV !== `development`,
         mergeStyleHashes: false,
         directives: {
           'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com`,
