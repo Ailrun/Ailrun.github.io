@@ -16,12 +16,10 @@ const Post: React.FC<Props> = ({ gatsbyShortname, post, postPath }) => {
     shortname: gatsbyShortname,
     config: {
       url: `https://ailrun.github.io${postPath}`,
-      identifier: post.id,
+      identifier: postPath,
       title: post.title,
     },
   };
-
-  console.log(disqusConfig);
 
   return (
     <PostRoot>
