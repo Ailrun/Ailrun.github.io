@@ -53,12 +53,13 @@ export const isNaivelyUnifiable = (sourceExpr: LogicExpression, targetExpr: Logi
     stackEntry = stack.pop();
   }
 
-  const constrainedAssignment: Record<string, LogicExpression> = {};
+  const constrainedAssignment: Record<string, LogicExpression | undefined> = {};
 
   for (const [identifier, expr] of constraints) {
-    if (constrainedAssignment[identifier] === undefined) {
+    const assigned = constrainedAssignment[identifier]
+    if (assigned === undefined) {
       constrainedAssignment[identifier] = expr;
-    } else if (!equal(constrainedAssignment[identifier], expr)) {
+    } else if (!equal(assigned, expr)) {
       return false;
     }
   }
