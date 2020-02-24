@@ -91,4 +91,13 @@ export const markdown: SerializedStyles = css({
   'blockquote + p': {
     textIndent: '0',
   },
+
+  'iframe[src^="/"]': {
+    display: 'block',
+    margin: '2em 10%',
+
+    width: '80%',
+
+    border: 'none',
+  },
 });
