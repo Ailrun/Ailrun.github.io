@@ -1,8 +1,22 @@
 {
   "compilerOptions": {
+    "alwaysStrict": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "importsNotUsedAsValues": "remove",
     "jsx": "preserve",
-    "strict": true
+    "noErrorTruncation": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "strict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "strictNullChecks": true,
+    "target": "ES5",
+    "useDefineForClassFields": true
   },
   "include": [
     "./*.ts",

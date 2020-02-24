@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 /* eslint-enable import/no-nodejs-modules */
 
-import { CreatePagesArgs, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
+import type { CreatePagesArgs, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
 
 import { assert } from './src/util';
 

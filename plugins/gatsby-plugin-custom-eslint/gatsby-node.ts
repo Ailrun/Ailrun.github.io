@@ -1,4 +1,4 @@
-import { CreateWebpackConfigArgs } from 'gatsby';
+import type { CreateWebpackConfigArgs } from 'gatsby';
 
 export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs): void => {
   actions.setWebpackConfig({

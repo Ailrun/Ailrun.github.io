@@ -1,5 +1,3 @@
-import { WindowLocation } from '@reach/router';
-
 export enum Language {
   EN = 'en',
   KO = 'ko',
@@ -19,6 +17,6 @@ export function languageToString(language: Language): string {
   }
 }
 
-export function locationToLanguage(location: WindowLocation): Language {
+export function locationToLanguage(location: typeof window['location']): Language {
   return (/\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
 }
