@@ -7,10 +7,10 @@ import { parse } from '../logic/parser';
 import * as C from '../styles/constants';
 
 export interface Props {
-  readonly initialContent: string;
+  readonly initialContent?: string;
 }
 const PredicateLogic: React.FC<Props> = ({ initialContent }) => {
-  const [content, setContent] = useState(initialContent);
+  const [content, setContent] = useState(initialContent ?? '');
   const handleContentChange = useCallback((newContent) => {
     setContent(newContent);
   }, []);
@@ -18,10 +18,14 @@ const PredicateLogic: React.FC<Props> = ({ initialContent }) => {
   return (
     <Wrapper>
       <LineNumbersPanel content={content} />
-      <EditablePanel
-        initialContent={initialContent}
-        onContentChange={handleContentChange}
-      />
+      {
+        initialContent !== undefined ? (
+          <EditablePanel
+            initialContent={initialContent}
+            onContentChange={handleContentChange}
+          />
+        ) : <EditablePanelWrapper />
+      }
       <ResultPanel content={content} />
     </Wrapper>
   );
