@@ -45,7 +45,9 @@ const Post: React.FC<PostProps> = ({ post }) => (
       <PostTitle>{post.title}</PostTitle>
       <FlexSpacer />
       <PostDate>{post.date}</PostDate>
-      <PostExcerpt>{post.excerpt}</PostExcerpt>
+      <PostExcerpt
+        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+      />
     </PostLink>
   </PostRoot>
 );
@@ -86,4 +88,12 @@ const PostExcerpt = styled.span({
 
   fontSize: C.fontBaseSize,
   color: C.textLightBlack,
+
+  '*': {
+    display: 'inline',
+  },
+
+  'h1, h2, h3, h4, h5, h6': {
+    display: 'none',
+  },
 });

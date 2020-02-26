@@ -57,7 +57,7 @@ export const query = graphql`
           dateForSort: date
         }
         id
-        excerpt
+        excerpt(format: HTML, pruneLength: 100, truncate: true)
         postPath
 
         parent {
