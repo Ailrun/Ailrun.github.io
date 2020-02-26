@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
+import Codemirror from 'codemirror';
+import 'codemirror/lib/codemirror.css';
 import React, { Fragment, useCallback, useEffect, useState, useRef } from 'react';
-/* eslint-disable-next-line import/extensions */
-import { renderToStaticMarkup } from 'react-dom/server';
 
 import { parse } from '../logic/parser';
 import * as C from '../styles/constants';
@@ -60,14 +60,14 @@ const LineNumbersPanel: React.FC<LineNumbersPanelProps> = ({ content }) => {
     ], [1, []])[1];
 
   return (
-    <LineNumbersPanelWrapper>
+    <LineNumbersPanelWrapper className='CodeMirror-lines'>
       {lineNumbers}
     </LineNumbersPanelWrapper>
   );
 };
 
 const LineNumbersPanelWrapper = styled.pre({
-  marginRight: '0.5em',
+  margin: '0 0.5em',
 
   minWidth: '1em',
 
@@ -87,31 +87,29 @@ interface EditablePanelProps {
   onContentChange(newContent: string): void;
 }
 const EditablePanel: React.FC<EditablePanelProps> = ({ initialContent, onContentChange }) => {
-  const ref = useRef<HTMLPreElement>(null);
-  const handleInput = useCallback((): void => {
-    if (ref.current !== null) {
-      onContentChange(targetToContent(ref.current));
-    }
-  }, [onContentChange]);
+  const editorRef = useRef<Codemirror.Editor>();
+  const domRef = useRef<HTMLPreElement>(null);
 
   useEffect(() => {
-    if (ref.current !== null) {
-      ref.current.innerHTML = renderToStaticMarkup(
-        /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-        contentToChildren(initialContent) as any
-      );
+    if (domRef.current !== null) {
+      console.log(initialContent);
+      editorRef.current = Codemirror(domRef.current, {
+        value: initialContent,
+        mode: null,
+        lineNumbers: false,
+      });
 
-      onContentChange(targetToContent(ref.current));
+      onContentChange(initialContent);
+      editorRef.current.on('change', (editor) => {
+        onContentChange(editor.getValue());
+      });
     }
+
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 
   return (
-    <EditablePanelWrapper
-      contentEditable={true}
-      onInput={handleInput}
-      ref={ref}
-    />
+    <EditablePanelWrapper ref={domRef} />
   );
 };
 
@@ -123,10 +121,6 @@ const EditablePanelWrapper = styled.pre({
   flexShrink: 1,
   flexGrow: 0,
   minHeight: '1em',
-
-  outline: 'none',
-
-  whiteSpace: 'pre-wrap',
 });
 
 interface ResultPanelProps {
