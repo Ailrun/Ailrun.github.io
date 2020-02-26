@@ -1,15 +1,25 @@
 import { PageRendererProps } from 'gatsby';
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 
+import Dummy from '../Dummy';
 import Layout from '../Layout';
-import PredicateLogic from '../PredicateLogic';
+
+const PredicateLogic = lazy(() => import('../PredicateLogic'));
 
 const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
   const initialContent = getInitialContentFromLocation(location);
 
+  if (initialContent === undefined) {
+    return (
+      <Layout />
+    )
+  }
+
   return (
     <Layout>
-      <PredicateLogic initialContent={initialContent} />
+      <Suspense fallback={Dummy}>
+        <PredicateLogic initialContent={initialContent} />
+      </Suspense>
     </Layout>
   );
 };
