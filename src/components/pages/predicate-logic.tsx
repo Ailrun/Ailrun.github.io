@@ -1,13 +1,16 @@
 import { PageRendererProps } from 'gatsby';
 import React from 'react';
 
+import Layout from '../Layout';
 import PredicateLogic from '../PredicateLogic';
 
 const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
   const initialContent = getInitialContentFromLocation(location);
 
   return (
-    <PredicateLogic initialContent={initialContent} />
+    <Layout>
+      <PredicateLogic initialContent={initialContent} />
+    </Layout>
   );
 };
 export default PredicateLogicPage;

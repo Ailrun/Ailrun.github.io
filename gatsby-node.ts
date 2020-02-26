@@ -31,7 +31,8 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   const languages =
     pageFileObjects
     .filter(({ stat }) => stat.isDirectory())
-    .map(({ name }) => name);
+    .map(({ name }) => name)
+    .filter((name) => name !== 'iframe');
 
   languages.map((language) => {
     actions.createPage({
