@@ -48,37 +48,33 @@ const atomicExpression = Parsimmon.lazy(() => {
   );
 });
 
-const unaryExpression = Parsimmon.lazy(() => {
-  return Parsimmon.alt(
-    Parsimmon.seqMap(
-      unaryOperator,
-      atomicExpression,
-      (operator, operand): LogicUnaryExpression => ({
-        logicExpressionType: LogicExpressionTypes.LOGIC_UNARY,
-        operator,
-        operand,
-      }),
-    ),
-    atomicExpression
-  );
-})
+const unaryExpression = Parsimmon.alt(
+  Parsimmon.seqMap(
+    unaryOperator,
+    atomicExpression,
+    (operator, operand): LogicUnaryExpression => ({
+      logicExpressionType: LogicExpressionTypes.LOGIC_UNARY,
+      operator,
+      operand,
+    }),
+  ),
+  atomicExpression
+)
   .thru(expressionToken);
 
-const binaryExpression = Parsimmon.lazy(() => {
-  return Parsimmon.alt(
-    Parsimmon.seqMap(
-      unaryExpression,
-      binaryOperator,
-      unaryExpression,
-      (operand0, operator, operand1): LogicBinaryExpression => ({
-        logicExpressionType: LogicExpressionTypes.LOGIC_BINARY,
-        operator,
-        operands: [operand0, operand1],
-      }),
-    ),
+const binaryExpression = Parsimmon.alt(
+  Parsimmon.seqMap(
     unaryExpression,
-  );
-})
+    binaryOperator,
+    unaryExpression,
+    (operand0, operator, operand1): LogicBinaryExpression => ({
+      logicExpressionType: LogicExpressionTypes.LOGIC_BINARY,
+      operator,
+      operands: [operand0, operand1],
+    }),
+  ),
+  unaryExpression,
+)
   .thru(expressionToken);
 
 const expression: Parsimmon.Parser<LogicExpression> = Parsimmon.alt(
