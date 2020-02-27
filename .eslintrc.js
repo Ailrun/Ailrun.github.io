@@ -64,20 +64,6 @@ module.exports = {
         noUselessIndex: true,
       },
     ],
-    'import/no-unused-modules': [
-      'warn',
-      {
-        missingExports: true,
-        unusedExports: true,
-        src: [
-          './src',
-        ],
-        ignoreExports: [
-          './src/pages/',
-          './src/templates/',
-        ],
-      },
-    ],
     'import/no-deprecated': [
       'warn',
     ],
@@ -255,9 +241,6 @@ module.exports = {
     ],
     'react/jsx-no-script-url': [
       'error',
-    ],
-    'react/jsx-no-useless-fragment': [
-      'warn',
     ],
     'react/jsx-pascal-case': [
       'warn',

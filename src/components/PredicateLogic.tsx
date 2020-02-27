@@ -47,17 +47,16 @@ const EditablePanel: React.FC<EditablePanelProps> = ({ initialContent, onContent
   const updatePropNumber = useCallback((editor: Codemirror.Editor) => {
     let propNumber = 1;
 
-    console.log(editor.getGutterElement());
-
     editor.eachLine((line) => {
       const propNumberElement = document.createElement('div');
       propNumberElement.className = 'CodeMirror-linenumber';
 
-      if (editor.getLine(editor.getLineNumber(line)!) === '') {
-        propNumberElement.innerHTML = ' ';
-      } else {
+      const lineNumber = editor.getLineNumber(line);
+      if (lineNumber !== null && editor.getLine(lineNumber) !== '') {
         propNumberElement.innerHTML = String(propNumber);
         propNumber++;
+      } else {
+        propNumberElement.innerHTML = ' ';
       }
 
       editor.setGutterMarker(line, 'CodeMirror-linenumbers', propNumberElement);
@@ -66,7 +65,6 @@ const EditablePanel: React.FC<EditablePanelProps> = ({ initialContent, onContent
 
   useEffect(() => {
     if (domRef.current !== null) {
-      console.log(initialContent);
       const editor = editorRef.current = Codemirror(domRef.current, {
         value: initialContent,
         mode: null,
