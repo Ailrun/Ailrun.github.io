@@ -85,7 +85,7 @@ const expression: Parsimmon.Parser<LogicExpression> = Parsimmon.alt(
 const separator = Parsimmon.string('|')
   .thru(expressionToken);
 
-const method = Parsimmon.regexp(/[^\s].+/m)
+const method = Parsimmon.regexp(/[^\s].*/m)
   .desc('method');
 
 const statement = Parsimmon.seqMap(
