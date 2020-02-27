@@ -34,6 +34,13 @@ export const markdown: SerializedStyles = css({
     marginTop: '1em',
     marginBottom: '0.5em',
 
+    fontSize: '20pt',
+  },
+
+  h2: {
+    marginTop: '1em',
+    marginBottom: '0.5em',
+
     fontSize: '18pt',
   },
 
@@ -90,6 +97,26 @@ export const markdown: SerializedStyles = css({
 
   'blockquote + p': {
     textIndent: '0',
+  },
+
+  details: {
+    margin: '0 1em',
+
+    summary: {
+      marginTop: '1.5em',
+
+      p: {
+        marginTop: '0.5em',
+      },
+
+      'p:first-of-type': {
+        marginTop: '-1.5em',
+      },
+    },
+
+    'summary + p': {
+      marginTop: '1em',
+    },
   },
 
   'iframe[src^="/"]': {
