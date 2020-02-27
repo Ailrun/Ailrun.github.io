@@ -2,9 +2,9 @@ import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
+    siteUrl: `https://Ailrun.github.io`,
     title: `Valhala of Valkyrie`,
-    description: `Ailrun's Github Blog`,
-    url: `https://Ailrun.github.io`,
+    description: `Ailrun's GitHub Blog`,
     image: `https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png`,
     author: `https://Ailrun.github.io/about`,
     locales: [
@@ -45,6 +45,34 @@ const config: GatsbyConfig = {
 
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
+    `gatsby-plugin-sitemap`,
+    /**
+     * Add localization after language switch is enabled.
+     */
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Valhala of Valkyrie`,
+        short_name: `Valhala`,
+        description: `Ailrun's GitHub Blog`,
+        start_url: `/ko/posts`,
+        background_color: `#000000`,
+        theme_color: `#000000`,
+        display: `standalone`,
+        icon: `src/assets/icon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        precachePages: [
+          `/post/*`,
+          `/posts`,
+          `/projects`,
+          `/about`,
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-csp`,
       options: {

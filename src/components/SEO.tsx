@@ -3,24 +3,24 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 const SEO: React.FC<unknown> = () => {
-  const data = useStaticQuery<Data>(query);
+  const { siteMetadata } = useStaticQuery<Data>(query).site;
 
   return (
     <Helmet>
-      <title>{data.site.siteMetadata.title}</title>
-      <meta name='description' content={data.site.siteMetadata.description} />
-      <meta name='url' content={data.site.siteMetadata.url} />
+      <title>{siteMetadata.title}</title>
+      <meta name='description' content={siteMetadata.description} />
+      <meta name='url' content={siteMetadata.siteUrl} />
       <base href='./' />
-      <link rel='author' href={data.site.siteMetadata.author} />
-      <link rel='index' href={data.site.siteMetadata.url} />
+      <link rel='author' href={siteMetadata.author} />
+      <link rel='index' href={siteMetadata.siteUrl} />
 
       <meta property='og:type' content='website' />
-      <meta property='og:title' content={data.site.siteMetadata.title} />
-      <meta property='og:description' content={data.site.siteMetadata.description} />
-      <meta property='og:url' content={data.site.siteMetadata.url} />
-      <meta property='og:image' content={data.site.siteMetadata.image} />
+      <meta property='og:title' content={siteMetadata.title} />
+      <meta property='og:description' content={siteMetadata.description} />
+      <meta property='og:url' content={siteMetadata.siteUrl} />
+      <meta property='og:image' content={siteMetadata.image} />
       {
-        data.site.siteMetadata.locales.map((locale: string, index: number) => {
+        siteMetadata.locales.map((locale: string, index: number) => {
           if (index === 0) {
             return (
               <meta key={'locale' + index} property='og:locale' content={locale} />
@@ -32,12 +32,12 @@ const SEO: React.FC<unknown> = () => {
           }
         })
       }
-      <meta property='og:site_name' content={data.site.siteMetadata.title} />
+      <meta property='og:site_name' content={siteMetadata.title} />
 
       <meta name='twitter:card' content='summary' />
-      <meta name='twitter:title' content={data.site.siteMetadata.title} />
-      <meta name='twitter:description' content={data.site.siteMetadata.description} />
-      <meta name='twitter:image' content={data.site.siteMetadata.image} />
+      <meta name='twitter:title' content={siteMetadata.title} />
+      <meta name='twitter:description' content={siteMetadata.description} />
+      <meta name='twitter:image' content={siteMetadata.image} />
     </Helmet>
   );
 };
@@ -46,9 +46,9 @@ export default SEO;
 interface Data {
   readonly site: {
     readonly siteMetadata: {
+      readonly siteUrl: string;
       readonly title: string;
       readonly description: string;
-      readonly url: string;
       readonly image: string;
       readonly author: string;
       readonly locales: string[];
@@ -59,9 +59,9 @@ const query = graphql`
   query {
     site {
       siteMetadata {
+        siteUrl
         title
         description
-        url
         image
         author
         locales
