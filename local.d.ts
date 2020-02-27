@@ -1,3 +1,5 @@
+declare module 'codemirror/lib/codemirror.css'
+
 declare module 'react-helmet' {
   class Helmet extends React.Component<HelmetProps> {}
 

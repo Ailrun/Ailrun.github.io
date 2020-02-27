@@ -1,10 +1,9 @@
+import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled';
 import Codemirror from 'codemirror';
-import 'codemirror/lib/codemirror.css';
-import React, { Fragment, useCallback, useEffect, useState, useRef } from 'react';
+import React, { useCallback, useEffect, useState, useRef } from 'react';
 
 import { parse } from '../logic/parser';
-import * as C from '../styles/constants';
 
 export interface Props {
   readonly initialContent: string;
@@ -17,7 +16,6 @@ const PredicateLogic: React.FC<Props> = ({ initialContent }) => {
 
   return (
     <Wrapper>
-      <LineNumbersPanel content={content} />
       <EditablePanel
         initialContent={initialContent}
         onContentChange={handleContentChange}
@@ -38,46 +36,6 @@ const Wrapper = styled.div({
   alignItems: 'flex-start',
 });
 
-interface LineNumbersPanelProps {
-  readonly content: string;
-}
-const LineNumbersPanel: React.FC<LineNumbersPanelProps> = ({ content }) => {
-  const lineNumbers = content.split('\n')
-    .reduce<[number, React.ReactChild[]]>(([ind, acc], line, index) => [
-      line !== '' ? ind + 1 : ind,
-      [
-        ...acc,
-        (
-          <LineNumber key={index}>
-            {line !== '' ? ind : (<br />)}
-          </LineNumber>
-        ),
-      ],
-    ], [1, []])[1];
-
-  return (
-    <LineNumbersPanelWrapper className='CodeMirror-lines'>
-      {lineNumbers}
-    </LineNumbersPanelWrapper>
-  );
-};
-
-const LineNumbersPanelWrapper = styled.pre({
-  margin: '0 0.5em',
-
-  minWidth: '1em',
-
-  paddingRight: '0.5em',
-
-  borderRightStyle: 'solid',
-  borderRightWidth: '1px',
-  borderRightColor: C.textVeryLightBlack,
-});
-
-const LineNumber = styled.div({
-  display: 'block',
-});
-
 interface EditablePanelProps {
   readonly initialContent: string;
   onContentChange(newContent: string): void;
@@ -86,26 +44,51 @@ const EditablePanel: React.FC<EditablePanelProps> = ({ initialContent, onContent
   const editorRef = useRef<Codemirror.Editor>();
   const domRef = useRef<HTMLPreElement>(null);
 
+  const updatePropNumber = useCallback((editor: Codemirror.Editor) => {
+    let propNumber = 1;
+
+    console.log(editor.getGutterElement());
+
+    editor.eachLine((line) => {
+      const propNumberElement = document.createElement('div');
+      propNumberElement.className = 'CodeMirror-linenumber';
+
+      if (editor.getLine(editor.getLineNumber(line)!) === '') {
+        propNumberElement.innerHTML = ' ';
+      } else {
+        propNumberElement.innerHTML = String(propNumber);
+        propNumber++;
+      }
+
+      editor.setGutterMarker(line, 'CodeMirror-linenumbers', propNumberElement);
+    });
+  }, []);
+
   useEffect(() => {
     if (domRef.current !== null) {
       console.log(initialContent);
-      editorRef.current = Codemirror(domRef.current, {
+      const editor = editorRef.current = Codemirror(domRef.current, {
         value: initialContent,
         mode: null,
-        lineNumbers: false,
+        lineNumbers: true,
       });
+      editor.refresh();
 
+      updatePropNumber(editor);
       onContentChange(initialContent);
-      editorRef.current.on('change', (editor) => {
-        onContentChange(editor.getValue());
+      editor.on('change', (eventEditor) => {
+        updatePropNumber(eventEditor);
+        onContentChange(eventEditor.getValue());
       });
     }
-
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 
   return (
-    <EditablePanelWrapper ref={domRef} />
+    <>
+      <EditablePanelWrapper ref={domRef} />
+      <Global styles={editablePanelStyle} />
+    </>
   );
 };
 
@@ -117,6 +100,21 @@ const EditablePanelWrapper = styled.pre({
   flexShrink: 1,
   flexGrow: 0,
   minHeight: '1em',
+});
+
+const editablePanelStyle = css({
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  [EditablePanelWrapper as any]: {
+    '.CodeMirror': {
+      height: '100%',
+
+      backgroundColor: 'rgba(0,0,0,0)',
+    },
+
+    '.CodeMirror-gutters': {
+      backgroundColor: 'rgba(0,0,0,0)',
+    },
+  },
 });
 
 interface ResultPanelProps {
@@ -154,28 +152,3 @@ const ResultPanelWrapper = styled.div({
   overflowWrap: 'break-word',
   whiteSpace: 'pre-wrap',
 });
-
-
-const targetToContent = (target: Element): string => {
-  return Array.from(target.childNodes)
-    .map((childNode, index) => {
-      if (childNode.nodeType === childNode.ELEMENT_NODE
-          && (childNode as Element).tagName === 'BR'
-          && index !== target.childNodes.length - 1) {
-        return '\n';
-      }
-
-      return childNode.textContent;
-    })
-    .join('');
-};
-
-const contentToChildren = (content: string): React.ReactNode => {
-  return content.split('\n')
-    .map((frag, index) => (
-      <Fragment key={index}>
-        {frag}
-        <br />
-      </Fragment>
-    ));
-};

@@ -12,12 +12,12 @@ const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
   if (initialContent === undefined) {
     return (
       <Layout />
-    )
+    );
   }
 
   return (
     <Layout>
-      <Suspense fallback={Dummy}>
+      <Suspense fallback={<Dummy />}>
         <PredicateLogic initialContent={initialContent} />
       </Suspense>
     </Layout>
