@@ -5,6 +5,7 @@ import React from 'react';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
+import Online from './Online';
 
 interface Props {
   readonly gatsbyShortname: string;
@@ -32,7 +33,10 @@ const Post: React.FC<Props> = ({ gatsbyShortname, post, postPath }) => {
       <PostMain
         dangerouslySetInnerHTML={{ __html: post.html }}
       />
-      <DiscussionEmbed {...disqusConfig} />
+      <PostDisqusSeparator />
+      <Online fallback={<PostDisqusLoadError />}>
+        <DiscussionEmbed {...disqusConfig} />
+      </Online>
     </PostRoot>
   );
 };
@@ -51,6 +55,8 @@ const PostRoot = styled.article({
   width: '50em',
 
   paddingTop: C.navigationBarHeight,
+
+  overflowY: 'hidden',
 
   [C.mediaQueries[0]]: {
     width: '90%',
@@ -90,3 +96,27 @@ const PostMain = styled.main(
   },
   C.markdown,
 );
+
+const PostDisqusSeparator = styled.hr({
+  color: C.textLightBlack,
+});
+
+const PostDisqusLoadError: React.FC<unknown> = () => {
+  return (
+    <PostDisqusLoadErrorWrapper>
+      Unable to Access Network...
+      <br />
+      Cannot Load Disqus Comments
+    </PostDisqusLoadErrorWrapper>
+  );
+};
+
+const PostDisqusLoadErrorWrapper = styled.div({
+  display: 'block',
+  marginTop: '2em',
+  marginBottom: '4em',
+
+  textAlign: 'center',
+  color: C.textVeryLightBlack,
+  fontSize: C.fontBaseSize,
+});
