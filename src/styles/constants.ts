@@ -30,18 +30,21 @@ export const markdown: SerializedStyles = css({
   color: textBlack,
   fontSize: '12pt',
 
-  h1: {
+  'h1, h2, h3, h4, h5, h6': {
     marginTop: '1em',
     marginBottom: '0.5em',
+  },
 
+  h1: {
     fontSize: '20pt',
   },
 
   h2: {
-    marginTop: '1em',
-    marginBottom: '0.5em',
-
     fontSize: '18pt',
+  },
+
+  h3: {
+    fontSize: '16pt',
   },
 
   p: {
