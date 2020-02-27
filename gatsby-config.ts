@@ -60,6 +60,7 @@ const config: GatsbyConfig = {
         theme_color: `#000000`,
         display: `standalone`,
         icon: `src/assets/icon.png`,
+        crossorigin: `use-credentials`,
       },
     },
     {
