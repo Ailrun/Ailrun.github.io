@@ -54,6 +54,9 @@ module.exports = {
       'warn',
       'always',
     ],
+    '@typescript-eslint/switch-exhaustiveness-check': [
+      'warn',
+    ],
 
     'import/no-absolute-path': [
       'error',

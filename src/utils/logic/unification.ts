@@ -46,8 +46,6 @@ export const isNaivelyUnifiable = (sourceExpr: LogicExpression, targetExpr: Logi
 
         return false;
       }
-      default:
-        throw new Error('Impossible case is detected in isNaivelyUnifiableInConstraints');
     }
 
     stackEntry = stack.pop();
@@ -84,7 +82,5 @@ export const equal = (expr0: LogicExpression, expr1: LogicExpression): boolean =
       return expr0.operator === (expr1 as LogicBinaryExpression).operator
         && expr0.operands[0] === (expr1 as LogicBinaryExpression).operands[0]
         && expr0.operands[1] === (expr1 as LogicBinaryExpression).operands[1];
-    default:
-      throw new Error('Impossible case is detected in equal');
   }
 };
