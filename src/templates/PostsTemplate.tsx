@@ -1,18 +1,15 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql } from 'gatsby';
+import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
 import Layout from '../components/Layout';
 import NavigationBar from '../components/NavigationBar';
 import PageTitle from '../components/PageTitle';
-import PostList, { PostInfo as PostListPostInfo } from '../components/PostList';
+import PostList, { PostInfo } from '../components/PostList';
 import { locationToLanguage } from '../languages';
 
-interface Props extends PageRendererProps {
-  readonly data: Data;
-}
-const PostsTemplate: React.FC<Props> = ({ data, location }) => {
-  const posts = refineData(data);
+const PostsTemplate: React.FC<PageRendererProps> = ({ location }) => {
+  const posts = usePostInfos();
 
   return (
     <Layout>
@@ -22,7 +19,7 @@ const PostsTemplate: React.FC<Props> = ({ data, location }) => {
         title='Posts'
       />
       <PostListWrapper>
-        <PostList posts={posts} />
+        <PostList postInfos={posts} />
       </PostListWrapper>
     </Layout>
   );
@@ -30,26 +27,27 @@ const PostsTemplate: React.FC<Props> = ({ data, location }) => {
 export default PostsTemplate;
 
 interface Data {
-  readonly md: {
-    readonly posts: {
-      readonly frontmatter: {
-        readonly title: string;
-        readonly date?: string;
-        readonly dateForSort?: string;
-      };
-      readonly id: string;
-      readonly excerpt: string;
-      readonly postPath: string;
-      readonly parent: {
-        readonly date: string;
-        readonly dateForSort: string;
-      };
-    }[];
+  readonly allMarkdownRemark: {
+    readonly posts: DataPost[];
   };
 }
-export const query = graphql`
+interface DataPost {
+  readonly frontmatter: {
+    readonly title: string;
+    readonly date?: string;
+    readonly dateForSort?: string;
+  };
+  readonly id: string;
+  readonly excerpt: string;
+  readonly postPath: string;
+  readonly parent: {
+    readonly date: string;
+    readonly dateForSort: string;
+  };
+} 
+const query = graphql`
   query ($language: String) {
-    md: allMarkdownRemark(filter: {language: {eq: $language}}) {
+    allMarkdownRemark(filter: {language: {eq: $language}}) {
       posts: nodes {
         frontmatter {
           title
@@ -71,24 +69,23 @@ export const query = graphql`
   }
 `;
 
-const refineData = (data: Data): PostListPostInfo[] => {
-  return data.md.posts
-    .map((post) => ({
-      id: post.id,
-      title: post.frontmatter.title,
-      date: post.frontmatter.date ?? post.parent.date,
-      dateForSort: post.frontmatter.dateForSort ?? post.parent.dateForSort,
-      excerpt: post.excerpt,
-      postPath: post.postPath,
-    }))
+const usePostInfos = (): PostInfo[] => {
+  const { posts } = useStaticQuery<Data>(query).allMarkdownRemark;
+
+  return refineData(posts);
+};
+
+const refineData = (posts: DataPost[]): PostInfo[] => {
+  return posts
+    .map(({ frontmatter, parent, ...postInfo }) => {
+      const title = frontmatter.title;
+      const date = frontmatter.date ?? parent.date;
+      const dateForSort = frontmatter.dateForSort ?? parent.dateForSort;
+
+      return { ...postInfo, title, date, dateForSort };
+    })
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
-    .map((post) => ({
-      id: post.id,
-      title: post.title,
-      date: post.date,
-      excerpt: post.excerpt,
-      postPath: post.postPath,
-    }));
+    .map(({ dateForSort, ...postInfo }) => postInfo);
 };
 
 const PostListWrapper = styled.main({

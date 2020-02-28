@@ -7,14 +7,14 @@ import * as C from '../styles/constants';
 import FlexSpacer from './FlexSpacer';
 
 export interface Props {
-  readonly posts: PostInfo[];
+  readonly postInfos: PostInfo[];
 }
-const PostList: React.FC<Props> = ({ posts }) => (
+const PostList: React.FC<Props> = ({ postInfos }) => (
   <PostListRoot>
     {
-      posts.map((post) => (
-        <Fragment key={post.id}>
-          <Post {...{ post }} />
+      postInfos.map((postInfo) => (
+        <Fragment key={postInfo.id}>
+          <Post postInfo={postInfo} />
         </Fragment>
       ))
     }
@@ -37,16 +37,16 @@ const PostListRoot = styled.ul({
 });
 
 interface PostProps {
-  post: PostInfo;
+  postInfo: PostInfo;
 }
-const Post: React.FC<PostProps> = ({ post }) => (
+const Post: React.FC<PostProps> = ({ postInfo }) => (
   <PostRoot>
-    <PostLink to={post.postPath}>
-      <PostTitle>{post.title}</PostTitle>
+    <PostLink to={postInfo.postPath}>
+      <PostTitle>{postInfo.title}</PostTitle>
       <FlexSpacer />
-      <PostDate>{post.date}</PostDate>
+      <PostDate>{postInfo.date}</PostDate>
       <PostExcerpt
-        dangerouslySetInnerHTML={{ __html: post.excerpt }}
+        dangerouslySetInnerHTML={{ __html: postInfo.excerpt }}
       />
     </PostLink>
   </PostRoot>

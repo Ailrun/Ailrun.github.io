@@ -9,29 +9,28 @@ import Online from './Online';
 
 interface Props {
   readonly gatsbyShortname: string;
-  readonly post: PostInfo;
-  readonly postPath: string;
+  readonly postInfo: PostInfo;
 }
-const Post: React.FC<Props> = ({ gatsbyShortname, post, postPath }) => {
+const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
   const disqusConfig = {
     shortname: gatsbyShortname,
     config: {
-      url: `https://ailrun.github.io${postPath}`,
-      identifier: postPath,
-      title: post.title,
+      url: `https://ailrun.github.io${postInfo.postPath}`,
+      identifier: postInfo.postPath,
+      title: postInfo.title,
     },
   };
 
   return (
     <PostRoot>
       <PostHeader>
-        <PostTitle>{post.title}</PostTitle>
+        <PostTitle>{postInfo.title}</PostTitle>
         <FlexSpacer />
-        <PostDate>{post.date}</PostDate>
+        <PostDate>{postInfo.date}</PostDate>
       </PostHeader>
       <PostSeparator />
       <PostMain
-        dangerouslySetInnerHTML={{ __html: post.html }}
+        dangerouslySetInnerHTML={{ __html: postInfo.html }}
       />
       <PostDisqusSeparator />
       <Online fallback={<PostDisqusLoadError />}>
@@ -47,6 +46,7 @@ export interface PostInfo {
   readonly title: string;
   readonly date: string;
   readonly html: string;
+  readonly postPath: string;
 }
 
 const PostRoot = styled.article({
