@@ -56,7 +56,7 @@ export const isNaivelyUnifiable = (sourceExpr: LogicExpression, targetExpr: Logi
   const constrainedAssignment: Record<string, LogicExpression | undefined> = {};
 
   for (const [identifier, expr] of constraints) {
-    const assigned = constrainedAssignment[identifier]
+    const assigned = constrainedAssignment[identifier];
     if (assigned === undefined) {
       constrainedAssignment[identifier] = expr;
     } else if (!equal(assigned, expr)) {

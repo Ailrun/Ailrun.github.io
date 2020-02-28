@@ -36,6 +36,12 @@ module.exports = {
         variables: false,
       },
     ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        ignoreRestSiblings: true,
+      },
+    ],
     '@typescript-eslint/quotes': [
       'warn',
       'single',

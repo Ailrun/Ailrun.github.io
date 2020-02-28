@@ -11,6 +11,7 @@ const config: GatsbyConfig = {
       `ko_KR`,
     ],
   },
+  /* eslint-disable @typescript-eslint/camelcase */
   plugins: [
     `gatsby-plugin-custom-eslint`,
     `gatsby-plugin-typescript`,
@@ -96,5 +97,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
+  /* eslint-enable @typescript-eslint/camelcase */
 };
 export default config;
