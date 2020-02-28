@@ -1,4 +1,4 @@
-import { Language } from '../languages';
+import { Language } from '../utils/languages';
 
 const aboutData = {
   [Language.KO]: {

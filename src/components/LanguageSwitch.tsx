@@ -3,8 +3,8 @@ import { Location } from '@reach/router';
 import { Link } from 'gatsby';
 import React, { useCallback, useState } from 'react';
 
-import { Language, languageToString, languages } from '../languages';
 import * as C from '../styles/constants';
+import { Language, languageToString, languages } from '../utils/languages';
 
 interface Props {
   readonly className: string;

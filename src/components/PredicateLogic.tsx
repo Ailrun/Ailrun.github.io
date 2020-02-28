@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import Codemirror from 'codemirror';
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 
-import { parse } from '../logic/parser';
+import { parse } from '../utils/logic/parser';
 
 export interface Props {
   readonly initialContent: string;

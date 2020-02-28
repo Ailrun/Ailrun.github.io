@@ -3,8 +3,8 @@ import { PageRendererProps } from 'gatsby';
 import React from 'react';
 
 import dataAbout from '../../data/about';
-import { Language, locationToLanguage } from '../../languages';
 import * as C from '../../styles/constants';
+import { Language, locationToLanguage } from '../../utils/languages';
 import FlexSpacer from '../FlexSpacer';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';

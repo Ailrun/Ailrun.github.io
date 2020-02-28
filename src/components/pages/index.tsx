@@ -1,7 +1,7 @@
 import { PageRendererProps, navigate } from 'gatsby';
 import React, { useEffect } from 'react';
 
-import { locationToLanguage } from '../../languages';
+import { locationToLanguage } from '../../utils/languages';
 
 const IndexPage: React.FC<PageRendererProps> = ({ location }) => {
   useEffect(() => {

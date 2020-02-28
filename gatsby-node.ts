@@ -5,7 +5,7 @@ import * as path from 'path';
 
 import type { CreatePagesArgs, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
 
-import { assert } from './src/util';
+import { assert } from './src/utils/typeHelpers';
 
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
   actions.createRedirect({

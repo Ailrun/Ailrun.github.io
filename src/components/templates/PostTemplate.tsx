@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import { locationToLanguage } from '../../languages';
+import { locationToLanguage } from '../../utils/languages';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';

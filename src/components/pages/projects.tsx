@@ -3,8 +3,8 @@ import { PageRendererProps } from 'gatsby';
 import React, { Fragment } from 'react';
 
 import dataProjects from '../../data/projects';
-import { Language, locationToLanguage } from '../../languages';
 import * as C from '../../styles/constants';
+import { Language, locationToLanguage } from '../../utils/languages';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
