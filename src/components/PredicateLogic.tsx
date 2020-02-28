@@ -1,9 +1,9 @@
-import { Global, css } from '@emotion/core';
 import styled from '@emotion/styled';
-import Codemirror from 'codemirror';
-import React, { useCallback, useEffect, useState, useRef } from 'react';
+import React, { Suspense, lazy, useCallback, useState } from 'react';
 
 import { parse } from '../utils/logic/parser';
+
+const PredicateLogicEditor = lazy(() => import('./PredicateLogicEditor'));
 
 export interface Props {
   readonly initialContent: string;
@@ -16,10 +16,12 @@ const PredicateLogic: React.FC<Props> = ({ initialContent }) => {
 
   return (
     <Wrapper>
-      <EditablePanel
-        initialContent={initialContent}
-        onContentChange={handleContentChange}
-      />
+      <Suspense fallback={<PredicateLogicEditorPlaceholder />}>
+        <PredicateLogicEditor
+          initialContent={initialContent}
+          onContentChange={handleContentChange}
+        />
+      </Suspense>
       <ResultPanel content={content} />
     </Wrapper>
   );
@@ -33,86 +35,16 @@ const Wrapper = styled.div({
   height: '100vh',
   minHeight: '1em',
 
-  alignItems: 'flex-start',
+  alignItems: 'stretch',
 });
 
-interface EditablePanelProps {
-  readonly initialContent: string;
-  onContentChange(newContent: string): void;
-}
-const EditablePanel: React.FC<EditablePanelProps> = ({ initialContent, onContentChange }) => {
-  const editorRef = useRef<Codemirror.Editor>();
-  const domRef = useRef<HTMLPreElement>(null);
-
-  const updatePropNumber = useCallback((editor: Codemirror.Editor) => {
-    let propNumber = 1;
-
-    editor.eachLine((line) => {
-      const propNumberElement = document.createElement('div');
-      propNumberElement.className = 'CodeMirror-linenumber';
-
-      const lineNumber = editor.getLineNumber(line);
-      if (lineNumber !== null && editor.getLine(lineNumber) !== '') {
-        propNumberElement.innerHTML = String(propNumber);
-        propNumber++;
-      } else {
-        propNumberElement.innerHTML = ' ';
-      }
-
-      editor.setGutterMarker(line, 'CodeMirror-linenumbers', propNumberElement);
-    });
-  }, []);
-
-  useEffect(() => {
-    if (domRef.current !== null) {
-      const editor = editorRef.current = Codemirror(domRef.current, {
-        value: initialContent,
-        mode: null,
-        lineNumbers: true,
-      });
-      editor.refresh();
-
-      updatePropNumber(editor);
-      onContentChange(initialContent);
-      editor.on('change', (eventEditor) => {
-        updatePropNumber(eventEditor);
-        onContentChange(eventEditor.getValue());
-      });
-    }
-    /* eslint-disable-next-line react-hooks/exhaustive-deps */
-  }, []);
-
-  return (
-    <>
-      <EditablePanelWrapper ref={domRef} />
-      <Global styles={editablePanelStyle} />
-    </>
-  );
-};
-
-const EditablePanelWrapper = styled.pre({
+const PredicateLogicEditorPlaceholder = styled.pre({
   display: 'block',
-  alignSelf: 'stretch',
 
   flexBasis: '50%',
   flexShrink: 1,
   flexGrow: 0,
   minHeight: '1em',
-});
-
-const editablePanelStyle = css({
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  [EditablePanelWrapper as any]: {
-    '.CodeMirror': {
-      height: '100%',
-
-      backgroundColor: 'rgba(0,0,0,0)',
-    },
-
-    '.CodeMirror-gutters': {
-      backgroundColor: 'rgba(0,0,0,0)',
-    },
-  },
 });
 
 interface ResultPanelProps {
@@ -138,7 +70,6 @@ const ResultPanel: React.FC<ResultPanelProps> = ({ content }) => {
 
 const ResultPanelWrapper = styled.div({
   display: 'block',
-  alignSelf: 'stretch',
 
   flexBasis: '50%',
   flexShrink: 1,
