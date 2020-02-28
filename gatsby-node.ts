@@ -37,7 +37,7 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   languages.map((language) => {
     actions.createPage({
       path: path.join('/', language, 'posts', '/'),
-      component: path.resolve('src/templates/PostsTemplate.tsx'),
+      component: path.resolve('src/components/templates/PostsTemplate.tsx'),
       context: { language },
     });
   });
@@ -53,7 +53,7 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   postResult.data.allMarkdownRemark.nodes.forEach(({ id, postPath }) => {
     actions.createPage({
       path: postPath,
-      component: path.resolve('src/templates/PostTemplate.tsx'),
+      component: path.resolve('src/components/templates/PostTemplate.tsx'),
       context: { id },
     });
   });

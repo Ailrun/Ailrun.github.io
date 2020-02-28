@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import Layout from '../components/Layout';
-import NavigationBar from '../components/NavigationBar';
-import PageTitle from '../components/PageTitle';
-import PostList, { PostInfo } from '../components/PostList';
-import { locationToLanguage } from '../languages';
+import { locationToLanguage } from '../../languages';
+import Layout from '../Layout';
+import NavigationBar from '../NavigationBar';
+import PageTitle from '../PageTitle';
+import PostList, { PostInfo } from '../PostList';
 
 const PostsTemplate: React.FC<PageRendererProps> = ({ location }) => {
   const posts = usePostInfos();
