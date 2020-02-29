@@ -4,7 +4,7 @@ import type { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: `https://Ailrun.github.io`,
-    title: `Valhala of Valkyrie`,
+    title: `Valhalla of Valkyrie`,
     description: `Ailrun's GitHub Blog`,
     image: `https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png`,
     author: `https://Ailrun.github.io/about`,
@@ -54,8 +54,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Valhala of Valkyrie`,
-        short_name: `Valhala`,
+        name: `Valhalla of Valkyrie`,
+        short_name: `VoV`,
         description: `Ailrun's GitHub Blog`,
         start_url: `/ko/posts`,
         background_color: `#000000`,

@@ -13,7 +13,7 @@ interface Props {
 const NavigationBar: React.FC<Props> = ({ language }) => (
   <Root>
     <Title to={`/${language}/posts/`}>
-      Valhala of Valkyrie
+      Valhalla of Valkyrie
     </Title>
     <FlexSpacer />
     <NavigationList>
