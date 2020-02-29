@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[4],{boto:function(o,t,n){"use strict";var c=n("Wbzz"),e=n("/Hoz");t.a=function(o){var t=o.location,n=Object(e.b)(t);return Object(c.b)("/"+n+"/posts/",{replace:!0}),null}},ef3G:function(o,t,n){"use strict";n.r(t);var c=n("boto");t.default=c.a}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-15234861b913161dd943.js.map
