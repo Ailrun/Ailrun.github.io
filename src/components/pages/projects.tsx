@@ -4,18 +4,19 @@ import React, { Fragment } from 'react';
 
 import dataProjects from '../../data/projects';
 import * as C from '../../styles/constants';
-import { Language, locationToLanguage } from '../../utils/languages';
+import { Language } from '../../utils/languages';
+import { useLanguage } from '../LanguageProvider';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 
-const ProjectsPage: React.FC<PageRendererProps> = ({ location }) => {
-  const language = locationToLanguage(location);
+const ProjectsPage: React.FC<PageRendererProps> = () => {
+  const language = useLanguage();
   const data = dataProjects[language];
 
   return (
-    <Layout language={language}>
-      <NavigationBar language={language} />
+    <Layout>
+      <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
         title='Projects'

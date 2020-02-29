@@ -3,28 +3,29 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import * as C from '../styles/constants';
-import { Language } from '../utils/languages';
 
 import FlexSpacer from './FlexSpacer';
+import { useLanguage } from './LanguageProvider';
 
-interface Props {
-  readonly language: Language;
-}
-const NavigationBar: React.FC<Props> = ({ language }) => (
-  <Root>
-    <Title to={`/${language}/posts/`}>
-      Valhalla of Valkyrie
-    </Title>
-    <FlexSpacer />
-    <NavigationList>
-      {
-        navigationItems.map((navigationItem) => (
-          <NavigationItem key={navigationItem.to} language={language} {...navigationItem} />
-        ))
-      }
-    </NavigationList>
-  </Root>
-);
+const NavigationBar: React.FC<unknown> = () => {
+  const language = useLanguage();
+
+  return (
+    <Root>
+      <Title to={`/${language}/posts/`}>
+        Valhalla of Valkyrie
+      </Title>
+      <FlexSpacer />
+      <NavigationList>
+        {
+          navigationItems.map((navigationItem) => (
+            <NavigationItem key={navigationItem.to} {...navigationItem} />
+          ))
+        }
+      </NavigationList>
+    </Root>
+  );
+};
 export default NavigationBar;
 
 const Root = styled.nav({
@@ -69,18 +70,20 @@ const NavigationList = styled.ul({
 });
 
 interface ItemProps {
-  readonly language: Language;
   readonly to: string;
   readonly text: string;
 }
-const NavigationItem: React.FC<ItemProps> = ({ language, to, text }) => (
-  <NavigationItemRoot>
-    <Link to={'/' + language + to}>
-      {text}
-    </Link>
-  </NavigationItemRoot>
-);
+const NavigationItem: React.FC<ItemProps> = ({ to, text }) => {
+  const language = useLanguage();
 
+  return (
+    <NavigationItemRoot>
+      <Link to={'/' + language + to}>
+        {text}
+      </Link>
+    </NavigationItemRoot>
+  );
+};
 const NavigationItemRoot = styled.li({
   display: 'inline-block',
 
@@ -90,7 +93,7 @@ const NavigationItemRoot = styled.li({
 }, C.fontDancing);
 
 
-const navigationItems: Omit<ItemProps, 'language'>[] = [
+const navigationItems: ItemProps[] = [
   { to: '/posts/', text: 'Posts' },
   { to: '/projects/', text: 'Projects' },
   { to: '/about/', text: 'About' },

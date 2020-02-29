@@ -4,19 +4,20 @@ import React from 'react';
 
 import dataAbout from '../../data/about';
 import * as C from '../../styles/constants';
-import { Language, locationToLanguage } from '../../utils/languages';
+import { Language } from '../../utils/languages';
 import FlexSpacer from '../FlexSpacer';
+import { useLanguage } from '../LanguageProvider';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 
-const AboutPage: React.FC<PageRendererProps> = ({ location }) => {
-  const language = locationToLanguage(location);
+const AboutPage: React.FC<PageRendererProps> = () => {
+  const language = useLanguage();
   const data = dataAbout[language];
 
   return (
-    <Layout language={language}>
-      <NavigationBar language={language} />
+    <Layout>
+      <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
         title='About'

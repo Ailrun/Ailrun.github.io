@@ -2,18 +2,16 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import { locationToLanguage } from '../../utils/languages';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
 
-const PostTemplate: React.FC<PageRendererProps> = ({ location }) => {
-  const language = locationToLanguage(location);
+const PostTemplate: React.FC<PageRendererProps> = () => {
   const post = usePostInfo();
 
   return (
-    <Layout language={language}>
-      <NavigationBar language={language} />
+    <Layout>
+      <NavigationBar />
       <PostWrapper>
         <Post
           gatsbyShortname={process.env.GATSBY_DISQUS_NAME as string}

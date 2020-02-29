@@ -2,7 +2,7 @@ import { Global, css } from '@emotion/core';
 import { WrapRootElementBrowserArgs, WrapRootElementNodeArgs } from 'gatsby';
 import React from 'react';
 
-type WrapRootElementArgs = WrapRootElementBrowserArgs & WrapRootElementNodeArgs;
+type WrapRootElementArgs = WrapRootElementBrowserArgs | WrapRootElementNodeArgs;
 
 const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactChild => (
   <>

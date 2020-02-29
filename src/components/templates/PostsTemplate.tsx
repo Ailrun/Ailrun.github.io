@@ -2,19 +2,17 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
-import { locationToLanguage } from '../../utils/languages';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
 
-const PostsTemplate: React.FC<PageRendererProps> = ({ location }) => {
-  const language = locationToLanguage(location);
+const PostsTemplate: React.FC<PageRendererProps> = () => {
   const posts = usePostInfos();
 
   return (
-    <Layout language={language}>
-      <NavigationBar language={language} />
+    <Layout>
+      <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
         title='Posts'
