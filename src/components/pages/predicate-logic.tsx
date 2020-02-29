@@ -1,3 +1,4 @@
+import 'codemirror/lib/codemirror.css';
 import { PageRendererProps } from 'gatsby';
 import React, { Suspense } from 'react';
 
