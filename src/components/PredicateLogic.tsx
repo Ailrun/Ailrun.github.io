@@ -9,7 +9,7 @@ export interface Props {
   readonly initialContent: string;
 }
 const PredicateLogic: React.FC<Props> = ({ initialContent }) => {
-  const [content, setContent] = useState(initialContent ?? '');
+  const [content, setContent] = useState(initialContent);
   const handleContentChange = useCallback((newContent) => {
     setContent(newContent);
   }, []);

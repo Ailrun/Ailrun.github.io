@@ -1,9 +1,8 @@
 import 'codemirror/lib/codemirror.css';
 import { PageRendererProps } from 'gatsby';
-import React, { Suspense } from 'react';
+import React from 'react';
 
 import { locationToLanguage } from '../../utils/languages';
-import Dummy from '../Dummy';
 import Layout from '../Layout';
 import PredicateLogic from '../PredicateLogic';
 
@@ -19,9 +18,7 @@ const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
 
   return (
     <Layout language={language}>
-      <Suspense fallback={<Dummy />}>
-        <PredicateLogic initialContent={initialContent} />
-      </Suspense>
+      <PredicateLogic initialContent={initialContent} />
     </Layout>
   );
 };
