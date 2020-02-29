@@ -81,7 +81,11 @@ const PostDate = styled.span({
   color: C.textVeryLightBlack,
 });
 
-const PostExcerpt = styled.span({
+/**
+ * This component should use `div` or similar to display
+ * inner `p`, `h1`, etc.
+ */
+const PostExcerpt = styled.div({
   marginLeft: '1em',
 
   width: 'calc(100% - 1em)',
