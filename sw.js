@@ -47,7 +47,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/ko/post/trip-to-make-a-blog/page-data.json",
-    "revision": "00b88d7d1314d8ba313a5db5acae152c"
+    "revision": "0d4673c1c25f132b985074389e0de9d7"
   },
   {
     "url": "page-data/app-data.json",
@@ -58,7 +58,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/ko/posts/page-data.json",
-    "revision": "07a72e3ec39d8ebbdacdb5aaafff5caa"
+    "revision": "9c85b9d94e73403ea485b83356aea2e9"
   },
   {
     "url": "component---src-pages-ko-projects-tsx-090e89203bec743874f3.js"
