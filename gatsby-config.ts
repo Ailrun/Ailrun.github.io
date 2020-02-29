@@ -57,7 +57,7 @@ const config: GatsbyConfig = {
         name: `Valhalla of Valkyrie`,
         short_name: `VoV`,
         description: `Ailrun's GitHub Blog`,
-        start_url: `/ko/posts`,
+        start_url: `/ko/posts/index.html`,
         background_color: `#000000`,
         theme_color: `#000000`,
         display: `standalone`,
