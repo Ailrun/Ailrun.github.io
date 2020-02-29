@@ -14,7 +14,7 @@ const ProjectsPage: React.FC<PageRendererProps> = ({ location }) => {
   const data = dataProjects[language];
 
   return (
-    <Layout>
+    <Layout language={language}>
       <NavigationBar language={language} />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'

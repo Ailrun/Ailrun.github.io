@@ -9,11 +9,12 @@ import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
 
 const PostsTemplate: React.FC<PageRendererProps> = ({ location }) => {
+  const language = locationToLanguage(location);
   const posts = usePostInfos();
 
   return (
-    <Layout>
-      <NavigationBar language={locationToLanguage(location)} />
+    <Layout language={language}>
+      <NavigationBar language={language} />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
         title='Posts'

@@ -1,3 +1,4 @@
+/// <reference lib='es2019.array' />
 import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
@@ -68,11 +69,14 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-offline`,
       options: {
         precachePages: [
-          `/post/*`,
-          `/posts`,
-          `/projects`,
-          `/about`,
-        ],
+          `ko`,
+          `en`,
+        ].map((language) => [
+          `/${language}/post/*`,
+          `/${language}/posts`,
+          `/${language}/projects`,
+          `/${language}/about`,
+        ]).flat(),
       },
     },
     {

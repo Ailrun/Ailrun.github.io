@@ -8,11 +8,12 @@ import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
 
 const PostTemplate: React.FC<PageRendererProps> = ({ location }) => {
+  const language = locationToLanguage(location);
   const post = usePostInfo();
 
   return (
-    <Layout>
-      <NavigationBar language={locationToLanguage(location)} />
+    <Layout language={language}>
+      <NavigationBar language={language} />
       <PostWrapper>
         <Post
           gatsbyShortname={process.env.GATSBY_DISQUS_NAME as string}

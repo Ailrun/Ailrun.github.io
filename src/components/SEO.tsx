@@ -2,11 +2,17 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-const SEO: React.FC<unknown> = () => {
+import { Language, languageToBCP47 } from '../utils/languages';
+
+interface Props {
+  readonly language: Language;
+}
+const SEO: React.FC<Props> = ({ language }) => {
   const { siteMetadata } = useStaticQuery<Data>(query).site;
 
   return (
     <Helmet>
+      <html lang={languageToBCP47(language)} />
       <title>{siteMetadata.title}</title>
       <meta name='description' content={siteMetadata.description} />
       <meta name='url' content={siteMetadata.siteUrl} />

@@ -17,6 +17,15 @@ export function languageToString(language: Language): string {
   }
 }
 
+export function languageToBCP47(language: Language): string {
+  switch (language) {
+    case Language.EN:
+      return 'en-US';
+    case Language.KO:
+      return 'ko-KR';
+  }
+}
+
 export function locationToLanguage(location: typeof window['location']): Language {
   return (/\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
 }

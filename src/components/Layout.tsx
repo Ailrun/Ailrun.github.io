@@ -1,10 +1,15 @@
 import React from 'react';
 
+import { Language } from '../utils/languages';
+
 import SEO from './SEO';
 
-const Layout: React.FC<unknown> = ({ children }) => (
+interface Props {
+  readonly language: Language;
+}
+const Layout: React.FC<Props> = ({ language, children }) => (
   <>
-    <SEO />
+    <SEO language={language} />
     {children}
   </>
 );

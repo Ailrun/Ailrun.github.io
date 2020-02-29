@@ -15,7 +15,7 @@ const AboutPage: React.FC<PageRendererProps> = ({ location }) => {
   const data = dataAbout[language];
 
   return (
-    <Layout>
+    <Layout language={language}>
       <NavigationBar language={language} />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
