@@ -16,7 +16,7 @@ export const textWhite = 'rgba(255, 255, 255, 0.84)';
 export const textLightWhite = 'rgba(255, 255, 255, 0.73)';
 export const textBlack = 'rgba(0, 0, 0, 0.84)';
 export const textLightBlack = 'rgba(0, 0, 0, 0.73)';
-export const textVeryLightBlack = 'rgba(0, 0, 0, 0.5)';
+export const textVeryLightBlack = 'rgba(0, 0, 0, 0.6)';
 export const textBrown = 'rgba(100, 50, 50, 0.84)';
 export const textLightBrown = 'rgba(150, 80, 50, 0.84)';
 
