@@ -1,13 +1,16 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
+import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
 
-const PostTemplate: React.FC<PageRendererProps> = () => {
-  const post = usePostInfo();
+export interface Props extends PageRendererProps {
+  readonly data: Data;
+}
+const PostTemplate: React.FC<Props> = ({ data }) => {
+  const post = refineData(data);
 
   return (
     <Layout>
@@ -38,7 +41,7 @@ interface DataPost {
     readonly date: string;
   };
 }
-const query = graphql`
+export const query = graphql`
   query ($id: String) {
     post: markdownRemark(id: { eq: $id }) {
       frontmatter {
@@ -58,13 +61,8 @@ const query = graphql`
   }
 `;
 
-const usePostInfo = (): PostInfo => {
-  const { post } = useStaticQuery<Data>(query);
-
-  return refineData(post);
-};
-
-const refineData = ({ frontmatter, parent, ...postInfo }: DataPost): PostInfo => {
+const refineData = (data: Data): PostInfo => {
+  const { frontmatter, parent, ...postInfo } = data.post;
   const title = frontmatter.title;
   const date = frontmatter.date ?? parent.date;
 

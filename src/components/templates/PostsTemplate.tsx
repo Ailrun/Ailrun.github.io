@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
+import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
 import Layout from '../Layout';
@@ -7,8 +7,11 @@ import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
 
-const PostsTemplate: React.FC<PageRendererProps> = () => {
-  const posts = usePostInfos();
+export interface Props extends PageRendererProps {
+  readonly data: Data;
+}
+const PostsTemplate: React.FC<Props> = ({ data }) => {
+  const posts = refineData(data);
 
   return (
     <Layout>
@@ -44,7 +47,7 @@ interface DataPost {
     readonly dateForSort: string;
   };
 } 
-const query = graphql`
+export const query = graphql`
   query ($language: String) {
     allMarkdownRemark(filter: {language: {eq: $language}}) {
       posts: nodes {
@@ -68,14 +71,8 @@ const query = graphql`
   }
 `;
 
-const usePostInfos = (): PostInfo[] => {
-  const { posts } = useStaticQuery<Data>(query).allMarkdownRemark;
-
-  return refineData(posts);
-};
-
-const refineData = (posts: DataPost[]): PostInfo[] => {
-  return posts
+const refineData = (data: Data): PostInfo[] => {
+  return data.allMarkdownRemark.posts
     .map(({ frontmatter, parent, ...postInfo }) => {
       const title = frontmatter.title;
       const date = frontmatter.date ?? parent.date;
