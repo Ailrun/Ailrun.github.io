@@ -87,7 +87,6 @@ const config: GatsbyConfig = {
         ],
         pluginConfig: {
           head: true,
-          respectDNT: true,
           exclude: [
             `/iframe/**`,
           ],
@@ -105,7 +104,7 @@ const config: GatsbyConfig = {
           'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com`,
           'font-src': `'self' https://fonts.gstatic.com`,
           'img-src': `'self' https:`,
-          'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com` +
+          'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com` +
             (
               process.env.NODE_ENV === `development` ?
                 ` 'unsafe-eval' 'unsafe-inline'` :
