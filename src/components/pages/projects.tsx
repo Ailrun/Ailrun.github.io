@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { PageRendererProps } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import React, { Fragment } from 'react';
 
 import dataProjects from '../../data/projects';
@@ -112,7 +113,7 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
   return (
     <ProjectRoot>
       <ProjectTitle>
-        <a href={project.link}>{project.title}</a>
+        <OutboundLink href={project.link}>{project.title}</OutboundLink>
       </ProjectTitle>
       {
         project.images.map((image) => (

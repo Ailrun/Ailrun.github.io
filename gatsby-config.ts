@@ -80,6 +80,21 @@ const config: GatsbyConfig = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          `UA-159365767-1`,
+        ],
+        pluginConfig: {
+          head: true,
+          respectDNT: true,
+          exclude: [
+            `/iframe/**`,
+          ],
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: false,
