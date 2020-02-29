@@ -33,32 +33,32 @@ self.__precacheManifest = [
     "url": "commons-09466fef194c45189f83.js"
   },
   {
-    "url": "app-6565cdc27a4fb9896264.js"
+    "url": "app-e322ffee9db4740b319b.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-498d614abd91358533fa.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "42b8eaac82cebbc89e7bad465305332e"
+    "revision": "9db35cda66e55b1a3b113f183c1c643d"
   },
   {
     "url": "component---src-components-templates-post-template-tsx-7dd0958ca7b1b79c3b83.js"
   },
   {
     "url": "page-data/ko/post/trip-to-make-a-blog/page-data.json",
-    "revision": "0d4673c1c25f132b985074389e0de9d7"
+    "revision": "00b88d7d1314d8ba313a5db5acae152c"
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "2a88c31921d43d76e834338aec350621"
+    "revision": "9fe80f1d0d0505223afb25b3a0a0fe6d"
   },
   {
     "url": "component---src-components-templates-posts-template-tsx-5023e1e5d4492c947bf5.js"
   },
   {
     "url": "page-data/ko/posts/page-data.json",
-    "revision": "9c85b9d94e73403ea485b83356aea2e9"
+    "revision": "07a72e3ec39d8ebbdacdb5aaafff5caa"
   },
   {
     "url": "component---src-pages-ko-projects-tsx-090e89203bec743874f3.js"
@@ -187,7 +187,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-6565cdc27a4fb9896264.js`))) {
+  if (!resources || !(await caches.match(`/app-e322ffee9db4740b319b.js`))) {
     return await fetch(event.request)
   }
 

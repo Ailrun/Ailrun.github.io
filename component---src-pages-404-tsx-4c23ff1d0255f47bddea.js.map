@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/404.tsx"],"names":["Page404"],"mappings":"6FAAe,SAASA,IACtB,MAAO,iBADT","file":"component---src-pages-404-tsx-4c23ff1d0255f47bddea.js","sourcesContent":["export default function Page404() {\n  return '404 Not Found!';\n}\n"],"sourceRoot":""}
