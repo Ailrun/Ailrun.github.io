@@ -1,17 +1,19 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql } from 'gatsby';
+import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
+import { Language } from '../../utils/languages';
+import { useLanguage } from '../LanguageProvider';
 import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
 
-export interface Props extends PageRendererProps {
-  readonly data: Data;
-}
-const PostsTemplate: React.FC<Props> = ({ data }) => {
-  const posts = refineData(data);
+const PostsPage: React.FC<PageRendererProps> = () => {
+  const data = useStaticQuery<Data>(query);
+  const language = useLanguage();
+
+  const posts = refineData(data, language);
 
   return (
     <Layout>
@@ -26,7 +28,7 @@ const PostsTemplate: React.FC<Props> = ({ data }) => {
     </Layout>
   );
 };
-export default PostsTemplate;
+export default PostsPage;
 
 interface Data {
   readonly allMarkdownRemark: {
@@ -42,14 +44,15 @@ interface DataPost {
   readonly id: string;
   readonly excerpt: string;
   readonly postPath: string;
+  readonly language: string;
   readonly parent: {
     readonly date: string;
     readonly dateForSort: string;
   };
 } 
-export const query = graphql`
-  query ($language: String) {
-    allMarkdownRemark(filter: {language: {eq: $language}}) {
+const query = graphql`
+  query {
+    allMarkdownRemark {
       posts: nodes {
         frontmatter {
           title
@@ -59,6 +62,7 @@ export const query = graphql`
         id
         excerpt(format: HTML, pruneLength: 100, truncate: true)
         postPath
+        language
 
         parent {
           ... on File {
@@ -71,9 +75,10 @@ export const query = graphql`
   }
 `;
 
-const refineData = (data: Data): PostInfo[] => {
+const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
   return data.allMarkdownRemark.posts
-    .map(({ frontmatter, parent, ...postInfo }) => {
+    .filter(({ language }) => language === targetLanguage)
+    .map(({ frontmatter, parent, language, ...postInfo }) => {
       const title = frontmatter.title;
       const date = frontmatter.date ?? parent.date;
       const dateForSort = frontmatter.dateForSort ?? parent.dateForSort;

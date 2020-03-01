@@ -16,32 +16,6 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
     force: true,
   });
 
-  const pagePath = './src/pages/';
-  const pageFileNames = await fs.promises.readdir(pagePath);
-  const pageFileObjects =
-    await Promise.all(pageFileNames.map(async (fileName) => {
-      const filePath = path.join(pagePath, fileName);
-
-      return {
-        name: fileName,
-        path: filePath,
-        stat: await fs.promises.stat(filePath),
-      };
-    }));
-  const languages =
-    pageFileObjects
-    .filter(({ stat }) => stat.isDirectory())
-    .map(({ name }) => name)
-    .filter((name) => name !== 'iframe');
-
-  languages.map((language) => {
-    actions.createPage({
-      path: path.join('/', language, 'posts', '/'),
-      component: path.resolve('src/components/templates/PostsTemplate.tsx'),
-      context: { language },
-    });
-  });
-
   const postResult = await graphql<PostData>(postQuery);
 
   if (postResult.errors) {
