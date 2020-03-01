@@ -58,7 +58,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/ko/posts/page-data.json",
-    "revision": "4713a7f9946e3221a534aa18f9145e2f"
+    "revision": "ae5d52a798511233bfd830b89f55b1de"
   },
   {
     "url": "component---src-pages-ko-projects-tsx-090e89203bec743874f3.js"
