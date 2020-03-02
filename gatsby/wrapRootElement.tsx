@@ -13,7 +13,7 @@ const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactChild => 
 export default wrapRootElement;
 
 const globalStyles = css`
-@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=block');
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:400,700&display=block');
 
 @font-face {
   font-family: 'Dancing Script';
