@@ -16,6 +16,22 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
     force: true,
   });
 
+  actions.createRedirect({
+    fromPath: '/en/',
+    toPath: '/en/posts/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    force: true,
+  });
+
+  actions.createRedirect({
+    fromPath: '/ko/',
+    toPath: '/ko/posts/',
+    isPermanent: true,
+    redirectInBrowser: true,
+    force: true,
+  });
+
   const postResult = await graphql<PostData>(postQuery);
 
   if (postResult.errors) {

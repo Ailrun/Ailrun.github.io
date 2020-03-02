@@ -2,7 +2,6 @@ import 'codemirror/lib/codemirror.css';
 import { PageRendererProps } from 'gatsby';
 import React from 'react';
 
-import Layout from '../Layout';
 import PredicateLogic from '../PredicateLogic';
 
 const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
@@ -10,14 +9,12 @@ const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
 
   if (initialContent === undefined) {
     return (
-      <Layout />
+      null
     );
   }
 
   return (
-    <Layout>
-      <PredicateLogic initialContent={initialContent} />
-    </Layout>
+    <PredicateLogic initialContent={initialContent} />
   );
 };
 export default PredicateLogicPage;

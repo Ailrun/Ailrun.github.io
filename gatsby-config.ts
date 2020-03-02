@@ -1,16 +1,25 @@
 /// <reference lib='es2019.array' />
 import type { GatsbyConfig } from 'gatsby';
 
+const metadata = {
+  name: `Valhalla of Valkyrie`,
+  shortName: `VoV`,
+  description: `Ailrun's Dev Blog`,
+  themeColor: `#000000`,
+  siteUrl: `https://Ailrun.github.io`,
+};
+
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://Ailrun.github.io`,
-    title: `Valhalla of Valkyrie`,
-    description: `Ailrun's GitHub Blog`,
-    image: `https://raw.githubusercontent.com/Ailrun/media/master/blog-img/haskell.png`,
-    author: `https://Ailrun.github.io/about`,
+    name: metadata.name,
+    siteUrl: metadata.siteUrl,
+    description: metadata.description,
+    author: `Junyoung Clare Jang (Ailrun)`,
     locales: [
       `ko_KR`,
     ],
+    themeColor: metadata.themeColor,
+    titleTemplate: `%s - ${metadata.shortName}`,
   },
   /* eslint-disable @typescript-eslint/camelcase */
   plugins: [
@@ -48,18 +57,29 @@ const config: GatsbyConfig = {
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        policy: [
+          {
+            userAgent: '*',
+            disallow: '/iframe/',
+          },
+        ],
+      },
+    },
     /**
      * Add localization after language switch is enabled.
      */
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Valhalla of Valkyrie`,
-        short_name: `VoV`,
-        description: `Ailrun's GitHub Blog`,
+        name: metadata.name,
+        short_name: metadata.shortName,
+        description: metadata.description,
         start_url: `/ko/posts/index.html`,
-        background_color: `#000000`,
-        theme_color: `#000000`,
+        background_color: metadata.themeColor,
+        theme_color: metadata.themeColor,
         display: `standalone`,
         icon: `src/assets/icon.png`,
         crossorigin: `use-credentials`,

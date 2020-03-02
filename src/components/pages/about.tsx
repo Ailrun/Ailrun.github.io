@@ -7,16 +7,34 @@ import * as C from '../../styles/constants';
 import { Language } from '../../utils/languages';
 import FlexSpacer from '../FlexSpacer';
 import { useLanguage } from '../LanguageProvider';
-import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
+import SEO from '../SEO';
 
 const AboutPage: React.FC<PageRendererProps> = () => {
   const language = useLanguage();
   const data = dataAbout[language];
 
   return (
-    <Layout>
+    <>
+      <SEO
+        title='About'
+        description='Who is Junyoung Clare Jang?'
+        image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
+        imageAlt='Junyoung Clare Jang with cups of beer'
+        pathname={`/${language}/about`}
+        og={{
+          type: 'profile',
+          additional: {
+            /* eslint-disable @typescript-eslint/camelcase */
+            first_name: 'Clare',
+            last_name: 'Jang',
+            username: 'Ailrun',
+            gender: 'male',
+            /* eslint-enable @typescript-eslint/camelcase */
+          },
+        }}
+      />
       <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about.png'
@@ -28,7 +46,7 @@ const AboutPage: React.FC<PageRendererProps> = () => {
           subjects={data.subjects}
         />
       </main>
-    </Layout>
+    </>
   );
 };
 export default AboutPage;

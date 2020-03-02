@@ -7,23 +7,28 @@ import dataProjects from '../../data/projects';
 import * as C from '../../styles/constants';
 import { Language } from '../../utils/languages';
 import { useLanguage } from '../LanguageProvider';
-import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
+import SEO from '../SEO';
 
 const ProjectsPage: React.FC<PageRendererProps> = () => {
   const language = useLanguage();
   const data = dataProjects[language];
 
   return (
-    <Layout>
+    <>
+      <SEO
+        title='Projects'
+        description='List of Posts in VoV'
+        pathname={`/${language}/projects`}
+      />
       <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
         title='Projects'
       />
       <ProjectGroupList projectGroups={data.projectGroups} />
-    </Layout>
+    </>
   );
 };
 export default ProjectsPage;

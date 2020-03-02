@@ -6,7 +6,7 @@ declare module 'react-helmet' {
   interface HelmetData {}
 
   interface HelmetProps {
-    readonly base?: any;
+    readonly base?: object;
     readonly bodyAttributes?: React.HTMLAttributes<HTMLBodyElement>;
     readonly children?: React.ReactNodeArray | React.ReactNode;
     readonly defaultTitle?: string;

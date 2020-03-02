@@ -4,10 +4,10 @@ import React from 'react';
 
 import { Language } from '../../utils/languages';
 import { useLanguage } from '../LanguageProvider';
-import Layout from '../Layout';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
+import SEO from '../SEO';
 
 const PostsPage: React.FC<PageRendererProps> = () => {
   const data = useStaticQuery<Data>(query);
@@ -16,7 +16,12 @@ const PostsPage: React.FC<PageRendererProps> = () => {
   const posts = refineData(data, language);
 
   return (
-    <Layout>
+    <>
+      <SEO
+        title='Posts'
+        description='List of Posts in VoV'
+        pathname={`/${language}/posts`}
+      />
       <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
@@ -25,7 +30,7 @@ const PostsPage: React.FC<PageRendererProps> = () => {
       <PostListWrapper>
         <PostList postInfos={posts} />
       </PostListWrapper>
-    </Layout>
+    </>
   );
 };
 export default PostsPage;

@@ -1,3 +1,8 @@
-import IndexPage from '../../components/pages';
+import Dummy from '../../components/Dummy';
 
-export default IndexPage;
+/**
+ * This `Dummy` component exists only because
+ * Gatsby does not allow one to redirect index page to other page
+ * without index file.
+ */
+export default Dummy;

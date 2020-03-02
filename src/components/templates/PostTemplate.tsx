@@ -2,18 +2,35 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
-import Layout from '../Layout';
+import { useLanguage } from '../LanguageProvider';
 import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
+import SEO from '../SEO';
 
 export interface Props extends PageRendererProps {
   readonly data: Data;
 }
 const PostTemplate: React.FC<Props> = ({ data }) => {
+  const language = useLanguage();
   const post = refineData(data);
 
   return (
-    <Layout>
+    <>
+      <SEO
+        title={post.title}
+        description={data.post.excerpt}
+        pathname={data.post.postPath}
+        og={{
+          type: 'article',
+          additional: {
+            /* eslint-disable @typescript-eslint/camelcase */
+            author: `https://ailrun.github.io/${language}/about`,
+            published_time: post.date,
+            section: 'Science',
+            /* eslint-enable @typescript-eslint/camelcase */
+          },
+        }}
+      />
       <NavigationBar />
       <PostWrapper>
         <Post
@@ -21,7 +38,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
           postInfo={post}
         />
       </PostWrapper>
-    </Layout>
+    </>
   );
 };
 export default PostTemplate;
@@ -36,6 +53,7 @@ interface DataPost {
   };
   readonly html: string;
   readonly id: string;
+  readonly excerpt: string;
   readonly postPath: string;
   readonly parent: {
     readonly date: string;
@@ -50,6 +68,7 @@ export const query = graphql`
       }
       html
       id
+      excerpt(format: PLAIN, pruneLength: 100, truncate: true)
       postPath
 
       parent {
@@ -62,7 +81,7 @@ export const query = graphql`
 `;
 
 const refineData = (data: Data): PostInfo => {
-  const { frontmatter, parent, ...postInfo } = data.post;
+  const { frontmatter, parent, excerpt, ...postInfo } = data.post;
   const title = frontmatter.title;
   const date = frontmatter.date ?? parent.date;
 
