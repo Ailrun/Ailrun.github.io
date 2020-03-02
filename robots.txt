@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /iframe/
+Sitemap: https://ailrun.github.io/sitemap.xml
+Host: https://ailrun.github.io

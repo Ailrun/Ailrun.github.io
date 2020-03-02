@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{QeBL:function(n,u,e){"use strict";e.r(u);var o=function(){return null};u.default=o}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-af57476b57cc8ee4b905.js.map
