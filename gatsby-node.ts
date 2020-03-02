@@ -1,5 +1,4 @@
 /* eslint-disable import/no-nodejs-modules */
-import * as fs from 'fs';
 import * as path from 'path';
 /* eslint-enable import/no-nodejs-modules */
 
