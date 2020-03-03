@@ -79,6 +79,7 @@ const config: GatsbyConfig = {
         short_name: metadata.shortName,
         description: metadata.description,
         start_url: `/ko/posts/index.html`,
+        scope: `/ko/`,
         background_color: metadata.themeColor,
         theme_color: metadata.themeColor,
         display: `standalone`,
