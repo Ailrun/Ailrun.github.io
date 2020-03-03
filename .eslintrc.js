@@ -30,8 +30,142 @@ module.exports = {
       'always-multiline',
     ],
 
+    '@typescript-eslint/array-type': [
+      'warn',
+      {
+        default: 'array',
+      },
+    ],
+    '@typescript-eslint/ban-ts-comment': [
+      'warn',
+    ],
+    '@typescript-eslint/brace-style': [
+      'warn',
+      '1tbs',
+    ],
+    '@typescript-eslint/camelcase': [
+      /* deprecated rule */
+      'off',
+    ],
+    '@typescript-eslint/comma-spacing': [
+      'warn',
+    ],
+    '@typescript-eslint/consistent-type-definitions': [
+      'warn',
+      'interface',
+    ],
+    '@typescript-eslint/default-param-last': [
+      'error',
+    ],
+    '@typescript-eslint/func-call-spacing': [
+      'warn',
+    ],
+    '@typescript-eslint/indent': [
+      'warn',
+      2
+    ],
+    '@typescript-eslint/naming-convention': [
+      'error',
+      {
+        format: [
+          'camelCase',
+          'PascalCase',
+        ],
+        selector: 'variable',
+      },
+      {
+        format: [
+          'camelCase',
+        ],
+        leadingUnderscore: 'allow',
+        selector: 'parameter',
+      },
+      {
+        format: null,
+        selector: 'property',
+        filter: {
+          regex: '__html',
+          match: true,
+        },
+      },
+      {
+        format: [
+          'camelCase',
+          'snake_case',
+        ],
+        selector: 'property',
+        filter: {
+          regex: '__html',
+          match: false,
+        },
+        types: ['boolean', 'string', 'number'],
+      },
+      {
+        format: [
+          'UPPER_CASE',
+        ],
+        selector: 'enumMember',
+      },
+      {
+        format: [
+          'camelCase',
+        ],
+        selector: 'default',
+      },
+      {
+        format: [
+          'PascalCase',
+        ],
+        selector: 'typeLike',
+      },
+    ],
     '@typescript-eslint/no-base-to-string': [
       'warn',
+    ],
+    '@typescript-eslint/no-dupe-class-members': [
+      'error',
+    ],
+    '@typescript-eslint/no-dynamic-delete': [
+      'error',
+    ],
+    '@typescript-eslint/no-extra-non-null-assertion': [
+      'error',
+    ],
+    '@typescript-eslint/no-extra-semi': [
+      'error',
+    ],
+    '@typescript-eslint/no-floating-promises': [
+      'error',
+    ],
+    '@typescript-eslint/no-implied-eval': [
+      'error',
+    ],
+    '@typescript-eslint/no-non-null-asserted-optional-chain': [
+      'error',
+    ],
+    '@typescript-eslint/no-require-imports': [
+      'warn',
+    ],
+    '@typescript-eslint/no-throw-literal': [
+      'error',
+    ],
+    '@typescript-eslint/no-unnecessary-boolean-literal-compare': [
+      'warn',
+    ],
+    '@typescript-eslint/no-unnecessary-condition': [
+      'warn',
+    ],
+    '@typescript-eslint/no-unnecessary-qualifier': [
+      'warn',
+    ],
+    '@typescript-eslint/no-unused-expressions': [
+      'warn',
+    ],
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      {
+        ignoreRestSiblings: true,
+      },
     ],
     '@typescript-eslint/no-use-before-define': [
       'error',
@@ -39,11 +173,23 @@ module.exports = {
         variables: false,
       },
     ],
-    '@typescript-eslint/no-unused-vars': [
+    '@typescript-eslint/prefer-as-const': [
       'warn',
-      {
-        ignoreRestSiblings: true,
-      },
+    ],
+    '@typescript-eslint/prefer-for-of': [
+      'warn',
+    ],
+    '@typescript-eslint/prefer-nullish-coalescing': [
+      'warn',
+    ],
+    '@typescript-eslint/prefer-optional-chain': [
+      'warn',
+    ],
+    '@typescript-eslint/prefer-readonly': [
+      'warn',
+    ],
+    '@typescript-eslint/promise-function-async': [
+      'warn',
     ],
     '@typescript-eslint/quotes': [
       'warn',
@@ -53,11 +199,37 @@ module.exports = {
         allowTemplateLiterals: true,
       },
     ],
+    '@typescript-eslint/require-array-sort-compare': [
+      'warn',
+    ],
+    '@typescript-eslint/restrict-plus-operands': [
+      'warn',
+    ],
+    '@typescript-eslint/restrict-template-expressions': [
+      'warn',
+      {
+        allowNumber: true,
+      },
+    ],
+    '@typescript-eslint/return-await': [
+      'warn',
+    ],
     '@typescript-eslint/semi': [
       'warn',
       'always',
     ],
+    '@typescript-eslint/space-before-function-paren': [
+      'warn',
+      {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+      },
+    ],
     '@typescript-eslint/switch-exhaustiveness-check': [
+      'warn',
+    ],
+    '@typescript-eslint/unified-signatures': [
       'warn',
     ],
 

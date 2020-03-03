@@ -23,11 +23,9 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
         og={{
           type: 'article',
           additional: {
-            /* eslint-disable @typescript-eslint/camelcase */
             author: `https://ailrun.github.io/${language}/about`,
             published_time: post.date,
             section: 'Science',
-            /* eslint-enable @typescript-eslint/camelcase */
           },
         }}
       />

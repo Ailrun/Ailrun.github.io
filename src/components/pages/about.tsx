@@ -26,12 +26,10 @@ const AboutPage: React.FC<PageRendererProps> = () => {
         og={{
           type: 'profile',
           additional: {
-            /* eslint-disable @typescript-eslint/camelcase */
             first_name: 'Clare',
             last_name: 'Jang',
             username: 'Ailrun',
             gender: 'male',
-            /* eslint-enable @typescript-eslint/camelcase */
           },
         }}
       />

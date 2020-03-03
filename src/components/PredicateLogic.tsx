@@ -3,7 +3,7 @@ import React, { Suspense, lazy, useCallback, useState } from 'react';
 
 import { parse } from '../utils/logic/parser';
 
-const PredicateLogicEditor = lazy(() => import('./PredicateLogicEditor'));
+const PredicateLogicEditor = lazy(async () => import('./PredicateLogicEditor'));
 
 export interface Props {
   readonly initialContent: string;

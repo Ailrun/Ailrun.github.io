@@ -1,20 +1,24 @@
 import styled from '@emotion/styled';
 import { PageRendererProps, navigate } from 'gatsby';
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import useTimer from '../../hooks/useTimer';
 import SEO from '../SEO';
 
-const Page404: React.FC<PageRendererProps> = ({ location }) => {
+const Page404: React.FC<PageRendererProps> = () => {
   const timeLeft = useTimer(30);
+  const isDone = timeLeft === 0;
 
-  console.log(location);
-
-  if (timeLeft === 0) {
-    navigate('/', {
-      replace: true,
-    });
-  }
+  useEffect(() => {
+    if (isDone) {
+      navigate('/', {
+        replace: true,
+      })
+        .catch((e) => {
+          console.error(e);
+        });
+    }
+  }, [isDone]);
 
   return (
     <>

@@ -29,6 +29,8 @@ export const isNaivelyUnifiable = (sourceExpr: LogicExpression, targetExpr: Logi
       }
       case LogicExpressionTypes.LOGIC_UNARY: {
         if (tExpr.logicExpressionType === sExpr.logicExpressionType
+            /* This is necessary to be future-proof */
+            /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
             && sExpr.operator === tExpr.operator) {
           stack.push([sExpr.operand, tExpr.operand]);
           break;
@@ -76,6 +78,8 @@ export const equal = (expr0: LogicExpression, expr1: LogicExpression): boolean =
     case LogicExpressionTypes.LOGIC_REFERENCE:
       return expr0.lineNumber === (expr1 as LogicReferenceExpression).lineNumber;
     case LogicExpressionTypes.LOGIC_UNARY:
+      /* This is necessary to be future-proof */
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
       return expr0.operator === (expr1 as LogicUnaryExpression).operator
         && expr0.operand === (expr1 as LogicUnaryExpression).operand;
     case LogicExpressionTypes.LOGIC_BINARY:

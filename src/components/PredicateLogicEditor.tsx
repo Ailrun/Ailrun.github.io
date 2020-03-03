@@ -44,6 +44,7 @@ const PredicateLogicEditor: React.FC<Props> = ({ initialContent, onContentChange
         onContentChange(eventEditor.getValue());
       });
     }
+    /* This hook should be executed at most once */
     /* eslint-disable-next-line react-hooks/exhaustive-deps */
   }, []);
 

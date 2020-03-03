@@ -85,8 +85,8 @@ const LanguageList: React.FC<LanguageListProps> = ({ language }) => {
               sortedLanguages.map((lang) => {
                 const Comp =
                   lang === language ?
-                  LanguageDisabledLink :
-                  LanguageLink;
+                    LanguageDisabledLink :
+                    LanguageLink;
 
                 return (
                   <Comp
