@@ -7,11 +7,15 @@ export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs): voi
         {
           enforce: 'pre',
           test: /\.jsx?$|\.tsx?$/,
-          loader: 'eslint-loader',
           exclude: /node_modules|.cache|public|plugins/,
-          options: {
-            emitWarning: true,
-          },
+          use: [
+            {
+              loader: 'eslint-loader',
+              options: {
+                emitWarning: true,
+              },
+            },
+          ],
         },
       ],
     },
