@@ -30,6 +30,9 @@ module.exports = {
       'always-multiline',
     ],
 
+    '@typescript-eslint/no-base-to-string': [
+      'warn',
+    ],
     '@typescript-eslint/no-use-before-define': [
       'error',
       {
