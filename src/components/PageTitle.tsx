@@ -25,7 +25,7 @@ const Root = styled.header<RootProps>({
 
   backgroundPosition: 'center',
   backgroundSize: 'cover',
-  backgroundColor: 'white',
+  backgroundColor: 'black',
 
   alignItems: 'center',
 }, ({ backgroundSrc }) => ({
