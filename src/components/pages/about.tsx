@@ -69,6 +69,7 @@ const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
     <OwnerProfile>
       <OwnerProfileImage
         src='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
+        alt={ownerProfileCaption}
       />
       <OwnerProfileCaption>{ownerProfileCaption}</OwnerProfileCaption>
     </OwnerProfile>

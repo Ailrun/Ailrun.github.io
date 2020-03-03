@@ -19,6 +19,8 @@ export const textLightBlack = 'rgba(0, 0, 0, 0.73)';
 export const textVeryLightBlack = 'rgba(0, 0, 0, 0.6)';
 export const textBrown = 'rgba(100, 50, 50, 0.84)';
 export const textLightBrown = 'rgba(150, 80, 50, 0.84)';
+export const textRed = 'rgba(108, 0, 0, 0.84)';
+export const textLightRed = 'rgba(216, 0, 0, 0.84)';
 
 export const backgroundBlack = 'rgba(0, 0, 0, 0.73)';
 
@@ -81,14 +83,14 @@ export const markdown: SerializedStyles = css({
   },
 
   a: {
-    color: textLightBrown,
+    color: textLightRed,
 
     ':hover': {
       textDecoration: 'underline',
     },
 
     ':visited': {
-      color: textBrown,
+      color: textRed,
     },
   },
 

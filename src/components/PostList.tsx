@@ -39,18 +39,25 @@ const PostListRoot = styled.ul({
 interface PostProps {
   postInfo: PostInfo;
 }
-const Post: React.FC<PostProps> = ({ postInfo }) => (
-  <PostRoot>
-    <PostLink to={postInfo.postPath}>
-      <PostTitle>{postInfo.title}</PostTitle>
-      <FlexSpacer />
-      <PostDate>{postInfo.date}</PostDate>
-      <PostExcerpt
-        dangerouslySetInnerHTML={{ __html: postInfo.excerpt }}
-      />
-    </PostLink>
-  </PostRoot>
-);
+const Post: React.FC<PostProps> = ({ postInfo }) => {
+  const excerptWithoutAnchors = postInfo.excerpt
+    .replace(/<a>/g, '<p>')
+    .replace(/<a /g, '<p ')
+    .replace(/<\/a>/g, '</p>');
+
+  return (
+    <PostRoot>
+      <PostLink to={postInfo.postPath}>
+        <PostTitle>{postInfo.title}</PostTitle>
+        <FlexSpacer />
+        <PostDate>{postInfo.date}</PostDate>
+        <PostExcerpt
+          dangerouslySetInnerHTML={{ __html: excerptWithoutAnchors }}
+        />
+      </PostLink>
+    </PostRoot>
+  );
+};
 
 const PostRoot = styled.li({
   width: '100%',
