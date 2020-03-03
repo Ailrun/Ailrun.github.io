@@ -9,7 +9,8 @@
     "checker:lint": "eslint . --ext ts --ext tsx",
     "release": "gh-pages -d public -t -b master -m \"Update from Gatsby\" -o Ailrun",
     "serve": "npx -n \"-r ts-node/register\" gatsby serve",
-    "start": "npx -n \"-r ts-node/register\" gatsby develop"
+    "start": "npx -n \"-r ts-node/register\" gatsby develop",
+    "preload-fonts": "gatsby-preload-fonts"
   },
   "dependencies": {
     "@emotion/core": "^10.0.28",
@@ -33,6 +34,7 @@
     "gatsby-plugin-google-gtag": "^1.1.22",
     "gatsby-plugin-manifest": "^2.2.42",
     "gatsby-plugin-offline": "^3.0.35",
+    "gatsby-plugin-preload-fonts": "^1.0.29",
     "gatsby-plugin-react-helmet-async": "^1.0.14",
     "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sitemap": "^2.2.27",

@@ -54,6 +54,7 @@ const config: GatsbyConfig = {
       },
     },
 
+    `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
     `gatsby-plugin-sitemap`,
@@ -121,8 +122,8 @@ const config: GatsbyConfig = {
         mergeScriptHashes: process.env.NODE_ENV !== `development`,
         mergeStyleHashes: false,
         directives: {
-          'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com`,
-          'font-src': `'self' https://fonts.gstatic.com`,
+          'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://fonts.gstatic.com https://www.googletagmanager.com`,
+          'font-src': `'self' https://c.disquscdn.com https://fonts.gstatic.com`,
           'img-src': `'self' https:`,
           'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com` +
             (
