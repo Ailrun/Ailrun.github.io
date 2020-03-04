@@ -7,6 +7,14 @@ const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }: PreRender
     (
       <link
         rel='preconnect dns-prefetch'
+        href='https://www.googletagmanager.com'
+        crossOrigin='anonymous'
+        key='https://www.googletagmanager.com'
+      />
+    ),
+    (
+      <link
+        rel='preconnect dns-prefetch'
         href='https://c.disquscdn.com'
         crossOrigin='anonymous'
         key='https://c.disquscdn.com'
