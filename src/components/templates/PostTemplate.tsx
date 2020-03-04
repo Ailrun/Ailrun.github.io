@@ -18,8 +18,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     <>
       <SEO
         title={post.title}
-        description={data.markdownRemark.excerpt}
-        pathname={data.markdownRemark.postPath}
+        description={data.markdownPost.parent.excerpt}
+        pathname={data.markdownPost.postPath}
         og={{
           type: 'article',
           additional: {
@@ -42,36 +42,27 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 export default PostTemplate;
 
 interface Data {
-  readonly markdownRemark: DataPost;
+  readonly markdownPost: DataMarkdownPost;
 }
-interface DataPost {
-  readonly frontmatter: {
-    readonly title: string;
-    readonly date?: string;
-  };
-  readonly html: string;
-  readonly id: string;
-  readonly excerpt: string;
+interface DataMarkdownPost {
+  readonly title: string;
+  readonly date: string;
   readonly postPath: string;
   readonly parent: {
-    readonly birthTime: string;
+    readonly html: string;
+    readonly excerpt: string;
   };
 }
 export const query = graphql`
   query ($id: String) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        title
-        date(fromNow: true)
-      }
-      html
-      id
-      excerpt(format: PLAIN, pruneLength: 100, truncate: true)
+    markdownPost(id: { eq: $id }) {
+      title
+      date(fromNow: true)
       postPath
-
       parent {
-        ... on File {
-          birthTime(fromNow: true)
+        ... on MarkdownRemark {
+          html
+          excerpt(format: PLAIN, pruneLength: 100, truncate: true)
         }
       }
     }
@@ -79,11 +70,12 @@ export const query = graphql`
 `;
 
 const refineData = (data: Data): PostInfo => {
-  const { frontmatter, parent, excerpt, ...postInfo } = data.markdownRemark;
-  const title = frontmatter.title;
-  const date = frontmatter.date ?? parent.birthTime;
+  const { parent, ...postInfo } = data.markdownPost;
 
-  return { ...postInfo, title, date };
+  return {
+    ...postInfo,
+    html: parent.html,
+  };
 };
 
 const PostWrapper = styled.main({

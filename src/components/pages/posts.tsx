@@ -36,43 +36,32 @@ const PostsPage: React.FC<PageRendererProps> = () => {
 export default PostsPage;
 
 interface Data {
-  readonly allMarkdownRemark: {
-    readonly nodes: DataPost[];
+  readonly allMarkdownPost: {
+    readonly nodes: DataMarkdownPost[];
   };
 }
-interface DataPost {
-  readonly frontmatter: {
-    readonly title: string;
-    readonly date?: string;
-    readonly dateForSort?: string;
-  };
-  readonly id: string;
-  readonly excerpt: string;
+interface DataMarkdownPost {
+  readonly title: string;
+  readonly date: string;
+  readonly dateForSort: string;
   readonly postPath: string;
   readonly language: string;
   readonly parent: {
-    readonly birthTime: string;
-    readonly birthTimeForSort: string;
+    readonly excerpt: string;
   };
 } 
 const query = graphql`
   query {
-    allMarkdownRemark {
+    allMarkdownPost {
       nodes {
-        frontmatter {
-          title
-          date(fromNow: true)
-          dateForSort: date
-        }
-        id
-        excerpt(format: HTML, pruneLength: 100, truncate: true)
+        title
+        date(fromNow: true)
+        dateForSort: date
         postPath
         language
-
         parent {
-          ... on File {
-            birthTime(fromNow: true)
-            birthTimeForSort: birthTime
+          ... on MarkdownRemark {
+            excerpt(format: HTML, pruneLength: 100, truncate: true)
           }
         }
       }
@@ -81,17 +70,13 @@ const query = graphql`
 `;
 
 const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
-  return data.allMarkdownRemark.nodes
+  return data.allMarkdownPost.nodes
     .filter(({ language }) => language === targetLanguage)
-    .map(({ frontmatter, parent, language, ...postInfo }) => {
-      const title = frontmatter.title;
-      const date = frontmatter.date ?? parent.birthTime;
-      const dateForSort = frontmatter.dateForSort ?? parent.birthTimeForSort;
-
-      return { ...postInfo, title, date, dateForSort };
-    })
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
-    .map(({ dateForSort, ...postInfo }) => postInfo);
+    .map(({ dateForSort, language, parent, ...postInfo }) => ({
+      ...postInfo,
+      excerpt: parent.excerpt,
+    }));
 };
 
 const PostListWrapper = styled.main({

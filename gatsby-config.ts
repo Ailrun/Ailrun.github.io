@@ -30,7 +30,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-source-filesystem`,
       options: {
         path: `./post/`,
-        name: `postMD`,
+        name: `MarkdownPost`,
       },
     },
     ...(
@@ -39,7 +39,7 @@ const config: GatsbyConfig = {
           resolve: `gatsby-source-filesystem`,
           options: {
             path: `./post-draft/`,
-            name: `postMD`,
+            name: `MarkdownPost`,
           },
         },
       ] : []

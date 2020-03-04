@@ -13,7 +13,7 @@ const PostList: React.FC<Props> = ({ postInfos }) => (
   <PostListRoot>
     {
       postInfos.map((postInfo) => (
-        <Fragment key={postInfo.id}>
+        <Fragment key={postInfo.postPath}>
           <Post postInfo={postInfo} />
         </Fragment>
       ))
@@ -23,7 +23,6 @@ const PostList: React.FC<Props> = ({ postInfos }) => (
 export default PostList;
 
 export interface PostInfo {
-  readonly id: string;
   readonly title: string;
   readonly date: string;
   readonly excerpt: string;

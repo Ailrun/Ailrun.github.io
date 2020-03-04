@@ -2,8 +2,12 @@
 import * as path from 'path';
 /* eslint-enable import/no-nodejs-modules */
 
-import type { CreatePagesArgs, SetFieldsOnGraphQLNodeTypeArgs } from 'gatsby';
+import type {
+  CreateNodeArgs,
+  CreatePagesArgs,
+} from 'gatsby';
 
+import createMarkdownPost from './gatsby/createMarkdownPost';
 import { assert } from './src/utils/typeHelpers';
 
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
@@ -39,7 +43,7 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   }
 
   assert(postResult.data);
-  postResult.data.allMarkdownRemark.nodes.forEach(({ id, postPath }) => {
+  postResult.data.allMarkdownPost.nodes.forEach(({ id, postPath }) => {
     actions.createPage({
       path: postPath,
       component: path.resolve('src/components/templates/PostTemplate.tsx'),
@@ -48,39 +52,12 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
   });
 };
 
-export const setFieldsOnGraphQLNodeType = ({ type }: SetFieldsOnGraphQLNodeTypeArgs): object | void => {
-  if (type.name !== 'MarkdownRemark') {
-    return;
-  }
-
-  return {
-    language: {
-      type: 'String',
-      resolve({ fileAbsolutePath }: MarkdownRemarkNodeMock): string {
-        return getLanguage(fileAbsolutePath);
-      },
-    },
-    postDirectory: {
-      type: 'String',
-      resolve({ fileAbsolutePath }: MarkdownRemarkNodeMock): string {
-        return getPostDirectory(fileAbsolutePath);
-      },
-    },
-    postPath: {
-      type: 'String',
-      resolve({ fileAbsolutePath }: MarkdownRemarkNodeMock): string {
-        return getPostPath(fileAbsolutePath);
-      },
-    },
-  };
+export const onCreateNode = (createNodeArgs: CreateNodeArgs): void => {
+  createMarkdownPost(createNodeArgs);
 };
 
-interface MarkdownRemarkNodeMock {
-  fileAbsolutePath: string;
-}
-
 interface PostData {
-  readonly allMarkdownRemark: {
+  readonly allMarkdownPost: {
     readonly nodes: {
       readonly postPath: string;
       readonly id: string;
@@ -89,7 +66,7 @@ interface PostData {
 }
 const postQuery = `
   query {
-    allMarkdownRemark {
+    allMarkdownPost {
       nodes {
         postPath
         id
@@ -97,10 +74,3 @@ const postQuery = `
     }
   }
 `;
-
-const getLanguage = (fileAbsolutePath: string): string =>
-  path.extname(path.basename(fileAbsolutePath, '.md')).substring(1);
-const getPostDirectory = (fileAbsolutePath: string): string =>
-  path.basename(path.dirname(fileAbsolutePath));
-const getPostPath = (fileAbsolutePath: string): string =>
-  path.posix.join('/', getLanguage(fileAbsolutePath), 'post', getPostDirectory(fileAbsolutePath), '/');

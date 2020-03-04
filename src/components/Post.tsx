@@ -42,7 +42,6 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
 export default Post;
 
 export interface PostInfo {
-  readonly id: string;
   readonly title: string;
   readonly date: string;
   readonly html: string;
