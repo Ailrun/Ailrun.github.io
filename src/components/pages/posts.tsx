@@ -37,7 +37,7 @@ export default PostsPage;
 
 interface Data {
   readonly allMarkdownRemark: {
-    readonly posts: DataPost[];
+    readonly nodes: DataPost[];
   };
 }
 interface DataPost {
@@ -51,14 +51,14 @@ interface DataPost {
   readonly postPath: string;
   readonly language: string;
   readonly parent: {
-    readonly date: string;
-    readonly dateForSort: string;
+    readonly birthTime: string;
+    readonly birthTimeForSort: string;
   };
 } 
 const query = graphql`
   query {
     allMarkdownRemark {
-      posts: nodes {
+      nodes {
         frontmatter {
           title
           date(fromNow: true)
@@ -71,8 +71,8 @@ const query = graphql`
 
         parent {
           ... on File {
-            date: birthTime(fromNow: true)
-            dateForSort: birthTime
+            birthTime(fromNow: true)
+            birthTimeForSort: birthTime
           }
         }
       }
@@ -81,12 +81,12 @@ const query = graphql`
 `;
 
 const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
-  return data.allMarkdownRemark.posts
+  return data.allMarkdownRemark.nodes
     .filter(({ language }) => language === targetLanguage)
     .map(({ frontmatter, parent, language, ...postInfo }) => {
       const title = frontmatter.title;
-      const date = frontmatter.date ?? parent.date;
-      const dateForSort = frontmatter.dateForSort ?? parent.dateForSort;
+      const date = frontmatter.date ?? parent.birthTime;
+      const dateForSort = frontmatter.dateForSort ?? parent.birthTimeForSort;
 
       return { ...postInfo, title, date, dateForSort };
     })

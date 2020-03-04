@@ -18,8 +18,8 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
     <>
       <SEO
         title={post.title}
-        description={data.post.excerpt}
-        pathname={data.post.postPath}
+        description={data.markdownRemark.excerpt}
+        pathname={data.markdownRemark.postPath}
         og={{
           type: 'article',
           additional: {
@@ -42,7 +42,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 export default PostTemplate;
 
 interface Data {
-  readonly post: DataPost;
+  readonly markdownRemark: DataPost;
 }
 interface DataPost {
   readonly frontmatter: {
@@ -54,12 +54,12 @@ interface DataPost {
   readonly excerpt: string;
   readonly postPath: string;
   readonly parent: {
-    readonly date: string;
+    readonly birthTime: string;
   };
 }
 export const query = graphql`
   query ($id: String) {
-    post: markdownRemark(id: { eq: $id }) {
+    markdownRemark(id: { eq: $id }) {
       frontmatter {
         title
         date(fromNow: true)
@@ -71,7 +71,7 @@ export const query = graphql`
 
       parent {
         ... on File {
-          date: birthTime(fromNow: true)
+          birthTime(fromNow: true)
         }
       }
     }
@@ -79,9 +79,9 @@ export const query = graphql`
 `;
 
 const refineData = (data: Data): PostInfo => {
-  const { frontmatter, parent, excerpt, ...postInfo } = data.post;
+  const { frontmatter, parent, excerpt, ...postInfo } = data.markdownRemark;
   const title = frontmatter.title;
-  const date = frontmatter.date ?? parent.date;
+  const date = frontmatter.date ?? parent.birthTime;
 
   return { ...postInfo, title, date };
 };
