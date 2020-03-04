@@ -60,8 +60,8 @@ const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
     <Owner>Junyoung Clare Jang</Owner>
     <InfoSubjectList>
       {
-        subjects.map((subject, i) => (
-          <InfoSubject key={i} {...{ subject }} />
+        subjects.map((subject) => (
+          <InfoSubject key={subject.title} {...{ subject }} />
         ))
       }
     </InfoSubjectList>
@@ -151,8 +151,8 @@ const InfoSubject: React.FC<InfoSubjectProps> = ({ subject }) => (
     <InfoSubjectTitle id={`about-${subject.title}`}>{subject.title}</InfoSubjectTitle>
     <InfoSubjectEntryList>
       {
-        subject.entries.map((entry, i) => (
-          <InfoSubjectEntry key={i}>{entry}</InfoSubjectEntry>
+        subject.entries.map((entry) => (
+          <InfoSubjectEntry key={entry}>{entry}</InfoSubjectEntry>
         ))
       }
     </InfoSubjectEntryList>

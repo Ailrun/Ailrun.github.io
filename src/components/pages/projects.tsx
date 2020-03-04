@@ -43,8 +43,8 @@ const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) =>
   return (
     <ProjectGroupListRoot>
       {
-        projectGroups.map((projectGroup, i) => (
-          <ProjectGroup key={i} {...{ projectGroup }} />
+        projectGroups.map((projectGroup) => (
+          <ProjectGroup key={projectGroup.title} {...{ projectGroup }} />
         ))
       }
     </ProjectGroupListRoot>
@@ -70,7 +70,7 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
       <ProjectList>
         {
           projectGroup.projects.map((project, i) => (
-            <Fragment key={i}>
+            <Fragment key={`${project.title}:${project.link}`}>
               {
                 i !== 0 ? (
                   <ProjectSeparator />

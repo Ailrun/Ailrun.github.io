@@ -19,7 +19,7 @@ const NavigationBar: React.FC<unknown> = () => {
       <NavigationList>
         {
           navigationItems.map((navigationItem) => (
-            <NavigationItem key={navigationItem.to} {...navigationItem} />
+            <NavigationItem key={navigationItem.text} {...navigationItem} />
           ))
         }
       </NavigationList>
