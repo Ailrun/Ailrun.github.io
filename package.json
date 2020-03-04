@@ -27,7 +27,7 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-react": "^7.18.3",
     "eslint-plugin-react-hooks": "^2.5.0",
-    "gatsby": "^2.19.27",
+    "gatsby": "^2.19.28",
     "gatsby-plugin-csp": "^1.1.3",
     "gatsby-plugin-custom-eslint": "file:./plugins/gatsby-plugin-custom-eslint",
     "gatsby-plugin-emotion": "^4.1.23",
