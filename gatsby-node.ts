@@ -11,30 +11,6 @@ import createMarkdownPost from './gatsby/createMarkdownPost';
 import { assert } from './src/utils/typeHelpers';
 
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
-  actions.createRedirect({
-    fromPath: '/',
-    toPath: '/en/posts/',
-    isPermanent: true,
-    redirectInBrowser: true,
-    force: true,
-  });
-
-  actions.createRedirect({
-    fromPath: '/en/',
-    toPath: '/en/posts/',
-    isPermanent: true,
-    redirectInBrowser: true,
-    force: true,
-  });
-
-  actions.createRedirect({
-    fromPath: '/ko/',
-    toPath: '/ko/posts/',
-    isPermanent: true,
-    redirectInBrowser: true,
-    force: true,
-  });
-
   const postResult = await graphql<PostData>(postQuery);
 
   if (postResult.errors) {

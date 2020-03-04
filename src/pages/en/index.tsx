@@ -1,8 +1,9 @@
-import Dummy from '../../components/Dummy';
+import { Redirect } from '@reach/router';
+import React from 'react';
 
-/**
- * This `Dummy` component exists only because
- * Gatsby does not allow one to redirect index page to other page
- * without index file.
- */
-export default Dummy;
+const IndexPage: React.FC<unknown> = () => {
+  return typeof window !== 'undefined' ? (
+    <Redirect to='/en/posts' noThrow={true} />
+  ) : null;
+};
+export default IndexPage;

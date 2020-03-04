@@ -93,12 +93,18 @@ const config: GatsbyConfig = {
         precachePages: [
           `ko`,
           `en`,
-        ].map((language) => [
-          `/${language}/post/*`,
-          `/${language}/posts`,
-          `/${language}/projects`,
-          `/${language}/about`,
-        ]).flat(),
+        ]
+          .map((language) => [
+            `/${language}/`,
+            `/${language}/post/*`,
+            `/${language}/posts`,
+            `/${language}/projects`,
+            `/${language}/about`,
+          ])
+          .flat()
+          .concat([
+            `/`,
+          ]),
       },
     },
     {
