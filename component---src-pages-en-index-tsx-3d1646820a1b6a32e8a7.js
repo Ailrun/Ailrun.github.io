@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{ef3G:function(n,e,t){"use strict";t.r(e);var c=t("Wbzz"),o=t("q1tI");e.default=function(){return Object(o.useEffect)((function(){Object(c.navigate)("/en/posts",{replace:!0}).catch((function(n){console.error(n)}))}),[]),null}}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-3d1646820a1b6a32e8a7.js.map
