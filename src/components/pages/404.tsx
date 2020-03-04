@@ -6,17 +6,14 @@ import useTimer from '../../hooks/useTimer';
 import SEO from '../SEO';
 
 const Page404: React.FC<PageRendererProps> = () => {
-  const timeLeft = useTimer(30);
+  const timeLeft = useTimer(5);
   const isDone = timeLeft === 0;
 
   useEffect(() => {
     if (isDone) {
       navigate('/', {
         replace: true,
-      })
-        .catch((e) => {
-          console.error(e);
-        });
+      });
     }
   }, [isDone]);
 
