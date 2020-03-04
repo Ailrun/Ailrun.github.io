@@ -2,8 +2,20 @@ import { PreRenderHTMLArgs } from 'gatsby';
 import React from 'react';
 
 const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }: PreRenderHTMLArgs): void => {
+  const headComponents = getHeadComponents()
+    .map((component) => {
+      if ((component as any)?.type === 'meta'
+          && (component as any).props.httpEquiv === 'Content-Security-Policy') {
+        return React.cloneElement(component as any, {
+          key: 'gatsby-plugin-csp',
+        });
+      }
+
+      return component;
+    });
+
   replaceHeadComponents([
-    ...getHeadComponents(),
+    ...headComponents,
     (
       <link
         rel='preconnect dns-prefetch'
