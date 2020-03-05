@@ -60,8 +60,6 @@ export const markdown: SerializedStyles = css({
     margin: '0 3em',
     marginTop: '1em',
 
-    listStylePosition: 'inside',
-
     'ol, ul': {
       margin: '0',
       marginTop: '0.5em',
@@ -72,13 +70,12 @@ export const markdown: SerializedStyles = css({
   li: {
     marginLeft: '1em',
 
-    textIndent: '-1em',
-
     p: {
-      display: 'inline',
-      margin: '0',
+      margin: 0,
+    },
 
-      textIndent: '0',
+    'p:first-of-type': {
+      textIndent: 0,
     },
   },
 
@@ -104,14 +101,16 @@ export const markdown: SerializedStyles = css({
     textIndent: '0',
   },
 
-  details: {
-    margin: '0 1em',
+  'details.question': {
+    display: 'block',
+
+    marginBottom: '0.5em',
 
     summary: {
-      marginTop: '1.5em',
-
       p: {
-        marginTop: '0.5em',
+        margin: 0,
+
+        textIndent: 0,
       },
 
       'p:first-of-type': {
@@ -120,7 +119,8 @@ export const markdown: SerializedStyles = css({
     },
 
     'summary + p': {
-      marginTop: '1em',
+      margin: 0,
+      marginLeft: '1em',
     },
   },
 
