@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{ef3G:function(e,n,t){"use strict";t.r(n);var c=t("Wbzz"),u=t("q1tI");n.default=function(){return Object(u.useEffect)((function(){Object(c.navigate)("/en/posts",{replace:!0})}),[]),null}}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-4299749a8aebbf56fe44.js.map
