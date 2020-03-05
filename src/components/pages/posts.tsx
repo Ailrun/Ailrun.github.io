@@ -37,7 +37,10 @@ export default PostsPage;
 
 interface Data {
   readonly allMarkdownPost: {
-    readonly nodes: DataMarkdownPost[];
+    readonly group: {
+      readonly fieldValue: Language;
+      readonly nodes: DataMarkdownPost[];
+    }[];
   };
 }
 interface DataMarkdownPost {
@@ -53,15 +56,17 @@ interface DataMarkdownPost {
 const query = graphql`
   query {
     allMarkdownPost {
-      nodes {
-        title
-        date(fromNow: true)
-        dateForSort: date
-        postPath
-        language
-        parent {
-          ... on MarkdownRemark {
-            excerpt(format: HTML, pruneLength: 100, truncate: true)
+      group(field: language) {
+        fieldValue
+        nodes {
+          title
+          date(fromNow: true)
+          dateForSort: date
+          postPath
+          parent {
+            ... on MarkdownRemark {
+              excerpt(format: HTML, pruneLength: 100, truncate: true)
+            }
           }
         }
       }
@@ -70,8 +75,11 @@ const query = graphql`
 `;
 
 const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
-  return data.allMarkdownPost.nodes
-    .filter(({ language }) => language === targetLanguage)
+  const targetGroup =
+    data.allMarkdownPost.group
+      .find(({ fieldValue }) => fieldValue === targetLanguage);
+
+  return (targetGroup?.nodes ?? [])
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
     .map(({ dateForSort, language, parent, ...postInfo }) => ({
       ...postInfo,
