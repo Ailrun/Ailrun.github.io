@@ -54,11 +54,9 @@ const Post: React.FC<PostProps> = ({ postInfo }) => {
 };
 
 const PostRoot = styled.li({
-  width: '100%',
+  marginBottom: '40px',
 
-  '& + &': {
-    marginTop: '40px',
-  },
+  width: '100%',
 });
 
 const PostLink = styled(Link)({
@@ -68,6 +66,11 @@ const PostLink = styled(Link)({
 
   alignItems: 'center',
   flexWrap: 'wrap',
+
+  [C.mediaQueries[0]]: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
 });
 
 const PostTitle = styled.h3({
@@ -75,11 +78,21 @@ const PostTitle = styled.h3({
 
   fontSize: C.fontLargeSize,
   color: C.textBlack,
+
+  [C.mediaQueries[0]]: {
+    marginBottom: 0,
+
+    fontSize: C.fontBaseSize,
+  },
 });
 
 const PostDate = styled.span({
   fontSize: C.fontSmallSize,
   color: C.textVeryLightBlack,
+
+  [C.mediaQueries[0]]: {
+    alignSelf: 'flex-end',
+  },
 });
 
 /**
@@ -100,5 +113,13 @@ const PostExcerpt = styled.div({
 
   'h1, h2, h3, h4, h5, h6': {
     display: 'none',
+  },
+
+  [C.mediaQueries[0]]: {
+    marginLeft: '0.5em',
+    marginRight: '0.5em',
+    marginTop: '0.5em',
+
+    fontSize: C.fontSmallSize,
   },
 });

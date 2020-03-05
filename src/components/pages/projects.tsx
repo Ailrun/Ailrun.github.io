@@ -94,6 +94,10 @@ const ProjectGroupRoot = styled.figure({
 const ProjectGroupTitle = styled.figcaption({
   fontWeight: 'bold',
   fontSize: C.fontLargeSize,
+
+  [C.mediaQueries[0]]: {
+    fontSize: C.fontBaseSize,
+  },
 });
 
 const ProjectGroupTitleSeparator = styled.hr({
@@ -105,6 +109,10 @@ const ProjectList = styled.ul({
   paddingLeft: '4em',
 
   listStyleType: 'none',
+
+  [C.mediaQueries[0]]: {
+    paddingLeft: '1em',
+  },
 });
 
 const ProjectSeparator = styled.hr({
@@ -120,11 +128,15 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
       <ProjectTitle>
         <OutboundLink href={project.link}>{project.title}</OutboundLink>
       </ProjectTitle>
-      {
-        project.images.map((image) => (
-          <img key={image} src={image} />
-        ))
-      }
+      <ProjectImageList>
+        {
+          project.images.map((image) => (
+            <ProjectImageItem key={image}>
+              <ProjectImage src={image} />
+            </ProjectImageItem>
+          ))
+        }
+      </ProjectImageList>
     </ProjectRoot>
   );
 };
@@ -138,15 +150,41 @@ const ProjectRoot = styled.li({
 
   alignItems: 'center',
 
-  img: {
-    maxHeight: '1.8em',
-
-    fontSize: 'inherit',
+  [C.mediaQueries[0]]: {
+    fontSize: C.fontSmallSize,
   },
 });
 
 const ProjectTitle = styled.h3({
   width: '25em',
+  flexShrink: 0,
 
   fontWeight: 'normal',
+
+  [C.mediaQueries[0]]: {
+    flexShrink: 1,
+  },
+});
+
+const ProjectImageList = styled.ul({
+  display: 'inline',
+
+  flexGrow: 1,
+
+  listStyle: 'none',
+
+  [C.mediaQueries[0]]: {
+    textAlign: 'right',
+  },
+});
+
+const ProjectImageItem = styled.li({
+  display: 'inline',
+});
+
+const ProjectImage = styled.img({
+  maxHeight: '1.8em',
+  minHeight: '0.8em',
+
+  fontSize: 'inherit',
 });

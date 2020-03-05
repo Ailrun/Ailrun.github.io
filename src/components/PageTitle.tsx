@@ -28,6 +28,12 @@ const Root = styled.header<RootProps>({
   backgroundColor: 'black',
 
   alignItems: 'center',
+
+  [C.mediaQueries[0]]: {
+    height: '44vw',
+
+    backgroundPosition: 'right',
+  },
 }, ({ backgroundSrc }) => ({
   backgroundImage: `url('${backgroundSrc}')`,
 }));
@@ -38,4 +44,8 @@ const TitleText = styled.h1({
   color: C.textWhite,
   fontWeight: 'bold',
   fontSize: C.fontGiantSize,
+
+  [C.mediaQueries[0]]: {
+    fontSize: C.fontHugeSize,
+  },
 });
