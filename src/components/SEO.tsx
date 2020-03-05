@@ -2,9 +2,8 @@ import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
+import useLanguage from '../hooks/useLanguage';
 import { languageToBCP47 } from '../utils/languages';
-
-import { useLanguage } from './LanguageProvider';
 
 export interface Props {
   readonly title?: string;

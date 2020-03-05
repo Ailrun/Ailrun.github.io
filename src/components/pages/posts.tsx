@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 
+import useLanguage from '../../hooks/useLanguage';
 import { Language } from '../../utils/languages';
-import { useLanguage } from '../LanguageProvider';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';

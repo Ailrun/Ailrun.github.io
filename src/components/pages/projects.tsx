@@ -4,9 +4,9 @@ import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import React, { Fragment } from 'react';
 
 import dataProjects from '../../data/projects';
+import useLanguage from '../../hooks/useLanguage';
 import * as C from '../../styles/constants';
 import { Language } from '../../utils/languages';
-import { useLanguage } from '../LanguageProvider';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import SEO from '../SEO';

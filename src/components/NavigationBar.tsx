@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 
+import useLanguage from '../hooks/useLanguage';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
-import { useLanguage } from './LanguageProvider';
 
 const NavigationBar: React.FC<unknown> = () => {
   const language = useLanguage();

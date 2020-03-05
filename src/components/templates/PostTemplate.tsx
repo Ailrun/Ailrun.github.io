@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
 
-import { useLanguage } from '../LanguageProvider';
+import useLanguage from '../../hooks/useLanguage';
 import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
 import SEO from '../SEO';
