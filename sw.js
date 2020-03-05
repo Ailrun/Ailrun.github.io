@@ -27,90 +27,76 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-179edf23f2b199be3f21.js"
+    "url": "webpack-runtime-771819fee31ee554986b.js"
   },
   {
-    "url": "commons-b8cd910c48884f26774f.js"
+    "url": "commons-0b2eb4064dd6c15cbf01.js"
   },
   {
-    "url": "app-665d2b5c53e4dfb22d2d.js"
+    "url": "app-29aa1212702a56e0bb99.js"
   },
   {
     "url": "component---node-modules-gatsby-plugin-offline-app-shell-js-481f03a4f5dd641d42b7.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "959c1314695875829b97bd843c771b2d"
+    "revision": "db0522741da08e036d2dae2570806250"
   },
   {
-    "url": "component---src-pages-ko-index-tsx-a6d5387789521af35ca4.js"
-  },
-  {
-    "url": "page-data/ko/page-data.json",
-    "revision": "c538e7bf47d722ba5802a3d1a8f8c927"
-  },
-  {
-    "url": "page-data/app-data.json",
-    "revision": "0bd87f22be2117f388febd4440c0eef8"
-  },
-  {
-    "url": "component---src-components-templates-post-template-tsx-4c234badec730917e786.js"
-  },
-  {
-    "url": "page-data/ko/post/trip-to-make-a-blog/page-data.json",
-    "revision": "b2b93bff0b477807797485a06e3e1ddf"
-  },
-  {
-    "url": "component---src-pages-ko-posts-tsx-caef806b59574ae77ffe.js"
-  },
-  {
-    "url": "page-data/ko/posts/page-data.json",
-    "revision": "01ee223c2a931e3280b66fb51fe2ca52"
-  },
-  {
-    "url": "component---src-pages-ko-projects-tsx-ded5970a0ebfeb98c774.js"
-  },
-  {
-    "url": "page-data/ko/projects/page-data.json",
-    "revision": "6e2da0698f70e0a90854e21e44b0ca0c"
-  },
-  {
-    "url": "component---src-pages-ko-about-tsx-4b2ff42e9f7051329348.js"
+    "url": "component---src-pages-ko-about-tsx-43cebdd36a9fa32fc662.js"
   },
   {
     "url": "page-data/ko/about/page-data.json",
     "revision": "f0f271b1b59fffe5f44715fdfa9f1c48"
   },
   {
-    "url": "component---src-pages-en-index-tsx-be7a6fdac1ccba870069.js"
+    "url": "page-data/app-data.json",
+    "revision": "efe3eb95a92d954f8375ed725229dfba"
   },
   {
-    "url": "page-data/en/page-data.json",
-    "revision": "f8b42bbf8a4437b9823190f2474f77f9"
+    "url": "component---src-pages-ko-index-tsx-6a8dd57886b421610495.js"
   },
   {
-    "url": "component---src-pages-en-posts-tsx-29e721affdda67ae2f63.js"
+    "url": "page-data/ko/page-data.json",
+    "revision": "c538e7bf47d722ba5802a3d1a8f8c927"
   },
   {
-    "url": "page-data/en/posts/page-data.json",
-    "revision": "94845b097dfa9db1a81f6470f7415595"
+    "url": "component---src-pages-ko-posts-tsx-599d02473e38cf7ec374.js"
   },
   {
-    "url": "component---src-pages-en-projects-tsx-7a838ac96d4ce485119a.js"
+    "url": "page-data/ko/posts/page-data.json",
+    "revision": "01ee223c2a931e3280b66fb51fe2ca52"
   },
   {
-    "url": "page-data/en/projects/page-data.json",
-    "revision": "3ff90b3046fc26b60eb6332ef6ba37cd"
+    "url": "component---src-pages-ko-projects-tsx-85417d8e953c8225b624.js"
   },
   {
-    "url": "component---src-pages-en-about-tsx-f2ea830ea8c39b9f86ba.js"
+    "url": "page-data/ko/projects/page-data.json",
+    "revision": "6e2da0698f70e0a90854e21e44b0ca0c"
+  },
+  {
+    "url": "component---src-pages-en-about-tsx-31e912ec40a749cff3c6.js"
   },
   {
     "url": "page-data/en/about/page-data.json",
     "revision": "9131a23d1027d3bd299ccc4e5bb20098"
   },
   {
-    "url": "component---src-pages-index-tsx-159d8c665b784bc6f70c.js"
+    "url": "component---src-pages-en-index-tsx-90dc1ead4acd04970456.js"
+  },
+  {
+    "url": "page-data/en/page-data.json",
+    "revision": "f8b42bbf8a4437b9823190f2474f77f9"
+  },
+  {
+    "url": "component---src-pages-en-projects-tsx-f5e5281eb024d81b96ad.js"
+  },
+  {
+    "url": "page-data/en/projects/page-data.json",
+    "revision": "3ff90b3046fc26b60eb6332ef6ba37cd"
+  },
+  {
+    "url": "component---src-pages-index-tsx-646869eba7b3576df805.js"
   },
   {
     "url": "page-data/index/page-data.json",
@@ -211,7 +197,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-665d2b5c53e4dfb22d2d.js`))) {
+  if (!resources || !(await caches.match(`/app-29aa1212702a56e0bb99.js`))) {
     return await fetch(event.request)
   }
 
