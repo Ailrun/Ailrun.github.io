@@ -39,11 +39,6 @@ interface PostProps {
   postInfo: PostInfo;
 }
 const Post: React.FC<PostProps> = ({ postInfo }) => {
-  const excerptWithoutAnchors = postInfo.excerpt
-    .replace(/<a>/g, '<p>')
-    .replace(/<a /g, '<p ')
-    .replace(/<\/a>/g, '</p>');
-
   return (
     <PostRoot>
       <PostLink to={postInfo.postPath}>
@@ -51,7 +46,7 @@ const Post: React.FC<PostProps> = ({ postInfo }) => {
         <FlexSpacer />
         <PostDate>{postInfo.date}</PostDate>
         <PostExcerpt
-          dangerouslySetInnerHTML={{ __html: excerptWithoutAnchors }}
+          dangerouslySetInnerHTML={{ __html: postInfo.excerpt }}
         />
       </PostLink>
     </PostRoot>

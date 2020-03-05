@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 
-import useLanguage from '../hooks/useLanguage';
+import useLanguage, { Language } from '../hooks/useLanguage';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
@@ -18,7 +18,7 @@ const NavigationBar: React.FC<unknown> = () => {
       <FlexSpacer />
       <NavigationList>
         {
-          navigationItems.map((navigationItem) => (
+          getNavigationItems(language).map((navigationItem) => (
             <NavigationItem key={navigationItem.text} {...navigationItem} />
           ))
         }
@@ -74,11 +74,9 @@ interface ItemProps {
   readonly text: string;
 }
 const NavigationItem: React.FC<ItemProps> = ({ to, text }) => {
-  const language = useLanguage();
-
   return (
     <NavigationItemRoot>
-      <Link to={'/' + language + to}>
+      <Link to={to}>
         {text}
       </Link>
     </NavigationItemRoot>
@@ -93,8 +91,8 @@ const NavigationItemRoot = styled.li({
 }, C.fontDancing);
 
 
-const navigationItems: ItemProps[] = [
-  { to: '/posts/', text: 'Posts' },
-  { to: '/projects/', text: 'Projects' },
-  { to: '/about/', text: 'About' },
+const getNavigationItems: (language: Language) => ItemProps[] = (language) => [
+  { to: `/${language}/posts/`, text: 'Posts' },
+  { to: `/${language}/projects/`, text: 'Projects' },
+  { to: `/${language}/about/`, text: 'About' },
 ];

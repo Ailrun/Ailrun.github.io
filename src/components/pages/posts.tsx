@@ -75,7 +75,11 @@ const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
     .map(({ dateForSort, language, parent, ...postInfo }) => ({
       ...postInfo,
-      excerpt: parent.excerpt,
+      /* Try to make the excerpt WAI compatible */
+      excerpt: parent.excerpt
+        .replace(/<a>/g, '<p>')
+        .replace(/<a /g, '<p ')
+        .replace(/<\/a>/g, '</p>'),
     }));
 };
 
