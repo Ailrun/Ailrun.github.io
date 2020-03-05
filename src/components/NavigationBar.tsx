@@ -12,7 +12,7 @@ const NavigationBar: React.FC<unknown> = () => {
 
   return (
     <Root>
-      <Title to={`/${language}/posts/`}>
+      <Title to={`/${language}/`}>
         Valhalla of Valkyrie
       </Title>
       <FlexSpacer />
@@ -91,8 +91,16 @@ const NavigationItemRoot = styled.li({
 }, C.fontDancing);
 
 
-const getNavigationItems: (language: Language) => ItemProps[] = (language) => [
-  { to: `/${language}/posts/`, text: 'Posts' },
-  { to: `/${language}/projects/`, text: 'Projects' },
-  { to: `/${language}/about/`, text: 'About' },
-];
+const getNavigationItems: (language: Language) => ItemProps[] = (language) => {
+  return [
+    ...(
+      language === Language.KO ?
+        [{ to: `/${language}/posts/`, text: 'Posts' }] :
+        []
+    ),
+    ...[
+      { to: `/${language}/projects/`, text: 'Projects' },
+      { to: `/${language}/about/`, text: 'About' },
+    ],
+  ];
+};
