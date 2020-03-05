@@ -1,23 +1,17 @@
 import styled from '@emotion/styled';
-import { DiscussionEmbed } from 'disqus-react';
 import React from 'react';
 
 import useOnLine from '../hooks/useOnLine';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
+import DiscussionEmbed, { Props as DiscussionEmbedProps } from './disqus/DiscussionEmbed';
 
 interface Props {
   readonly gatsbyShortname: string;
   readonly postInfo: PostInfo;
 }
 const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
-  const disqusConfig = {
-    url: `https://ailrun.github.io${postInfo.postPath}`,
-    identifier: postInfo.postPath,
-    title: postInfo.title,
-  };
-
   return (
     <PostRoot>
       <PostHeader>
@@ -30,7 +24,12 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
         dangerouslySetInnerHTML={{ __html: postInfo.html }}
       />
       <PostDisqusSeparator />
-      <PostDisqus shortname={gatsbyShortname} config={disqusConfig} />
+      <PostDisqus
+        shortname={gatsbyShortname}
+        url={`https://ailrun.github.io${postInfo.postPath}`}
+        identifier={postInfo.postPath}
+        title={postInfo.title}
+      />
     </PostRoot>
   );
 };
@@ -95,7 +94,7 @@ const PostDisqusSeparator = styled.hr({
   color: C.textLightBlack,
 });
 
-const PostDisqus: React.FC<DiscussionEmbed['props']> = ({ config, shortname }) => {
+const PostDisqus: React.FC<DiscussionEmbedProps> = ({ shortname, url, identifier, title, onNewComment }) => {
   const onLine = useOnLine();
 
   if (!onLine) {
@@ -105,7 +104,7 @@ const PostDisqus: React.FC<DiscussionEmbed['props']> = ({ config, shortname }) =
   }
 
   return (
-    <DiscussionEmbed shortname={shortname} config={config} />
+    <DiscussionEmbed {...{ shortname, url, identifier, title, onNewComment }} />
   );
 };
 
