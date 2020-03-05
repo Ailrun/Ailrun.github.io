@@ -95,11 +95,7 @@ const config: GatsbyConfig = {
           `en`,
         ]
           .map((language) => [
-            `/${language}/`,
-            `/${language}/post/*`,
-            `/${language}/posts`,
-            `/${language}/projects`,
-            `/${language}/about`,
+            `/${language}/*`,
           ])
           .flat()
           .concat([
