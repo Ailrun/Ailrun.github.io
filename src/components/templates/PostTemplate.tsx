@@ -19,7 +19,7 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
       <SEO
         title={post.title}
         description={data.markdownPost.parent.excerpt}
-        pathname={data.markdownPost.postPath}
+        pathname={post.postPath}
         og={{
           type: 'article',
           additional: {
