@@ -2,10 +2,10 @@ import styled from '@emotion/styled';
 import { DiscussionEmbed } from 'disqus-react';
 import React from 'react';
 
+import useOnLine from '../hooks/useOnLine';
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
-import Online from './Online';
 
 interface Props {
   readonly gatsbyShortname: string;
@@ -13,12 +13,9 @@ interface Props {
 }
 const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
   const disqusConfig = {
-    shortname: gatsbyShortname,
-    config: {
-      url: `https://ailrun.github.io${postInfo.postPath}`,
-      identifier: postInfo.postPath,
-      title: postInfo.title,
-    },
+    url: `https://ailrun.github.io${postInfo.postPath}`,
+    identifier: postInfo.postPath,
+    title: postInfo.title,
   };
 
   return (
@@ -33,9 +30,7 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
         dangerouslySetInnerHTML={{ __html: postInfo.html }}
       />
       <PostDisqusSeparator />
-      <Online fallback={<PostDisqusLoadError />}>
-        <DiscussionEmbed {...disqusConfig} />
-      </Online>
+      <PostDisqus shortname={gatsbyShortname} config={disqusConfig} />
     </PostRoot>
   );
 };
@@ -100,6 +95,20 @@ const PostDisqusSeparator = styled.hr({
   color: C.textLightBlack,
 });
 
+const PostDisqus: React.FC<DiscussionEmbed['props']> = ({ config, shortname }) => {
+  const onLine = useOnLine();
+
+  if (!onLine) {
+    return (
+      <PostDisqusLoadError />
+    );
+  }
+
+  return (
+    <DiscussionEmbed shortname={shortname} config={config} />
+  );
+};
+
 const PostDisqusLoadError: React.FC<unknown> = () => {
   return (
     <PostDisqusLoadErrorWrapper>
@@ -110,7 +119,7 @@ const PostDisqusLoadError: React.FC<unknown> = () => {
   );
 };
 
-const PostDisqusLoadErrorWrapper = styled.div({
+const PostDisqusLoadErrorWrapper = styled.p({
   display: 'block',
   marginTop: '2em',
   marginBottom: '4em',
