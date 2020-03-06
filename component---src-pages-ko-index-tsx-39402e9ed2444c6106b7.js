@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{lD38:function(n,t,e){"use strict";e.r(t);var c=e("Wbzz"),o=e("q1tI");t.default=function(){return Object(o.useEffect)((function(){Object(c.navigate)("/ko/posts",{replace:!0})}),[]),null}}}]);
+//# sourceMappingURL=component---src-pages-ko-index-tsx-39402e9ed2444c6106b7.js.map
