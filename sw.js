@@ -30,7 +30,7 @@ self.__precacheManifest = [
     "url": "webpack-runtime-26acbbec10a6660cff56.js"
   },
   {
-    "url": "commons-6c024f1c697f88628ebe.js"
+    "url": "commons-b8ef19a994f026cfc0f7.js"
   },
   {
     "url": "app-c419f55a0c21d7ba63a2.js"
@@ -40,7 +40,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "ec85818bf9837c2a3231efc1c2cb0e40"
+    "revision": "08697c2e958b5806d713457f889e5de0"
   },
   {
     "url": "component---src-pages-ko-about-tsx-711766bb99e4982a45eb.js"
@@ -51,7 +51,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "6825e3c2701a590f9a489766f6718130"
+    "revision": "ef8d43579d6a224b63114aa755c6d6b4"
   },
   {
     "url": "component---src-pages-ko-index-tsx-6a8dd57886b421610495.js"
