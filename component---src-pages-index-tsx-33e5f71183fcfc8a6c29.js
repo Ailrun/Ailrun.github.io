@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[10],{QeBL:function(e,n,t){"use strict";t.r(n);var c=t("Wbzz"),u=t("q1tI");n.default=function(){return Object(u.useEffect)((function(){Object(c.navigate)("/en/posts",{replace:!0})}),[]),null}}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-33e5f71183fcfc8a6c29.js.map
