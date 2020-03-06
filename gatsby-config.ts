@@ -50,7 +50,13 @@ const config: GatsbyConfig = {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
-          `gatsby-remark-autolink-headers`,
+          {
+            resolve: `gatsby-remark-autolink-headers`,
+            options: {
+              enableCustomId: true,
+              isIconAfterHeader: true,
+            },
+          },
         ],
       },
     },
