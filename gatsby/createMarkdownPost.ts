@@ -43,6 +43,14 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
 
   markdownPostNode.language = getLanguage(fileAbsolutePath);
   markdownPostNode.postPath = getPostPath(fileAbsolutePath);
+  markdownPostNode.draft = false;
+
+  if (process.env.NODE_ENV !== 'development'
+      && fileAbsolutePath.includes('post-draft')) {
+    markdownPostNode.postPath =
+      path.join('/', process.env.DRAFT_PATH as string, markdownPostNode.postPath);
+    markdownPostNode.draft = true;
+  }
 
   actions.createNode(markdownPostNode);
   actions.createParentChildLink({

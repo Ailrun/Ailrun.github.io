@@ -2,10 +2,15 @@
 import * as path from 'path';
 /* eslint-enable import/no-nodejs-modules */
 
+import dotenv from 'dotenv';
 import type {
   CreateNodeArgs,
   CreatePagesArgs,
 } from 'gatsby';
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 import createMarkdownPost from './gatsby/createMarkdownPost';
 import { assert } from './src/utils/typeHelpers';

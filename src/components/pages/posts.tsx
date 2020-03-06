@@ -48,7 +48,7 @@ interface DataMarkdownPost {
   readonly date: string;
   readonly dateForSort: string;
   readonly postPath: string;
-  readonly language: string;
+  readonly draft: boolean;
   readonly parent: {
     readonly excerpt: string;
   };
@@ -63,6 +63,7 @@ const query = graphql`
           date(fromNow: true)
           dateForSort: date
           postPath
+          draft
           parent {
             ... on MarkdownRemark {
               excerpt(format: HTML, pruneLength: 100, truncate: true)
@@ -80,8 +81,9 @@ const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
       .find(({ fieldValue }) => fieldValue === targetLanguage);
 
   return (targetGroup?.nodes ?? [])
+    .filter((post) => !post.draft)
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
-    .map(({ dateForSort, language, parent, ...postInfo }) => ({
+    .map(({ dateForSort, draft, parent, ...postInfo }) => ({
       ...postInfo,
       /* Try to make the excerpt WAI compatible */
       excerpt: parent.excerpt

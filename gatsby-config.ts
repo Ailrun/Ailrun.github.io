@@ -1,5 +1,10 @@
 /// <reference lib='es2019.array' />
+import dotenv from 'dotenv';
 import type { GatsbyConfig } from 'gatsby';
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
 
 const metadata = {
   name: `Valhalla of Valkyrie`,
@@ -33,17 +38,13 @@ const config: GatsbyConfig = {
         name: `MarkdownPost`,
       },
     },
-    ...(
-      process.env.NODE_ENV === `development` ? [
-        {
-          resolve: `gatsby-source-filesystem`,
-          options: {
-            path: `./post-draft/`,
-            name: `MarkdownPost`,
-          },
-        },
-      ] : []
-    ),
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `./post-draft/`,
+        name: `MarkdownPost`,
+      },
+    },
 
     {
       resolve: `gatsby-transformer-remark`,
@@ -63,8 +64,11 @@ const config: GatsbyConfig = {
       options: {
         policy: [
           {
-            userAgent: '*',
-            disallow: '/iframe/',
+            userAgent: `*`,
+            disallow: [
+              `/iframe/`,
+              `/${process.env.DRAFT_PATH}/`,
+            ],
           },
         ],
       },
@@ -113,6 +117,7 @@ const config: GatsbyConfig = {
           head: true,
           exclude: [
             `/iframe/**`,
+            `/${process.env.DRAFT_PATH}/**`,
           ],
         },
       },
