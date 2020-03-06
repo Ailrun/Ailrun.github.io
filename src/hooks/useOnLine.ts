@@ -9,8 +9,6 @@ const useOnLine = (): boolean => {
     return navigator.onLine;
   });
 
-  console.log('isOnline:', isOnline);
-
   useEffect(() => {
     function toOnline(): void {
       setIsOnline(true);
