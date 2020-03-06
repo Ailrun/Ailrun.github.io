@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[6],{ef3G:function(n,e,o){"use strict";o.r(e);var t=o("YwZP"),w=(o("q1tI"),o("qKvR"));e.default=function(){return"undefined"!=typeof window?Object(w.d)(t.Redirect,{to:"/en/posts",noThrow:!0}):null}}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-be7a6fdac1ccba870069.js.map
