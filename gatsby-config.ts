@@ -67,7 +67,7 @@ const config: GatsbyConfig = {
             userAgent: `*`,
             disallow: [
               `/iframe/`,
-              `/${process.env.DRAFT_PATH}/`,
+              `/${process.env.GATSBY_DRAFT_PATH}/`,
             ],
           },
         ],
@@ -117,7 +117,7 @@ const config: GatsbyConfig = {
           head: true,
           exclude: [
             `/iframe/**`,
-            `/${process.env.DRAFT_PATH}/**`,
+            `/${process.env.GATSBY_DRAFT_PATH}/**`,
           ],
         },
       },
