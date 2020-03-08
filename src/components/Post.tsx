@@ -20,7 +20,7 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
         <PostDate>{postInfo.date}</PostDate>
       </PostHeader>
       <PostSeparator />
-      <PostMain
+      <PostContent
         dangerouslySetInnerHTML={{ __html: postInfo.html }}
       />
       <PostDisqusSeparator />
@@ -83,7 +83,7 @@ const PostSeparator = styled.hr({
   color: C.textLightBlack,
 });
 
-const PostMain = styled.main(
+const PostContent = styled.section(
   {
     marginBottom: '3em',
   },
