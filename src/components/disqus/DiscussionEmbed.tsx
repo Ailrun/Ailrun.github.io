@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
+import { assert } from '../../utils/typeHelpers';
 
 export interface Props {
   readonly shortname: string;
@@ -8,7 +10,51 @@ export interface Props {
   onNewComment?(comment: { readonly id: string; readonly text: string }): void;
 }
 const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, onNewComment }) => {
+  const disqusThreadRef = useRef<HTMLDivElement>(null);
+  const [viewed, setViewed] = useState(false);
+
   useEffect(() => {
+    if (!('onscroll' in window)) {
+      /*
+       * If scroll event is not supported,
+       * just pretend this discussion has been viewed
+       */
+      return setViewed(true);
+    }
+
+    assert(disqusThreadRef.current);
+    const lastDisqusThread = disqusThreadRef.current;
+
+    function isDisqusThreadInScreen(): boolean {
+      const disqusThreadBoundingRect = lastDisqusThread.getBoundingClientRect();
+
+      return window.innerHeight * 2 > disqusThreadBoundingRect.top;
+    }
+
+    function handleScroll(): void {
+      if (isDisqusThreadInScreen()) {
+        window.removeEventListener('scroll', handleScroll);
+
+        setViewed(true);
+      }
+    }
+
+    if (isDisqusThreadInScreen()) {
+      return setViewed(true);
+    }
+
+    window.addEventListener('scroll', handleScroll);
+
+    return (): void => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!viewed) {
+      return;
+    }
+
     /* eslint-disable @typescript-eslint/no-explicit-any */
     (window as any).disqus_config = function (this: any): void {
       /* eslint-disable react/no-this-in-sfc */
@@ -30,8 +76,10 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
 
     window.document.body.appendChild(script);
 
-    return (): void => {
+    assert(disqusThreadRef.current);
+    const lastDisqusThread = disqusThreadRef.current;
 
+    return (): void => {
       window.document.body.removeChild(script);
       (window as any).DISQUS?.reset({});
 
@@ -41,19 +89,16 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
         (window as any).DISQUS = undefined;
       }
 
-      /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-      const disqusThread = window.document.getElementById('disqus_thread')!;
-
-      while (disqusThread.hasChildNodes()) {
-        /* eslint-disable-next-line @typescript-eslint/no-non-null-assertion */
-        disqusThread.removeChild(disqusThread.firstChild!);
+      while (lastDisqusThread.hasChildNodes()) {
+        assert(lastDisqusThread.firstChild);
+        lastDisqusThread.removeChild(lastDisqusThread.firstChild);
       }
     };
     /* eslint-enable @typescript-eslint/no-explicit-any */
-  }, [shortname, url, identifier, title, onNewComment]);
+  }, [viewed, shortname, url, identifier, title, onNewComment]);
 
   return (
-    <div id='disqus_thread' />
+    <div ref={disqusThreadRef} id='disqus_thread' />
   );
 };
 export default DiscussionEmbed;
