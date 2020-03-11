@@ -66,6 +66,10 @@ export const markdown: SerializedStyles = css({
       margin: '0',
       marginLeft: '0.5em',
     },
+
+    '+ p': {
+      textIndent: 0,
+    },
   },
 
   li: {
@@ -127,7 +131,14 @@ export const markdown: SerializedStyles = css({
     marginBottom: '0.5em',
 
     summary: {
+      width: 'fit-content',
+
+      cursor: 'pointer',
+      userSelect: 'none',
+
       p: {
+        display: 'inline',
+
         margin: 0,
 
         textIndent: 0,
@@ -162,6 +173,10 @@ export const markdown: SerializedStyles = css({
         borderStyle: 'solid',
         borderWidth: '1px',
       },
+    },
+
+    '+ p': {
+      textIndent: 0,
     },
   },
 
