@@ -99,6 +99,13 @@ export const markdown: SerializedStyles = css({
     },
   },
 
+  code: {
+    padding: '0 0.3em',
+
+    background: 'lightgray',
+    borderRadius: '3px',
+  },
+
   blockquote: {
     margin: '1.5em 1.5em',
 

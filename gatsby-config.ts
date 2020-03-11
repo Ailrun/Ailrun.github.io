@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import type { GatsbyConfig } from 'gatsby';
 
 dotenv.config({
-  path: `.env.${process.env.NODE_ENV}`,
+  path: `.env.${process.env.NODE_ENV as string}`,
 });
 
 const metadata = {
@@ -73,7 +73,7 @@ const config: GatsbyConfig = {
             userAgent: `*`,
             disallow: [
               `/iframe/`,
-              `/${process.env.GATSBY_DRAFT_PATH}/`,
+              `/${process.env.GATSBY_DRAFT_PATH as string}/`,
             ],
           },
         ],
@@ -123,7 +123,7 @@ const config: GatsbyConfig = {
           head: true,
           exclude: [
             `/iframe/**`,
-            `/${process.env.GATSBY_DRAFT_PATH}/**`,
+            `/${process.env.GATSBY_DRAFT_PATH as string}/**`,
           ],
         },
       },

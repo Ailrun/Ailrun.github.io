@@ -8,7 +8,7 @@ import type {
   NodeInput,
 } from 'gatsby';
 
-const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNodeArgs) => {
+const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNodeArgs): void => {
   if (node.internal.type !== 'MarkdownRemark') {
     return;
   }
@@ -24,7 +24,7 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
   }
 
   const fileNode = parentNode;
-  const markdownPostNode: NodeInput & Record<string, any> = {
+  const markdownPostNode: NodeInput & Record<string, unknown> = {
     id: createNodeId(`${node.id} >>> MarkdownPost`),
     parent: node.id,
     children: [],
@@ -32,10 +32,10 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
       type: 'MarkdownPost',
       content: node.internal.content,
       contentDigest: node.internal.contentDigest,
-    } as any,
+    },
   };
 
-  const frontmatter = node.frontmatter as Record<string, any>;
+  const frontmatter = node.frontmatter as Record<string, unknown>;
   const fileAbsolutePath = node.fileAbsolutePath as string;
 
   markdownPostNode.title = frontmatter.title;
@@ -48,7 +48,7 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
   if (process.env.NODE_ENV !== 'development'
       && fileAbsolutePath.includes('post-draft')) {
     markdownPostNode.postPath =
-      path.join('/', process.env.GATSBY_DRAFT_PATH as string, markdownPostNode.postPath);
+      path.join('/', process.env.GATSBY_DRAFT_PATH as string, markdownPostNode.postPath as string);
     markdownPostNode.draft = true;
   }
 

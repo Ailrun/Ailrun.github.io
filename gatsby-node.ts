@@ -8,12 +8,12 @@ import type {
   CreatePagesArgs,
 } from 'gatsby';
 
-dotenv.config({
-  path: `.env.${process.env.NODE_ENV}`,
-});
-
 import createMarkdownPost from './gatsby/createMarkdownPost';
 import { assert } from './src/utils/typeHelpers';
+
+dotenv.config({
+  path: `.env.${process.env.NODE_ENV as string}`,
+});
 
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
   const postResult = await graphql<PostData>(postQuery);
