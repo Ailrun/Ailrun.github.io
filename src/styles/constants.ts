@@ -23,6 +23,8 @@ export const textRed = 'rgba(108, 0, 0, 0.84)';
 export const textLightRed = 'rgba(216, 0, 0, 0.84)';
 
 export const backgroundBlack = 'rgba(0, 0, 0, 0.73)';
+export const backgroundWhite = 'rgba(255, 255, 255, 0.73)';
+export const backgroundGray = 'rgba(200, 200, 200, 0.73)';
 
 export const fontDancing: SerializedStyles = css({
   fontFamily: '"Dancing Script", cursive',
@@ -100,10 +102,13 @@ export const markdown: SerializedStyles = css({
   },
 
   code: {
+    margin: '0 0.5ex',
     padding: '0 0.3em',
 
-    background: 'lightgray',
+    background: backgroundGray,
     borderRadius: '3px',
+
+    fontFamily: 'monospace',
   },
 
   blockquote: {
@@ -135,6 +140,27 @@ export const markdown: SerializedStyles = css({
       '+ p': {
         margin: 0,
         marginLeft: '1em',
+      },
+    },
+  },
+
+  table: {
+    margin: '1em 3em',
+
+    background: backgroundWhite,
+    borderCollapse: 'collapse',
+
+    '> thead + tbody': {
+      borderTopStyle: 'double',
+    },
+
+    '> * > tr': {
+      '> th, > td': {
+        padding: '0 0.5em',
+
+        borderColor: textLightBlack,
+        borderStyle: 'solid',
+        borderWidth: '1px',
       },
     },
   },
