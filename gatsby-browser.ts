@@ -1,3 +1,4 @@
+import 'katex/dist/katex.min.css';
 import importedWrapPageElement from './gatsby/wrapPageElement';
 import importedWrapRootElement from './gatsby/wrapRootElement';
 

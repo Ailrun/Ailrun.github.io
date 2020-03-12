@@ -57,6 +57,12 @@ const config: GatsbyConfig = {
               isIconAfterHeader: true,
             },
           },
+          {
+            resolve: `gatsby-remark-katex`,
+            options: {
+              strict: `error`,
+            },
+          },
         ],
       },
     },
