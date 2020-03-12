@@ -84,6 +84,12 @@ export const markdown: SerializedStyles = css({
       textIndent: 0,
     },
 
+    '> .truth-table': {
+      table: {
+        margin: '1em 0',
+      },
+    },
+
     '> * > li': {
       marginTop: '0.1em',
 
@@ -151,6 +157,10 @@ export const markdown: SerializedStyles = css({
       '+ p': {
         margin: 0,
         marginLeft: '1em',
+      },
+
+      '+ ol, + ul': {
+        margin: '1em 1em',
       },
     },
   },
