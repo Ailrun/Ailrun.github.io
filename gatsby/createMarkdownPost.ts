@@ -45,8 +45,7 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
   markdownPostNode.postPath = getPostPath(fileAbsolutePath);
   markdownPostNode.draft = false;
 
-  if (process.env.NODE_ENV !== 'development'
-      && fileAbsolutePath.includes('post-draft')) {
+  if (fileAbsolutePath.includes('post-draft')) {
     markdownPostNode.postPath =
       path.join('/', process.env.GATSBY_DRAFT_PATH as string, markdownPostNode.postPath as string);
     markdownPostNode.draft = true;

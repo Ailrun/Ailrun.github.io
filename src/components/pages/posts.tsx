@@ -81,7 +81,7 @@ const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
       .find(({ fieldValue }) => fieldValue === targetLanguage);
 
   return (targetGroup?.nodes ?? [])
-    .filter((post) => !post.draft)
+    .filter((post) => process.env.NODE_ENV === 'development' || !post.draft)
     .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
     .map(({ dateForSort, draft, parent, ...postInfo }) => ({
       ...postInfo,
