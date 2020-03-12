@@ -155,28 +155,32 @@ export const markdown: SerializedStyles = css({
     },
   },
 
-  table: {
-    margin: '1em 3em',
+  '.truth-table': {
+    table: {
+      margin: '1em 3em',
 
-    background: backgroundWhite,
-    borderCollapse: 'collapse',
+      background: backgroundWhite,
+      borderCollapse: 'collapse',
 
-    '> thead + tbody': {
-      borderTopStyle: 'double',
-    },
-
-    '> * > tr': {
-      '> th, > td': {
-        padding: '0 0.5em',
-
-        borderColor: textLightBlack,
-        borderStyle: 'solid',
-        borderWidth: '1px',
+      '> thead + tbody': {
+        borderTopStyle: 'double',
       },
-    },
 
-    '+ p': {
-      textIndent: 0,
+      '> * > tr': {
+        '> th, > td': {
+          padding: '0 0.5em',
+
+          borderColor: textLightBlack,
+          borderStyle: 'solid',
+          borderWidth: '1px',
+
+          textAlign: 'center',
+        },
+      },
+
+      '+ p': {
+        textIndent: 0,
+      },
     },
   },
 
