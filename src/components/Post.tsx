@@ -23,13 +23,19 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
       <PostContent
         dangerouslySetInnerHTML={{ __html: postInfo.html }}
       />
-      <PostDisqusSeparator />
-      <PostDisqus
-        shortname={gatsbyShortname}
-        url={`https://ailrun.github.io${postInfo.postPath}`}
-        identifier={postInfo.postPath}
-        title={postInfo.title}
-      />
+      {
+        !postInfo.draft ? (
+          <>
+            <PostDisqusSeparator />
+            <PostDisqus
+              shortname={gatsbyShortname}
+              url={`https://ailrun.github.io${postInfo.postPath}`}
+              identifier={postInfo.postPath}
+              title={postInfo.title}
+            />
+          </>
+        ) : null
+      }
     </PostRoot>
   );
 };
@@ -40,6 +46,7 @@ export interface PostInfo {
   readonly date: string;
   readonly html: string;
   readonly postPath: string;
+  readonly draft: boolean;
 }
 
 const PostRoot = styled.article({

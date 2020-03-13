@@ -48,6 +48,7 @@ interface DataMarkdownPost {
   readonly title: string;
   readonly date: string;
   readonly postPath: string;
+  readonly draft: boolean;
   readonly parent: {
     readonly html: string;
     readonly excerpt: string;
@@ -59,6 +60,7 @@ export const query = graphql`
       title
       date(fromNow: true)
       postPath
+      draft
       parent {
         ... on MarkdownRemark {
           html
