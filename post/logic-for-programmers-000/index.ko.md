@@ -163,7 +163,7 @@ date: 2020-03-11T02:30:16-05:00
    <details class='answer'>
    <summary>답 보기</summary>
 
-   두 표현의 지시체는 같다. 두 표현 모두 [https://ailrun.github.io/ko](https://ailrun.github.io/ko)를 가리키고 있기 때문이다.
+   두 표현의 지시체는 같다. 두 표현 모두 [https://ailrun.github.io/ko](/ko)를 가리키고 있기 때문이다.
    </details>
 1. 다음 두 문장은 같은 지시체를 가지고 있을까? (참고: 이 문제는 러셀의 정의에 기초하고 있다.)
    - 회중시계는 하루에 두 번 2시를 가리킨다.
