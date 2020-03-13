@@ -360,7 +360,7 @@ date: 2020-03-11T02:30:16-05:00
 1. $P$, $Q$, $R$의 진리값이 참이고 $S$, $T$의 진리값이 거짓일 때, 다음 명제의 진리값은 무엇일까?
 
    $((P \land Q) \lor S) \to ((\lnot R \land T) \to (\lnot Q \lor (S \land T)))$
-   
+
    <details class='answer'>
    <summary>답 보기</summary>
 
@@ -469,7 +469,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
 ## 진리표 연습문제
 
 1. 다음 논증을 진리표를 사용해 증명해 보자
-   
+
    - $P \vdash Q \to P$
    - $\vdash P \lor (\lnot P)$
    - $P \land Q \vdash P$
@@ -480,7 +480,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
    <summary>답 보기</summary>
 
      - $P \vdash Q \to P$
-     
+
        <div class='truth-table'>
 
        | $P$ | $Q$ | $P$   | $Q \to P$ |
@@ -493,7 +493,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
        </div>
 
      - $\vdash P \lor (\lnot P)$
-     
+
        <div class='truth-table'>
 
        | $P$ | $P \lor (\lnot P)$ |
@@ -504,7 +504,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
        </div>
 
      - $P \land Q \vdash P$
-     
+
        <div class='truth-table'>
 
        | $P$ | $Q$ | $P \land Q$ | $P$   |
@@ -517,7 +517,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
        </div>
 
      - $Q \vdash P \lor Q$
-     
+
        <div class='truth-table'>
 
        | $P$ | $Q$ | $Q$   | $P \lor Q$ |
@@ -530,7 +530,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
        </div>
 
      - $\vdash (P \to Q) \to ((Q \to R) \to (P \to R))$
-     
+
        <div class='truth-table'>
 
        | $P$ | $Q$ | $R$ | $(P \to Q) \to ((Q \to R) \to (P \to R))$ |
@@ -555,7 +555,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
      - $\vdash P \lor (\lnot P)$
        증명은 바로 윗 문제에 쓰여있는 것과 동일하다.
      - $\vdash Q \to Q$
-     
+
        <div class='truth-table'>
 
        | $Q$ | $Q \to Q$ |
@@ -603,7 +603,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
        | T   | T   | **T**                       |
 
        </div>
-       
+
        또는
 
        <div class='truth-table'>
