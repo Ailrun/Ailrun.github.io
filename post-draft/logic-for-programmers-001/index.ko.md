@@ -9,14 +9,14 @@ date: 2020-03-14T02:30:16-05:00
 
 # 연작의 목차
 
-- 앞선 글
+- 이전 글
    - [프로그래머를 위한 논리학 - 0](/ko/post/logic-for-programmers-000)
 - 이 글
    - [명제 논리(영차 논리) 심화](#zeroth-order-logic-advance)
       - [이걸 언제 다 써? : 진리표의 문제](#issues-of-truth-table-in-zeroth)
       - [논리에서 퍼즐 맞추기 : 공리와 추론규칙](#axioms-and-inference-rules-of-zeroth)
       - [자연스럽게 논증 증명하기 : 자연 연역 체계](#natural-deduction-system-of-zeroth)
-- 이어지는 글
+- 다음 글
    - 술어 논리(일차 논리) 기초
    - 술어 논리(일차 논리) 심화
    - 고차 논리 기초
