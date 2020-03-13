@@ -67,6 +67,7 @@ const config: GatsbyConfig = {
       },
     },
 
+    `gatsby-plugin-catch-links`,
     `gatsby-plugin-preload-fonts`,
     `gatsby-plugin-react-helmet-async`,
     `gatsby-plugin-emotion`,
