@@ -552,7 +552,7 @@ $P$가 참인 경우와 거짓인 경우, $Q$가 참인 경우와 거짓인 경�
    <details class='answer'>
    <summary>답 보기</summary>
 
-     - $\vdash P \lor (\lnot P)$
+     - $\vdash P \lor (\lnot P)$  
        증명은 바로 윗 문제에 쓰여있는 것과 동일하다.
      - $\vdash Q \to Q$
 
