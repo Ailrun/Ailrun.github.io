@@ -68,7 +68,7 @@ date: 2020-03-14T02:30:16-05:00
 
 각각의 전제를 단위식 $P_{ChulSoo}$와 같은 식으로 번역하면, 다음과 같은 논증을 얻는다.
 
-- $P_{ChulSoo}, P_{YeongHui}, P_{MyeongJoo}, P_{HoGyeong}, \ldots \vdash P_{ChulSoo}$
+- $P_{ChulSoo},\allowbreak P_{YeongHui},\allowbreak P_{MyeongJoo},\allowbreak P_{HoGyeong}, \ldots\allowbreak \vdash P_{ChulSoo}$
 
 이제 논증이 건전하다! 정말 그런지 증명하기 위해 이 논증에 해당하는 진리표를 쓰려고 해 보자. **현재 지구에 살아있는 모든 사람**으로 '모든 사람'이라는 표현의 지시체를 한정하더라도 이 논증은 적어도 70억 개의 전제를 가지고 있고, 따라서 우리는 $2^{7,000,000,000}$ 줄의 가로줄을 나열(혹은 프로그램을 쓸 경우, 계산)해야한다. 이 우주의 모든 원자 수가 $2^{266}$ 개보다도 적으니 각 원자당 가로줄 한 개를 쓸 수 있다고 하더라도 우주가 $2^{6,999,999,744}$ 개는 있어야 한다. 이 말인 즉슨 진리표를 사용해서는 이 논증이 건전한지 아닌지 증명하지 못한다는 것이다. (물론 지금의 예시에서 이 사단을 일으킨 가장 궁극적인 원인은 '모든'이라는 표현이다. 이런 표현을 제대로 다루는 방법은 이후 술어 논리(일차 논리)에서 다룰 것이다.) 이 정도까지 가지 않더라도 수십/수백 개의 전제를 가진 상황도 얼마든지 맞닥뜨릴 수 있다. 아마 독자들도 이런 상황에서는 진리표를 쓰는 것이 현실적으로 불가능하다는 것을 이제 이해했을 것이다. 그렇다면 이런 생각을 하는 독자도 있을지 모르겠다.
 
@@ -119,9 +119,9 @@ date: 2020-03-14T02:30:16-05:00
 
 다음으로 소개할 추론 규칙은 $\land$를 추가하거나 제거하기 위한 규칙이다.
 
-- $\Gamma, (\Delta_0 \vdash P), (\Delta_1 \vdash Q) \vdash (\Gamma, \Delta_0, \Delta_1 \vdash P \land Q)$
-- $\Gamma, (\Delta \vdash P \land Q) \vdash (\Gamma, \Delta \vdash P)$
-- $\Gamma, (\Delta \vdash P \land Q) \vdash (\Gamma, \Delta \vdash Q)$
+- $\Gamma, (\Delta_0 \vdash P), (\Delta_1 \vdash Q) \vdash (\Delta_0, \Delta_1 \vdash P \land Q)$
+- $\Gamma, (\Delta \vdash P \land Q) \vdash (\Delta \vdash P)$
+- $\Gamma, (\Delta \vdash P \land Q) \vdash (\Delta \vdash Q)$
 
 잠깐! 쉽다고 해놓고 벌써부터 뭐가 너무 복잡한 것 같다. 이해를 돕기 위해 잡다한 전제를 모두 없애고, 전제가 없는 논증은 식으로 바꿔서 핵심 부분만 다시 써보도록 하자.
 
@@ -139,9 +139,9 @@ date: 2020-03-14T02:30:16-05:00
 
 첫번째 규칙은 '$\lor$ 추가 규칙 1번' 혹은 '$\lor_{I1}$'이라고 한다. $P$가 전제에 있다면 $P \lor Q$가 결론으로 따라나온다는 이야기이다. 두번째 규칙은 $\lor_{I1}$의 대칭으로, '$\lor$ 추가 규칙 2번' 혹은 '$\lor_{I2}$'이라고 부른다. 이 역시 $P \lor Q$를 이끌어내지만, 전제가 $Q$라는 점만 다르다. 마지막 규칙은 '$\lor$ 제거 규칙' 혹은 '$\lor_{E}$'이라고 부른다. $P$ 또는 $Q$이고 $P$이면 $R$, $Q$여도 $R$이라면 $R$이 결론으로 따라나온다는 규칙이다. 잡다한 전제와 논증을 추가하면 다음과 같이 된다.
 
-- $\Gamma, (\Delta \vdash P) \vdash (\Gamma, \Delta \vdash P \lor Q)$
-- $\Gamma, (\Delta \vdash Q) \vdash (\Gamma, \Delta \vdash P \lor Q)$
-- $\Gamma, (\Delta_0 \vdash P \lor Q), (\Delta_1 \vdash P \to R), (\Delta_2 \vdash Q \to R) \vdash (\Gamma, \Delta_0, \Delta_1, \Delta_2 \vdash R)$
+- $\Gamma, (\Delta \vdash P) \vdash (\Delta \vdash P \lor Q)$
+- $\Gamma, (\Delta \vdash Q) \vdash (\Delta \vdash P \lor Q)$
+- $\Gamma, (\Delta_0 \vdash P \lor Q), (\Delta_1 \vdash P \to R), (\Delta_2 \vdash Q \to R) \vdash (\Delta_0, \Delta_1, \Delta_2 \vdash R)$
 
 <span></span>
 
@@ -158,8 +158,8 @@ date: 2020-03-14T02:30:16-05:00
 
 $\lnot_I$와 $\lnot_E$에 자잘한 전제를 추가하면 다음과 같이 된다.
 
-- $\Gamma, (\Delta_0 \vdash P \to Q), (\Delta_1 \vdash P \to (\lnot Q)) \vdash (\Gamma, \Delta_0, \Delta_1 \vdash \lnot P)$
-- $\Gamma, (\Delta \vdash \lnot P) \vdash (\Gamma, \Delta \vdash P \to Q)$
+- $\Gamma, (\Delta_0 \vdash P \to Q), (\Delta_1 \vdash P \to (\lnot Q)) \vdash (\Delta_0, \Delta_1 \vdash \lnot P)$
+- $\Gamma, (\Delta \vdash \lnot P) \vdash (\Delta \vdash P \to Q)$
 
 <span></span>
 
@@ -177,9 +177,9 @@ $\leftrightarrow$을 추가하고 제거하기 위한 규칙 역시 존재한다
 
 라고 한다. 이 규칙들은 $P \leftrightarrow Q$를 $(P \to Q) \land (Q \to P)$로 해석했을 때 $\land$의 법칙들과 동일하다. 잡다한 전제와 논증을 추가했을 때도 $\land$의 경우와 매우 비슷하다.
 
-- $\Gamma, (\Delta_0 \vdash P \to Q), (\Delta_1 \vdash Q \to P) \vdash (\Gamma, \Delta_0, \Delta_1 \vdash P \leftrightarrow Q)$
-- $\Gamma, (\Delta \vdash P \leftrightarrow Q) \vdash (\Gamma, \Delta \vdash P \to Q)$
-- $\Gamma, (\Delta \vdash P \leftrightarrow Q) \vdash (\Gamma, \Delta \vdash Q \to P)$
+- $\Gamma, (\Delta_0 \vdash P \to Q), (\Delta_1 \vdash Q \to P) \vdash (\Delta_0, \Delta_1 \vdash P \leftrightarrow Q)$
+- $\Gamma, (\Delta \vdash P \leftrightarrow Q) \vdash (\Delta \vdash P \to Q)$
+- $\Gamma, (\Delta \vdash P \leftrightarrow Q) \vdash (\Delta \vdash Q \to P)$
 
 이번에는 $\to$을 추가하고 제거하기 위한 규칙이다. 간략화된 규칙은 다음과 같다.
 
