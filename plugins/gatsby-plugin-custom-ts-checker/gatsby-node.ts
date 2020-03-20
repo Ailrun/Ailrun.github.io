@@ -1,8 +1,8 @@
 import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import type { CreateWebpackConfigArgs } from 'gatsby';
 
-export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs): void => {
-  if (process.env.NODE_ENV !== 'development') {
+export const onCreateWebpackConfig = ({ actions, stage }: CreateWebpackConfigArgs): void => {
+  if (stage !== 'develop') {
     return;
   }
 
