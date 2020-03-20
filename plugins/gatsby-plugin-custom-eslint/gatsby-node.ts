@@ -1,6 +1,10 @@
 import type { CreateWebpackConfigArgs } from 'gatsby';
 
 export const onCreateWebpackConfig = ({ actions }: CreateWebpackConfigArgs): void => {
+  if (process.env.NODE_ENV !== 'development') {
+    return;
+  }
+
   actions.setWebpackConfig({
     module: {
       rules: [
