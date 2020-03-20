@@ -30,6 +30,7 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-custom-eslint`,
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-custom-ts-checker`,
 
     {
       resolve: `gatsby-source-filesystem`,

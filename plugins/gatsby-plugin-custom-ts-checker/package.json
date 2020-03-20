@@ -1,0 +1,6 @@
+{
+  "name": "gatsby-plugin-custom-ts-checker",
+  "dependencies": {
+    "fork-ts-checker-webpack-plugin": "^4.1.0"
+  }
+}
