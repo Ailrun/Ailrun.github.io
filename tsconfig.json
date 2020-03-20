@@ -3,7 +3,7 @@
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "remove",
+    "importsNotUsedAsValues": "error",
     "jsx": "preserve",
     "noErrorTruncation": true,
     "noFallthroughCasesInSwitch": true,

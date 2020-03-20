@@ -1,5 +1,5 @@
 import 'codemirror/lib/codemirror.css';
-import { PageRendererProps } from 'gatsby';
+import type { PageRendererProps } from 'gatsby';
 import React from 'react';
 
 import PredicateLogic from '../PredicateLogic';

@@ -1,5 +1,5 @@
-import { WrapPageElementBrowserArgs, WrapPageElementNodeArgs } from 'gatsby';
-import React from 'react';
+import type { WrapPageElementBrowserArgs, WrapPageElementNodeArgs } from 'gatsby';
+import type React from 'react';
 
 type WrapPageElementArgs = WrapPageElementBrowserArgs | WrapPageElementNodeArgs;
 

@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
-import { PageRendererProps } from 'gatsby';
+import type { PageRendererProps } from 'gatsby';
 import React from 'react';
 
 import dataAbout from '../../data/about';
 import useLanguage from '../../hooks/useLanguage';
 import * as C from '../../styles/constants';
-import { Language } from '../../utils/languages';
+import type { Language } from '../../utils/languages';
 import FlexSpacer from '../FlexSpacer';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';

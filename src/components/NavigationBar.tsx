@@ -2,8 +2,9 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import React from 'react';
 
-import useLanguage, { Language } from '../hooks/useLanguage';
+import useLanguage from '../hooks/useLanguage';
 import * as C from '../styles/constants';
+import { Language } from '../utils/languages';
 
 import FlexSpacer from './FlexSpacer';
 

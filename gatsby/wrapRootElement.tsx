@@ -1,5 +1,5 @@
 import { Global, css } from '@emotion/core';
-import { WrapRootElementBrowserArgs, WrapRootElementNodeArgs } from 'gatsby';
+import type { WrapRootElementBrowserArgs, WrapRootElementNodeArgs } from 'gatsby';
 import React from 'react';
 
 type WrapRootElementArgs = WrapRootElementBrowserArgs | WrapRootElementNodeArgs;

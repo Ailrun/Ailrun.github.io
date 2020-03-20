@@ -1,4 +1,4 @@
-import { PreRenderHTMLArgs } from 'gatsby';
+import type { PreRenderHTMLArgs } from 'gatsby';
 import React from 'react';
 
 const onPreRenderHTML = ({ getHeadComponents, replaceHeadComponents }: PreRenderHTMLArgs): void => {
