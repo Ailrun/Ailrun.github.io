@@ -64,6 +64,10 @@ module.exports = {
       'warn',
       2
     ],
+    '@typescript-eslint/method-signature-style': [
+      'warn',
+      'method',
+    ],
     '@typescript-eslint/naming-convention': [
       'error',
       {
