@@ -4,6 +4,11 @@ import React from 'react';
 
 type WrapRootElementArgs = WrapRootElementBrowserArgs | WrapRootElementNodeArgs;
 
+/**
+   It's not possible to wrap the root with React strict mode
+   because Gatsby uses legacy context in its ScrollContext.
+   It will be fixed in Gatsby v3, so let's wait for it...
+ */
 const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactChild => (
   <>
     <Global styles={globalStyles} />
