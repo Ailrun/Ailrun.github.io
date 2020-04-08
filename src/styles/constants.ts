@@ -34,6 +34,8 @@ export const markdown: SerializedStyles = css({
   color: textBlack,
   fontSize: '12pt',
 
+  lineHeight: '1.7',
+
   'h1, h2, h3, h4, h5, h6': {
     marginTop: '1em',
     marginBottom: '0.5em',
@@ -113,12 +115,35 @@ export const markdown: SerializedStyles = css({
 
   code: {
     margin: '0 0.5ex',
+
     padding: '0 0.3em',
 
-    background: backgroundGray,
+    overflow: 'none',
+
+    backgroundColor: backgroundGray,
     borderRadius: '3px',
 
+    whiteSpace: 'nowrap',
+
     fontFamily: 'monospace',
+  },
+
+  pre: {
+    margin: '0 0.5ex',
+
+    padding: '0 0.3em',
+
+    backgroundColor: backgroundGray,
+    borderRadius: '3px',
+
+    '> code': {
+      margin: 0,
+
+      padding: 0,
+
+      backgroundColor: 'initial',
+      borderRadius: '0',
+    },
   },
 
   blockquote: {
@@ -169,7 +194,7 @@ export const markdown: SerializedStyles = css({
     table: {
       margin: '1em 3em',
 
-      background: backgroundWhite,
+      backgroundColor: backgroundWhite,
       borderCollapse: 'collapse',
 
       '> thead + tbody': {
