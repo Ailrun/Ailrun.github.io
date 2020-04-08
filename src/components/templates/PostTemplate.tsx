@@ -1,3 +1,4 @@
+import 'katex/dist/katex.min.css';
 import styled from '@emotion/styled';
 import { PageRendererProps, graphql } from 'gatsby';
 import React from 'react';
