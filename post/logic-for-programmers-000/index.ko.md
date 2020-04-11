@@ -30,16 +30,16 @@ date: 2020-03-11T02:30:16-05:00
 # 연작의 목차
 
 - 이 글
-   - [들어가며](#prologue)
-   - [논리학을 시작하기 전에](#before-logic)
-      - [헷갈리기 쉬운 것을 구분하자! : 사용과 언급](#using-and-mentioning)
-      - [논리학은 무엇을 다루는 것일까? : 명제](#proposition)
-   - [명제 논리(영차 논리) 기초](#zeroth-order-logic)
-      - [무슨 기호로 논리를 작성할까? : 명제 논리의 문법](#syntax-of-zeroth)
-      - [아무런 논증이나 논리적일까? : 건전한 논증](#soundness-in-zeroth)
-      - [참이고 거짓이고 분간이 돼야 말이지&#x2026; : 명제의 진리값](#truth-value-in-zeroth)
-      - [뭐가 건전한건데? : 논증의 건전함 증명 체계 0 - 진리표](#truth-table-in-zeroth)
-   - [첫 글을 마치며](#epilogue)
+   - [들어가며](./#prologue)
+   - [논리학을 시작하기 전에](./#before-logic)
+      - [헷갈리기 쉬운 것을 구분하자! : 사용과 언급](./#using-and-mentioning)
+      - [논리학은 무엇을 다루는 것일까? : 명제](./#proposition)
+   - [명제 논리(영차 논리) 기초](./#zeroth-order-logic)
+      - [무슨 기호로 논리를 작성할까? : 명제 논리의 문법](./#syntax-of-zeroth)
+      - [아무런 논증이나 논리적일까? : 건전한 논증](./#soundness-in-zeroth)
+      - [참이고 거짓이고 분간이 돼야 말이지&#x2026; : 명제의 진리값](./#truth-value-in-zeroth)
+      - [뭐가 건전한건데? : 논증의 건전함 증명 체계 0 - 진리표](./#truth-table-in-zeroth)
+   - [첫 글을 마치며](./#epilogue)
 - 다음 글
    - [작성중&#x2026;] 명제 논리(영차 논리) 심화
    - 술어 논리(일차 논리) 기초
