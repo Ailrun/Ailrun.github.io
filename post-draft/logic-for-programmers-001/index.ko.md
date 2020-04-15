@@ -483,3 +483,48 @@ $\leftrightarrow$을 추가하고 제거하기 위한 규칙 역시 존재한다
    \end{gathered}$
 
 이 규칙들은 $P \leftrightarrow Q$를 $(P \to Q) \land (Q \to P)$로 해석하는 규칙들이라고 이해하면 된다.
+
+지금까지 고전 자연 연역 체계의 추론 규칙에 대해서 알아보았다. 이제 이 추론 규칙들을 사용해보도록 하자. 첫번째 예시는 다음과 같다.
+
+- $\vdash (P \lor Q) \to (Q \lor P)$
+
+아까 살펴본 $\land$가 좌/우를 따지지 않는다는 명제의 $\lor$ 버전을 위한 논증이다. 한번 증명해보자.
+
+1. $P \vdash P$ (pre)
+1. $P \vdash Q \lor P$ (1번에 $\lor_{I2}$)
+1. $Q \vdash Q$ (pre)
+1. $Q \vdash Q \lor P$ (1번에 $\lor_{I1}$)
+1. $P \lor Q \vdash P \lor Q$ (pre)
+1. $P \lor Q \vdash Q \lor P$ (2, 4, 5번에 $\lor_{E}$)
+1. $\vdash (P \lor Q) \to (Q \lor P)$ (6번에서 $P \lor Q$에 대해 $\to_{I}$)
+
+이 증명을 조건에 있는 $\lor_{E}$ 규칙을 활용하는 방식에 주의해서 살펴보도록 하자. $\lor_{E}$ 규칙을 사용하기 위해서는 $\lor$의 각 경우에 해당하는 증명을 각각 해야한다는 것이 요점이다. 다른 예시를 통해서 복습해보도록 하자.
+
+- $\vdash ((P \lor Q) \land (P \to Q)) \to Q$
+
+이 다음의 예시는 $\leftrightarrow$를 사용하는 논증이다.
+
+- $\vdash (P \lor (Q \land R)) \leftrightarrow ((P \lor Q) \land (P \lor R))$
+
+$\leftrightarrow$를 포함하는 결론을 이끌어내려고 할 때는 $\to$의 경우와 $\leftarrow$의 경우, 즉
+
+- $\vdash (P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))$
+- $\vdash ((P \lor Q) \land (P \lor R)) \to (P \lor (Q \land R))$
+
+의 건전함을 모두 증명하면 된다. 우선 첫번째 논증의 건전함부터 증명해보자.
+
+1. $P \vdash P$ (pre)
+1. $P \vdash P \lor Q$ (1번에 $\lor_{I1}$)
+1. $P \vdash P \lor R$ (1번에 $\lor_{I1}$)
+1. $P \vdash (P \lor Q) \land (P \lor R)$ (2, 3번에 $\land_{I}$)
+1. $Q \land R \vdash Q \land R$ (pre)
+1. $Q \land R \vdash Q$ (5번에 $\land_{E1}$)
+1. $Q \land R \vdash P \lor Q$ (6번에 $\lor_{I2}$)
+1. $Q \land R \vdash R$ (5번에 $\land_{E2}$)
+1. $Q \land R \vdash P \lor R$ (8번에 $\lor_{I2}$)
+1. $Q \land R \vdash (P \lor Q) \land (P \lor R)$ (7, 9번에 $\land_{I}$)
+1. $P \lor (Q \land R) \vdash P \lor (Q \land R)$ (pre)
+1. $P \lor (Q \land R) \vdash (P \lor Q) \land (P \lor R)$ (4, 10, 11번에 $\lor_{E}$)
+1. $\vdash (P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))$ (12번에서 $P \lor (Q \land R)$에 대해 $\to_{I}$)
+
+### 자연 연역 체계 연습문제 - 2
