@@ -7,28 +7,30 @@ date: 2020-03-14T02:30:16-05:00
 
 이전 글에서 명제 논리를 위해 필요한 기본적인 정의들과 진리표를 이용한 논증의 건전함 증명에 대해서 알아보았다. 이 글에서는 진리표를 이용한 증명이 언제 어려워지는지(혹은 불가능해지는지)에 대해서 알아보고, 진리표와는 다른 방법이 무엇이 있는지에 대해서 알아볼 것이다.
 
-## 안내의 글
+## 안내의 글 {#guide}
 
 이 글은 '프로그래머를 위한 논리학' 연작의 두번째 글이다. 필자는 이 글 안에서 첫번째 글에서 언급한 개념을 사용하거나 인용하려고 하고 있으므로, 만일 [첫번째 글](/ko/post/logic-for-programmers-000)을 읽지 않은 독자가 있다면 부디 먼저 읽어주기를 바란다.
 
-# 연작의 목차
+# 연작의 목차 {#table-of-contents}
 
 - 이전 글
    - [프로그래머를 위한 논리학 - 0](/ko/post/logic-for-programmers-000)
 - 이 글
    - [두번째 글을 열면서](./#prologue)
-   - [명제 논리(영차 논리) 심화](./#zeroth-order-logic-advance)
+   - [명제 논리(영차 논리) 심화 - 1](./#zeroth-advance-1)
       - [이걸 언제 다 써? : 진리표의 문제](./#issues-of-truth-table-in-zeroth)
       - [논증 퍼즐 맞추기 : 공리와 추론 규칙](./#axioms-and-inference-rules-of-zeroth)
-      - [자연스럽게 논증 증명하기 : 고전 자연 연역 체계](./#classical-natural-deduction-system-of-zeroth)
+      - [자연스럽게 논증 증명하기 : 고전 자연 연역 체계](./#classical-natural-deduction-of-zeroth)
+   - [두번째 글을 마치며](./#epilogue)
 - 다음 글
-   - [작성중&#x2026;] 술어 논리(일차 논리) 기초
+   - [작성중&#x2026;] 명제 논리(영차 논리) 심화 - 2
+   - 술어 논리(일차 논리) 기초
    - 술어 논리(일차 논리) 심화
    - 고차 논리 기초
    - 양상 논리 기초
    - 미정&#x2026;
 
-# 명제 논리(영차 논리) 심화 {#zeroth-order-logic-advance}
+# 명제 논리(영차 논리) 심화 - 1 {#zeroth-advance-1}
 
 ## 이걸 언제 다 써? : 진리표의 문제 {#issues-of-truth-table-in-zeroth}
 
@@ -40,9 +42,9 @@ date: 2020-03-14T02:30:16-05:00
 
 물론 개발자들은
 
-> 뭐하러 그걸 계산해&#x2026; 프로그램을 하나 개발해서 해결하면 되는 거 아냐?
+> 뭐하러 그걸 계산해&#x2026; 프로그램을 하나 개발해서 전제가 참인 경우를 모두 확인하게 만들면 되는 거 아냐?
 
-라고 생각할 수도 있고, 어느정도 말이 되는 해결책이기도 하다. 진리값 하나당 1 비트(bit)의 저장공간을 차지한다고하면 지금 생각하고 있는 논증은 512 비트, 즉 64 바이트(byte)를 소비하고 이는 64 비트 정수형이나 배정밀도 부동소수점형(Double-precision floating-point type)의 값 8 개어치밖에 안 된다. 단위식이 두세 개 정도 늘어도 정수 16 개, 32 개에 해당하는 공간이니 감당할 수 있고, 단위식이 수십 개가 되는 상황은 잘 다루지 않을테니 그건 프로그램이 다루지 못하는 한계라고 얘기해버리면 된다.
+라고 생각할 수도 있고, 이게 어느정도 말이 되는 해결책이기도 하다. 진리값 하나당 1 비트(bit)의 저장공간을 차지한다고 하면 지금 생각하고 있는 논증은 512 비트, 즉 64 바이트(byte)를 소비하고 이는 64 비트 정수형이나 배정밀도 부동소수점형(Double-precision floating-point type)의 값 8 개어치밖에 안 된다. 단위식이 두세 개 정도 늘어도 정수 16 개, 32 개에 해당하는 공간이니 감당할 수 있고, 단위식이 수십 개가 되는 상황은 잘 다루지 않을테니 그건 프로그램이 다루지 못하는 한계라고 얘기해버리면 된다.
 
 근데 정말 우리가
 
@@ -70,7 +72,7 @@ date: 2020-03-14T02:30:16-05:00
 
 - $P_{ChulSoo},\allowbreak P_{YeongHui},\allowbreak P_{MyeongJoo},\allowbreak P_{HoGyeong},\allowbreak\ldots\allowbreak\allowbreak\vdash\nobreak P_{ChulSoo}$
 
-이제 논증이 건전한 것 같다! 정말 그런지 증명하기 위해 이 논증에 해당하는 진리표를 쓰려고 해 보자. **현재 지구에 살아있는 모든 사람**으로 '모든 사람'이라는 표현의 지시체를 한정하더라도 이 논증은 적어도 70억 개의 전제를 가지고 있고, 따라서 우리는 $2^{7,000,000,000}$ 줄의 가로줄을 나열(혹은 프로그램을 쓸 경우, 계산)해야한다. 이 우주의 모든 원자 수가 $2^{266}$ 개보다도 적으니 각 원자당 가로줄 한 개를 쓸 수 있다고 하더라도 우주가 $2^{6,999,999,744}$ 개는 있어야 한다. 이 말인 즉슨 진리표를 사용해서는 이 논증이 건전한지 아닌지 증명하지 못한다는 것이다. (물론 지금의 예시에서 이 사단을 일으킨 가장 궁극적인 원인은 '모든'이라는 표현이다. 이런 표현을 제대로 다루는 방법은 이후 술어 논리(일차 논리)에서 다룰 것이다.) 물론 이건 약간 극단적인 예시이지만, 이 정도까지는 아니더라도 수십/수백 개의 전제를 가진 상황은 얼마든지 맞닥뜨릴 수 있다. 아마 독자들도 이런 상황에서는 진리표를 쓰는 것이 쉽지 않다는 것을 이제 이해했을 것이다. 그렇다면 이런 생각을 하는 독자도 있을지 모르겠다.
+이제 논증이 건전한 것 같다! 정말 그런지 증명하기 위해 이 논증에 해당하는 진리표를 쓰려고 해 보자. **현재 지구에 살아있는 모든 사람**으로 '모든 사람'이라는 표현의 지시체를 한정하더라도 이 논증은 적어도 70억 개의 전제를 가지고 있고, 따라서 우리는 $2^{7,000,000,000}$ 줄의 가로줄을 나열(혹은 프로그램을 쓸 경우, 계산)해야한다. 이 우주의 모든 원자 수가 $2^{266}$ 개보다도 적으니 각 원자당 가로줄 한 개를 쓸 수 있다고 하더라도 우주가 $2^{6,999,999,744}$ 개는 있어야 이 진리표를 쓸 수 있다. 이 말인 즉슨 단순히 진리표를 사용하는 방법으로는 이 논증이 건전한지 아닌지를 현실적으로 증명할 수 없다는 것이다. (물론 지금의 예시에서 이 사단을 일으킨 가장 궁극적인 원인은 '모든'이라는 표현이다. 이런 표현을 제대로 다루는 방법은 이후 술어 논리(일차 논리)에서 다룰 것이다.) 물론 이건 약간 극단적인 예시이지만, 이 정도까지는 아니더라도 수십/수백 개의 전제를 가진 상황은 얼마든지 맞닥뜨릴 수 있다. 그리고 아마 독자들도 이런 상황에서는 진리표를 쓰는 것이 쉽지 않다는 것을 이제 이해했으리라 믿는다. 그렇다면 이런 생각을 하는 독자도 있을지 모르겠다.
 
 > 논리학이라며&#x2026; 그러면 이런 노가다말고 좀 더 막 수식쓰고 수학적이고 논리적인 그런 방법이 있을 거 아냐? 그런 거 없어?
 
@@ -89,7 +91,7 @@ date: 2020-03-14T02:30:16-05:00
 1. 철수가 게임기를 가지고 있다고 해보자.
 1. 그러면 첫번째 전제가 말하는 대로 철수는 하루종일 게임을 할 것이다.
 1. 그러면 두번째 전제가 말하는 대로 철수의 논리학 성적은 10점이 떨어질 것이다.
-1. 앞의 세 단계를 통해 철수가 게임기를 가지고 있다는 걸 가정했을 때 철수의 논리학 성적이 10점 떨어진다는 것을 보였다.
+1. 앞의 세 단계를 통해 철수가 게임기를 가지고 있다면 철수의 논리학 성적이 10점 떨어진다는 것을 보였다.
 1. 따라서 위 논증은 건전하다.
 
 <span></span>
@@ -121,30 +123,30 @@ date: 2020-03-14T02:30:16-05:00
 
 등을 들 수 있겠다.
 
-이어서, **추론 규칙**이란 이미 알고있는 하나 이상의 논증을 사용해서 새로운 논증을 추론(Infer)해내는 규칙들을 말한다. 여기서 새롭게 만들어진 논증은 사용된 논증이 모두 건전하다면 **당연히 건전하다**고 받아들일 수 있는 논증이어야 한다. 이를테면
+이어서, **추론 규칙**이란 이미 알고있는 하나 이상의 논증을 사용해서 새로운 논증을 추론(Infer)해내는 규칙들을 말한다. 여기서 새롭게 만들어진 논증은 이미 알고있는 논증이 모두 건전하다면 **당연히 건전하다**고 받아들일 수 있는 논증이어야 한다. 이를테면
 
 - $\begin{gathered}
    \;P \vdash Q\;\\
    \hline
    \;\vdash P \to Q\;
    \end{gathered}$  
-   ($P$를 전제로 $Q$를 건전하게 이끌어낼 수 있다면, 전제없이 $P \to Q$를 건전하게 이끌어낼 수 있다.)
+   ($P$를 전제로 $Q$를 건전하게 이끌어낼 수 있다는 걸 안다면, 전제없이 $P \to Q$를 건전하게 이끌어낼 수 있다는 것도 안다.)
 - $\begin{gathered}
    \;\vdash P\; \;\; \;\vdash Q\;\\
    \hline
    \;\vdash P \land Q\;
    \end{gathered}$  
-   ($P$와 $Q$를 각각 전제 없이 건전하게 이끌어낼 수 있다면, $P \land Q$를 건전하게 이끌어낼 수 있다.)
+   ($P$와 $Q$를 각각 전제 없이 건전하게 이끌어낼 수 있다는 걸 안다면, $P \land Q$를 건전하게 이끌어낼 수 있다는 것도 안다.)
 
 등을 들 수 있겠다. 여기서 가로줄 위에 있는 논증이 이미 알고있는 논증이고, 가로줄 밑에 있는 논증이 새롭게 만들어진 논증이다.
 
 앞서서 공리와 추론 규칙을 설명할 때 '당연하다'라는 표현을 썼다. 그러면 우리가 당연하게 생각하는 아무 명제/규칙이나 다 공리/추론 규칙으로 사용해서 논증의 건전함을 보여도 괜찮을까? 안타깝게도 그렇지는 않다. 우리가 당연하다고 생각하는 명제 중에서도 서로 모순을 일으키는 명제가 있을 수 있고, 우리가 당연하다고 생각하는 규칙도 비슷한 문제를 일으킬 수 있다. 이런 식으로 모순이 발생하는 것을 피하기 위해서는 공리와 추론 규칙을 세심히 선택하고 선택된 공리와 추론 규칙만을 잘 사용해서 논증의 건전함을 보여야 한다.
 
-이어지는 절들에서는 널리 사용되는 세심히 선택된 공리와 추론 규칙의 모음을 몇 소개하고 사용해 볼 것이다. 이렇게 선택된 공리와 추론 규칙들을 모아놓은 것을 **논리 체계**라고 부른다. 바로 다음 절에서는 가장 쉽고 유명한 논리 체계를 먼저 알아볼 것이고, 잇다른 절에서는 약간 난해한 논리 체계에 대해서도 한번 다뤄볼 것이다.
+이 글과 글에서는 널리 사용되는 세심히 선택된 공리와 추론 규칙의 모음을 몇 소개하고 사용해 볼 것이다. 이렇게 선택된 공리와 추론 규칙들을 모아놓은 것을 **논리 체계**라고 부른다. 바로 다음 절에서 가장 쉽고 유명한 논리 체계를 먼저 알아볼 것이고, 다음 글에서 약간 난해한 논리 체계에 대해서도 한번 다뤄볼 것이다.
 
-## 자연스럽게 논증 증명하기 : 고전 자연 연역 체계 {#classical-natural-deduction-system-of-zeroth}
+## 자연스럽게 논증 증명하기 : 고전 자연 연역 체계 {#classical-natural-deduction-of-zeroth}
 
-이 절에서는 '고전 자연 연역 체계' 혹은 간단히 '자연 연역 체계'라고 불리는 논리 체계를 소개하려고 한다. 왜 이 체계를 소개하는가? 이유는 단순하다. 고전 자연 연역 체계가 다른 체계에 비해서 이해하기에도 사용하기에도 쉽기 때문이다. 이는 다음의 두 특징 때문이다.
+이 글에서는 '고전 자연 연역 체계' 혹은 간단히 '자연 연역 체계'라고 불리는 논리 체계를 소개하려고 한다. 왜 이 체계를 소개하는가? 이유는 단순하다. 고전 자연 연역 체계가 다른 체계에 비해서 이해하기에도 사용하기에도 쉽기 때문이다. 이는 다음의 두 특징 때문이다.
 
 1. 고전 자연 연역 체계에는 공리가 아예 없다.
 1. 고전 자연 연역 체계는 그 이름대로 자연스럽다고 할 만한 추론 규칙만 포함한다.
@@ -153,7 +155,7 @@ date: 2020-03-14T02:30:16-05:00
 
 그럼 이 자연스러운 추론 규칙에 대해 이야기해 보자.
 
-### 고전 자연 연역 체계의 추론 규칙 - 0
+### 고전 자연 연역 체계의 추론 규칙 - 0 {#inference-rules-of-classical-natural-deduction-of-zeroth-0}
 
 자연 연역 체계는 다음 14 개의 추론 규칙을 가진다.
 
@@ -174,9 +176,9 @@ date: 2020-03-14T02:30:16-05:00
 
 <span></span>
 
-어떤 독자들은 이름을 보고 이미 예상하고 있을 것처럼, 대부분의 규칙은 어떤 논리연산자를 논증에 추가하거나 논증에서 제거하는 방법에 대해서만 다루는 간단한 규칙이다. 그러면 1 번 규칙부터 차례대로 알아보자.
+어떤 독자들이 이름을 보고 이미 예상하고 있을 것처럼, 대부분의 규칙은 어떤 논리연산자를 논증에 추가하거나 논증에서 제거하는 방법에 대해서만 다루는 간단한 규칙이다. 그러면 1 번 규칙부터 차례대로 알아보자.
 
-### 고전 자연 연역 체계의 추론 규칙 - 1
+### 고전 자연 연역 체계의 추론 규칙 - 1 {#inference-rules-of-classical-natural-deduction-of-zeroth-1}
 
 이 절에서는 위 목록의 1 번부터 6 번까지에 해당하는 규칙을 자세히 설명할 것이다. 이렇게 일부만 따로 자세히 소개하는 것은 (추론 규칙은 당연한 추론에 대해 다루는 규칙이므로) 모든 규칙을 자세히 설명하는 것은 필자에게도 독자에게도 지루한 일이 될 것이라고 생각하기 때문이다. 1~6 번의 규칙을 이해하고 나면 나머지 규칙은 규칙의 모양과 사용 예시 정도만 보아도 독자 여러분들이 받아들일 수 있으리라 믿는다.
 
@@ -218,7 +220,7 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
 1. $P \vdash Q$가 건전하다.
 1. 그렇다면 $\vdash P \to Q$가 건전하다.
 
-즉 우리가 $P$를 전제로 $Q$를 이끌어 낼 수 있다면, 전제 없이 $P \to Q$를 이끌어 낼 수 있다는 이야기이다. 이걸 추론 규칙의 형식으로 쓰면
+즉 우리가 $P$를 전제로 $Q$를 이끌어 낼 수 있다는 걸 안다면, 전제 없이 $P \to Q$를 이끌어 낼 수 있다는 걸 받아들인다는 이야기이다. 이걸 추론 규칙의 형식으로 쓰면
 
 - $\begin{gathered}
    \;\Gamma, P \vdash Q\;\\
@@ -226,7 +228,7 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
    \;\Gamma \vdash P \to Q\;
    \end{gathered}$
 
-를 얻는다. 이 규칙이 우리가 '\to 추가 규칙'(혹은 '$\to_{I}$ 규칙')이라고 부르는 규칙이다. 이렇게 추가한 $\to$를 다시 논증으로부터 없애고 싶다면 어떻게 해야할까? 역시 자연스럽게 생각하는 방식부터 보도록 하자.
+를 얻는다. 이 규칙이 우리가 '$\to$ 추가 규칙'(혹은 '$\to_{I}$ 규칙')이라고 부르는 규칙이다. 이렇게 추가한 $\to$를 다시 논증으로부터 없애고 싶다면 어떻게 해야할까? 역시 자연스럽게 생각하는 방식부터 보도록 하자.
 
 1. 준기가 밥을 먹는다면 준기는 식탁에 앉아있다.
 1. 준기는 밥을 먹는다.
@@ -238,7 +240,7 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
 1. $\vdash P$가 건전하다.
 1. 따라서 $\vdash Q$가 건전하다.
 
-즉 $P \to Q$를 이끌어낼 수 있고 $P$를 이끌어낼 수 있다면 $Q$도 이끌어낼 수 있다는 것이다. 이 역시 추론 규칙의 형식으로 쓰면
+즉 $P \to Q$를 이끌어낼 수 있다고, 그리고 $P$를 이끌어낼 수 있다고 안다면 $Q$도 이끌어낼 수 있다고 받아들인다는 것이다. 이 역시 추론 규칙의 형식으로 쓰면
 
 - $\begin{gathered}
    \;\Gamma \vdash P \to Q\; \;\; \;\Delta \vdash P\;\\
@@ -246,7 +248,7 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
    \;\Gamma, \Delta \vdash Q\;
    \end{gathered}$
 
-가 된다. 이 규칙은 '\to 제거 규칙'(혹은 '$\to_{E}$ 규칙')이라고 부른다.
+가 된다. 이 규칙은 '$\to$ 제거 규칙'(혹은 '$\to_{E}$ 규칙')이라고 부른다.
 
 이제 $\land$에 대한 규칙으로 넘어가자. $\land$를 추가하기 위한 규칙의 예시를 생각의 흐름으로 표현하면 다음과 같다.
 
@@ -343,7 +345,9 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
 
 아마 이해를 할듯 말듯한 독자들이 꽤 있으리라 생각한다. 그렇다면 다음의 연습문제를 풀면서 감을 잡아보도록 하자.
 
-### 자연 연역 체계 연습문제 - 1
+### 자연 연역 체계 연습문제 - 1 {#classical-natural-deduction-of-zeroth-problems-1}
+
+이 문제들에는 모두 여러 답이 있을 수가 있다. 본인이 푼 결과가 해답과 다르다고 반드시 틀린 것은 아니니, 다른 결과를 얻었을 경우에는 자신의 풀이가 맞는지 곰곰히 생각해보도록 하자. 만일 그래도 올바른지 모를 경우에는 해답을 댓글에 남기면 필자가 확인해보도록 하겠다.
 
 1. $\vdash P \to P$가 건전함을 증명해보자.
    <details class='answer'>
@@ -357,14 +361,11 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
    <details class='answer'>
    <summary>답 보기</summary>
 
-    1. $P \vdash P$ (pre)
-    1. $Q \vdash Q$ (pre)
-    1. $P, Q \vdash P \land Q$ (1, 2번에 $\land_{I}$)
-    1. $P, Q \vdash P$ (3번에 $\land_{E1}$)
-    1. $P \vdash Q \to P$ (4번에서 $Q$에 대해 $\to_{I}$)
-    1. $\vdash P \to (Q \to P)$ (5번에서 $P$에 대해 $\to_{I}$)
+   1. $P, Q \vdash P$ (pre)
+   1. $P \vdash Q \to P$ (1번에서 $Q$에 대해 $\to_{I}$)
+   1. $\vdash P \to (Q \to P)$ (2번에서 $P$에 대해 $\to_{I}$)
 
-    </details>
+   </details>
 1. $\vdash (P \land (Q \land R)) \to R$가 건전함을 증명해보자.
    <details class='answer'>
    <summary>답 보기</summary>
@@ -415,7 +416,7 @@ $\Gamma$가 다른 아무 전제('영희가 잔다')를 모두 포함하므로, 
 
    </details>
 
-### 고전 자연 연역 체계의 추론 규칙 - 2
+### 고전 자연 연역 체계의 추론 규칙 - 2 {#inference-rules-of-classical-natural-deduction-of-zeroth-2}
 
 이번 절에서는 나머지 추론 규칙들을 소개하도록 하겠다. 우선 $\lor$을 위한 규칙이다.
 
@@ -500,9 +501,36 @@ $\leftrightarrow$을 추가하고 제거하기 위한 규칙 역시 존재한다
 
 이 증명을 조건에 있는 $\lor_{E}$ 규칙을 활용하는 방식에 주의해서 살펴보도록 하자. $\lor_{E}$ 규칙을 사용하기 위해서는 $\lor$의 각 경우에 해당하는 증명을 각각 해야한다는 것이 요점이다. 다른 예시를 통해서 복습해보도록 하자.
 
+- $\vdash (P \lor P) \to P$
+
+이 논증의 건전함은 다음과 같이 증명할 수 있다.
+
+1. $P \vdash P$ (pre)
+1. $P \lor P \vdash P \lor P$ (pre)
+1. $P \lor P \vdash P$ (1번과 1번, 그리고 2번에 $\lor_{E}$)
+1. $\vdash (P \lor P) \to P$ (3번에서 $P \lor P$에 대해 $\to_{I}$)
+
+위 논증에서는 $\lor_{E}$ 규칙을 사용하기 위해 필요한 $\lor$의 두 경우에 대한 논증을 모두 1번에서 얻었다는 점에 유의하자. 이어서 이번에는 $\lor$을 포함한 (증명하기에) 조금 어려운 논증이다.
+
 - $\vdash ((P \lor Q) \land (P \to Q)) \to Q$
 
-이 다음의 예시는 $\leftrightarrow$를 사용하는 논증이다.
+이 논증의 건전함은 이렇게 보인다.
+
+1. $P \vdash P$ (pre)
+1. $P \to Q \vdash P \to Q$ (pre)
+1. $P, P \to Q \vdash Q$ (1, 2번에 $\to_{E}$)
+1. $P \vdash (P \to Q) \to Q$ (3번에서 $P \to Q$에 대해 $\to_{I}$)
+1. $Q \vdash Q$ (pre)
+1. $(P \lor Q) \land (P \to Q) \vdash (P \lor Q) \land (P \to Q)$ (pre)
+1. $(P \lor Q) \land (P \to Q) \vdash P \to Q$ (6번에 $\land_{E2}$)
+1. $(P \lor Q) \land (P \to Q), P \vdash Q$ (4, 7번에 $\to_{E}$)
+1. $(P \lor Q) \land (P \to Q) \vdash P \lor Q$ (6번에 $\land_{E1}$)
+1. $(P \lor Q) \land (P \to Q) \vdash Q$ (5, 8, 9번에 $\lor_{E}$)
+1. $\vdash ((P \lor Q) \land (P \to Q)) \to Q$ (10번에서 $(P \lor Q) \land (P \to Q)$에 대해 $\to_{I}$)
+
+약간 복잡한 과정이기는 하지만 앞서 제시된 연습문제를 풀어본 독자들은 이해할 수 있으리라 믿는다.
+
+이제는 $\leftrightarrow$를 사용하는 예시를 살펴보자.
 
 - $\vdash (P \lor (Q \land R)) \leftrightarrow ((P \lor Q) \land (P \lor R))$
 
@@ -527,4 +555,203 @@ $\leftrightarrow$를 포함하는 결론을 이끌어내려고 할 때는 $\to$�
 1. $P \lor (Q \land R) \vdash (P \lor Q) \land (P \lor R)$ (4, 10, 11번에 $\lor_{E}$)
 1. $\vdash (P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))$ (12번에서 $P \lor (Q \land R)$에 대해 $\to_{I}$)
 
-### 자연 연역 체계 연습문제 - 2
+이제 두번째 논증의 건전함을 증명해보자
+
+1. $P \vdash P$ (pre)
+1. $P \vdash P \lor (Q \land R)$ (1번에 $\lor_{I1}$)
+1. $Q \vdash Q$ (pre)
+1. $R \vdash R$ (pre)
+1. $Q, R \vdash Q \land R$ (3, 4번에 $\land_{I}$)
+1. $Q, R \vdash P \lor (Q \land R)$ (5번에 $\lor_{I2}$)
+1. $(P \lor Q) \land (P \lor R) \vdash (P \lor Q) \land (P \lor R)$ (pre)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor Q$ (7번에 $\land_{E1}$)
+1. $(P \lor Q) \land (P \lor R), R \vdash P \lor (Q \land R)$ (2, 6, 8번에 $\lor_{E}$)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor R$ (7번에 $\land_{E2}$)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor (Q \land R)$ (2, 9, 10번에 $\lor_{E}$)
+1. $\vdash (P \lor Q) \land (P \lor R) \to (P \lor (Q \land R))$ (11번에서 $(P \lor Q) \land (P \lor R)$에 대해 $\to_{I}$)
+
+이 두 논증을 하나로 합치고 중복되는 $P \vdash P$를 없애면 다음의 기다란 논증이 된다.
+
+1. $P \vdash P$ (pre)
+1. $P \vdash P \lor Q$ (1번에 $\lor_{I1}$)
+1. $P \vdash P \lor R$ (1번에 $\lor_{I1}$)
+1. $P \vdash (P \lor Q) \land (P \lor R)$ (2, 3번에 $\land_{I}$)
+1. $Q \land R \vdash Q \land R$ (pre)
+1. $Q \land R \vdash Q$ (5번에 $\land_{E1}$)
+1. $Q \land R \vdash P \lor Q$ (6번에 $\lor_{I2}$)
+1. $Q \land R \vdash R$ (5번에 $\land_{E2}$)
+1. $Q \land R \vdash P \lor R$ (8번에 $\lor_{I2}$)
+1. $Q \land R \vdash (P \lor Q) \land (P \lor R)$ (7, 9번에 $\land_{I}$)
+1. $P \lor (Q \land R) \vdash P \lor (Q \land R)$ (pre)
+1. $P \lor (Q \land R) \vdash (P \lor Q) \land (P \lor R)$ (4, 10, 11번에 $\lor_{E}$)
+1. $\vdash (P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))$ (12번에서 $P \lor (Q \land R)$에 대해 $\to_{I}$)
+1. $P \vdash P \lor (Q \land R)$ (1번에 $\lor_{I1}$)
+1. $Q \vdash Q$ (pre)
+1. $R \vdash R$ (pre)
+1. $Q, R \vdash Q \land R$ (15, 16번에 $\land_{I}$)
+1. $Q, R \vdash P \lor (Q \land R)$ (17번에 $\lor_{I2}$)
+1. $(P \lor Q) \land (P \lor R) \vdash (P \lor Q) \land (P \lor R)$ (pre)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor Q$ (19번에 $\land_{E1}$)
+1. $(P \lor Q) \land (P \lor R), R \vdash P \lor (Q \land R)$ (14, 18, 20번에 $\lor_{E}$)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor R$ (19번에 $\land_{E2}$)
+1. $(P \lor Q) \land (P \lor R) \vdash P \lor (Q \land R)$ (14, 21, 22번에 $\lor_{E}$)
+1. $\vdash (P \lor Q) \land (P \lor R) \to (P \lor (Q \land R))$ (23번에서 $(P \lor Q) \land (P \lor R)$에 대해 $\to_{I}$)
+1. $\vdash ((P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))) \land ((P \lor Q) \land (P \lor R) \to (P \lor (Q \land R)))$ (13, 24번에 $\land_{I}$)
+1. $\vdash (P \lor (Q \land R)) \leftrightarrow ((P \lor Q) \land (P \lor R))$ (25번에 $\leftrightarrow_{I}$)
+
+엄청난 길이의 논증이다. 그렇지만 앞서의 두 논증을 이해했다면 이 긴 논증은 단순히 두 논증을 합치고 25, 26번 줄을 추가한 것에 지나지 않는다. 마지막으로 $\lnot$을 사용하는 간단한 논증을 살펴보고, 연습문제로 넘어가도록 하자.
+
+- $\vdash \lnot (P \land (\lnot P))$
+
+이 논증의 결론은 모순율(Law of Contradiction)이라고 불리는 유명한 명제다. 어떤 명제 P가 있을 때 그 P가 참이면서 동시에 거짓일 수는 없다는 걸 말하고 있다. 이 논증의 건전함을 증명해보자.
+
+1. $P \land (\lnot P) \vdash P \land (\lnot P)$ (pre)
+1. $P \land (\lnot P) \vdash P$ (1번에 $\land_{E1}$)
+1. $P \land (\lnot P) \vdash \lnot P$ (1번에 $\land_{E2}$)
+1. $\vdash \lnot (P \land (\lnot P))$ (2, 3번에서 $P$에 대해 $\lnot_{I}$)
+
+이제 연습문제를 풀면서 자연 연역 체계를 사용해 추론하는 방법을 손에 익혀보도록 하자.
+
+### 자연 연역 체계 연습문제 - 2 {#classical-natural-deduction-of-zeroth-problems-2}
+
+1. $\vdash P \to (\lnot (\lnot P)))$가 건전함을 증명해보자.
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $P, \lnot P \vdash P$ (pre)
+   1. $P, \lnot P \vdash \lnot P$ (pre)
+   1. $P \vdash \lnot (\lnot P)$ (1, 2번에 $\lnot_{I}$)
+   1. $\vdash P \to (\lnot (\lnot P))$ (3번에서 $P$에 대해 $\to_{I}$)
+
+   </details>
+   
+1. $\vdash (P \to Q) \to ((\lnot Q) \to (\lnot P))$가 건전함을 증명해보자.
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $P \to Q \vdash P \to Q$ (pre)
+   1. $\lnot Q \vdash \lnot Q$ (pre)
+   1. $P \vdash P$ (pre)
+   1. $P \to Q, P \vdash Q$ (1, 3번에 $\to_{E}$)
+   1. $P \to Q, \lnot Q, P \vdash \lnot P$ (2, 4번에 $\lnot_{E}$)
+   1. $P \to Q, \lnot Q \vdash \lnot P$ (3, 5번에 $\lnot_{I}$)
+   1. $P \to Q \vdash (\lnot Q) \to (\lnot P)$ (6번에서 $\lnot Q$에 대해 $\to_{I}$)
+   1. $\vdash (P \to Q) \to ((\lnot Q) \to (\lnot P))$ (7번에서 $P \to Q$에 대해 $\to_{I}$)
+
+   </details>
+
+1. $\vdash ((\lnot Q) \to (\lnot P)) \to (P \to Q)$가 건전함을 증명해보자.  
+   (바로 윗 문제의 결론과 이 문제의 결론을 합쳐서 고등학교에서 '대우'라고 부르는 개념에 대한 법칙을 얻는다.)
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $(\lnot Q) \to (\lnot P) \vdash (\lnot Q) \to (\lnot P)$ (pre)
+   1. $P, \lnot Q \vdash P$ (pre)
+   1. $P, \lnot Q \vdash \lnot Q$ (pre)
+   1. $(\lnot Q) \to (\lnot P), P, \lnot Q \vdash \lnot P$ (1, 3번에 $\to_{E}$)
+   1. $(\lnot Q) \to (\lnot P), P \vdash \lnot (\lnot Q)$ (2, 4번에 $\lnot_{I}$)
+   1. $(\lnot Q) \to (\lnot P), P \vdash Q$ (5번에 $\lnot\lnot_{E}$)
+   1. $(\lnot Q) \to (\lnot P) \vdash P \to Q$ (6번에서 $P$에 대해 $\to_{I}$)
+   1. $\vdash ((\lnot Q) \to (\lnot P)) \to (P \to Q)$ (7번에서 $(\lnot Q) \to (\lnot P)$에 대해 $\to_{I}$)
+
+   </details>
+
+1. $\vdash P \lor (\lnot P)$가 건전함을 증명해보자.  
+   (이 논증의 결론을 배중률(Law of Excluded Middle)이라고 부른다. 굉장히 중요한 법칙 중 하나이며, 이후의 글에서도 이 법칙을 언급할 것이다.)
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $\lnot (P \lor (\lnot P)) \vdash \lnot (P \lor (\lnot P))$ (pre)
+   1. $\lnot (P \lor (\lnot P)), P \vdash P$ (pre)
+   1. $\lnot (P \lor (\lnot P)), P \vdash P \lor (\lnot P)$ (2번에 $\lor_{I1}$)
+   1. $\lnot (P \lor (\lnot P)), P \vdash \lnot P$ (1, 3번에 $\lnot_{E}$)
+   1. $\lnot (P \lor (\lnot P)) \vdash \lnot P$ (2, 4번에 $\lnot_{I}$)
+   1. $\lnot (P \lor (\lnot P)), \lnot P \vdash \lnot P$ (pre)
+   1. $\lnot (P \lor (\lnot P)), \lnot P \vdash P \lor (\lnot P)$ (6번에 $\lor_{I2}$)
+   1. $\lnot (P \lor (\lnot P)), \lnot P \vdash P$ (1, 7번에 $\lnot_{E}$)
+   1. $\lnot (P \lor (\lnot P)) \vdash \lnot (\lnot P)$ (6, 8번에 $\lnot_{I}$)
+   1. $\vdash \lnot (\lnot (P \lor (\lnot P)))$ (5, 9번에 $\lnot_{I}$)
+   1. $\vdash P \lor (\lnot P)$ (10번에 $\lnot\lnot_{E}$)
+
+   </details>
+
+1. $\vdash ((\lnot (\lnot P)) \land (\lnot (\lnot Q))) \leftrightarrow (\lnot ((\lnot P) \lor (\lnot Q)))$가 건전함을 증명해보자.
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)) \vdash (\lnot (\lnot P)) \land (\lnot (\lnot Q))$ (pre)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)) \vdash \lnot (\lnot P)$ (1번에 $\land_{E1}$)
+   1. $\lnot P \vdash \lnot P$ (pre)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)), \lnot P \vdash P$ (2, 3번에 $\lnot_{E}$)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)) \vdash \lnot (\lnot Q)$ (1번에 $\land_{E2}$)
+   1. $\lnot Q \vdash \lnot Q$ (pre)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)), \lnot Q \vdash P$ (5, 6번에 $\lnot_{E}$)
+   1. $(\lnot P) \lor (\lnot Q) \vdash (\lnot P) \lor (\lnot Q)$ (pre)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)), (\lnot P) \lor (\lnot Q) \vdash P$ (4, 7, 8번에 $\lor_{E}$)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)), \lnot Q \vdash \lnot P$ (5, 6번에 $\lnot_{E}$)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)), (\lnot P) \lor (\lnot Q) \vdash \lnot P$  
+      (3, 8, 10번에 $\lor_{E}$)
+   1. $(\lnot (\lnot P)) \land (\lnot (\lnot Q)) \vdash \lnot ((\lnot P) \lor (\lnot Q))$  
+      (9, 11번에서 $(\lnot P) \lor (\lnot Q)$에 대해 $\lnot_{I}$)
+   1. $\vdash ((\lnot (\lnot P)) \land (\lnot (\lnot Q))) \to (\lnot ((\lnot P) \lor (\lnot Q)))$  
+      (12번에서 $(\lnot (\lnot P)) \land (\lnot (\lnot Q))$에 대해 $\to_{I}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot ((\lnot P) \lor (\lnot Q))$ (pre)
+   1. $\lnot P \vdash (\lnot P) \lor (\lnot Q)$ (3번에 $\lor_{I1}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)), \lnot P \vdash P$ (14, 15번에 $\lnot_{E}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot (\lnot P)$ (3, 16번에 $\lnot_{I}$)
+   1. $\lnot Q \vdash (\lnot P) \lor (\lnot Q)$ (6번에 $\lor_{I1}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)), \lnot Q \vdash Q$ (14, 18번에 $\lnot_{E}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot (\lnot Q)$ (6, 19번에 $\lnot_{I}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash (\lnot (\lnot P)) \land (\lnot (\lnot Q))$  
+      (17, 20번에 $\land_{I}$)
+   1. $\vdash (\lnot ((\lnot P) \lor (\lnot Q))) \to ((\lnot (\lnot P)) \land (\lnot (\lnot Q)))$  
+      (21번에서 $\lnot ((\lnot P) \lor (\lnot Q))$에 대해 $\to_{I}$)
+   1. $\vdash (((\lnot (\lnot P)) \land (\lnot (\lnot Q))) \to (\lnot ((\lnot P) \lor (\lnot Q)))) \land ((\lnot ((\lnot P) \lor (\lnot Q))) \to ((\lnot (\lnot P)) \land (\lnot (\lnot Q))))$  
+      (13, 22번에 $\land_{I}$)
+   1. $\vdash ((\lnot (\lnot P)) \land (\lnot (\lnot Q))) \leftrightarrow (\lnot ((\lnot P) \lor (\lnot Q)))$  
+      (23번에 $\leftrightarrow_{I}$)
+
+   </details>
+
+1. $\vdash (P \land Q) \leftrightarrow (\lnot ((\lnot P) \lor (\lnot Q)))$가 건전함을 증명해보자.  
+   (이 식은 '드 모르간의 법칙'('De Morgan's laws')이라고 불리는 네 식 중의 하나이다. 고등학교에서 집합론을 배웠던 사람들은 아마 같은 이름의 법칙을 들어본 기억이 있을 것이다.)  
+   <details class='answer'>
+   <summary>답 보기</summary>
+
+   1. $P \land Q \vdash P \land Q$ (pre)
+   1. $P \land Q \vdash P$ (1번에 $\land_{E1}$)
+   1. $\lnot P \vdash \lnot P$ (pre)
+   1. $P \land Q, \lnot P \vdash P$ (2, 3번에 $\lnot_{E}$)
+   1. $P \land Q \vdash Q$ (1번에 $\land_{E2}$)
+   1. $\lnot Q \vdash \lnot Q$ (pre)
+   1. $P \land Q, \lnot Q \vdash P$ (5, 6번에 $\lnot_{E}$)
+   1. $(\lnot P) \lor (\lnot Q) \vdash (\lnot P) \lor (\lnot Q)$ (pre)
+   1. $P \land Q, (\lnot P) \lor (\lnot Q) \vdash P$ (4, 7, 8번에 $\lor_{E}$)
+   1. $P \land Q, \lnot Q \vdash \lnot P$ (5, 6번에 $\lnot_{E}$)
+   1. $P \land Q, (\lnot P) \lor (\lnot Q) \vdash \lnot P$ (3, 8, 10번에 $\lor_{E}$)
+   1. $P \land Q \vdash \lnot ((\lnot P) \lor (\lnot Q))$ (9, 11번에 $\lnot_{E}$)
+   1. $\vdash (P \land Q) \to (\lnot ((\lnot P) \lor (\lnot Q)))$ (12번에서 $P \land Q$에 대해 $\to_{I}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot ((\lnot P) \lor (\lnot Q))$ (pre)
+   1. $\lnot P \vdash (\lnot P) \lor (\lnot Q)$ (3번에 $\lor_{I1}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)), \lnot P \vdash P$ (14, 15번에 $\lnot_{E}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot (\lnot P)$ (3, 16번에 $\lnot_{I}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash P$ (17번에 $\lnot\lnot_{E}$)
+   1. $\lnot Q \vdash (\lnot P) \lor (\lnot Q)$ (6번에 $\lor_{I2}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)), \lnot Q \vdash Q$ (14, 19번에 $\lnot_{E}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash \lnot (\lnot Q)$ (6, 20번에 $\lnot_{I}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash Q$ (21번에 $\lnot\lnot_{E}$)
+   1. $\lnot ((\lnot P) \lor (\lnot Q)) \vdash P \land Q$ (18, 22번에 $\land_{I}$)
+   1. $\vdash (\lnot ((\lnot P) \lor (\lnot Q))) \to (P \land Q)$  
+      (23번에서 $\lnot ((\lnot P) \lor (\lnot Q))$에 대해 $\to_{I}$)
+   1. $\vdash ((P \land Q) \to (\lnot ((\lnot P) \lor (\lnot Q)))) \land ((\lnot ((\lnot P) \lor (\lnot Q))) \to (P \land Q))$  
+      (13, 24번에 $\land_{I}$)
+   1. $\vdash (P \land Q) \leftrightarrow (\lnot ((\lnot P) \lor (\lnot Q)))$  
+      (25번에 $\leftrightarrow_{I}$)
+
+   </details>
+
+# 두번째 글을 마치며 {#epilogue}
+
+첫 글을 끝내고서 바로 이 글을 시작했음에도 이 글을 마치기까지 꽤 오랜 시간이 걸렸다. 대략 3달 정도가 걸린 것 같다. 여러가지 이유가 있겠지만 첫째의 이유는 설명해야하는 내용이 다소 어려웠기 때문이다. 첫 글에서 다루던 내용에 비해 난이도가 많이 올라갔고, 어떻게 하면 이 내용을 간단하고 친절하게 설명할 수 있을까 많은 고민을 했다. 이 글을 마치면서도 아직 '설명이 어려운 것 같은데...'라는 생각이 머리를 떠나지 않는다. 그래서 독자 여러분이 의견 공유가 더더욱 절실하다. 어디가 어려운지, (대략적으로) 왜 어려운지에 대해 의견을 공유해준다면 정말 감사하겠다.
+
+다음 글은 고전 자연 연역 체계를 더 간편하게 쓸 몇몇 방법들에 대해서 먼저 알아보고, 고전 자연 연역 체계에 비해 조금 더 난해한 체계에 대해서 알아볼 것이다. 다행히도 여기서 '난해하다'라는 것은 체계를 사용하기가 난해하다는 것이지 체계에 대한 설명이 더 난해해진다는 것은 아니고, 따라서 다음 글이 이 글보다 어렵지는 않을 것이다. 다음 글은 더 빨리 내놓을 수 있기를 바라며 이만 마치도록 하겠다.
