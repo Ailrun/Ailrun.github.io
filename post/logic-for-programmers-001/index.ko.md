@@ -17,20 +17,20 @@ date: 2020-05-15T20:50:00-04:00
    - [프로그래머를 위한 논리학 - 0](/ko/post/logic-for-programmers-000)
 - 이 글
    - [두번째 글을 열면서](./#prologue)
-   - [명제 논리(영차 논리) 심화 - 1](./#zeroth-advance-1)
+   - [명제 논리(영차 논리) 심화 - 0](./#zeroth-advance-0)
       - [이걸 언제 다 써? : 진리표의 문제](./#issues-of-truth-table-in-zeroth)
       - [논증 퍼즐 맞추기 : 공리와 추론 규칙](./#axioms-and-inference-rules-of-zeroth)
       - [자연스럽게 논증 증명하기 : 고전 자연 연역 체계](./#classical-natural-deduction-of-zeroth)
    - [두번째 글을 마치며](./#epilogue)
 - 다음 글
-   - [작성중&#x2026;] 명제 논리(영차 논리) 심화 - 2
+   - [작성중&#x2026;] 명제 논리(영차 논리) 심화 - 1
    - 술어 논리(일차 논리) 기초
    - 술어 논리(일차 논리) 심화
    - 고차 논리 기초
    - 양상 논리 기초
    - 미정&#x2026;
 
-# 명제 논리(영차 논리) 심화 - 1 {#zeroth-advance-1}
+# 명제 논리(영차 논리) 심화 - 0 {#zeroth-advance-0}
 
 ## 이걸 언제 다 써? : 진리표의 문제 {#issues-of-truth-table-in-zeroth}
 
