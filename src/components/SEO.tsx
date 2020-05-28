@@ -28,7 +28,8 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
       titleTemplate={siteMetadata.titleTemplate}
       defaultTitle={siteMetadata.name}
       base={{
-        href: location.href,
+        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+        href: location.href?.replace(/#.*$/, ''),
       }}
     >
       {/* basic HTML tags */}
