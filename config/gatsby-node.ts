@@ -8,8 +8,8 @@ import type {
   CreatePagesArgs,
 } from 'gatsby';
 
-import createMarkdownPost from './gatsby/createMarkdownPost';
-import { assert } from './src/utils/typeHelpers';
+import createMarkdownPost from '../gatsby/createMarkdownPost';
+import { assert } from '../src/utils/typeHelpers';
 
 dotenv.config({
   path: `.env.${process.env.NODE_ENV as string}`,

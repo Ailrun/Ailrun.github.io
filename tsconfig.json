@@ -19,7 +19,8 @@
     "useDefineForClassFields": true
   },
   "include": [
-    "./*.ts",
+    "./*.d.ts",
+    "config/**/*",
     "gatsby/**/*",
     "src/**/*",
     "plugins/**/*.ts"
