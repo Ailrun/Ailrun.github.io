@@ -570,7 +570,7 @@ $\leftrightarrow$를 포함하는 결론을 이끌어내려고 할 때는 $\to$�
 1. $(P \lor Q) \land (P \lor R) \vdash P \lor (Q \land R)$ (2, 9, 10번에 $\lor_{E}$)
 1. $\vdash (P \lor Q) \land (P \lor R) \to (P \lor (Q \land R))$ (11번에서 $(P \lor Q) \land (P \lor R)$에 대해 $\to_{I}$)
 
-이 두 논증을 하나로 합치고 중복되는 $P \vdash P$를 없애면 다음의 기다란 논증이 된다.
+이 두 증명을 하나로 합치고 중복되는 $P \vdash P$를 없애면 다음의 기다란 증명이 된다.
 
 1. $P \vdash P$ (pre)
 1. $P \vdash P \lor Q$ (1번에 $\lor_{I1}$)
@@ -599,7 +599,7 @@ $\leftrightarrow$를 포함하는 결론을 이끌어내려고 할 때는 $\to$�
 1. $\vdash ((P \lor (Q \land R)) \to ((P \lor Q) \land (P \lor R))) \land ((P \lor Q) \land (P \lor R) \to (P \lor (Q \land R)))$ (13, 24번에 $\land_{I}$)
 1. $\vdash (P \lor (Q \land R)) \leftrightarrow ((P \lor Q) \land (P \lor R))$ (25번에 $\leftrightarrow_{I}$)
 
-엄청난 길이의 논증이다. 그렇지만 앞서의 두 논증을 이해했다면 이 긴 논증은 단순히 두 논증을 합치고 25, 26번 줄을 추가한 것에 지나지 않는다. 마지막으로 $\lnot$을 사용하는 간단한 논증을 살펴보고, 연습문제로 넘어가도록 하자.
+엄청난 길이의 증명이다. 그렇지만 앞서의 두 증명을 이해했다면 이 긴 증명은 단순히 두 증명을 합치고 25, 26번 줄을 추가한 것에 지나지 않는다. 마지막으로 $\lnot$을 사용하는 간단한 논증을 살펴보고, 연습문제로 넘어가도록 하자.
 
 - $\vdash \lnot (P \land (\lnot P))$
 
