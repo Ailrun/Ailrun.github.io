@@ -20,6 +20,7 @@ const PredicateLogicPage: React.FC<PageRendererProps> = ({ location }) => {
 export default PredicateLogicPage;
 
 const getInitialContentFromLocation = (location: PageRendererProps['location']): string | undefined => {
+  /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
   if (location.href === undefined) {
     return undefined;
   }

@@ -55,7 +55,7 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
       return;
     }
 
-    /* eslint-disable @typescript-eslint/no-explicit-any */
+    /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
     (window as any).disqus_config = function (this: any): void {
       /* eslint-disable react/no-this-in-sfc */
       this.page.url = url;
@@ -81,6 +81,7 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
 
     return (): void => {
       window.document.body.removeChild(script);
+      /* eslint-disable-next-line @typescript-eslint/no-unsafe-call */
       (window as any).DISQUS?.reset({});
 
       try {
@@ -94,7 +95,7 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
         lastDisqusThread.removeChild(lastDisqusThread.firstChild);
       }
     };
-    /* eslint-enable @typescript-eslint/no-explicit-any */
+    /* eslint-enable @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access */
   }, [viewed, shortname, url, identifier, title, onNewComment]);
 
   return (
