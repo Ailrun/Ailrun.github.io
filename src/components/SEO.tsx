@@ -1,3 +1,4 @@
+import { useLocation } from '@reach/router';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
@@ -19,6 +20,7 @@ export interface Props {
 const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, og }) => {
   const { siteMetadata } = useStaticQuery<Data>(query).site;
   const language = useLanguage();
+  const location = useLocation();
 
   return (
     <Helmet
@@ -26,7 +28,7 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
       titleTemplate={siteMetadata.titleTemplate}
       defaultTitle={siteMetadata.name}
       base={{
-        href: './',
+        href: location.href,
       }}
     >
       {/* basic HTML tags */}
