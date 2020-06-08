@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import type { PageRendererProps } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import dataProjects from '../../data/projects';
 import useLanguage from '../../hooks/useLanguage';
@@ -69,15 +69,8 @@ const ProjectGroup: React.FC<ProjectGroupProps> = ({ projectGroup }) => {
       <ProjectGroupTitleSeparator />
       <ProjectList>
         {
-          projectGroup.projects.map((project, i) => (
-            <Fragment key={`${project.title}:${project.link}`}>
-              {
-                i !== 0 ? (
-                  <ProjectSeparator />
-                ) : null
-              }
-              <Project {...{ project }} />
-            </Fragment>
+          projectGroup.projects.map((project) => (
+            <Project key={`${project.title}:${project.link}`} {...{ project }} />
           ))
         }
       </ProjectList>
@@ -115,10 +108,6 @@ const ProjectList = styled.ul({
   },
 });
 
-const ProjectSeparator = styled.hr({
-  color: C.textLightBlack,
-});
-
 interface ProjectProps {
   readonly project: Project;
 }
@@ -152,6 +141,12 @@ const ProjectRoot = styled.li({
 
   [C.mediaQueries[0]]: {
     fontSize: C.fontSmallSize,
+  },
+
+  '& + &': {
+    borderTopColor: C.textLightBlack,
+    borderTopStyle: 'inset',
+    borderTopWidth: '1.5px',
   },
 });
 
