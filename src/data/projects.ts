@@ -38,17 +38,17 @@ const languageNeutralProjects = {
         {
           title: 'yet-another-emacs-settings',
           link: 'https://github.com/Ailrun/yet-another-emacs-settings',
-          images: [
-            'https://img.shields.io/badge/Version-0.02.00-lightgrey.svg?style=flat',
-            'https://img.shields.io/badge/Status-Alpha-yellow.svg?style=flat',
-          ],
+          images: [],
+        },
+        {
+          title: 'emacs-retrie',
+          link: 'https://github.com/Ailrun/emacs-retrie',
+          images: [],
         },
         {
           title: 'coq-commenter',
           link: 'https://github.com/Ailrun/coq-commenter',
-          images: [
-            'https://melpa.org/packages/coq-commenter-badge.svg',
-          ],
+          images: [],
         },
       ],
     },
