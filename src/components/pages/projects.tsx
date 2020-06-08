@@ -37,7 +37,7 @@ type ProjectGroup = typeof dataProjects[Language.KO]['projectGroups'][0];
 type Project = ProjectGroup['projects'][0];
 
 interface ProjectGroupListProps {
-  readonly projectGroups: ProjectGroup[];
+  readonly projectGroups: readonly ProjectGroup[];
 }
 const ProjectGroupList: React.FC<ProjectGroupListProps> = ({ projectGroups }) => {
   return (
@@ -119,9 +119,9 @@ const Project: React.FC<ProjectProps> = ({ project }) => {
       </ProjectTitle>
       <ProjectImageList>
         {
-          project.images.map((image) => (
-            <ProjectImageItem key={image}>
-              <ProjectImage src={image} />
+          project.images.map((imageDef) => (
+            <ProjectImageItem key={imageDef[1]}>
+              <ProjectImage title={imageDef[0]} alt={imageDef[0]} src={imageDef[1]} />
             </ProjectImageItem>
           ))
         }

@@ -1,6 +1,20 @@
 import { Language } from '../utils/languages';
 
-const languageNeutralProjects = {
+interface ProjectData {
+  readonly projectGroups: readonly ProjectGroup[];
+}
+interface ProjectGroup {
+  readonly title: string;
+  readonly projects: readonly Project[];
+}
+interface Project {
+  readonly title: string;
+  readonly link: string;
+  readonly images: readonly Image[];
+}
+type Image = readonly [string, string];
+
+const languageNeutralProjects: ProjectData = {
   projectGroups: [
     {
       title: 'Haskell',
@@ -9,25 +23,38 @@ const languageNeutralProjects = {
           title: 'CUTE Lang',
           link: 'https://github.com/CUTE-Lang',
           images: [
-            'https://avatars0.githubusercontent.com/u/17797042?v=3&s=200',
+            [
+              'CUTE Lang logo',
+              'https://avatars0.githubusercontent.com/u/17797042?v=3&s=200',
+            ],
           ],
         },
         {
           title: 'Htaut',
           link: 'https://github.com/Ailrun/Htaut',
           images: [
-            'https://travis-ci.org/Ailrun/Htaut.svg',
-            'https://img.shields.io/hackage/v/htaut.svg?maxAge=2592000',
+            [
+              'Travis CI status for Htaut',
+              'https://travis-ci.org/Ailrun/Htaut.svg',
+            ],
+            [
+              'The lastest version of Htaut in Hackage',
+              'https://img.shields.io/hackage/v/htaut.svg?maxAge=2592000',
+            ],
           ],
         },
         {
           title: 'LambdaDB',
           link: 'https://github.com/Ailrun/LambdaDB',
           images: [
-            'https://img.shields.io/badge/stack->=1.1-blue.svg?style=flat',
-            'https://img.shields.io/badge/status-alpha-orange.svg?style=flat',
-            'https://img.shields.io/hackage/v/LambdaDB.svg',
-            'https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6',
+            [
+              'Travis CI status for LambdaDB',
+              'https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6',
+            ],
+            [
+              'The lastest version of LambdaDB in Hackage',
+              'https://img.shields.io/hackage/v/LambdaDB.svg?maxAge=2592000',
+            ],
           ],
         },
       ],
