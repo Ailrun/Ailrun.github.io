@@ -36,20 +36,24 @@ export const markdown: SerializedStyles = css({
 
   lineHeight: '1.7',
 
-  'h1, h2, h3, h4, h5, h6': {
+  'h1::before': {
+    content: '"DON\'T USE THIS"',
+  },
+
+  'h2, h3, h4, h5, h6': {
     marginTop: '1em',
     marginBottom: '0.5em',
   },
 
-  h1: {
+  h2: {
     fontSize: '20pt',
   },
 
-  h2: {
+  h3: {
     fontSize: '18pt',
   },
 
-  h3: {
+  h4: {
     fontSize: '16pt',
   },
 
