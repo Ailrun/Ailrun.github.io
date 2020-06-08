@@ -122,7 +122,7 @@ export const markdown: SerializedStyles = css({
 
     padding: '0 0.3em',
 
-    overflow: 'none',
+    overflow: 'hidden',
 
     backgroundColor: backgroundGray,
     borderRadius: '3px',

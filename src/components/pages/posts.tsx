@@ -87,9 +87,9 @@ const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
       ...postInfo,
       /* Try to make the excerpt WAI compatible */
       excerpt: parent.excerpt
-        .replace(/<a>/g, '<p>')
-        .replace(/<a /g, '<p ')
-        .replace(/<\/a>/g, '</p>'),
+        .replace(/<a>/g, '<span>')
+        .replace(/<a /g, '<span ')
+        .replace(/<\/a>/g, '</span>'),
     }));
 };
 
