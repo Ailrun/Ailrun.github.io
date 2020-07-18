@@ -17,7 +17,6 @@
     "@emotion/styled": "^10.0.27",
     "@typescript-eslint/eslint-plugin": "^3.0.2",
     "@typescript-eslint/parser": "^3.0.2",
-    "codemirror": "^5.54.0",
     "eslint": "^7.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-react": "^7.20.0",
@@ -45,7 +44,6 @@
     "gh-pages": "^2.2.0",
     "katex": "^0.11.1",
     "npm-run-all": "^4.1.5",
-    "parsimmon": "^1.13.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet-async": "^1.0.6",
@@ -53,7 +51,6 @@
     "typescript": "^3.9.3"
   },
   "devDependencies": {
-    "@types/codemirror": "0.0.95",
     "@types/parsimmon": "^1.10.2",
     "@types/react": "^16.9.35",
     "@types/react-dom": "^16.9.8",
