@@ -20,6 +20,28 @@ const languageNeutralProjects: ProjectData = {
       title: 'Haskell',
       projects: [
         {
+          title: 'Haskell Language Server',
+          link: 'https://github.com/haskell/haskell-language-server',
+          images: [
+            [
+              'HLS logo',
+              'https://raw.githubusercontent.com/haskell/haskell-language-server/master/docs/logos/logo-128.png',
+            ],
+            [
+              'HLS hackage version',
+              'https://img.shields.io/hackage/v/haskell-language-server.svg?logo=haskell',
+            ],
+            [
+              'HLS license',
+              'https://img.shields.io/badge/license-Apache2-green.svg?dummy',
+            ],
+            [
+              'HLS CI status',
+              'https://img.shields.io/circleci/project/github/haskell/haskell-language-server/master.svg',
+            ],
+          ],
+        },
+        {
           title: 'CUTE Lang',
           link: 'https://github.com/CUTE-Lang',
           images: [
