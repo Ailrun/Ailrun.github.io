@@ -5,6 +5,15 @@ const aboutData = {
     ownerProfileCaption: '맥주를 보며 즐거워하는 Clare',
     subjects: [
       {
+        title: '학력',
+        entries: [
+          'McGill 대학교 컴퓨터과학 박사 과정',
+          '서울대학교 화학 학사',
+          '서울대학교 철학 학사',
+          '서울대학교 컴퓨터공학 학사',
+        ],
+      },
+      {
         title: '취미',
         entries: [
           '맥주의 바다에서 헤엄치기',
@@ -18,19 +27,20 @@ const aboutData = {
           'Github/Ailrun',
         ],
       },
-      {
-        title: '학력',
-        entries: [
-          '서울대학교 화학 학사',
-          '서울대학교 철학 학사',
-          '서울대학교 컴퓨터공학 학사',
-        ],
-      },
     ],
   },
   [Language.EN]: {
     ownerProfileCaption: 'Clare with a few cups of beer',
     subjects: [
+      {
+        title: 'Education',
+        entries: [
+          'McGill Univ, Ph.D. student in Computer Science',
+          'Seoul Nat\'l Univ, Bachelor\'s degree in Chemistry',
+          'Seoul Nat\'l Univ, Bachelor\'s degree in Philosophy',
+          'Seoul Nat\'l Univ, Bachelor\'s degree in Computer Science and Engineering',
+        ],
+      },
       {
         title: 'Hobby',
         entries: [
@@ -43,14 +53,6 @@ const aboutData = {
         title: 'Contact',
         entries: [
           'Github/Ailrun',
-        ],
-      },
-      {
-        title: 'Education',
-        entries: [
-          'Seoul Nat\'l Univ, Bachelor\'s degree of Chemistry',
-          'Seoul Nat\'l Univ, Bachelor\'s degree of Philosophy',
-          'Seoul Nat\'l Univ, Bachelor\'s degree of Computer Science and Engineering',
         ],
       },
     ],
