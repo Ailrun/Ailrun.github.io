@@ -19,9 +19,9 @@ const AboutPage: React.FC<PageRendererProps> = () => {
     <>
       <SEO
         title='About'
-        description='Who is Junyoung/Clare Jang?'
+        description='Who is Junyoung "Clare" Jang?'
         image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
-        imageAlt='Junyoung/Clare Jang with cups of beer'
+        imageAlt='Clare with cups of beer'
         pathname={`/${language}/about`}
         og={{
           type: 'profile',
@@ -57,7 +57,7 @@ interface InfoProps {
 }
 const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
   <InfoRoot>
-    <Owner>Junyoung/Clare Jang</Owner>
+    <Owner>Junyoung "Clare" Jang</Owner>
     <InfoSubjectList>
       {
         subjects.map((subject) => (
