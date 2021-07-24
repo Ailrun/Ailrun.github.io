@@ -27,7 +27,7 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-7f8de351d82357c239e8.js"
+    "url": "webpack-runtime-8ddebd36e20d1cf5a6f3.js"
   },
   {
     "url": "framework-1a1efb3f5c798a012f4a.js"
@@ -37,7 +37,7 @@ self.__precacheManifest = [
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "7e84c96e4a55129c8ca5ca7cfd87d5c4"
+    "revision": "748f89d6aafc1140aef4ff95a24a761d"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-7c31e2436cade51cbcda.js"
@@ -57,7 +57,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "2e02c8b5d8b2f744188300198bef2ce6"
+    "revision": "757cf1e99ac4e77c3362bacd57c6d165"
   },
   {
     "url": "component---src-pages-ko-index-tsx-7cf2f8ad98e2381ecbae.js"
@@ -67,7 +67,7 @@ self.__precacheManifest = [
     "revision": "a87a9aeb3a157962c351adbe34cae151"
   },
   {
-    "url": "component---src-pages-ko-posts-ts-ee83c3103e19d0c71543.js"
+    "url": "component---src-pages-ko-posts-ts-938f493a67c032077444.js"
   },
   {
     "url": "page-data/ko/posts/page-data.json",
