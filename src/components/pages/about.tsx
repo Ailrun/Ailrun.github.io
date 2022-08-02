@@ -57,7 +57,7 @@ interface InfoProps {
 }
 const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
   <InfoRoot>
-    <Owner>Junyoung "Clare" Jang</Owner>
+    <Owner>Junyoung &quot;Clare&quot; Jang</Owner>
     <InfoSubjectList>
       {
         subjects.map((subject) => (

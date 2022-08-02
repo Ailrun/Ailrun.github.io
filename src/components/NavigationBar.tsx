@@ -99,9 +99,8 @@ const getNavigationItems: (language: Language) => ItemProps[] = (language) => {
         [{ to: `/${language}/posts/`, text: 'Posts' }] :
         []
     ),
-    ...[
-      { to: `/${language}/projects/`, text: 'Projects' },
-      { to: `/${language}/about/`, text: 'About' },
-    ],
+    { to: `/${language}/publications/`, text: 'Publications' },
+    { to: `/${language}/projects/`, text: 'Projects' },
+    { to: `/${language}/about/`, text: 'About' },
   ];
 };
