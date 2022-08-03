@@ -19,14 +19,14 @@ const AboutPage: React.FC<PageRendererProps> = () => {
     <>
       <SEO
         title='About'
-        description='Who is Junyoung "Clare" Jang?'
+        description='Who is Junyoung/"Clare" Jang?'
         image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
         imageAlt='Clare with cups of beer'
         pathname={`/${language}/about`}
         og={{
           type: 'profile',
           additional: {
-            first_name: 'Clare',
+            first_name: 'Junyoung/"Clare"',
             last_name: 'Jang',
             username: 'Ailrun',
             gender: 'male',
@@ -57,7 +57,7 @@ interface InfoProps {
 }
 const Info: React.FC<InfoProps> = ({ ownerProfileCaption, subjects }) => (
   <InfoRoot>
-    <Owner>Junyoung &quot;Clare&quot; Jang</Owner>
+    <Owner>Junyoung/&quot;Clare&quot; Jang</Owner>
     <InfoSubjectList>
       {
         subjects.map((subject) => (

@@ -19,7 +19,7 @@ const config: GatsbyConfig = {
     name: metadata.name,
     siteUrl: metadata.siteUrl,
     description: metadata.description,
-    author: `Junyoung/Clare Jang (@Ailrun)`,
+    author: `Junyoung/"Clare" Jang (@Ailrun)`,
     locales: [
       `ko_KR`,
     ],
