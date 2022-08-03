@@ -7,8 +7,8 @@ dotenv.config({
 });
 
 const metadata = {
-  name: `Valhalla of Valkyrie`,
-  shortName: `VoV`,
+  name: `Junyoung/"Clare" Jang`,
+  shortName: `J. Jang`,
   description: `Ailrun's Blog`,
   themeColor: `#000000`,
   siteUrl: `https://Ailrun.github.io`,

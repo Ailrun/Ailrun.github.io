@@ -14,7 +14,7 @@ const NavigationBar: React.FC<unknown> = () => {
   return (
     <Root>
       <Title to={`/${language}/`}>
-        Valhalla of Valkyrie&nbsp;&nbsp;by&nbsp;&nbsp;Junyoung/Clare Jang
+        Junyoung/Clare Jang
       </Title>
       <FlexSpacer />
       <NavigationList>
