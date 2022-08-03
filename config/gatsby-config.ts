@@ -9,7 +9,7 @@ dotenv.config({
 const metadata = {
   name: `Valhalla of Valkyrie`,
   shortName: `VoV`,
-  description: `Ailrun's Dev Blog`,
+  description: `Ailrun's Blog`,
   themeColor: `#000000`,
   siteUrl: `https://Ailrun.github.io`,
 };
@@ -19,7 +19,7 @@ const config: GatsbyConfig = {
     name: metadata.name,
     siteUrl: metadata.siteUrl,
     description: metadata.description,
-    author: `Junyoung Clare Jang (Ailrun)`,
+    author: `Junyoung/Clare Jang (@Ailrun)`,
     locales: [
       `ko_KR`,
     ],
