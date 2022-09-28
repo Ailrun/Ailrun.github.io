@@ -3,9 +3,9 @@ import React, { StrictMode } from 'react';
 
 type WrapPageElementArgs = WrapPageElementBrowserArgs | WrapPageElementNodeArgs;
 
-const wrapPageElement = ({ element }: WrapPageElementArgs): React.ReactChild => (
+const wrapPageElement = ({ element }: WrapPageElementArgs): React.ReactElement => (
   <StrictMode>
-    {element as React.ReactChild}
+    {element}
   </StrictMode>
 );
 export default wrapPageElement;

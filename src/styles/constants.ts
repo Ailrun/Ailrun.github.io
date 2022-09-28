@@ -1,4 +1,4 @@
-import { SerializedStyles, css } from '@emotion/core';
+import { SerializedStyles, css } from '@emotion/react';
 
 export const mediaQueries = [
   '@media (max-width: 60em)',

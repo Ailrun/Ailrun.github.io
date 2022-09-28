@@ -108,6 +108,10 @@ module.exports = {
         types: ['boolean', 'string', 'number'],
       },
       {
+        format: null,
+        selector: 'objectLiteralProperty',
+      },
+      {
         format: [
           'UPPER_CASE',
         ],

@@ -5,6 +5,7 @@
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
     "jsx": "preserve",
+    "moduleResolution": "node",
     "noErrorTruncation": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
@@ -15,13 +16,13 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "strictNullChecks": true,
-    "target": "ES5",
+    "target": "ES2015",
     "useDefineForClassFields": true
   },
   "include": [
     "./*.d.ts",
     "config/**/*",
-    "gatsby/**/*",
+    "gatsby-*.ts",
     "src/**/*",
     "plugins/**/*.ts"
   ]

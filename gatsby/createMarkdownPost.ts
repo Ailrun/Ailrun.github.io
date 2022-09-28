@@ -13,7 +13,15 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
     return;
   }
 
-  const parentNode: Node = getNode(node.parent);
+  if (node.parent === null) {
+    return;
+  }
+
+  const parentNode: Node | undefined = getNode(node.parent);
+
+  if (parentNode === undefined) {
+    return;
+  }
 
   if (parentNode.internal.type !== 'File') {
     return;
@@ -51,7 +59,7 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
     markdownPostNode.draft = true;
   }
 
-  actions.createNode(markdownPostNode);
+  void actions.createNode(markdownPostNode);
   actions.createParentChildLink({
     parent: node,
     child: markdownPostNode as Node,

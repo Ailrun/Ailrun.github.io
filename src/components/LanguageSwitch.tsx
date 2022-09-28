@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { Location } from '@reach/router';
+import { Location } from '@gatsbyjs/reach-router';
 import { Link } from 'gatsby';
-import React, { useCallback, useState } from 'react';
+import React, { PropsWithChildren, useCallback, useState } from 'react';
 
 import * as C from '../styles/constants';
 import { Language, languageToString, languages } from '../utils/languages';
@@ -26,7 +26,7 @@ const Root = styled.li({
 interface HoverProps {
   readonly language: Language;
 }
-const Hover: React.FC<HoverProps> = ({ children, language }) => {
+const Hover: React.FC<PropsWithChildren<HoverProps>> = ({ children, language }) => {
   const [displayList, setDisplayList] = useState(false);
   const handleShowList = useCallback(() => {
     setDisplayList(true);
@@ -79,7 +79,7 @@ const LanguageList: React.FC<LanguageListProps> = ({ language }) => {
   return (
     <Location>
       {
-        ({ location }): React.ReactChild => (
+        ({ location }): React.ReactElement => (
           <LanguageListRoot asSelect={true}>
             {
               sortedLanguages.map((lang) => {

@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import type { PageRendererProps } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import React from 'react';
 
 import dataPublications from '../../data/publications';
@@ -102,7 +101,7 @@ const Publication: React.FC<PublicationProps> = ({ publication }) => {
           <PublicationAuthor key={author.first + ' ' + author.last} {...{ author }} />
         ))
       }
-      { '. (' + publication.year + '). ' }
+      {`. (${publication.year}). `}
       <PublicationTitle id={publication.doi}>{publication.title}</PublicationTitle>
       {'. In '}
       {

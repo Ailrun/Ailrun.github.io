@@ -1,4 +1,4 @@
-import { useLocation } from '@reach/router';
+import { useLocation } from '@gatsbyjs/reach-router';
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
@@ -101,6 +101,14 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
       }
     </Helmet>
   );
+};
+SEO.defaultProps = {
+  title: undefined,
+  description: undefined,
+  pathname: undefined,
+  image: undefined,
+  imageAlt: undefined,
+  og: undefined,
 };
 export default SEO;
 

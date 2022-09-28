@@ -1,4 +1,4 @@
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 import type { WrapRootElementBrowserArgs, WrapRootElementNodeArgs } from 'gatsby';
 import React from 'react';
 
@@ -9,7 +9,7 @@ type WrapRootElementArgs = WrapRootElementBrowserArgs | WrapRootElementNodeArgs;
    because Gatsby uses legacy context in its ScrollContext.
    It will be fixed in Gatsby v3, so let's wait for it...
  */
-const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactChild => (
+const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactElement => (
   <>
     <Global styles={globalStyles} />
     {element}

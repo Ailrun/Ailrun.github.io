@@ -101,7 +101,7 @@ const config: GatsbyConfig = {
         theme_color: metadata.themeColor,
         display: `standalone`,
         icon: `src/assets/icon.png`,
-        crossorigin: `use-credentials`,
+        crossOrigin: `use-credentials`,
       },
     },
     {
@@ -157,5 +157,6 @@ const config: GatsbyConfig = {
       },
     },
   ],
+  trailingSlash: 'never',
 };
 export default config;
