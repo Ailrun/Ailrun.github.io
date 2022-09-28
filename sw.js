@@ -27,112 +27,31 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-6ead0a37eb810ee10d7b.js"
+    "url": "webpack-runtime-8c5543225460e57fcd2d.js"
   },
   {
-    "url": "framework-8b80e5388a274915d1c2.js"
+    "url": "framework-017b9100447b22c90c53.js"
   },
   {
-    "url": "app-8a2baa0be85de1928818.js"
+    "url": "app-e5f448574b507d525281.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "c38fa70d4571bc8fa42408ea9c8706d1"
+    "revision": "986dae3432d823e16a7f12a575ed7d50"
   },
   {
-    "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-d99c7fbbbdfaae4ee168.js"
-  },
-  {
-    "url": "polyfill-3ea1f91e4150d1d4e5a0.js"
-  },
-  {
-    "url": "4faebe5b8a98bd7a57858ba11f4a80ca25cb4129-b32a7867f7ef0b9b35be.js"
-  },
-  {
-    "url": "component---src-pages-ko-about-ts-db85c3990aaa06a20522.js"
-  },
-  {
-    "url": "page-data/ko/about/page-data.json",
-    "revision": "473cf2f30c82e8d9c762181ce9f0c4a0"
-  },
-  {
-    "url": "page-data/app-data.json",
-    "revision": "7292ef19a114e8f1c41252b54db0ae81"
-  },
-  {
-    "url": "component---src-pages-ko-index-tsx-e9f9dcf06f5e79e15a7d.js"
-  },
-  {
-    "url": "page-data/ko/page-data.json",
-    "revision": "a87a9aeb3a157962c351adbe34cae151"
-  },
-  {
-    "url": "component---src-pages-ko-posts-ts-13429fcf976f2a4cc05f.js"
-  },
-  {
-    "url": "page-data/ko/posts/page-data.json",
-    "revision": "59e6214e0a95620d8a4e0e527bbf5738"
-  },
-  {
-    "url": "component---src-pages-ko-projects-ts-275fd5e5fa2c2606a969.js"
-  },
-  {
-    "url": "page-data/ko/projects/page-data.json",
-    "revision": "bb731812a21aa69d20d198dbce175eee"
-  },
-  {
-    "url": "component---src-pages-ko-publications-ts-f8e72f2d5bfeed52817b.js"
-  },
-  {
-    "url": "page-data/ko/publications/page-data.json",
-    "revision": "446375b210feab35df41185873795296"
-  },
-  {
-    "url": "component---src-pages-en-about-ts-6e5cb65d80c948474ae7.js"
-  },
-  {
-    "url": "page-data/en/about/page-data.json",
-    "revision": "61fdbf137a8293eebee86cd509fb5df4"
-  },
-  {
-    "url": "component---src-pages-en-index-tsx-10f8e2e5d566a55e42e3.js"
-  },
-  {
-    "url": "page-data/en/page-data.json",
-    "revision": "6e9e99fee2b13d6e64d8c53bf23fe186"
-  },
-  {
-    "url": "component---src-pages-en-projects-ts-0dd1faf50b2b66227fe2.js"
-  },
-  {
-    "url": "page-data/en/projects/page-data.json",
-    "revision": "7a6abc9793d7f2f1da3f787e75086840"
-  },
-  {
-    "url": "component---src-pages-en-publications-ts-1c603ae549a2f4131ddc.js"
-  },
-  {
-    "url": "page-data/en/publications/page-data.json",
-    "revision": "5d768025af13ef7a84a8a9c04416c424"
-  },
-  {
-    "url": "component---src-pages-index-tsx-b3b310410a57f981c15a.js"
-  },
-  {
-    "url": "page-data/index/page-data.json",
-    "revision": "072876287d33dc1fefc63e1174d931a0"
+    "url": "polyfill-b74a7c51d8bb4fab74a6.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "ac1d9f33d83908af841d2d100a6bae4c"
+    "revision": "68db184a74e3766008a916a6c94179ca"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/(\.js$|\.css$|static\/)/, new workbox.strategies.CacheFirst(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\page-data\/.*\/page-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\/page-data\/app-data\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
-workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\/page-data\/.*\.json/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
+workbox.routing.registerRoute(/^https?:.*\.(png|jpg|jpeg|webp|avif|svg|gif|tiff|js|woff|woff2|json|css)$/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 workbox.routing.registerRoute(/^https?:\/\/fonts\.googleapis\.com\/css/, new workbox.strategies.StaleWhileRevalidate(), 'GET');
 
 /* global importScripts, workbox, idbKeyval */
@@ -151,6 +70,24 @@ const MessageAPI = {
 
   clearPathResources: event => {
     event.waitUntil(idbKeyval.clear())
+
+    // We detected compilation hash mismatch
+    // we should clear runtime cache as data
+    // files might be out of sync and we should
+    // do fresh fetches for them
+    event.waitUntil(
+      caches.keys().then(function (keyList) {
+        return Promise.all(
+          keyList.map(function (key) {
+            if (key && key.includes(`runtime`)) {
+              return caches.delete(key)
+            }
+
+            return Promise.resolve()
+          })
+        )
+      })
+    )
   },
 
   enableOfflineShell: () => {
@@ -217,7 +154,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-8a2baa0be85de1928818.js`))) {
+  if (!resources || !(await caches.match(`/app-e5f448574b507d525281.js`))) {
     return await fetch(event.request)
   }
 

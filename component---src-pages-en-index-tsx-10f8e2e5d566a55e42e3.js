@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{ef3G:function(n,e,o){"use strict";o.r(e);var t=o("YwZP"),i=(o("q1tI"),o("qKvR"));e.default=function(){return"undefined"!=typeof window?Object(i.d)(t.Redirect,{to:"/en/publications",noThrow:!0}):null}}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-10f8e2e5d566a55e42e3.js.map

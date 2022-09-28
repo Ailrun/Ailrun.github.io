@@ -1,0 +1,1 @@
+{"version":3,"file":"component---src-pages-en-about-ts-04acdc9537b56365f837.js","mappings":"oJAEA,UAAeA,EAAf,C","sources":["webpack://valhala-of-valkyrie/./src/pages/en/about.ts"],"sourcesContent":["import AboutPage from '../../components/pages/about';\n\nexport default AboutPage;\n"],"names":["AboutPage"],"sourceRoot":""}
