@@ -1,27 +1,22 @@
 import styled from '@emotion/styled';
-import type { PageRendererProps } from 'gatsby';
+import type { HeadProps, PageProps } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-gtag';
 import React from 'react';
 
 import dataProjects from '../../data/projects';
 import useLanguage from '../../hooks/useLanguage';
 import * as C from '../../styles/constants';
-import type { Language } from '../../utils/languages';
+import { Language, locationToLanguage } from '../../utils/languages';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import SEO from '../SEO';
 
-const ProjectsPage: React.FC<PageRendererProps> = () => {
+const ProjectsPage: React.FC<PageProps> = () => {
   const language = useLanguage();
   const data = dataProjects[language];
 
   return (
     <>
-      <SEO
-        title='Projects'
-        description='List of Posts in VoV'
-        pathname={`/${language}/projects`}
-      />
       <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/project.png'
@@ -32,6 +27,19 @@ const ProjectsPage: React.FC<PageRendererProps> = () => {
   );
 };
 export default ProjectsPage;
+
+export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
+  const language = locationToLanguage(location);
+
+  return (
+    <SEO
+      title='Projects'
+      description='List of Posts in VoV'
+      pathname={`/${language}/projects`}
+      data={data}
+    />
+  );
+};
 
 type ProjectGroup = typeof dataProjects[Language.KO]['projectGroups'][0];
 type Project = ProjectGroup['projects'][0];

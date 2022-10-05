@@ -1,27 +1,21 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql, useStaticQuery } from 'gatsby';
+import { PageProps, graphql, HeadProps } from 'gatsby';
 import React from 'react';
 
 import useLanguage from '../../hooks/useLanguage';
-import type { Language } from '../../utils/languages';
+import { Language, locationToLanguage } from '../../utils/languages';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
 import PostList, { PostInfo } from '../PostList';
 import SEO from '../SEO';
 
-const PostsPage: React.FC<PageRendererProps> = () => {
-  const data = useStaticQuery<Data>(query);
+const PostsPage: React.FC<PageProps<Queries.MarkdownPostsInformationFragment>> = ({ data }) => {
   const language = useLanguage();
 
   const posts = refineData(data, language);
 
   return (
     <>
-      <SEO
-        title='Posts'
-        description='List of Posts in VoV'
-        pathname={`/${language}/posts`}
-      />
       <NavigationBar />
       <PageTitle
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/post.png'
@@ -35,26 +29,21 @@ const PostsPage: React.FC<PageRendererProps> = () => {
 };
 export default PostsPage;
 
-interface Data {
-  readonly allMarkdownPost: {
-    readonly group: {
-      readonly fieldValue: Language;
-      readonly nodes: DataMarkdownPost[];
-    }[];
-  };
+export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
+  const language = locationToLanguage(location);
+
+  return (
+    <SEO
+      title='Posts'
+      description='List of Posts in VoV'
+      pathname={`/${language}/posts`}
+      data={data}
+    />
+  );
 }
-interface DataMarkdownPost {
-  readonly title: string;
-  readonly date: string;
-  readonly dateForSort: string;
-  readonly postPath: string;
-  readonly draft: boolean;
-  readonly parent: {
-    readonly excerpt: string;
-  };
-} 
-const query = graphql`
-  query {
+
+export const query = graphql`
+  fragment MarkdownPostsInformation on Query {
     allMarkdownPost {
       group(field: language) {
         fieldValue
@@ -75,21 +64,25 @@ const query = graphql`
   }
 `;
 
-const refineData = (data: Data, targetLanguage: Language): PostInfo[] => {
+const refineData = (data: Queries.MarkdownPostsInformationFragment, targetLanguage: Language): PostInfo[] => {
   const targetGroup =
     data.allMarkdownPost.group
       .find(({ fieldValue }) => fieldValue === targetLanguage);
 
   return (targetGroup?.nodes ?? [])
     .filter((post) => process.env.NODE_ENV === 'development' || !post.draft)
-    .sort((post0, post1) => Date.parse(post1.dateForSort) - Date.parse(post0.dateForSort))
-    .map(({ dateForSort, draft, parent, ...postInfo }) => ({
-      ...postInfo,
+    .sort((post0, post1) => Date.parse(post1.dateForSort!) - Date.parse(post0.dateForSort!))
+    .map(({ title, date, postPath, parent }) => ({
+      title: title!,
+      date: date!,
+      postPath: postPath!,
       /* Try to make the excerpt WAI compatible */
-      excerpt: parent.excerpt
-        .replace(/<a>/g, '<span>')
-        .replace(/<a /g, '<span ')
-        .replace(/<\/a>/g, '</span>'),
+      excerpt: 'excerpt' in parent!
+        ? parent!.excerpt!
+          .replace(/<a>/g, '<span>')
+          .replace(/<a /g, '<span ')
+          .replace(/<\/a>/g, '</span>')
+        : '',
     }));
 };
 

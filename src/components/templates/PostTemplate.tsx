@@ -1,6 +1,6 @@
 import 'katex/dist/katex.min.css';
 import styled from '@emotion/styled';
-import { PageRendererProps, graphql } from 'gatsby';
+import { PageProps, graphql, HeadProps } from 'gatsby';
 import React from 'react';
 
 import useLanguage from '../../hooks/useLanguage';
@@ -8,28 +8,11 @@ import NavigationBar from '../NavigationBar';
 import Post, { PostInfo } from '../Post';
 import SEO from '../SEO';
 
-export interface Props extends PageRendererProps {
-  readonly data: Data;
-}
-const PostTemplate: React.FC<Props> = ({ data }) => {
-  const language = useLanguage();
+const PostTemplate: React.FC<PageProps<Queries.PostInformationFragment>> = ({ data }) => {
   const post = refineData(data);
 
   return (
     <>
-      <SEO
-        title={post.title}
-        description={data.markdownPost.parent.excerpt}
-        pathname={post.postPath}
-        og={{
-          type: 'article',
-          additional: {
-            author: `https://ailrun.github.io/${language}/about`,
-            published_time: post.date,
-            section: 'Science',
-          },
-        }}
-      />
       <NavigationBar />
       <PostWrapper>
         <Post
@@ -42,21 +25,30 @@ const PostTemplate: React.FC<Props> = ({ data }) => {
 };
 export default PostTemplate;
 
-interface Data {
-  readonly markdownPost: DataMarkdownPost;
-}
-interface DataMarkdownPost {
-  readonly title: string;
-  readonly date: string;
-  readonly postPath: string;
-  readonly draft: boolean;
-  readonly parent: {
-    readonly html: string;
-    readonly excerpt: string;
-  };
-}
+export const Head: React.FC<HeadProps<Queries.PostInformationFragment & Queries.SEOInformationFragment>> = ({ data }) => {
+  const language = useLanguage();
+  const post = refineData(data);
+
+  return (
+    <SEO
+      title={post.title}
+      description={(data.markdownPost!.parent as Queries.MarkdownRemark).excerpt!}
+      pathname={post.postPath}
+      og={{
+        type: 'article',
+        additional: {
+          author: `https://ailrun.github.io/${language}/about`,
+          published_time: post.date,
+          section: 'Science',
+        },
+      }}
+      data={data}
+    />
+  );
+};
+
 export const query = graphql`
-  query ($id: String) {
+  fragment PostInformation on Query {
     markdownPost(id: { eq: $id }) {
       title
       date(fromNow: true)
@@ -70,14 +62,22 @@ export const query = graphql`
       }
     }
   }
+
+  query ($id: String) {
+    ...PostInformation
+    ...SEOInformation
+  }
 `;
 
-const refineData = (data: Data): PostInfo => {
-  const { parent, ...postInfo } = data.markdownPost;
+const refineData = (data: Queries.PostInformationFragment): PostInfo => {
+  const { title, date, postPath, draft, parent } = data.markdownPost!;
 
   return {
-    ...postInfo,
-    html: parent.html,
+    title: title!,
+    date: date!,
+    postPath: postPath!,
+    draft: draft!,
+    html: (parent as Queries.MarkdownRemark).html!,
   };
 };
 

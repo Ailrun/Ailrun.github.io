@@ -6,6 +6,8 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV as string}`,
 });
 
+const isDevelopment = process.env.NODE_ENV === 'development';
+
 const metadata = {
   name: `Junyoung/"Clare" Jang`,
   shortName: `J. Jang`,
@@ -14,9 +16,12 @@ const metadata = {
   siteUrl: `https://Ailrun.github.io`,
 };
 
+const graphqlTypegen = isDevelopment;
+
 const config: GatsbyConfig = {
   siteMetadata: {
     name: metadata.name,
+    shortName: metadata.shortName,
     siteUrl: metadata.siteUrl,
     description: metadata.description,
     author: `Junyoung/"Clare" Jang (@Ailrun)`,
@@ -29,7 +34,7 @@ const config: GatsbyConfig = {
   plugins: [
     `gatsby-plugin-custom-eslint`,
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-custom-ts-checker`,
+    ...(graphqlTypegen ? [] : [`gatsby-plugin-custom-ts-checker`]),
 
     {
       resolve: `gatsby-source-filesystem`,
@@ -140,7 +145,7 @@ const config: GatsbyConfig = {
       options: {
         disableOnDev: false,
         mergeDefaultDirectives: false,
-        mergeScriptHashes: process.env.NODE_ENV !== `development`,
+        mergeScriptHashes: !isDevelopment,
         mergeStyleHashes: false,
         directives: {
           'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://fonts.gstatic.com https://www.googletagmanager.com`,
@@ -148,7 +153,7 @@ const config: GatsbyConfig = {
           'img-src': `'self' https:`,
           'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com` +
             (
-              process.env.NODE_ENV === `development` ?
+              isDevelopment ?
                 ` 'unsafe-eval' 'unsafe-inline'` :
                 ``
             ),
@@ -158,5 +163,6 @@ const config: GatsbyConfig = {
     },
   ],
   trailingSlash: 'always',
+  graphqlTypegen,
 };
 export default config;

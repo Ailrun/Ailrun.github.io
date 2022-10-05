@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 import type {
   CreateNodeArgs,
   CreatePagesArgs,
+  CreateSchemaCustomizationArgs,
 } from 'gatsby';
 
 import createMarkdownPost from './gatsby/createMarkdownPost';
@@ -32,6 +33,26 @@ export const createPages = async ({ actions, graphql, reporter }: CreatePagesArg
     });
   });
 };
+
+export const createSchemaCustomization = ({ actions }: CreateSchemaCustomizationArgs) => {
+  actions.createTypes(`
+    type Site implements Node {
+      siteMetadata: SiteSiteMetadata!
+    }
+
+    type SiteSiteMetadata {
+      author: String!
+      description: String!
+      locales: [String!]!
+      name: String!
+      shortName: String!
+      siteUrl: String!
+      themeColor: String!
+      title: String!
+      titleTemplate: String!
+    }
+  `);
+}
 
 export const onCreateNode = (createNodeArgs: CreateNodeArgs): void => {
   createMarkdownPost(createNodeArgs);

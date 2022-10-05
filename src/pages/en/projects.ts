@@ -1,3 +1,13 @@
-import ProjectsPage from '../../components/pages/projects';
+import { graphql } from 'gatsby';
+
+import ProjectsPage, { Head } from '../../components/pages/projects';
 
 export default ProjectsPage;
+export {
+  Head,
+};
+export const query = graphql`
+  query {
+    ...SEOInformation
+  }
+`;

@@ -1,10 +1,8 @@
 import { useLocation } from '@gatsbyjs/reach-router';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
 
 import useLanguage from '../hooks/useLanguage';
-import { languageToBCP47 } from '../utils/languages';
 
 export interface Props {
   readonly title?: string;
@@ -16,25 +14,18 @@ export interface Props {
     readonly type?: string;
     readonly additional?: Record<string, string>;
   };
+  readonly data: Queries.SEOInformationFragment;
 }
-const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, og }) => {
-  const { siteMetadata } = useStaticQuery<Data>(query).site;
+const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, og, data }) => {
+  const { siteMetadata } = data.site!;
   const language = useLanguage();
   const location = useLocation();
 
   return (
-    <Helmet
-      title={title}
-      titleTemplate={siteMetadata.titleTemplate}
-      defaultTitle={siteMetadata.name}
-      base={{
-        /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
-        href: location.href?.replace(/#.*$/, ''),
-      }}
-    >
-      {/* basic HTML tags */}
-      <html lang={languageToBCP47(language)} />
-
+    <>
+      <title>{`${title} - ${siteMetadata.shortName}`}</title>
+      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+      <base href={location.href?.replace(/#.*$/, '')} />
       {/* standard meta tags */}
       <meta name='application-name' content={siteMetadata.name} />
       <meta name='author' content={siteMetadata.author} />
@@ -44,6 +35,19 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
       {/* standard link tags */}
       <link rel='author' href={`${siteMetadata.siteUrl}/${language}/about`} />
       <link rel='index' href={`${siteMetadata.siteUrl}/${language}`} />
+
+      {/* robot restriction tags */}
+	  <meta name="robots" content="index" />
+	  <meta name="googlebot" content="index" />
+
+      {/* Do not translate this page by default */}
+	  <meta name="google" content="notranslate" />
+
+      {/* Default URL */}
+	  <meta name="url" content="https://ailrun.github.io/" />
+
+      {/* Targets? */}
+      <meta name="coverage" content="WorldWide"/>
 
       {/* Android tags */}
       <meta name='mobile-web-app-capable' content='yes' />
@@ -99,7 +103,7 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
           <meta property='twitter:image:alt' content={imageAlt} />
         ) : null
       }
-    </Helmet>
+    </>
   );
 };
 SEO.defaultProps = {
@@ -112,30 +116,17 @@ SEO.defaultProps = {
 };
 export default SEO;
 
-interface Data {
-  readonly site: {
-    readonly siteMetadata: {
-      readonly name: string;
-      readonly siteUrl: string;
-      readonly description: string;
-      readonly author: string;
-      readonly locales: string[];
-      readonly themeColor: string;
-      readonly titleTemplate: string;
-    };
-  };
-}
-const query = graphql`
-  query {
+export const query = graphql`
+  fragment SEOInformation on Query {
     site {
       siteMetadata {
         name
+        shortName
         siteUrl
         description
         author
         locales
         themeColor
-        titleTemplate
       }
     }
   }
