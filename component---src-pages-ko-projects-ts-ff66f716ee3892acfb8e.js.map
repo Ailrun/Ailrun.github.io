@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-ko-projects-ts-ff66f716ee3892acfb8e.js","mappings":"oJAEA,UAAeA,EAAf,C","sources":["webpack://valhala-of-valkyrie/./src/pages/ko/projects.ts"],"sourcesContent":["import ProjectsPage from '../../components/pages/projects';\n\nexport default ProjectsPage;\n"],"names":["ProjectsPage"],"sourceRoot":""}

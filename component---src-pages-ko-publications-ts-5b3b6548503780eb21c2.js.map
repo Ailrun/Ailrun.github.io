@@ -1,1 +1,0 @@
-{"version":3,"file":"component---src-pages-ko-publications-ts-5b3b6548503780eb21c2.js","mappings":"oJAEA,UAAeA,EAAf,C","sources":["webpack://valhala-of-valkyrie/./src/pages/ko/publications.ts"],"sourcesContent":["import PublicationsPage from '../../components/pages/publications';\n\nexport default PublicationsPage;\n"],"names":["PublicationsPage"],"sourceRoot":""}
