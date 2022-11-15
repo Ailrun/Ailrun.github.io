@@ -16,17 +16,18 @@ jobs:
     name: Build & Release
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
       - id: node-cache
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: '~/.npm'
           key: ${{ runner.os }}-node16-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node16-
+      - run: npm -g i npm@latest
       - run: npm ci
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
