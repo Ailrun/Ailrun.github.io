@@ -19,14 +19,14 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - id: node-cache
         uses: actions/cache@v3
         with:
           path: '~/.npm'
-          key: ${{ runner.os }}-node16-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node18-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node16-
+            ${{ runner.os }}-node18-
       - run: npm -g i npm@latest
       - run: npm ci
         env:

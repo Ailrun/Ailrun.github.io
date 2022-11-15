@@ -40,12 +40,12 @@ export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ loca
       data={data}
     />
   );
-}
+};
 
 export const query = graphql`
   fragment MarkdownPostsInformation on Query {
     allMarkdownPost {
-      group(field: language) {
+      group(field: {language: SELECT}) {
         fieldValue
         nodes {
           title
