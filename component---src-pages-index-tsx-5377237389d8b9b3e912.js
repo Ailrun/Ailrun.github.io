@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkvalhala_of_valkyrie=self.webpackChunkvalhala_of_valkyrie||[]).push([[691],{7200:function(e,a,l){l.r(a);var n=l(7896),f=l(917);a.default=()=>"undefined"!=typeof window?(0,f.tZ)(n.Redirect,{to:"/en/",noThrow:!0}):null}}]);
+//# sourceMappingURL=component---src-pages-index-tsx-5377237389d8b9b3e912.js.map
