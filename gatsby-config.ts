@@ -144,7 +144,7 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-csp`,
       options: {
         disableOnDev: false,
-        mergeDefaultDirectives: true,
+        mergeDefaultDirectives: false,
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
@@ -152,7 +152,7 @@ const config: GatsbyConfig = {
           'font-src': `'self' https://c.disquscdn.com https://fonts.gstatic.com`,
           'img-src': `'self' https:`,
           'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com 'unsafe-inline'`,
-          'style-src': `'self' https://fonts.googleapis.com https://disqus.com https://*.disqus.com https://*.disquscdn.com blob: 'unsafe-inline'`,
+          'style-src': `'self' https://fonts.googleapis.com https://disqus.com https://*.disqus.com https://*.disquscdn.com blob: 'unsafe-inline'`
         },
       },
     },
