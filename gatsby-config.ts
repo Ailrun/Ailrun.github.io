@@ -148,7 +148,7 @@ const config: GatsbyConfig = {
         mergeScriptHashes: false,
         mergeStyleHashes: false,
         directives: {
-          'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://fonts.gstatic.com https://www.googletagmanager.com`,
+          'default-src': `'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://fonts.gstatic.com https://www.googletagmanager.com https://stats.g.doubleclick.net`,
           'font-src': `'self' https://c.disquscdn.com https://fonts.gstatic.com`,
           'img-src': `'self' https:`,
           'script-src': `'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com 'unsafe-inline'`,
