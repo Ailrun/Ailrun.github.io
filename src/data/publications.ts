@@ -31,8 +31,30 @@ const BrigittePientka = {
   last: 'Pientka',
 };
 
+const JasonHu = {
+  first: 'Jason Z. S.',
+  last: 'Hu',
+};
+
 const publications: PublicationsData = {
   years: [
+    {
+      year: 2023,
+      publications: [
+        {
+          authors: [
+            JasonHu,
+            JunyoungJang,
+            BrigittePientka,
+          ],
+          title: 'Normalization by Evaluation for Modal Dependent Type Theory',
+          year: 2023,
+          venue: 'Journal of Functional Programming 33, E7',
+          url: 'https://doi.org/10.1017/S0956796823000060',
+          doi: '10.1017/S0956796823000060',
+        },
+      ],
+    },
     {
       year: 2022,
       publications: [
@@ -52,7 +74,7 @@ const publications: PublicationsData = {
           title: 'Mœbius: Metaprogramming Using Contextual Types: The Stage where System F can Pattern Match on Itself',
           year: 2022,
           venue: 'Proceedings of the ACM on Programming Languages, Volume 6, Issue POPL',
-          url: 'https://dl.acm.org/doi/abs/10.1145/3498700',
+          url: 'https://doi.org/10.1145/3498700',
           doi: '10.1145/3498700',
         },
       ],
