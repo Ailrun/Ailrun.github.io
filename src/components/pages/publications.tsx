@@ -110,7 +110,7 @@ const Publication: React.FC<PublicationProps> = ({ publication }) => {
         ))
       }
       {`. (${publication.year}). `}
-      <PublicationTitle id={publication.doi}>{publication.title}</PublicationTitle>
+      <PublicationTitle id={publication.doi ? publication.doi : publication.title}>{publication.title}</PublicationTitle>
       {'. In '}
       {
         publication.editors === undefined

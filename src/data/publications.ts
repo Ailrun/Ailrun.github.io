@@ -14,7 +14,7 @@ interface Publication {
   readonly editors?: Name[];
   readonly venue: string;
   readonly url: string;
-  readonly doi: string;
+  readonly doi?: string;
 }
 interface Name {
   readonly first: string;
@@ -31,13 +31,40 @@ const BrigittePientka = {
   last: 'Pientka',
 };
 
+const FrankPfenning = {
+  first: 'Frank',
+  last: 'Pfenning',
+};
+
 const JasonHu = {
   first: 'Jason Z. S.',
   last: 'Hu',
 };
 
+const SophiaRoshal = {
+  first: 'Sophia',
+  last: 'Roshal',
+};
+
 const publications: PublicationsData = {
   years: [
+    {
+      year: 2024,
+      publications: [
+        {
+          authors: [
+            JunyoungJang,
+            SophiaRoshal,
+            FrankPfenning,
+            BrigittePientka,
+          ],
+          title: 'Adjoint Natural Deduction',
+          year: 2024,
+          venue: 'Formal Structures for Computation and Deduction',
+          url: 'https://cs.ioc.ee/fscd24/accepted.html',
+        },
+      ],
+    },
     {
       year: 2023,
       publications: [
