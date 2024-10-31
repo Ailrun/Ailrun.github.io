@@ -106,7 +106,7 @@ const Publication: React.FC<PublicationProps> = ({ publication }) => {
     <PublicationRoot>
       {
         publication.authors.map((author) => (
-          <PublicationAuthor key={author.first + ' ' + author.last} {...{ author }} />
+          <PublicationAuthor key={author.first + ' ' + author.last} author={author} />
         ))
       }
       {`. (${publication.year}). `}
@@ -115,14 +115,20 @@ const Publication: React.FC<PublicationProps> = ({ publication }) => {
       {
         publication.editors === undefined
           ? []
-          : publication.editors.map((author) => (
-            <PublicationAuthor key={author.first + ' ' + author.last} {...{ author }} />
+          : publication.editors.map((editor) => (
+            <PublicationAuthor key={editor.first + ' ' + editor.last} author={editor} />
           ))
       }
       {publication.editors === undefined ? '' : '(Eds.), '}
       <PublicationVenue>{publication.venue}</PublicationVenue>
       {'. '}
-      <PublicationUrl href={publication.url}>{publication.url}</PublicationUrl>
+      {
+        publication.url === undefined
+          ? []
+          : (
+            <PublicationUrl href={publication.url}>{publication.url}</PublicationUrl>
+          )
+      }
     </PublicationRoot>
   );
 };

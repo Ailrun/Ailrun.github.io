@@ -13,7 +13,7 @@ interface Publication {
   readonly year: number;
   readonly editors?: Name[];
   readonly venue: string;
-  readonly url: string;
+  readonly url?: string;
   readonly doi?: string;
 }
 interface Name {
@@ -48,6 +48,167 @@ const SophiaRoshal = {
 
 const publications: PublicationsData = {
   years: [
+    {
+      year: 2025,
+      publications: [
+        {
+          authors: [
+            {
+              first: 'Taejoon',
+              last: 'Byun',
+            },
+            {
+              first: 'Aleks',
+              last: 'Chakarov',
+            },
+            {
+              first: 'Joshua',
+              last: 'Cohen',
+            },
+            {
+              first: 'Ruijie',
+              last: 'Fang',
+            },
+            {
+              first: 'Jaco',
+              last: 'Geldenhuys',
+            },
+            {
+              first: 'Matthew',
+              last: 'Heck',
+            },
+            {
+              first: 'Michael',
+              last: 'Hicks',
+            },
+            {
+              first: 'Samuel',
+              last: 'Huang',
+            },
+            {
+              first: 'Georges-Axel',
+              last: 'Jaloyan',
+            },
+            JunyoungJang,
+            {
+              first: 'Anjali',
+              last: 'Joshi',
+            },
+            {
+              first: 'K. Rustan M.',
+              last: 'Leino',
+            },
+            {
+              first: 'Mikael',
+              last: 'Mayer',
+            },
+            {
+              first: 'Sean',
+              last: 'McLaughlin',
+            },
+            {
+              first: 'Akhilesh',
+              last: 'Mritunjai',
+            },
+            {
+              first: 'Sorawee',
+              last: 'Porncharoenwase',
+            },
+            {
+              first: 'Florian',
+              last: 'Rabe',
+            },
+            {
+              first: 'Marianna',
+              last: 'Rapoport',
+            },
+            {
+              first: 'Jakob',
+              last: 'Rath',
+            },
+            {
+              first: 'Giles',
+              last: 'Reger',
+            },
+            {
+              first: 'Cody',
+              last: 'Roux',
+            },
+            {
+              first: 'Neha',
+              last: 'Rungta',
+            },
+            {
+              first: 'Matthias',
+              last: 'Schlaipfer',
+            },
+            {
+              first: 'Daniel',
+              last: 'Schoepe',
+            },
+            {
+              first: 'Hira',
+              last: 'Taqdees Syeda',
+            },
+            {
+              first: 'Serdar',
+              last: 'Tasiran',
+            },
+            {
+              first: 'Aaron',
+              last: 'Tomb',
+            },
+            {
+              first: 'Emina',
+              last: 'Torlak',
+            },
+            {
+              first: 'Dominik',
+              last: 'Wagner',
+            },
+            {
+              first: 'Lucas',
+              last: 'Wagner',
+            },
+            {
+              first: 'Michael',
+              last: 'Whalen',
+            },
+            {
+              first: 'Remy',
+              last: 'Willems',
+            },
+            {
+              first: 'Tongtong',
+              last: 'Xiang',
+            },
+            {
+              first: 'Yongwei',
+              last: 'Yuan',
+            },
+            {
+              first: 'Clement',
+              last: 'Pit-Claudel',
+            },
+            {
+              first: 'Robin',
+              last: 'Salkeld',
+            },
+            {
+              first: 'Jean-Baptiste',
+              last: 'Tristan',
+            },
+            {
+              first: 'Johanna',
+              last: 'Schwartzentruber',
+            },
+          ],
+          title: 'Formally Verified Cloud-Scale Authorization',
+          year: 2025,
+          venue: 'International Conference on Software Engineering',
+        },
+      ],
+    },
     {
       year: 2024,
       publications: [
