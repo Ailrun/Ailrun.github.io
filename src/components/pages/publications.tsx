@@ -21,7 +21,7 @@ const PublicationsPage: React.FC<PageProps> = () => {
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/publication.png'
         title='Publications'
       />
-      <PublicationYearList years={data.years} />
+      <PublicationYearList pubYears={data.pubYears} />
     </>
   );
 };
@@ -40,18 +40,18 @@ export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ loca
   );
 };
 
-type PublicationYear = typeof dataPublications[Language.KO]['years'][0];
-type Publication = PublicationYear['publications'][0];
+type PublicationPerYear = typeof dataPublications[Language.KO]['pubYears'][0];
+type Publication = PublicationPerYear['publications'][0];
 
 interface PublicationYearListProps {
-  readonly years: readonly PublicationYear[];
+  readonly pubYears: readonly PublicationPerYear[];
 }
-const PublicationYearList: React.FC<PublicationYearListProps> = ({ years }) => {
+const PublicationYearList: React.FC<PublicationYearListProps> = ({ pubYears }) => {
   return (
     <PublicationYearListRoot>
       {
-        years.map((year) => (
-          <PublicationPerYearList key={year.year} {...{ year }} />
+        pubYears.map((pubYear) => (
+          <PublicationPerYearList key={pubYear.year} pubYear={pubYear} />
         ))
       }
     </PublicationYearListRoot>
@@ -67,15 +67,15 @@ const PublicationYearListRoot = styled.main({
 });
 
 interface PublicationPerYearListProps {
-  readonly year: PublicationYear;
+  readonly pubYear: PublicationPerYear;
 }
-const PublicationPerYearList: React.FC<PublicationPerYearListProps> = ({ year }) => {
+const PublicationPerYearList: React.FC<PublicationPerYearListProps> = ({ pubYear: { year, publications } }) => {
   return (
     <PublicationPerYearListRoot>
-      <PublicationPerYearListTitle>{year.year}</PublicationPerYearListTitle>
+      <PublicationPerYearListTitle>{year}</PublicationPerYearListTitle>
       {
-        year.publications.map((publication) => (
-          <Publication key={publication.title} {...{ publication }} />
+        publications.map((publication) => (
+          <Publication key={publication.title} year={year} publication={publication} />
         ))
       }
     </PublicationPerYearListRoot>
@@ -99,9 +99,10 @@ const PublicationPerYearListTitle = styled.h3({
 });
 
 interface PublicationProps {
+  readonly year: number;
   readonly publication: Publication;
 }
-const Publication: React.FC<PublicationProps> = ({ publication }) => {
+const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
   return (
     <PublicationRoot>
       {
@@ -109,7 +110,7 @@ const Publication: React.FC<PublicationProps> = ({ publication }) => {
           <PublicationAuthor key={author.first + ' ' + author.last} author={author} />
         ))
       }
-      {`. (${publication.year}). `}
+      {`. (${year}). `}
       <PublicationTitle id={publication.doi ? publication.doi : publication.title}>{publication.title}</PublicationTitle>
       {'. In '}
       {
