@@ -42,23 +42,34 @@ const languageNeutralProjects: ProjectData = {
           ],
         },
         {
-          title: 'CUTE Lang',
-          link: 'https://github.com/CUTE-Lang',
-          images: [
-            [
-              'CUTE Lang logo',
-              'https://avatars0.githubusercontent.com/u/17797042?v=3&s=200',
-            ],
-          ],
+          title: 'Adjoint Metaprogramming Prototype Implementation',
+          link: 'https://github.com/Ailrun/adjoint-meta-impl',
+          images: [],
         },
+        {
+          title: 'SATyros - Step-by-step SAT/SMT solver',
+          link: 'https://github.com/Ailrun/satyros',
+          images: [],
+        },
+        {
+          title: 'Lambda cube',
+          link: 'https://github.com/Ailrun/lambda-cube',
+          images: [],
+        },
+        // {
+        //   title: 'CUTE Lang',
+        //   link: 'https://github.com/CUTE-Lang',
+        //   images: [
+        //     [
+        //       'CUTE Lang logo',
+        //       'https://avatars0.githubusercontent.com/u/17797042?v=3&s=200',
+        //     ],
+        //   ],
+        // },
         {
           title: 'Htaut',
           link: 'https://github.com/Ailrun/Htaut',
           images: [
-            [
-              'Travis CI status for Htaut',
-              'https://travis-ci.org/Ailrun/Htaut.svg',
-            ],
             [
               'The lastest version of Htaut in Hackage',
               'https://img.shields.io/hackage/v/htaut.svg?maxAge=2592000',
@@ -70,10 +81,6 @@ const languageNeutralProjects: ProjectData = {
           link: 'https://github.com/Ailrun/LambdaDB',
           images: [
             [
-              'Travis CI status for LambdaDB',
-              'https://travis-ci.org/Ailrun/LambdaDB.svg?branch=v0.0.0.6',
-            ],
-            [
               'The lastest version of LambdaDB in Hackage',
               'https://img.shields.io/hackage/v/LambdaDB.svg?maxAge=2592000',
             ],
@@ -82,22 +89,81 @@ const languageNeutralProjects: ProjectData = {
       ],
     },
     {
+      title: 'Coq',
+      projects: [
+        {
+          title: 'McTT - Mechanized Type Theory',
+          link: 'https://github.com/Beluga-lang/McLTT',
+          images: [],
+        },
+      ],
+    },
+    {
+      title: 'Agda',
+      projects: [
+        {
+          title: 'MINT - Modal INtuitionistic Type theory',
+          link: 'https://hustmphrrr.github.io/Kripke-style/index.html',
+          images: [],
+        },
+        {
+          title: 'Adjoint logic mechanization',
+          link: 'https://github.com/Ailrun/elevator-artifacts',
+          images: [],
+        },
+      ],
+    },
+    {
       title: 'Emacs',
       projects: [
         {
-          title: 'yet-another-emacs-settings',
+          title: 'Yet Another Emacs Settings',
           link: 'https://github.com/Ailrun/yet-another-emacs-settings',
           images: [],
         },
         {
-          title: 'emacs-retrie',
+          title: 'Emacs Retrie',
           link: 'https://github.com/Ailrun/emacs-retrie',
           images: [],
         },
         {
-          title: 'coq-commenter',
+          title: 'Magit LFS',
+          link: 'https://github.com/Ailrun/magit-lfs',
+          images: [],
+        },
+        {
+          title: 'Coq Commenter',
           link: 'https://github.com/Ailrun/coq-commenter',
           images: [],
+        },
+      ],
+    },
+    {
+      title: 'Others',
+      projects: [
+        {
+          title: 'Emotion JS',
+          link: 'https://github.com/emotion-js/emotion',
+          images: [
+            ['npm version', 'https://badge.fury.io/js/emotion.svg'],
+            ['Build Status', 'https://img.shields.io/circleci/project/github/emotion-js/emotion/main.svg'],
+          ],
+        },
+        {
+          title: 'TSdux',
+          link: 'https://github.com/Ailrun/tsdux',
+          images: [
+            ['npm latest version', 'https://img.shields.io/npm/v/tsdux/latest.svg'],
+            ['codecov coverage', 'https://img.shields.io/codecov/c/github/ailrun/tsdux.svg'],
+          ],
+        },
+        {
+          title: 'TSdux Observable',
+          link: 'https://github.com/Ailrun/tsdux-observable',
+          images: [
+            ['npm latest version', 'https://img.shields.io/npm/v/tsdux-observable/latest.svg'],
+            ['codecov coverage', 'https://img.shields.io/codecov/c/github/ailrun/tsdux-observable.svg'],
+          ],
         },
       ],
     },
@@ -105,28 +171,18 @@ const languageNeutralProjects: ProjectData = {
       title: 'Study',
       projects: [
         {
-          title: 'core-lang-haskell',
+          title: 'Core lang in Haskell',
           link: 'https://github.com/Ailrun/core-lang-haskell',
           images: [],
         },
         {
-          title: 'TRPL-study',
+          title: 'TRPL',
           link: 'https://github.com/Ailrun/TRPL-study',
           images: [],
         },
         {
-          title: 'Programming_in_Haskell',
+          title: 'Programming in Haskell',
           link: 'https://github.com/Ailrun/Programming_in_Haskell',
-          images: [],
-        },
-        {
-          title: 'StackCalc',
-          link: 'https://github.com/Ailrun/StackCalc',
-          images: [],
-        },
-        {
-          title: 'BigInteger',
-          link: 'https://github.com/Ailrun/BigInteger',
           images: [],
         },
         {
@@ -135,7 +191,7 @@ const languageNeutralProjects: ProjectData = {
           images: [],
         },
         {
-          title: 'LD_8bit_Microprocessor',
+          title: 'LD 8bit Microprocessor',
           link: 'https://github.com/Ailrun/LD_8bit_Microprocessor',
           images: [],
         },
