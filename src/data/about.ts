@@ -2,7 +2,7 @@ import { Language } from '../utils/languages';
 
 const aboutData = {
   [Language.KO]: {
-    ownerProfileCaption: '맥주를 보며 즐거워하는 Clare',
+    ownerProfileCaption: '교정의 Clare',
     subjects: [
       {
         title: '학력',
@@ -16,7 +16,7 @@ const aboutData = {
       {
         title: '취미',
         entries: [
-          '맥주의 바다에서 헤엄치기',
+          '다양한 맥주의 차이를 집어내기',
           '맛난 음식을 찾아 모험하기',
           '시 한 구절을 끄적이기',
         ],
@@ -30,7 +30,7 @@ const aboutData = {
     ],
   },
   [Language.EN]: {
-    ownerProfileCaption: 'Clare with a few cups of beer',
+    ownerProfileCaption: 'Clare with a Chemistry text',
     subjects: [
       {
         title: 'Education',
@@ -44,7 +44,7 @@ const aboutData = {
       {
         title: 'Hobby',
         entries: [
-          'Enjoying life with beers',
+          'Finding characteristics of beer types',
           'Falling in love with foods',
           'Writing pieces of poem',
         ],

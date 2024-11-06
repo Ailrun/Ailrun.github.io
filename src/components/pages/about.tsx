@@ -41,7 +41,7 @@ export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ loca
       title='About'
       description='Who is Junyoung/"Clare" Jang?'
       image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
-      imageAlt='Clare with cups of beer'
+      imageAlt='Clare with a chemistry text'
       pathname={`/${language}/about`}
       og={{
         type: 'profile',
