@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-node18-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node18-
-      - run: npm -g i npm@latest
+      - run: npm -g i npm@^10
       - run: npm ci
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
