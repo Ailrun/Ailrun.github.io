@@ -222,6 +222,18 @@ const publications: PublicationsData = {
           url: 'https://doi.org/10.4230/LIPIcs.FSCD.2024.15',
           doi: '10.4230/LIPIcs.FSCD.2024.15',
         },
+        {
+          authors: [
+            JunyoungJang,
+            SophiaRoshal,
+            FrankPfenning,
+            BrigittePientka,
+          ],
+          title: 'Adjoint Natural Deduction (Extended Version)',
+          venue: 'arXiv',
+          url: 'https://doi.org/10.48550/arXiv.2402.01428',
+          doi: '10.48550/arXiv.2402.01428',
+        },
       ],
     },
     {
