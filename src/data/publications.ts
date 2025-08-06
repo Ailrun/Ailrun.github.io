@@ -20,29 +20,34 @@ interface Name {
   readonly last: string;
 }
 
-const JunyoungJang = {
+const JunyoungJang : Name = {
   first: 'Junyoung',
   last: 'Jang',
 };
 
-const BrigittePientka = {
+const BrigittePientka : Name = {
   first: 'Brigitte',
   last: 'Pientka',
 };
 
-const FrankPfenning = {
+const FrankPfenning : Name = {
   first: 'Frank',
   last: 'Pfenning',
 };
 
-const JasonHu = {
+const JasonHu : Name = {
   first: 'Jason Z. S.',
   last: 'Hu',
 };
 
-const SophiaRoshal = {
+const SophiaRoshal : Name = {
   first: 'Sophia',
   last: 'Roshal',
+};
+
+const AntoineGaulin : Name = {
+  first: 'Antoine',
+  last: 'Gaulin',
 };
 
 const publications: PublicationsData = {
@@ -50,6 +55,18 @@ const publications: PublicationsData = {
     {
       year: 2025,
       publications: [
+        {
+          authors: [
+            JunyoungJang,
+            AntoineGaulin,
+            JasonHu,
+            BrigittePientka,
+          ],
+          title: 'McTT: A Verified Kernel for a Proof Assistant',
+          venue: 'Proceedings of the ACM on Programming Languages, Volume 9, Issue ICFP',
+          url: 'https://doi.org/10.1145/3747511',
+          doi: '10.1145/3747511',
+        },
         {
           authors: [
             {
@@ -207,6 +224,7 @@ const publications: PublicationsData = {
         },
       ],
     },
+
     {
       year: 2024,
       publications: [
@@ -236,6 +254,7 @@ const publications: PublicationsData = {
         },
       ],
     },
+
     {
       year: 2023,
       publications: [
@@ -252,6 +271,7 @@ const publications: PublicationsData = {
         },
       ],
     },
+
     {
       year: 2022,
       publications: [
@@ -275,6 +295,7 @@ const publications: PublicationsData = {
         },
       ],
     },
+
     {
       year: 2021,
       publications: [
