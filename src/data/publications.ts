@@ -221,6 +221,8 @@ const publications: PublicationsData = {
           ],
           title: 'Formally Verified Cloud-Scale Authorization',
           venue: 'International Conference on Software Engineering (ICSE 25)',
+          url: 'https://doi.org/10.1109/ICSE55347.2025.00166',
+          doi: '10.1109/ICSE55347.2025.00166',
         },
       ],
     },
