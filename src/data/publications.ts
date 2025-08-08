@@ -14,6 +14,7 @@ interface Publication {
   readonly venue: string;
   readonly url?: string;
   readonly doi?: string;
+  readonly note?: string;
 }
 interface Name {
   readonly first: string;
@@ -70,20 +71,8 @@ const publications: PublicationsData = {
         {
           authors: [
             {
-              first: 'Taejoon',
-              last: 'Byun',
-            },
-            {
               first: 'Aleks',
               last: 'Chakarov',
-            },
-            {
-              first: 'Joshua',
-              last: 'Cohen',
-            },
-            {
-              first: 'Ruijie',
-              last: 'Fang',
             },
             {
               first: 'Jaco',
@@ -98,14 +87,13 @@ const publications: PublicationsData = {
               last: 'Hicks',
             },
             {
-              first: 'Samuel',
+              first: 'Sam',
               last: 'Huang',
             },
             {
               first: 'Georges-Axel',
               last: 'Jaloyan',
             },
-            JunyoungJang,
             {
               first: 'Anjali',
               last: 'Joshi',
@@ -127,6 +115,10 @@ const publications: PublicationsData = {
               last: 'Mritunjai',
             },
             {
+              first: 'Clement',
+              last: 'Pit-Claudel',
+            },
+            {
               first: 'Sorawee',
               last: 'Porncharoenwase',
             },
@@ -137,10 +129,6 @@ const publications: PublicationsData = {
             {
               first: 'Marianna',
               last: 'Rapoport',
-            },
-            {
-              first: 'Jakob',
-              last: 'Rath',
             },
             {
               first: 'Giles',
@@ -155,6 +143,10 @@ const publications: PublicationsData = {
               last: 'Rungta',
             },
             {
+              first: 'Robin',
+              last: 'Salkeld',
+            },
+            {
               first: 'Matthias',
               last: 'Schlaipfer',
             },
@@ -163,8 +155,8 @@ const publications: PublicationsData = {
               last: 'Schoepe',
             },
             {
-              first: 'Hira',
-              last: 'Taqdees Syeda',
+              first: 'Johanna',
+              last: 'Schwartzentruber',
             },
             {
               first: 'Serdar',
@@ -179,8 +171,8 @@ const publications: PublicationsData = {
               last: 'Torlak',
             },
             {
-              first: 'Dominik',
-              last: 'Wagner',
+              first: 'Jean-Baptiste',
+              last: 'Tristan',
             },
             {
               first: 'Lucas',
@@ -199,30 +191,40 @@ const publications: PublicationsData = {
               last: 'Xiang',
             },
             {
+              first: 'Taejoon',
+              last: 'Byun',
+            },
+            {
+              first: 'Joshua',
+              last: 'Cohen',
+            },
+            {
+              first: 'Ruijie',
+              last: 'Fang',
+            },
+            JunyoungJang,
+            {
+              first: 'Jakob',
+              last: 'Rath',
+            },
+            {
+              first: 'Hira',
+              last: 'Taqdees Syeda',
+            },
+            {
+              first: 'Dominik',
+              last: 'Wagner',
+            },
+            {
               first: 'Yongwei',
               last: 'Yuan',
-            },
-            {
-              first: 'Clement',
-              last: 'Pit-Claudel',
-            },
-            {
-              first: 'Robin',
-              last: 'Salkeld',
-            },
-            {
-              first: 'Jean-Baptiste',
-              last: 'Tristan',
-            },
-            {
-              first: 'Johanna',
-              last: 'Schwartzentruber',
             },
           ],
           title: 'Formally Verified Cloud-Scale Authorization',
           venue: 'International Conference on Software Engineering (ICSE 25)',
           url: 'https://doi.org/10.1109/ICSE55347.2025.00166',
           doi: '10.1109/ICSE55347.2025.00166',
+          note: 'Amazon authors and external authors are separately sorted in the lexicographical ordering.'
         },
       ],
     },

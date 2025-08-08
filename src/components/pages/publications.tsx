@@ -106,8 +106,8 @@ const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
   return (
     <PublicationRoot>
       {
-        publication.authors.map((author) => (
-          <PublicationAuthor key={author.first + ' ' + author.last} author={author} />
+        publication.authors.map((author, idx, arr) => (
+          <PublicationAuthor key={author.first + ' ' + author.last} author={author} last={idx != 1 && idx == arr.length - 1} />
         ))
       }
       {`. (${year}). `}
@@ -116,19 +116,28 @@ const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
       {
         publication.editors === undefined
           ? []
-          : publication.editors.map((editor) => (
-            <PublicationAuthor key={editor.first + ' ' + editor.last} author={editor} />
+          : publication.editors.map((editor, idx, arr) => (
+            <PublicationAuthor key={editor.first + ' ' + editor.last} author={editor} last={idx != 1 && idx == arr.length - 1} />
           ))
       }
       {publication.editors === undefined ? '' : '(Eds.), '}
       <PublicationVenue>{publication.venue}</PublicationVenue>
-      {'. '}
+      {'.'}
       {
         publication.url === undefined
           ? []
-          : (
-            <PublicationUrl href={publication.url}>{publication.url}</PublicationUrl>
-          )
+          : [
+            ' ',
+            <PublicationUrl href={publication.url}>{publication.url}</PublicationUrl>,
+          ]
+      }
+      {
+        publication.note === undefined
+          ? []
+          : [
+            '. Note: ',
+            <PublicationNote>{publication.note}</PublicationNote>,
+          ]
       }
     </PublicationRoot>
   );
@@ -162,23 +171,23 @@ const PublicationUrl = styled.a({
   },
 });
 
+const PublicationNote = styled.span();
+
 interface PublicationAuthorProps {
   readonly author: Publication['authors'][0];
+  readonly last: boolean;
 }
-const PublicationAuthor: React.FC<PublicationAuthorProps> = ({ author }) => {
-  if (author.first === 'Junyoung' && author.last === 'Jang') {
-    return (
-      <PublicationAuthorRoot style={{ fontWeight: 'bold' }}>
-        {author.first} {author.last}
-      </PublicationAuthorRoot>
-    );
-  } else {
-    return (
-      <PublicationAuthorRoot>
-        {author.first} {author.last}
-      </PublicationAuthorRoot>
-    );
-  }
+const PublicationAuthor: React.FC<PublicationAuthorProps> = ({ author, last }) => {
+  const style : React.CSSProperties | undefined = author.first === 'Junyoung' && author.last === 'Jang' ?
+    { fontWeight: 'bold' } :
+    undefined;
+  const lastAuthorConnective : string = last ? 'and ' : '';
+
+  return (
+    <PublicationAuthorRoot style={style}>
+      {lastAuthorConnective}{author.first} {author.last}
+    </PublicationAuthorRoot>
+  );
 };
 
 const PublicationAuthorRoot = styled.span({
