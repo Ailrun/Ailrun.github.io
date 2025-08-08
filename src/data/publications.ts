@@ -224,7 +224,7 @@ const publications: PublicationsData = {
           venue: 'International Conference on Software Engineering (ICSE 25)',
           url: 'https://doi.org/10.1109/ICSE55347.2025.00166',
           doi: '10.1109/ICSE55347.2025.00166',
-          note: 'Amazon authors and external authors are separately sorted in the lexicographical ordering.'
+          note: 'Amazon authors and external authors are separately sorted in the lexicographical ordering on their last names.'
         },
       ],
     },
