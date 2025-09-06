@@ -75,26 +75,28 @@ interface OtherPubsProps {
 const OtherPubs: React.FC<OtherPubsProps> = ({ pubYears }) => {
   return (
     <PublicationTypeRoot>
-      <PublicationTypeTitle>Other Publications</PublicationTypeTitle>
+      <PublicationTypeTitle>Other Manuscripts</PublicationTypeTitle>
       <PublicationYearList pubYears={pubYears} />
     </PublicationTypeRoot>
   );
 };
 
 const PublicationTypeRoot = styled.section({
-  margin: '3em auto',
-
-  width: '80%',
-
   color: C.textLightBlack,
+
+  '& + &': {
+    marginTop: '2em',
+  },
 });
 
 const PublicationTypeTitle = styled.h2({
-  margin: '3em auto',
+  margin: '1em auto',
 
-  width: '80%',
+  width: '85%',
 
   color: C.textLightBlack,
+
+  fontSize: C.fontGiantSize,
 });
 
 interface PublicationYearListProps {
@@ -113,7 +115,7 @@ const PublicationYearList: React.FC<PublicationYearListProps> = ({ pubYears }) =
 };
 
 const PublicationYearListRoot = styled.section({
-  margin: '3em auto',
+  margin: 'auto',
 
   width: '80%',
 
@@ -145,11 +147,7 @@ const PublicationPerYearListRoot = styled.section({
 const PublicationPerYearListTitle = styled.h3({
   marginBottom: '0.1em',
 
-  fontSize: C.fontHugeSize,
-
-  [C.mediaQueries[0]]: {
-    fontSize: C.fontLargeSize,
-  },
+  fontSize: C.fontLargeSize,
 });
 
 interface PublicationProps {
