@@ -82,17 +82,23 @@ const OtherPubs: React.FC<OtherPubsProps> = ({ pubYears }) => {
 };
 
 const PublicationTypeRoot = styled.section({
+  margin: 'auto',
+
+  width: '80%',
+
   color: C.textLightBlack,
 
   '& + &': {
-    marginTop: '2em',
+    marginTop: '3em',
+  },
+
+  '&:last-of-type': {
+    marginBottom: '5em',
   },
 });
 
 const PublicationTypeTitle = styled.h2({
-  margin: '1em auto',
-
-  width: '85%',
+  margin: '1em auto 0.5em auto',
 
   color: C.textLightBlack,
 
@@ -117,7 +123,7 @@ const PublicationYearList: React.FC<PublicationYearListProps> = ({ pubYears }) =
 const PublicationYearListRoot = styled.section({
   margin: 'auto',
 
-  width: '80%',
+  width: '95%',
 
   color: C.textLightBlack,
 });
@@ -140,7 +146,7 @@ const PublicationPerYearList: React.FC<PublicationPerYearListProps> = ({ pubYear
 
 const PublicationPerYearListRoot = styled.section({
   '& + &': {
-    marginTop: '2em',
+    marginTop: '1em',
   },
 });
 
