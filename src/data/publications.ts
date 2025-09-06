@@ -1,7 +1,9 @@
 import { Language } from '../utils/languages';
 
 interface PublicationsData {
-  readonly pubYears: PublicationsPerYear[];
+  readonly peerJournalPubs: PublicationsPerYear[];
+  readonly peerConfPubs: PublicationsPerYear[];
+  readonly nonPeerPubs: PublicationsPerYear[];
 }
 interface PublicationsPerYear {
   readonly year: number;
@@ -52,7 +54,7 @@ const AntoineGaulin : Name = {
 };
 
 const publications: PublicationsData = {
-  pubYears: [
+  peerJournalPubs: [
     {
       year: 2025,
       publications: [
@@ -68,6 +70,55 @@ const publications: PublicationsData = {
           url: 'https://doi.org/10.1145/3747511',
           doi: '10.1145/3747511',
         },
+      ],
+    },
+
+    {
+      year: 2023,
+      publications: [
+        {
+          authors: [
+            JasonHu,
+            JunyoungJang,
+            BrigittePientka,
+          ],
+          title: 'Normalization by Evaluation for Modal Dependent Type Theory',
+          venue: 'Journal of Functional Programming (JFP) 33, E7',
+          url: 'https://doi.org/10.1017/S0956796823000060',
+          doi: '10.1017/S0956796823000060',
+        },
+      ],
+    },
+
+    {
+      year: 2022,
+      publications: [
+        {
+          authors: [
+            JunyoungJang,
+            {
+              first: 'Samuel',
+              last: 'Gélineau',
+            },
+            {
+              first: 'Stefan',
+              last: 'Monnier',
+            },
+            BrigittePientka,
+          ],
+          title: 'Mœbius: Metaprogramming Using Contextual Types: The Stage where System F can Pattern Match on Itself',
+          venue: 'Proceedings of the ACM on Programming Languages, Volume 6, Issue POPL',
+          url: 'https://doi.org/10.1145/3498700',
+          doi: '10.1145/3498700',
+        },
+      ],
+    },
+  ],
+
+  peerConfPubs: [
+    {
+      year: 2025,
+      publications: [
         {
           authors: [
             {
@@ -244,6 +295,44 @@ const publications: PublicationsData = {
           url: 'https://doi.org/10.4230/LIPIcs.FSCD.2024.15',
           doi: '10.4230/LIPIcs.FSCD.2024.15',
         },
+      ],
+    },
+
+    {
+      year: 2021,
+      publications: [
+        {
+          authors: [
+            {
+              first: 'Jacob',
+              last: 'Errington',
+            },
+            JunyoungJang,
+            BrigittePientka,
+          ],
+          title: 'Harpoon: Mechanizing Metatheory Interactively (System Description)',
+          editors: [
+            {
+              first: 'André',
+              last: 'Platzer',
+            },
+            {
+              first: 'Geoff',
+              last: 'Sutcliffe',
+            },
+          ],
+          venue: 'Automated Deduction - CADE 28',
+          url: 'https://doi.org/10.1007/978-3-030-79876-5_38',
+          doi: '10.1007/978-3-030-79876-5_38',
+        },
+      ],
+    },
+  ],
+
+  nonPeerPubs: [
+    {
+      year: 2024,
+      publications: [
         {
           authors: [
             JunyoungJang,
@@ -255,47 +344,6 @@ const publications: PublicationsData = {
           venue: 'arXiv',
           url: 'https://doi.org/10.48550/arXiv.2402.01428',
           doi: '10.48550/arXiv.2402.01428',
-        },
-      ],
-    },
-
-    {
-      year: 2023,
-      publications: [
-        {
-          authors: [
-            JasonHu,
-            JunyoungJang,
-            BrigittePientka,
-          ],
-          title: 'Normalization by Evaluation for Modal Dependent Type Theory',
-          venue: 'Journal of Functional Programming (JFP) 33, E7',
-          url: 'https://doi.org/10.1017/S0956796823000060',
-          doi: '10.1017/S0956796823000060',
-        },
-      ],
-    },
-
-    {
-      year: 2022,
-      publications: [
-        {
-          authors: [
-            JunyoungJang,
-            {
-              first: 'Samuel',
-              last: 'Gélineau',
-            },
-            {
-              first: 'Stefan',
-              last: 'Monnier',
-            },
-            BrigittePientka,
-          ],
-          title: 'Mœbius: Metaprogramming Using Contextual Types: The Stage where System F can Pattern Match on Itself',
-          venue: 'Proceedings of the ACM on Programming Languages, Volume 6, Issue POPL',
-          url: 'https://doi.org/10.1145/3498700',
-          doi: '10.1145/3498700',
         },
       ],
     },
@@ -337,30 +385,6 @@ const publications: PublicationsData = {
           venue: 'arXiv',
           url: 'https://doi.org/10.48550/arXiv.2111.08099',
           doi: '10.48550/arXiv.2111.08099',
-        },
-        {
-          authors: [
-            {
-              first: 'Jacob',
-              last: 'Errington',
-            },
-            JunyoungJang,
-            BrigittePientka,
-          ],
-          title: 'Harpoon: Mechanizing Metatheory Interactively (System Description)',
-          editors: [
-            {
-              first: 'André',
-              last: 'Platzer',
-            },
-            {
-              first: 'Geoff',
-              last: 'Sutcliffe',
-            },
-          ],
-          venue: 'Automated Deduction - CADE 28',
-          url: 'https://doi.org/10.1007/978-3-030-79876-5_38',
-          doi: '10.1007/978-3-030-79876-5_38',
         },
       ],
     },

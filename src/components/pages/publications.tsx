@@ -21,7 +21,9 @@ const PublicationsPage: React.FC<PageProps> = () => {
         backgroundSrc='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/publication.png'
         title='Publications'
       />
-      <PublicationYearList pubYears={data.pubYears} />
+      <JournalPubs pubYears={data.peerJournalPubs} />
+      <ConferencePubs pubYears={data.peerConfPubs} />
+      <OtherPubs pubYears={data.nonPeerPubs} />
     </>
   );
 };
@@ -32,16 +34,68 @@ export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ loca
 
   return (
     <SEO
-      title='Projects'
-      description='List of Posts in VoV'
-      pathname={`/${language}/projects`}
+      title='Publications'
+      description='Publication List of Junyoung/"Clare" Jang'
+      pathname={`/${language}/publications`}
       data={data}
     />
   );
 };
 
-type PublicationPerYear = typeof dataPublications[Language.KO]['pubYears'][0];
+type PublicationPerYear = typeof dataPublications[Language.KO]['peerJournalPubs'][0];
 type Publication = PublicationPerYear['publications'][0];
+
+interface JournalPubsProps {
+  readonly pubYears: readonly PublicationPerYear[];
+}
+const JournalPubs: React.FC<JournalPubsProps> = ({ pubYears }) => {
+  return (
+    <PublicationTypeRoot>
+      <PublicationTypeTitle>Journal Publications</PublicationTypeTitle>
+      <PublicationYearList pubYears={pubYears} />
+    </PublicationTypeRoot>
+  );
+};
+
+interface ConferencePubsProps {
+  readonly pubYears: readonly PublicationPerYear[];
+}
+const ConferencePubs: React.FC<ConferencePubsProps> = ({ pubYears }) => {
+  return (
+    <PublicationTypeRoot>
+      <PublicationTypeTitle>Conference Proceedings</PublicationTypeTitle>
+      <PublicationYearList pubYears={pubYears} />
+    </PublicationTypeRoot>
+  );
+};
+
+interface OtherPubsProps {
+  readonly pubYears: readonly PublicationPerYear[];
+}
+const OtherPubs: React.FC<OtherPubsProps> = ({ pubYears }) => {
+  return (
+    <PublicationTypeRoot>
+      <PublicationTypeTitle>Other Publications</PublicationTypeTitle>
+      <PublicationYearList pubYears={pubYears} />
+    </PublicationTypeRoot>
+  );
+};
+
+const PublicationTypeRoot = styled.section({
+  margin: '3em auto',
+
+  width: '80%',
+
+  color: C.textLightBlack,
+});
+
+const PublicationTypeTitle = styled.h2({
+  margin: '3em auto',
+
+  width: '80%',
+
+  color: C.textLightBlack,
+});
 
 interface PublicationYearListProps {
   readonly pubYears: readonly PublicationPerYear[];
@@ -58,7 +112,7 @@ const PublicationYearList: React.FC<PublicationYearListProps> = ({ pubYears }) =
   );
 };
 
-const PublicationYearListRoot = styled.main({
+const PublicationYearListRoot = styled.section({
   margin: '3em auto',
 
   width: '80%',
