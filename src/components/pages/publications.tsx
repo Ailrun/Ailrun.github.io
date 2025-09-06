@@ -102,7 +102,7 @@ const PublicationTypeTitle = styled.h2({
 
   color: C.textLightBlack,
 
-  fontSize: C.fontGiantSize,
+  fontSize: C.fontHugeSize,
 });
 
 interface PublicationYearListProps {
