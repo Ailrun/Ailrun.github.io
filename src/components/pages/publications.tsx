@@ -93,7 +93,7 @@ const PublicationTypeRoot = styled.section({
   },
 
   '&:last-of-type': {
-    marginBottom: '5em',
+    marginBottom: '4em',
   },
 });
 
@@ -146,12 +146,12 @@ const PublicationPerYearList: React.FC<PublicationPerYearListProps> = ({ pubYear
 
 const PublicationPerYearListRoot = styled.section({
   '& + &': {
-    marginTop: '1em',
+    marginTop: '1.5em',
   },
 });
 
 const PublicationPerYearListTitle = styled.h3({
-  marginBottom: '0.1em',
+  marginBottom: '0.5em',
 
   fontSize: C.fontLargeSize,
 });
@@ -211,7 +211,7 @@ const PublicationRoot = styled.article({
   },
 
   '& + &': {
-    marginTop: '1em',
+    marginTop: '0.5em',
   },
 });
 
