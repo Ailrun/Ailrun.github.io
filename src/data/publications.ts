@@ -336,6 +336,16 @@ const publications: PublicationsData = {
         {
           authors: [
             JunyoungJang,
+            BrigittePientka,
+          ],
+          title: 'Polymorphic Metaprogramming with Memory Management - An Adjoint Analysis of Metaprogramming',
+          venue: 'arXiv',
+          url: 'https://doi.org/10.48550/arXiv.2411.00752 ',
+          doi: '10.48550/arXiv.2411.00752 ',
+        },
+        {
+          authors: [
+            JunyoungJang,
             SophiaRoshal,
             FrankPfenning,
             BrigittePientka,
@@ -381,7 +391,7 @@ const publications: PublicationsData = {
             },
             BrigittePientka,
           ],
-          title: 'Moebius: Metaprogramming using Contextual Types -- The stage where System F can pattern match on itself (Long Version)',
+          title: 'Moebius: Metaprogramming using Contextual Types - The stage where System F can pattern match on itself (Long Version)',
           venue: 'arXiv',
           url: 'https://doi.org/10.48550/arXiv.2111.08099',
           doi: '10.48550/arXiv.2111.08099',
