@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkvalhala_of_valkyrie=self.webpackChunkvalhala_of_valkyrie||[]).push([[745],{9819:function(e,a,l){l.r(a);var n=l(7896),i=l(917);a.default=()=>"undefined"!=typeof window?(0,i.tZ)(n.Redirect,{to:"/en/publications/",noThrow:!0}):null}}]);
-//# sourceMappingURL=component---src-pages-en-index-tsx-65fe48dccacb01658b35.js.map

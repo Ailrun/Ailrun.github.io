@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkvalhala_of_valkyrie=self.webpackChunkvalhala_of_valkyrie||[]).push([[791],{4859:function(e,a,l){l.r(a);var o=l(7896),n=l(917);a.default=()=>"undefined"!=typeof window?(0,n.tZ)(o.Redirect,{to:"/ko/posts/",noThrow:!0}):null}}]);
-//# sourceMappingURL=component---src-pages-ko-index-tsx-2ee9ce524f636f2b5da8.js.map

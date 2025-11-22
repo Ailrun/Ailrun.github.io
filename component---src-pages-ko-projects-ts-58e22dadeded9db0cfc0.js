@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkvalhala_of_valkyrie=self.webpackChunkvalhala_of_valkyrie||[]).push([[236],{3780:function(a,e,l){l.r(e),l.d(e,{Head:function(){return u.p}});var u=l(635);e.default=u.A}}]);
+//# sourceMappingURL=component---src-pages-ko-projects-ts-58e22dadeded9db0cfc0.js.map
