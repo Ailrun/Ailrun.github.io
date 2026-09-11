@@ -1,0 +1,32 @@
+name: Build Test
+
+on:
+  pull_request:
+    branches:
+      - gatsby
+
+env:
+  CI: true
+  GATSBY_TELEMETRY_DISABLED: true
+
+jobs:
+  build-test:
+    name: Build Test
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '22.x'
+      - id: node-cache
+        uses: actions/cache@v6
+        with:
+          path: '~/.npm'
+          key: ${{ runner.os }}-node22-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node22-
+      - run: npm -g i npm@^12
+      - run: npm ci
+        env:
+          PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true
+      - run: npm run build
