@@ -7,7 +7,7 @@ export interface Props {
   readonly url: string;
   readonly identifier: string;
   readonly title: string;
-  onNewComment?(comment: { readonly id: string; readonly text: string }): void;
+  onNewComment?(this: void, comment: { readonly id: string; readonly text: string }): void;
 }
 const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, onNewComment }) => {
   const disqusThreadRef = useRef<HTMLDivElement>(null);

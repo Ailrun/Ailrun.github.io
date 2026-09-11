@@ -8,7 +8,9 @@ export const onCreateWebpackConfig: GatsbyNode['onCreateWebpackConfig'] = ({ act
 
   actions.setWebpackConfig({
     plugins: [
-      new ESLintPlugin({ emitError: true }),
+      new ESLintPlugin({
+        emitError: true,
+      }),
     ],
   });
 };

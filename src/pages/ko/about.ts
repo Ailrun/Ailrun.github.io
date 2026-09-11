@@ -10,4 +10,4 @@ export const query = graphql`
   query {
     ...SEOInformation
   }
-`
+`;

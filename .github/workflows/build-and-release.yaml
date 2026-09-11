@@ -16,18 +16,18 @@ jobs:
     name: Build & Release
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
         with:
-          node-version: '18.x'
+          node-version: '22.x'
       - id: node-cache
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         with:
           path: '~/.npm'
-          key: ${{ runner.os }}-node18-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-node22-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-node18-
-      - run: npm -g i npm@^10
+            ${{ runner.os }}-node22-
+      - run: npm -g i npm@^12
       - run: npm ci
         env:
           PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: true

@@ -169,7 +169,7 @@ const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
         ))
       }
       {`. (${year}). `}
-      <PublicationTitle id={publication.doi ? publication.doi : publication.title}>{publication.title}</PublicationTitle>
+      <PublicationTitle id={publication.doi ?? publication.title}>{publication.title}</PublicationTitle>
       {'. In '}
       {
         publication.editors === undefined
@@ -180,13 +180,13 @@ const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
       }
       {publication.editors === undefined ? '' : '(Eds.), '}
       <PublicationVenue>{publication.venue}</PublicationVenue>
-      {'.'}
+      .
       {
         publication.url === undefined
           ? []
           : [
             ' ',
-            <PublicationUrl href={publication.url}>{publication.url}</PublicationUrl>,
+            <PublicationUrl key='0' href={publication.url}>{publication.url}</PublicationUrl>,
           ]
       }
       {
@@ -194,7 +194,7 @@ const Publication: React.FC<PublicationProps> = ({ year, publication }) => {
           ? []
           : [
             '. Note: ',
-            <PublicationNote>{publication.note}</PublicationNote>,
+            <PublicationNote key='0'>{publication.note}</PublicationNote>,
           ]
       }
     </PublicationRoot>

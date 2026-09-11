@@ -55,7 +55,7 @@ export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ loca
       data={data}
     />
   );
-}
+};
 
 type Subject = typeof dataAbout[Language.KO]['subjects'][0];
 

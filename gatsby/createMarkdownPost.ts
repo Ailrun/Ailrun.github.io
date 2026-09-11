@@ -62,7 +62,7 @@ const createMarkdownPost = ({ actions, createNodeId, getNode, node }: CreateNode
   void actions.createNode(markdownPostNode);
   actions.createParentChildLink({
     parent: node,
-    child: markdownPostNode as Node,
+    child: markdownPostNode,
   });
 };
 export default createMarkdownPost;

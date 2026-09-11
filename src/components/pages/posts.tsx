@@ -78,7 +78,7 @@ const refineData = (data: Queries.MarkdownPostsInformationFragment, targetLangua
       postPath: postPath!,
       /* Try to make the excerpt WAI compatible */
       excerpt: 'excerpt' in parent!
-        ? parent!.excerpt!
+        ? parent.excerpt!
           .replace(/<a>/g, '<span>')
           .replace(/<a /g, '<span ')
           .replace(/<\/a>/g, '</span>')

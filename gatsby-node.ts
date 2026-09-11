@@ -16,6 +16,7 @@ dotenv.config({
   path: `.env.${process.env.NODE_ENV as string}`,
 });
 
+/* eslint-disable @typescript-eslint/unbound-method */
 export const createPages = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
   const postResult = await graphql<PostData>(postQuery);
 
@@ -52,7 +53,7 @@ export const createSchemaCustomization = ({ actions }: CreateSchemaCustomization
       titleTemplate: String!
     }
   `);
-}
+};
 
 export const onCreateNode = (createNodeArgs: CreateNodeArgs): void => {
   createMarkdownPost(createNodeArgs);

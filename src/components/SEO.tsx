@@ -24,7 +24,7 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
   return (
     <>
       <title>{`${title} - ${siteMetadata.shortName}`}</title>
-      /* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */
+      {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition */}
       <base href={location.href?.replace(/#.*$/, '')} />
       {/* standard meta tags */}
       <meta name='application-name' content={siteMetadata.name} />
@@ -37,17 +37,17 @@ const SEO: React.FC<Props> = ({ title, description, pathname, image, imageAlt, o
       <link rel='index' href={`${siteMetadata.siteUrl}/${language}`} />
 
       {/* robot restriction tags */}
-	  <meta name="robots" content="index" />
-	  <meta name="googlebot" content="index" />
+      <meta name="robots" content="index" />
+      <meta name="googlebot" content="index" />
 
       {/* Do not translate this page by default */}
-	  <meta name="google" content="notranslate" />
+      <meta name="google" content="notranslate" />
 
       {/* Default URL */}
-	  <meta name="url" content="https://ailrun.github.io/" />
+      <meta name="url" content="https://ailrun.github.io/" />
 
       {/* Targets? */}
-      <meta name="coverage" content="WorldWide"/>
+      <meta name="coverage" content="WorldWide" />
 
       {/* Android tags */}
       <meta name='mobile-web-app-capable' content='yes' />
