@@ -1,9 +1,8 @@
 # NPM
 node_modules/
 
-# Gatsby
-.cache
-public/
+# Vite/Vike/...
+dist/
 
 # dotenv
 .env

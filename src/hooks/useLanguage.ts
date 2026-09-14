@@ -1,9 +1,10 @@
-import { useLocation } from '@gatsbyjs/reach-router';
+import { usePageContext } from 'vike-react/usePageContext';
 
 import { Language, locationToLanguage } from '../utils/languages';
 
 const useLanguage = (): Language => {
-  const location = useLocation();
+  const pageContext = usePageContext();
+  const location = { pathname: pageContext.urlPathname };
 
   return locationToLanguage(location);
 };

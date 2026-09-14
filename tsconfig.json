@@ -24,8 +24,8 @@
     "./*.d.ts",
     "config/**/*",
     "eslint.config.ts",
-    "gatsby-*.ts",
     "src/**/*",
-    "plugins/**/*.ts"
+    "plugins/**/*.ts",
+    "vite.config.ts"
   ]
 }

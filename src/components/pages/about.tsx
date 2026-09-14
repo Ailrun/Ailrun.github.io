@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import type { HeadProps, PageProps } from 'gatsby';
+// import type { HeadProps, PageProps } from 'gatsby';
 import React from 'react';
 
 import dataAbout from '../../data/about';
@@ -9,9 +9,9 @@ import { Language, locationToLanguage } from '../../utils/languages';
 import FlexSpacer from '../FlexSpacer';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
-import SEO from '../SEO';
+// import SEO from '../SEO';
 
-const AboutPage: React.FC<PageProps> = () => {
+const AboutPage: React.FC = () => {
   const language = useLanguage();
   const data = dataAbout[language];
 
@@ -33,29 +33,29 @@ const AboutPage: React.FC<PageProps> = () => {
 };
 export default AboutPage;
 
-export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
-  const language = locationToLanguage(location);
+// export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
+//   const language = locationToLanguage(location);
 
-  return (
-    <SEO
-      title='About'
-      description='Who is Junyoung/"Clare" Jang?'
-      image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
-      imageAlt='Clare with a chemistry text'
-      pathname={`/${language}/about`}
-      og={{
-        type: 'profile',
-        additional: {
-          first_name: 'Junyoung/"Clare"',
-          last_name: 'Jang',
-          username: 'Ailrun',
-          gender: 'male',
-        },
-      }}
-      data={data}
-    />
-  );
-};
+//   return (
+//     <SEO
+//       title='About'
+//       description='Who is Junyoung/"Clare" Jang?'
+//       image='https://raw.githubusercontent.com/Ailrun/media/master/blog-img/about-profile.png'
+//       imageAlt='Clare with a chemistry text'
+//       pathname={`/${language}/about`}
+//       og={{
+//         type: 'profile',
+//         additional: {
+//           first_name: 'Junyoung/"Clare"',
+//           last_name: 'Jang',
+//           username: 'Ailrun',
+//           gender: 'male',
+//         },
+//       }}
+//       data={data}
+//     />
+//   );
+// };
 
 type Subject = typeof dataAbout[Language.KO]['subjects'][0];
 

@@ -1,7 +1,0 @@
-{
-  "name": "gatsby-plugin-custom-eslint",
-  "dependencies": {
-    "eslint-webpack-plugin": "^6.0.0",
-    "gatsby": "^5.16.1"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "name": "gatsby-plugin-custom-ts-checker",
-  "dependencies": {
-    "fork-ts-checker-webpack-plugin": "^9.1.0",
-    "gatsby": "^5.16.1"
-  }
-}

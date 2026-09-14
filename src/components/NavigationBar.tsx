@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 import React from 'react';
 
 import useLanguage from '../hooks/useLanguage';
@@ -7,13 +6,14 @@ import * as C from '../styles/constants';
 import { Language } from '../utils/languages';
 
 import FlexSpacer from './FlexSpacer';
+import { Link } from './Link';
 
 const NavigationBar: React.FC<unknown> = () => {
   const language = useLanguage();
 
   return (
     <Root>
-      <Title to={`/${language}/`}>
+      <Title href={`/${language}/`}>
         Junyoung/Clare Jang
       </Title>
       <FlexSpacer />
@@ -77,7 +77,7 @@ interface ItemProps {
 const NavigationItem: React.FC<ItemProps> = ({ to, text }) => {
   return (
     <NavigationItemRoot>
-      <Link to={to}>
+      <Link href={to}>
         {text}
       </Link>
     </NavigationItemRoot>

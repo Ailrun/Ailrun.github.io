@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import type { HeadProps, PageProps } from 'gatsby';
 import React from 'react';
 
 import dataPublications from '../../data/publications';
@@ -8,9 +7,9 @@ import * as C from '../../styles/constants';
 import { Language, locationToLanguage } from '../../utils/languages';
 import NavigationBar from '../NavigationBar';
 import PageTitle from '../PageTitle';
-import SEO from '../SEO';
+// import SEO from '../SEO';
 
-const PublicationsPage: React.FC<PageProps> = () => {
+const PublicationsPage: React.FC = () => {
   const language = useLanguage();
   const data = dataPublications[language];
 
@@ -29,18 +28,18 @@ const PublicationsPage: React.FC<PageProps> = () => {
 };
 export default PublicationsPage;
 
-export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
-  const language = locationToLanguage(location);
+// export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ location, data }) => {
+//   const language = locationToLanguage(location);
 
-  return (
-    <SEO
-      title='Publications'
-      description='Publication List of Junyoung/"Clare" Jang'
-      pathname={`/${language}/publications`}
-      data={data}
-    />
-  );
-};
+//   return (
+//     <SEO
+//       title='Publications'
+//       description='Publication List of Junyoung/"Clare" Jang'
+//       pathname={`/${language}/publications`}
+//       data={data}
+//     />
+//   );
+// };
 
 type PublicationPerYear = typeof dataPublications[Language.KO]['peerJournalPubs'][0];
 type Publication = PublicationPerYear['publications'][0];

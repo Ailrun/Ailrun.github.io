@@ -1,19 +1,16 @@
 import styled from '@emotion/styled';
-import { PageRendererProps, navigate, HeadProps } from 'gatsby';
 import React, { useEffect } from 'react';
+import { navigate } from 'vike/client/router';
 
 import useTimer from '../../hooks/useTimer';
-import SEO from '../SEO';
 
-const Page404: React.FC<PageRendererProps> = () => {
+const Page404: React.FC = () => {
   const timeLeft = useTimer(5);
   const isDone = timeLeft === 0;
 
   useEffect(() => {
     if (isDone) {
-      navigate('/', {
-        replace: true,
-      });
+      navigate('/', { overwriteLastHistoryEntry: true });
     }
   }, [isDone]);
 
@@ -26,16 +23,16 @@ const Page404: React.FC<PageRendererProps> = () => {
 };
 export default Page404;
 
-export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ data }) => {
-  return (
-    <SEO
-      title='Page Not Found'
-      description='The page is not found. Please check your URL.'
-      pathname='/404.html'
-      data={data}
-    />
-  );
-};
+// export const Head: React.FC<HeadProps<Queries.SEOInformationFragment>> = ({ data }) => {
+//   return (
+//     <SEO
+//       title='Page Not Found'
+//       description='The page is not found. Please check your URL.'
+//       pathname='/404.html'
+//       data={data}
+//     />
+//   );
+// };
 
 const Time = styled.span({
   fontWeight: 'bold',

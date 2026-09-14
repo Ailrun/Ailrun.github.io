@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 import React, { Fragment } from 'react';
 
 import * as C from '../styles/constants';
 
 import FlexSpacer from './FlexSpacer';
+import { Link } from './Link';
 
 export interface Props {
   readonly postInfos: PostInfo[];
@@ -13,7 +13,7 @@ const PostList: React.FC<Props> = ({ postInfos }) => (
   <PostListRoot>
     {
       postInfos.map((postInfo) => (
-        <Fragment key={postInfo.postPath}>
+        <Fragment key={postInfo.url}>
           <Post postInfo={postInfo} />
         </Fragment>
       ))
@@ -25,8 +25,8 @@ export default PostList;
 export interface PostInfo {
   readonly title: string;
   readonly date: string;
-  readonly excerpt: string;
-  readonly postPath: string;
+  // readonly excerpt: string;
+  readonly url: string;
 }
 
 const PostListRoot = styled.ul({
@@ -41,13 +41,13 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({ postInfo }) => {
   return (
     <PostRoot>
-      <PostLink to={postInfo.postPath}>
+      <PostLink href={postInfo.url}>
         <PostTitle>{postInfo.title}</PostTitle>
         <FlexSpacer />
         <PostDate>{postInfo.date}</PostDate>
-        <PostExcerpt
+        {/* <PostExcerpt
           dangerouslySetInnerHTML={{ __html: postInfo.excerpt }}
-        />
+        /> */}
       </PostLink>
     </PostRoot>
   );
