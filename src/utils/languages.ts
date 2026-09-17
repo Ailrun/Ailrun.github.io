@@ -29,8 +29,8 @@ export function languageToBCP47(language: Language): string {
 export function locationToLanguage(location: { pathname: string }): Language {
   const languageOrDraft = (/\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1];
 
-  if (languageOrDraft === process.env.GATSBY_DRAFT_PATH) {
-    return (/\/[^/]*\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
+  if (languageOrDraft === 'draft') {
+    return (/\/[^/]*\/[^/]*\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
   }
 
   return languageOrDraft as Language;

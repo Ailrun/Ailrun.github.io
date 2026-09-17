@@ -1,7 +1,7 @@
 import type { Config } from 'vike/types';
 import vikeReact from 'vike-react/config';
 
-import type { PostInfo } from '../components/PostList';
+import type { PostInfo } from '../src/components/PostList';
 
 export default {
   extends: vikeReact,
@@ -21,6 +21,7 @@ export default {
     '/ko': '/ko/posts',
   },
   passToClient: [
+    'frontmatter',
     'posts',
   ],
 } satisfies Config;
@@ -31,6 +32,7 @@ declare global {
       readonly frontmatter?: {
         readonly title: string;
         readonly date: string;
+        readonly draft: boolean;
       };
     }
 

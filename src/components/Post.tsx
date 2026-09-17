@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
 import useOnLine from '../hooks/useOnLine';
 import * as C from '../styles/constants';
@@ -11,7 +11,7 @@ interface Props {
   readonly gatsbyShortname: string;
   readonly postInfo: PostInfo;
 }
-const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
+const Post: React.FC<PropsWithChildren<Props>> = ({ gatsbyShortname, postInfo, children }) => {
   return (
     <PostRoot>
       <PostHeader>
@@ -20,9 +20,7 @@ const Post: React.FC<Props> = ({ gatsbyShortname, postInfo }) => {
         <PostDate>{postInfo.date}</PostDate>
       </PostHeader>
       <PostSeparator />
-      <PostContent
-        dangerouslySetInnerHTML={{ __html: postInfo.html }}
-      />
+      <PostContent>{children}</PostContent>
       {
         !postInfo.draft ? (
           <>
@@ -44,7 +42,6 @@ export default Post;
 export interface PostInfo {
   readonly title: string;
   readonly date: string;
-  readonly html: string;
   readonly postPath: string;
   readonly draft: boolean;
 }

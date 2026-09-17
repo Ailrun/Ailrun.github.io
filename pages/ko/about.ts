@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby';
 
-import ProjectsPage, { Head } from '../../components/pages/projects';
+import AboutPage, { Head } from '../../src/components/pages/about';
 
-export default ProjectsPage;
+export default AboutPage;
 export {
   Head,
 };
