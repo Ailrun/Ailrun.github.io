@@ -4,18 +4,21 @@ import type { PostInfo } from "../src/components/PostList";
 
 export async function onCreateGlobalContext(globalContext: GlobalContext) {
   const pages = globalContext.pages;
-  globalContext.posts = Object.keys(pages).map((k): PostInfo | void => {
-    const page = pages[k];
-    const { frontmatter } = page.config;
-    console.log(page.route, page.config);
-    if (frontmatter !== undefined && !frontmatter.draft && page.route !== undefined) {
-      const post = {
-        title: frontmatter.title,
-        date: frontmatter.date,
-        url: String(page.route),
-      };
-      return post;
-    }
-  }).filter((v) => v !== undefined);
-  console.log(globalContext.posts);
-}
+  globalContext.posts =
+    Object.keys(pages)
+      .map((k): PostInfo | void => {
+        const page = pages[k];
+        const { metadata } = page.config;
+        if (metadata !== undefined && !metadata.draft && page.route !== undefined) {
+          const post = {
+            title: metadata.title,
+            date: metadata.date,
+            excerpt: metadata.excerpt,
+            url: String(page.route),
+          };
+          return post;
+        }
+      })
+      .filter((v) => v !== undefined)
+      .sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+};

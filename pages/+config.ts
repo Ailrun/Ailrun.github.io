@@ -6,7 +6,7 @@ import type { PostInfo } from '../src/components/PostList';
 export default {
   extends: vikeReact,
   meta: {
-    frontmatter: {
+    metadata: {
       eager: true,
       env: {
         server: true,
@@ -21,7 +21,7 @@ export default {
     '/ko': '/ko/posts',
   },
   passToClient: [
-    'frontmatter',
+    'metadata',
     'posts',
   ],
 } satisfies Config;
@@ -29,9 +29,10 @@ export default {
 declare global {
   namespace Vike {
     interface Config {
-      readonly frontmatter?: {
+      readonly metadata?: {
         readonly title: string;
         readonly date: string;
+        readonly excerpt: string;
         readonly draft: boolean;
       };
     }

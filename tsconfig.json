@@ -12,6 +12,7 @@
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUncheckedSideEffectImports": false,
+    "preserveSymlinks": false,
     "skipLibCheck": true,
     "strict": true,
     "strictBindCallApply": true,
@@ -20,7 +21,8 @@
     "strictNullChecks": true,
     "target": "ES2015",
     "types": [
-      "vite/client"
+      "vite/client",
+      "mdx"
     ],
     "useDefineForClassFields": true
   },
@@ -30,6 +32,8 @@
     "eslint.config.ts",
     "src/**/*",
     "pages/**/*",
+    "post/**/*",
+    "post-draft/**/*",
     "plugins/**/*.ts",
     "vite.config.ts"
   ]

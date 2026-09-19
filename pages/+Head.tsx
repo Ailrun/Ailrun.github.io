@@ -1,21 +1,29 @@
 import { Global, css } from '@emotion/react';
-import type { WrapRootElementBrowserArgs, WrapRootElementNodeArgs } from 'gatsby';
-import React from 'react';
 
-type WrapRootElementArgs = WrapRootElementBrowserArgs | WrapRootElementNodeArgs;
-
-/**
-   It's not possible to wrap the root with React strict mode
-   because Gatsby uses legacy context in its ScrollContext.
-   It will be fixed in Gatsby v3, so let's wait for it...
- */
-const wrapRootElement = ({ element }: WrapRootElementArgs): React.ReactElement => (
-  <>
-    <Global styles={globalStyles} />
-    {element}
-  </>
-);
-export default wrapRootElement;
+export default function Head() {
+  return (
+    <>
+      <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no' />
+      <meta
+        http-equiv='Content-Security-Policy'
+        content="default-src 'self' https://disqus.com https://*.disqus.com https://*.disquscdn.com https://www.google-analytics.com https://fonts.gstatic.com https://www.googletagmanager.com https://stats.g.doubleclick.net; font-src 'self' https://c.disquscdn.com https://fonts.gstatic.com; img-src 'self' https:; script-src 'self' https://disqus.com https://*.disqus.com/ https://*.disquscdn.com https://www.google-analytics.com https://www.googletagmanager.com 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com https://disqus.com https://*.disqus.com https://*.disquscdn.com blob: 'unsafe-inline';"
+      />
+      <link
+        rel='preconnect dns-prefetch'
+        href='https://www.googletagmanager.com'
+        crossOrigin='anonymous'
+        key='https://www.googletagmanager.com'
+      />
+      <link
+        rel='preconnect dns-prefetch'
+        href='https://c.disquscdn.com'
+        crossOrigin='anonymous'
+        key='https://c.disquscdn.com'
+      />
+      <Global styles={globalStyles} />
+    </>
+  )
+};
 
 const globalStyles = css`
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+KR:400,700&display=block');

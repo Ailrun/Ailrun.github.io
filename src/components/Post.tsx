@@ -1,23 +1,30 @@
 import styled from '@emotion/styled';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useMemo } from 'react';
 
+import useLanguage from '../hooks/useLanguage';
 import useOnLine from '../hooks/useOnLine';
 import * as C from '../styles/constants';
+import dayjs from '../utils/dayjs';
 
 import FlexSpacer from './FlexSpacer';
 import DiscussionEmbed, { Props as DiscussionEmbedProps } from './disqus/DiscussionEmbed';
 
 interface Props {
-  readonly gatsbyShortname: string;
+  readonly disqusShortname: string;
   readonly postInfo: PostInfo;
 }
-const Post: React.FC<PropsWithChildren<Props>> = ({ gatsbyShortname, postInfo, children }) => {
+const Post: React.FC<PropsWithChildren<Props>> = ({ disqusShortname, postInfo, children }) => {
+  const lang = useLanguage();
+  const dayjsDate = useMemo(() => dayjs(postInfo.date).locale(lang), [postInfo, lang]);
+
   return (
     <PostRoot>
       <PostHeader>
         <PostTitle>{postInfo.title}</PostTitle>
         <FlexSpacer />
-        <PostDate>{postInfo.date}</PostDate>
+        <PostDate title={dayjsDate.format('LLL')}>
+          {dayjsDate.fromNow()}
+        </PostDate>
       </PostHeader>
       <PostSeparator />
       <PostContent>{children}</PostContent>
@@ -26,7 +33,7 @@ const Post: React.FC<PropsWithChildren<Props>> = ({ gatsbyShortname, postInfo, c
           <>
             <PostDisqusSeparator />
             <PostDisqus
-              shortname={gatsbyShortname}
+              shortname={disqusShortname}
               url={`https://ailrun.github.io${postInfo.postPath}`}
               identifier={postInfo.postPath}
               title={postInfo.title}

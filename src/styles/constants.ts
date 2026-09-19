@@ -36,7 +36,7 @@ export const markdown: SerializedStyles = css({
 
   lineHeight: '1.7',
 
-  ...process.env.NODE_ENV === `development` ? {
+  ...import.meta.env.NODE_ENV === `development` ? {
     'h1::before': {
       content: '"DON\'T USE THIS"',
     },

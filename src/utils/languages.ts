@@ -26,11 +26,11 @@ export function languageToBCP47(language: Language): string {
   }
 }
 
-export function locationToLanguage(location: { pathname: string }): Language {
-  const languageOrDraft = (/\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1];
+export function locationToLanguage(url: string): Language {
+  const languageOrDraft = (/\/([^/]*)/.exec(url) as RegExpExecArray)[1];
 
   if (languageOrDraft === 'draft') {
-    return (/\/[^/]*\/[^/]*\/([^/]*)/.exec(location.pathname) as RegExpExecArray)[1] as Language;
+    return (/\/[^/]*\/[^/]*\/([^/]*)/.exec(url) as RegExpExecArray)[1] as Language;
   }
 
   return languageOrDraft as Language;

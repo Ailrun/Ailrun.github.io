@@ -1,0 +1,13 @@
+export function toHumanReadableDate(date: Date) {
+  
+};
+
+export function toHumanReadableDateDiff(date: Date) {
+  const secDiff = Math.floor(Date.now() / 1000) - date.getSeconds();
+
+  if (secDiff < 60) {
+    return Intl.RelativeTimeFormat(sec);
+  }
+
+  return;
+};

@@ -3,21 +3,21 @@ import styled from '@emotion/styled';
 import React, { PropsWithChildren } from 'react';
 import { usePageContext } from 'vike-react/usePageContext';
 
-// import useLanguage from '../../hooks/useLanguage';
 import NavigationBar from '../NavigationBar';
-import Post, { PostInfo } from '../Post';
+import Post from '../Post';
+import type { PostInfo } from '../Post';
 // import SEO from '../SEO';
 
 const PostTemplate: React.FC<PropsWithChildren> = (props) => {
   const pageContext = usePageContext();
 
-  if (pageContext.config.frontmatter === undefined) {
+  if (pageContext.config.metadata === undefined) {
     throw Error("A Critical Bug!");
   }
 
-  const post = {
-    title: pageContext.config.frontmatter?.title,
-    date: pageContext.config.frontmatter?.date,
+  const post: PostInfo = {
+    title: pageContext.config.metadata.title,
+    date: pageContext.config.metadata.date,
     postPath: pageContext.urlPathname,
     draft: pageContext.urlPathname.startsWith('draft'),
   };
@@ -27,7 +27,7 @@ const PostTemplate: React.FC<PropsWithChildren> = (props) => {
       <NavigationBar />
       <PostWrapper>
         <Post
-          gatsbyShortname={import.meta.env.GATSBY_DISQUS_NAME}
+          disqusShortname={import.meta.env.PUBLIC_ENV__DISQUS_NAME}
           postInfo={post}
           {...props}
         />

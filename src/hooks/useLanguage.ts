@@ -4,8 +4,7 @@ import { Language, locationToLanguage } from '../utils/languages';
 
 const useLanguage = (): Language => {
   const pageContext = usePageContext();
-  const location = { pathname: pageContext.urlPathname };
 
-  return locationToLanguage(location);
+  return locationToLanguage(pageContext.urlPathname);
 };
 export default useLanguage;

@@ -102,7 +102,4 @@ const DiscussionEmbed: React.FC<Props> = ({ shortname, url, identifier, title, o
     <div ref={disqusThreadRef} id='disqus_thread' />
   );
 };
-DiscussionEmbed.defaultProps = {
-  onNewComment: undefined,
-};
 export default DiscussionEmbed;

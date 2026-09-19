@@ -1,7 +1,9 @@
 import styled from '@emotion/styled';
-import React, { Fragment } from 'react';
+import React, { Fragment, useMemo } from 'react';
 
+import useLanguage from '../hooks/useLanguage';
 import * as C from '../styles/constants';
+import dayjs from '../utils/dayjs';
 
 import FlexSpacer from './FlexSpacer';
 import { Link } from './Link';
@@ -25,7 +27,7 @@ export default PostList;
 export interface PostInfo {
   readonly title: string;
   readonly date: string;
-  // readonly excerpt: string;
+  readonly excerpt: string;
   readonly url: string;
 }
 
@@ -39,15 +41,18 @@ interface PostProps {
   postInfo: PostInfo;
 }
 const Post: React.FC<PostProps> = ({ postInfo }) => {
+  const lang = useLanguage();
+  const dayjsDate = useMemo(() => dayjs(postInfo.date).locale(lang), [postInfo, lang]);
+
   return (
     <PostRoot>
       <PostLink href={postInfo.url}>
         <PostTitle>{postInfo.title}</PostTitle>
         <FlexSpacer />
-        <PostDate>{postInfo.date}</PostDate>
-        {/* <PostExcerpt
-          dangerouslySetInnerHTML={{ __html: postInfo.excerpt }}
-        /> */}
+        <PostDate title={dayjsDate.format('LLL')}>
+          {dayjsDate.fromNow()}
+        </PostDate>
+        <PostExcerpt>{postInfo.excerpt}</PostExcerpt>
       </PostLink>
     </PostRoot>
   );
